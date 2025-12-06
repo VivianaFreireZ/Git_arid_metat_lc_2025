@@ -1,0 +1,167 @@
+---
+title: "MetaT geTMM normalization"
+author: "Viviana Freire-Zapata"
+date: "9/16/2025"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: '2'
+    collapsed: false
+    highlight: tango
+    css: style.css
+editor_options: 
+  chunk_output_type: console
+---
+
+# Data Pre-processing
+
+## 1. Setup
+
+### Importing libraries
+
+```{r libraries, message=FALSE, warning=FALSE}
+
+library(easystats)
+library(vegan)
+library(GGally)
+library(ggpubr)
+library(glmnet)
+library(ggbeeswarm)
+library(lme4)
+library(lmerTest)
+library(readxl)
+library(pheatmap)
+library(edgeR)
+library(tidyverse)
+
+```
+
+# Loading RAW transcripts counts
+
+```{r}
+rnaseq_counts <- read_tsv('input/rnaseq_counts_final_2025.txt', skip = 1)
+
+sra_table <- read_csv("input/SraRunTable.csv") %>% 
+  select(Run, `Sample Name`)
+
+```
+
+# Loading gene annotations 
+
+```{r}
+
+annot <- read_csv('input/annot_with_cydbs_2.23.25.csv') %>% 
+  rename('Geneid' = '...1')
+
+```
+
+
+# Fixing names
+```{r}
+
+raw_matrix <- rnaseq_counts %>% 
+  select(!c(Chr, Start, End, Strand, Length)) %>% 
+  column_to_rownames(var = "Geneid") %>% 
+  rename_with(.fn = function(x) str_remove(x, '/xdisk/tfaily/vfreirezapata/metat_2025_final/bowtie_results/')) %>% 
+  rename_with(.fn = function(x) str_remove(x, '_mapped_sorted.bam'))
+
+
+```
+
+# Summing counts per sample
+
+```{r}
+
+matrix_sum <- raw_matrix %>% 
+  rownames_to_column(var = 'Geneid') %>% 
+  pivot_longer(!Geneid, names_to = 'Run', values_to = 'counts') %>% 
+  left_join(sra_table, by = 'Run') %>% 
+  group_by(`Sample Name`, Geneid) %>% 
+  summarise(counts_sum = sum(counts))
+
+## Reformat
+
+matrix_tmp <-  matrix_sum %>% 
+  pivot_wider(names_from = `Sample Name`, values_from = counts_sum) %>% 
+  column_to_rownames(var = 'Geneid')
+
+## Removing genes with zero counts 
+
+raw_matrix_ft <- matrix_tmp[rowSums(matrix_tmp >= 5) >= 3,]
+
+
+```
+
+
+# geTMM normalization - following Smid et al, 2018 https://doi.org/10.1186/s12859-018-2246-7
+
+```{r}
+## Joining to gene length column 
+
+# Selecting gene length
+
+gene_lenght <- rnaseq_counts %>% 
+  select(c(Geneid, Length))
+
+raw_matrix_ready <- raw_matrix_ft %>%
+  rownames_to_column(var = "Geneid") %>% 
+  left_join(gene_lenght, by = "Geneid") %>% 
+  column_to_rownames(var = "Geneid")
+
+## Double check suspicious genes, those < 150 bp and > 5000 bp
+
+# raw_matrix_tmp <- raw_matrix_ready %>% 
+#   rownames_to_column(var = 'Geneid') %>% 
+#   select(Geneid, Length) %>% 
+#   left_join(annot, by = 'Geneid')
+
+
+## Transforming gene length from bp to kb
+
+## Filtering genes < 150 bp - likely fragments & > 10 kb
+
+raw_matrix_ready <- raw_matrix_ready %>% 
+  filter(Length >= 150 & Length <= 10000) %>% 
+  mutate(Length = Length * 0.001)
+
+## reordering columns
+
+raw_matrix_ready <- raw_matrix_ready %>% 
+  select(29, 1:28)
+  
+## Matrix as: first column geneID as rownames, second column gene length in kb
+## Remaining columns contain reads 
+
+## Step 1: Calculate RPK
+
+raw_matrix_ready <- as.matrix(raw_matrix_ready)
+
+rpk <- (raw_matrix_ready[,2:ncol(raw_matrix_ready)]/raw_matrix_ready[,1])
+
+## Create a "false - no group" to use in edgeR
+
+group <- c(rep("A", ncol(rpk)))
+
+
+## Use functions EdgeR functions for normalization
+
+rpk_norm <- DGEList(counts = rpk, group = group)
+
+rpk_norm <- calcNormFactors(rpk_norm)
+
+norm_counts_rpk_edger <- cpm(rpk_norm)
+
+## Save normalized data
+
+final_df <- as.data.frame(norm_counts_rpk_edger) %>% 
+  rownames_to_column(var = "Geneid")
+
+write_csv(final_df, "output/geTMM_normalized_matrix_2025.csv")
+
+
+
+
+```
+
+

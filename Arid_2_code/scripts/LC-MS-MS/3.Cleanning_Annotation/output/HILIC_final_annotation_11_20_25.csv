@@ -1,0 +1,908 @@
+FeatureID,Name,Formula,Annotation_level,use_Sirius_class
+FT_1.123_413.12472,Curcumin,C21 H20 O6,L1,na
+FT_1.213_165.05561,Acetovanillone,C9 H10 O3,L1,na
+FT_1.230_285.20715,Hexadecanedioic acid,C16 H30 O4,L1,na
+FT_1.242_161.02436,Umbelliferone,C9 H6 O3,L1,na
+FT_1.446_195.06632,Hydroferulic acid,C10 H12 O4,L1,na
+FT_1.462_165.05558,3-(3-Hydroxyphenyl)propionic Acid,C9 H10 O3,L1,na
+FT_1.488_193.05073,Ferulic acid,C10 H10 O4,L1,na
+FT_1.579_173.08198,Suberic acid,C8 H14 O4,L1,na
+FT_1.640_151.03998,4-Acetylresorcinol,C8 H8 O3,L1,na
+FT_1.654_179.03496,Caffeic acid,C9 H8 O4,L1,na
+FT_1.671_167.03488,Vanillic acid,C8 H8 O4,L1,na
+FT_1.676_165.05559,Acetovanillone,C9 H10 O3,L1,na
+FT_1.691_197.04576,Syringic acid,C9 H10 O5,L1,na
+FT_1.848_115.00373,Maleic acid,C4 H4 O4,L1,na
+FT_11.142_341.10896,Sucrose,C12 H22 O11,L1,na
+FT_11.959_387.11469,alpha-D-Lactose,C12 H22 O11,L1,na
+FT_12.049_146.04593,D-Glutamic acid,C5 H9 N O4,L1,na
+FT_12.101_387.11469,D-(+)-Turanose,C12 H22 O11,L1,na
+FT_14.984_259.83946,O-Phospho-L-tyrosine,C9 H12 N O6 P,L1,na
+FT_2.051_115.04012,Levulinic acid,C5 H8 O3,L1,na
+FT_2.246_103.04010,3-hydroxybutyric acid,C4 H8 O3,L1,na
+FT_2.491_103.04008,3-hydroxybutyric acid,C4 H8 O3,L1,na
+FT_2.673_131.03504,2-Methylsuccinic acid,C5 H8 O4,L1,na
+FT_3.028_103.04009,2-Methyllactic acid,C4 H8 O3,L1,na
+FT_3.331_134.04729,Adenine,C5 H5 N5,L1,na
+FT_3.571_117.01938,Succinic acid,C4 H6 O4,L1,na
+FT_3.966_243.06218,Uridine,C9 H12 N2 O6,L1,na
+FT_4.385_251.07857,2'-Deoxyinosine,C10 H12 N4 O4,L1,na
+FT_4.979_157.03665,Allantoin,C4 H6 N4 O3,L1,na
+FT_6.179_267.07353,Inosine,C10 H12 N4 O5,L1,na
+FT_6.765_266.08957,2-Deoxyguanosine,C10 H13 N5 O4,L1,na
+FT_7.666_266.08821,N-Acetyl-D-mannosamine,C8 H15 N O6,L1,na
+FT_7.835_141.03065,5-(Hydroxymethyl)uracil,C5 H6 N2 O3,L1,na
+FT_8.842_181.07172,Mannitol,C6 H14 O6,L1,na
+FT_9.044_181.07173,Mannitol,C6 H14 O6,L1,na
+FT_1.543_171.06627,(-)-Corey lactone,C8 H12 O4,L2,na
+FT_1.371_329.23370,"(15Z)-9,12,13-Trihydroxy-15-octadecenoic acid",C18 H34 O5,L2,na
+FT_1.579_427.13995,"(2-{(1R,9S)-3-[4-(Methylsulfanyl)phenyl]-6-oxo-7,11-diazatricyclo[7.3.1.02,7]trideca-2,4-dien-11-yl}-2-oxoethoxy)acetic acid",C22 H24 N2 O5 S,L2,na
+FT_1.378_387.21788,"2,4-dihydroxy-3-[(E)-4-hydroxy-3-methyl-5-(1,2,6-trimethyl-3-oxocyclohexyl)pent-2-enyl]-6-methylbenzaldehyde",C23H3O5,L3.3,na
+FT_1.190_311.22297,(±)9-HpODE,C18 H32 O4,L2,na
+FT_1.287_311.22294,(±)9-HpODE,C18 H32 O4,L2,na
+FT_1.436_301.10824,"1-(2,4-dihydroxyphenyl)-2-(3,5-dimethoxyphenyl)propan-1-one",C17 H18 O5,L2,na
+FT_1.604_301.10818,"1-(2,4-dihydroxyphenyl)-2-(3,5-dimethoxyphenyl)propan-1-one",C17 H18 O5,L2,na
+FT_1.096_411.14524,dalpanol,C23H24O7,L3.3,na
+FT_1.208_411.14507,dalpanol,C23H24O7,L3.3,na
+FT_1.380_185.08194,1-(Carboxymethyl)cyclohexanecarboxylic acid,C9 H14 O4,L2,na
+FT_1.572_185.08197,1-(Carboxymethyl)cyclohexanecarboxylic acid,C9 H14 O4,L2,na
+FT_1.827_185.08198,1-(Carboxymethyl)cyclohexanecarboxylic acid,C9 H14 O4,L2,na
+FT_17.118_421.07555,"1,5,8-Trihydroxy-9-oxo-9H-xanthen-3-yl beta-D-glucopyranoside",C19 H18 O11,L2,na
+FT_1.347_327.12404,10-(4-Sulfophenyl) decanoic acid,C16 H24 O5 S,L2,na
+FT_1.448_327.12395,10-(4-Sulfophenyl) decanoic acid,C16 H24 O5 S,L2,na
+FT_1.156_271.22795,16-Hydroxyhexadecanoic acid,C16 H32 O3,L2,na
+FT_1.171_331.19173,19(R)-Hydroxy prostaglandin A2,C20 H30 O5,L2,na
+FT_1.477_179.07139,2'-Hydroxy-4'-methoxypropiophenone,C10H12O3,L3.3,na
+FT_1.127_463.14008,"2-(1-naphthylmethylidene)-1,2,3,4-tetrahydronaphthalen-1-one 1-(2,4-dinitrophenyl)hydrazone",C27 H20 N4 O4,L2,na
+FT_1.602_353.06673,6-acetoxy-7-acetyl-1-hydroxy-3-methoxyanthraquinone,C19H14O7,L3.3,na
+FT_1.672_381.19226,"2-[(2S,3R,4S,5R)-3,4-Dihydroxy-5-{[(isopropylcarbamoyl)amino]methyl}tetrahydro-2-furanyl]-N-[2-(dimethylamino)ethyl]acetamide",C15 H30 N4 O5,L2,na
+FT_2.353_195.06628,2-Hydroxy-4-(4-hydroxyphenyl)butanoic acid,C10 H12 O4,L2,na
+FT_1.512_195.03001,Haematommic Acid,C9H8O5,L3.3,na
+FT_1.206_329.17611,"3,3'-Diisopropyl-6,6'-dimethyl-2,2',5,5'-biphenyltetrol",C20 H26 O4,L2,na
+FT_1.306_329.17608,"3,3'-Diisopropyl-6,6'-dimethyl-2,2',5,5'-biphenyltetrol",C20 H26 O4,L2,na
+FT_14.029_549.16735,melitose,C18H32O16,L3.3,na
+FT_14.255_549.16737,melitose,C18H32O16,L3.3,na
+FT_1.273_283.06127,3-{[2-(3-Cyano-2-pyridinyl)hydrazino]carbonyl}-2-pyrazinecarboxylic acid,C12 H8 N6 O3,L2,na
+FT_1.844_117.05577,3-Hydroxyvaleric acid,C5 H10 O3,L2,na
+FT_1.940_117.05577,3-Hydroxyvaleric acid,C5 H10 O3,L2,na
+FT_3.380_215.09252,"3-methyl-4-[2-(2-methylphenyl)hydrazono]-4,5-dihydro-1H-pyrazol-5-one",C11 H12 N4 O,L2,na
+FT_1.160_287.09263,"4,5-diphenyl-2,3-dihydro-1H-pyrazolo[3,4-c]pyridazin-3-one",C17 H12 N4 O,L2,na
+FT_1.223_365.19704,"4-[2-(2,3-Dihydroxy-5,6,8a-trimethyloctahydro-2H-spiro[naphthalene-1,2'-oxiran]-5-yl)ethyl]-5-hydroxy-2(5H)-furanone",C20 H30 O6,L2,na
+FT_1.268_325.18447,4-Dodecylbenzenesulfonic acid,C18 H30 O3 S,L2,na
+FT_1.142_179.03495,4-Hydroxyphenylpyruvic acid,C9 H8 O4,L2,na
+FT_1.266_175.03993,4-Methylumbelliferone,C10 H8 O3,L2,na
+FT_1.687_175.03995,4-Methylumbelliferone,C10 H8 O3,L2,na
+FT_2.545_175.04000,4-Methylumbelliferone,C10 H8 O3,L2,na
+FT_1.167_347.11376,"4,4(5')-dihydroxydibenzo-15-crown-5",C18 H20 O7,L2,na
+FT_1.236_191.03498,"5,7-Dihydroxy-4-methylcoumarin",C10 H8 O4,L2,na
+FT_1.321_191.03501,"5,7-Dihydroxy-4-methylcoumarin",C10 H8 O4,L2,na
+FT_1.468_251.05608,Triacetylphloroglucinol,C12H12O6,L3.3,na
+FT_2.041_137.03571,5-Aminonicotinic acid,C6 H6 N2 O2,L2,na
+FT_3.216_137.03571,urocanate,C6 H6 N2 O2,L2,na
+FT_1.365_251.09250,"6-Amino-3-methyl-4-phenyl-1,4-dihydropyrano[2,3-c]pyrazole-5-carbonitrile",C14 H12 N4 O,L2,na
+FT_1.525_251.09253,"6-Amino-3-methyl-4-phenyl-1,4-dihydropyrano[2,3-c]pyrazole-5-carbonitrile",C14 H12 N4 O,L2,na
+FT_1.628_251.09246,NP-001608,C13H16O5,L2,na
+FT_1.143_397.12968,pongachalcone II,C21H20O5,L3.3,na
+FT_1.223_397.12956,"(2E)-7-methyl-6-(2-oxopropoxy)-2-[(3,4,5-trimethoxyphenyl)methylidene]-1-benzofuran-3-one",C22H22O7,L3.3,na
+FT_2.030_187.09752,Azelaic acid,C9 H16 O4,L2,na
+FT_2.136_187.09750,Azelaic acid,C9 H16 O4,L2,na
+FT_11.355_259.01294,d-Galactopyranose-2-sulfate,C6H12O9S,L3.3,na
+FT_12.284_259.01291,d-Galactopyranose-2-sulfate,C6H12O9S,L3.3,na
+FT_1.037_437.08811,4-hydroxytetracenomycin A2,C23H18O9,L3.3,na
+FT_1.183_207.06610,Genipin,C11 H14 O5,L2,na
+FT_1.237_207.06609,Genipin,C11 H14 O5,L2,na
+FT_2.740_113.02448,Glutaric anhydride,C5 H6 O3,L2,na
+FT_1.162_283.06126,Glycitein,C16 H12 O5,L2,na
+FT_8.083_282.08449,Guanosine,C10 H13 N5 O5,L2,na
+FT_13.751_341.10903,alpha-alpha-Trehalose,C12 H22 O11,L2,na
+FT_1.168_527.15599,F13459,C27H28O11,L3.3,na
+FT_1.148_193.05068,Isoferulic acid,C10 H10 O4,L2,na
+FT_2.065_193.05064,Isoferulic acid,C10 H10 O4,L2,na
+FT_1.223_257.08202,Isorhapontigenin,C15 H14 O4,L2,na
+FT_8.843_316.94801,no name,no formula,L5,na
+FT_1.601_165.05563,Methyl 4-hydroxyphenylacetate,C9 H10 O3,L2,na
+FT_3.025_147.06635,Mevalonic acid,C6 H12 O4,L2,na
+FT_1.139_405.09830,"2-(1,3-dimethyl-2,6-dioxopurin-7-yl)-N-[(4-sulfamoylphenyl)methyl]acetamide",C16H18N6O5S,L3.3,na
+FT_1.434_345.09809,hamilcone,C18H18O7,L3.3,na
+FT_1.208_469.18705,NP-005088,C26H32O9,L2,na
+FT_14.571_333.05952,poly(galactosylglycerol phosphate),C9H19O11P,L3.3,na
+FT_1.609_445.15069,"3-(Acetyloxy)-2-(3,4-dimethoxyphenyl)-7,8-dimethoxy-3,4-dihydro-2H-chromen-4-yl acetate",C23H26O9,L3.3,na
+FT_1.046_465.15560,"N-{[(2R,3S,4R,5S)-3,4-Dihydroxy-5-{2-oxo-2-[4-(2-pyridinyl)-1-piperazinyl]ethyl}tetrahydro-2-furanyl]methyl}-2-furamide",C21 H26 N4 O6,L2,na
+FT_1.390_277.07177,[2-[3-(2-Acetyloxyacetyl)phenyl]-2-oxoethyl] acetate,C14H14O6,L3.3,na
+FT_1.188_269.04556,"1,3,8-trihydroxy-6-methyl-anthracene-9,10-dione",C15H10O5,L3.3,na
+FT_1.535_351.14519,Coriandrone D,C18H24O7,L3.3,na
+FT_1.670_281.10327,Gonioheptolide A,C14H18O6,L3.3,na
+FT_1.387_357.13459,NP-003433,C20 H22 O6,L2,na
+FT_1.285_313.23864,12(13)-DiHOME,C18 H34 O4,L2,na
+FT_1.463_459.12991,embigenin,C23H24O10,L3.3,na
+FT_1.669_387.18144,NP-018946,C21 H26 O4,L2,na
+FT_1.176_443.13501,NP-020236,C23 H24 O9,L2,na
+FT_1.348_443.13495,NP-020236,C23 H24 O9,L2,na
+FT_13.222_411.11466,"(2R,3R,4R,5R)-5-[[(2S,3R,4R,5R)-3,4-dihydroxy-5-[[(2S,3R,4R,5R)-3,4,5-trihydroxyoxolan-2-yl]methoxy]oxolan-2-yl]methoxy]-3,4-dihydroxyoxolane-2-carbaldehyde",C15H24O13,L3.3,na
+FT_2.097_187.06118,NP-022068,C8 H12 O5,L2,na
+FT_2.326_187.06115,NP-022068,C8 H12 O5,L2,na
+FT_2.430_187.06117,NP-022068,C8 H12 O5,L2,na
+FT_1.317_297.15305,2-Decylbenzenesulfonate,C16H25O3S-,L2,na
+FT_10.119_171.07747,Prolylglycine,C7 H12 N2 O3,L2,na
+FT_2.111_211.06111,Propyl gallate,C10 H12 O5,L2,na
+FT_2.459_211.06108,Propyl gallate,C10 H12 O5,L2,na
+FT_1.543_349.20212,Prostaglandin K2,C20 H30 O5,L2,na
+FT_12.842_443.14080,Tetracycline,C22 H24 N2 O8,L2,na
+FT_1.467_223.06110,Trinexapac,C11 H12 O5,L2,na
+FT_2.417_167.03494,Vanillic acid,C8 H8 O4,L2,na
+FT_1.584_177.05573,coniferaldehyde,C10H10O3,L3.3,na
+FT_1.322_183.10268,Ieodomycin D,C10H16O3,L3.3,na
+FT_2.691_273.07284,[Similar to: 2'-Deoxyuridine; ΔMass: 0.0000 Da],C9 H12 N2 O5,L3.3,na
+FT_12.351_317.05494,glyceryl sulfoquinovoside,C9H18O10S,L3.3,na
+FT_1.615_267.16035,Waraterpol,C15H24O4,L3.3,na
+FT_1.628_337.12961,"[(3aS,4R,5R,6S,6aR,8R,9bS)-5,6,8-trihydroxy-6,9-dimethyl-3-methylidene-2-oxo-4,5,6a,7,8,9b-hexahydro-3aH-azuleno[4,5-b]furan-4-yl] acetate",C17H22O7,L3.3,na
+FT_1.640_223.02477,Dehydrochorismic acid,C10 H8 O6,L3.3,na
+FT_1.770_263.05617,Penicimarin E,C13H12O6,L3.3,na
+FT_12.209_387.11466,beta1-6Galactobiose,C12H22O11,L3.3,na
+FT_12.841_511.12815,"[Similar to: N-[4-(2-Anilino-2-oxoethyl)-7-hydroxy-8-(hydroxymethyl)-4a,8-dimethyl-4,4a,5,6,7,8,8a,9-octahydronaphtho[2,3-d][1,3]thiazol-2-yl]-4-fluorobenzamide; ΔMass: -25.0743 Da]",C19 H28 O16,L2,na
+FT_2.628_205.01382,7-Hydroxy-2-oxo-2H-chromene-6-carboxylic acid,C10 H6 O5,L3.3,na
+FT_1.158_235.06121,O-acetylferulic acid,C12 H12 O5,L3.3,na
+FT_1.268_413.12484,[Similar to: Prednisone; ΔMass: 55.9541 Da],C23 H18 N4 O4,L3.3,na
+FT_1.309_413.19722,[Similar to: Prednisone; ΔMass: 56.0265 Da],C17 H32 N6 O2 P2,L3.3,na
+FT_1.321_413.23379,[Similar to: Prednisone; ΔMass: 56.0630 Da],C25 H34 O5,L3.3,na
+FT_2.236_179.07135,3-(2-Methoxyphenyl)propanoic acid,C10H12O3,L3.3,na
+FT_0.995_562.01218,no name,no formula,L5,na
+FT_1.286_373.09303,no name,C18 H16 O6,L4.3,yes
+FT_1.363_295.08239,no name,C13 H14 O5,L4.3,yes
+FT_1.664_349.09316,no name,C16 H16 O6,L4.3,yes
+FT_1.011_413.08803,no name,C21 H18 O9,L4.1,yes
+FT_1.031_493.18711,no name,C28 H30 O8,L4.1,yes
+FT_1.048_439.10385,no name,C25 H20 N4 S2,L4.3,na
+FT_1.075_491.20777,no name,C29 H32 O7,L4.3,yes
+FT_1.077_369.06179,no name,C19 H14 O8,L4.3,yes
+FT_1.077_441.15573,no name,C24 H26 O8,L4.3,yes
+FT_1.081_643.25445,no name,C36 H40 N2 O9,L4.3,yes
+FT_1.079_559.23376,no name,C33 H36 O8,L4.3,na
+FT_1.081_563.26479,no name,C33 H40 O8,L4.3,na
+FT_1.082_643.21822,no name,C36 H36 O11,L4.3,yes
+FT_1.087_511.12488,no name,C26 H24 O11,L4.3,yes
+FT_1.084_545.21901,no name,C32 H34 O8,L4.1,yes
+FT_1.084_613.24386,no name,no formula,L5,na
+FT_1.085_503.20768,no name,C34 H34 P2,L4.3,na
+FT_1.087_585.21275,no name,C34 H34 O9,L4.3,yes
+FT_1.087_665.23867,no name,C32 H42 O15,L4.3,yes
+FT_1.093_727.20194,no name,C39 H36 O14,L4.3,yes
+FT_1.088_445.09327,no name,no formula,L5,na
+FT_1.089_395.11395,no name,C22 H20 O7,L4.1,yes
+FT_1.089_543.20250,no name,C32 H32 O8,L4.1,yes
+FT_1.092_517.22371,no name,no formula,L5,na
+FT_1.092_537.17725,no name,C22 H34 O15,L4.1,yes
+FT_1.094_439.17657,no name,C25 H28 O7,L4.3,yes
+FT_1.100_455.17151,no name,C25 H28 O8,L4.3,yes
+FT_1.094_479.20668,no name,C28 H32 O7,L4.1,yes
+FT_1.094_531.23896,no name,no formula,L5,na
+FT_1.096_455.17156,no name,C24 H26 O6,L4.1,yes
+FT_1.096_497.21822,no name,C27 H32 O6,L4.1,yes
+FT_1.097_497.21815,no name,C28 H34 O8,L4.1,yes
+FT_1.098_313.14510,no name,C19 H22 O4,L4.1,yes
+FT_1.098_467.17215,no name,C28 H20 N8,L4.3,na
+FT_1.099_327.12382,no name,C19 H20 O5,L4.1,yes
+FT_1.099_481.18695,no name,C27 H30 O8,L4.1,yes
+FT_1.100_493.18732,no name,C28 H30 O8,L4.3,yes
+FT_1.101_369.20763,no name,C23 H30 O4,L4.3,yes
+FT_1.102_683.24815,no name,C34 H40 N2 O13,L4.3,yes
+FT_1.102_347.15021,no name,C19 H24 O6,L4.1,yes
+FT_1.102_371.07739,no name,C19 H16 O8,L4.1,yes
+FT_1.103_505.15096,no name,C28 H26 O9,L4.3,yes
+FT_1.103_343.15545,no name,C20 H24 O5,L4.1,yes
+FT_1.104_449.16089,no name,C26 H26 O7,L4.3,yes
+FT_1.104_697.22811,no name,C39 H38 O12,L4.3,yes
+FT_1.105_395.07803,no name,C21 H16 O8,L4.3,yes
+FT_1.105_695.21167,no name,C39 H36 O12,L4.3,yes
+FT_1.105_437.16079,no name,C25 H26 O7,L4.1,yes
+FT_1.106_423.18185,no name,C25 H28 O6,L4.3,yes
+FT_1.107_629.23731,no name,C36 H38 O10,L4.3,yes
+FT_1.110_447.14570,no name,C26 H24 O7,L4.3,yes
+FT_1.112_449.12469,no name,C24 H20 O6,L4.3,yes
+FT_1.111_337.10853,"(E)-1-(5,7-dihydroxy-2,2-dimethylchromen-6-yl)-3-(4-hydroxyphenyl)prop-2-en-1-one",C20 H18 O5,L3.3,na
+FT_1.116_381.09801,no name,C21 H18 O7,L4.3,yes
+FT_1.113_421.09313,no name,C23 H18 O8,L4.1,yes
+FT_1.115_339.12404,no name,C20 H20 O5,L4.1,yes
+FT_1.118_397.09370,no name,C20 H16 O6,L4.3,yes
+FT_1.116_473.28266,no name,C28 H43 O4 P,L4.1,yes
+FT_1.117_357.13453,no name,C20 H22 O6,L4.1,yes
+FT_1.118_341.13963,no name,C20 H22 O5,L4.1,yes
+FT_1.121_297.11318,no name,C18 H18 O4,L4.3,yes
+FT_1.119_409.12982,Rotenalone,C23 H22 O7,L3.3,na
+FT_1.125_451.14034,no name,C25 H24 O8,L4.3,yes
+FT_1.124_343.11885,no name,C19 H20 O6,L4.1,yes
+FT_1.125_293.06668,no name,no formula,L5,na
+FT_1.125_343.08237,no name,C17 H14 O5,L4.1,yes
+FT_1.125_357.06183,no name,C18 H14 O8,L4.1,yes
+FT_1.126_509.14589,no name,C27 H26 O10,L4.3,yes
+FT_1.127_479.13510,no name,C27 H20 N4 O5,L4.3,yes
+FT_1.127_433.12990,no name,C25 H22 O7,L4.1,yes
+FT_1.128_511.16121,no name,C27 H28 O10,L4.3,yes
+FT_1.139_465.11984,no name,C18 H26 O14,L4.3,yes
+FT_1.129_383.18653,no name,C23 H28 O5,L4.1,yes
+FT_1.129_411.10883,no name,C22 H20 O8,L4.1,yes
+FT_1.129_483.20261,no name,C27 H32 O8,L4.1,yes
+FT_1.130_385.20231,no name,C23 H30 O5,L4.1,yes
+FT_1.131_217.05048,8-acetyl-7-hydroxy-4-methyl-chromen-2-one,C12 H10 O4,L3.3,na
+FT_1.131_301.07202,no name,C15 H12 O4,L4.1,yes
+FT_1.137_481.15080,no name,C26 H26 O9,L4.1,yes
+FT_1.143_629.20263,no name,C35 H34 O11,L4.3,yes
+FT_1.139_511.12475,no name,C26 H24 O11,L4.1,yes
+FT_1.145_423.10924,no name,C23 H20 O8,L4.3,yes
+FT_1.144_285.07711,no name,no formula,L5,na
+FT_1.145_363.21795,no name,C20 H30 O3,L4.1,yes
+FT_1.150_429.15590,no name,C23 H26 O8,L4.3,yes
+FT_1.146_249.07678,no name,C13 H14 O5,L4.1,yes
+FT_1.146_261.07686,no name,C14 H14 O5,L4.1,yes
+FT_1.147_517.31708,no name,C24 H47 N4 O6 P,L4.3,na
+FT_1.148_261.11318,no name,C15 H18 O4,L4.1,yes
+FT_1.148_393.09832,no name,C12 H29 O8 P3,L4.3,na
+FT_1.149_643.25459,no name,C38 H36 N4 O6,L4.3,na
+FT_1.150_465.11990,no name,C24 H20 O7,L4.3,yes
+FT_1.151_497.18144,no name,C27 H30 O9,L4.3,yes
+FT_1.152_353.06668,no name,C19 H14 O7,L4.3,yes
+FT_1.160_467.17136,no name,C23 H32 O8 S,L4.3,yes
+FT_1.154_291.08759,no name,C14 H14 O4,L4.1,yes
+FT_1.157_341.26983,no name,C20 H38 O4,L4.1,yes
+FT_1.162_333.09826,no name,C17 H18 O7,L4.3,yes
+FT_1.163_441.15573,no name,C24 H26 O8,L4.3,yes
+FT_1.164_299.09255,no name,C17 H16 O5,L4.3,yes
+FT_1.164_371.22326,no name,C18 H32 N2 O6,L4.3,yes
+FT_1.165_317.13977,no name,C18 H22 O5,L4.3,yes
+FT_1.164_427.17685,no name,C24 H28 O7,L4.1,yes
+FT_1.168_315.12420,no name,C18 H20 O5,L4.3,yes
+FT_1.166_263.09265,no name,C13 H14 O3,L4.1,yes
+FT_1.167_191.07140,no name,C11 H12 O3,L4.1,yes
+FT_1.167_565.28080,no name,C30 H34 N10 O2,L4.3,na
+FT_1.168_313.10804,no name,C18 H18 O5,L4.1,yes
+FT_1.183_481.11480,no name,C25 H22 O10,L4.3,yes
+FT_1.170_485.18187,no name,C30 H32 O2 P2,L4.3,na
+FT_1.171_191.03499,no name,C10 H8 O4,L4.1,yes
+FT_1.173_373.09320,no name,C18 H16 O6,L4.1,yes
+FT_1.175_177.05571,no name,C10 H10 O3,L4.1,yes
+FT_1.175_409.09315,no name,C22 H18 O8,L4.1,yes
+FT_1.176_235.09722,no name,C13 H16 O4,L4.1,yes
+FT_1.176_373.09315,no name,C19 H18 O8,L4.1,yes
+FT_1.176_413.16107,no name,C23 H26 O7,L4.1,yes
+FT_1.177_221.04552,no name,C10 H8 O3,L4.1,yes
+FT_1.179_247.06132,no name,C13 H12 O5,L4.1,yes
+FT_1.179_299.22279,no name,no formula,L5,na
+FT_1.179_467.09887,no name,C17 H30 N2 O5 P2 S2,L4.1,yes
+FT_1.179_643.21823,no name,no formula,L5,na
+FT_1.186_411.18163,no name,C24 H28 O6,L4.3,yes
+FT_1.197_483.20258,no name,C27 H32 O8,L4.3,yes
+FT_1.184_411.10883,"6-acetyl-13-hydroxy-16,17-dimethoxy-2,7,20-trioxapentacyclo[11.8.0.0^{3,11}.0^{4,8}.0^{14,19}]henicosa-3,8,10,14(19),15,17-hexaen-12-one",C22 H20 O8,L3.3,yes
+FT_1.197_497.14584,no name,C26 H26 O10,L4.3,yes
+FT_1.186_415.21306,no name,C17 H31 N4 O3 P,L4.3,na
+FT_1.186_421.20261,no name,C26 H30 O5,L4.1,yes
+FT_1.187_259.06157,no name,no formula,L5,na
+FT_1.190_467.20730,no name,C27 H32 O7,L4.1,yes
+FT_1.191_695.28492,no name,no formula,L5,na
+FT_1.195_279.08749,no name,C14 H16 O6,L4.1,yes
+FT_1.197_209.15452,no name,C13 H22 O2,L4.1,yes
+FT_1.197_359.07734,no name,C18 H16 O8,L4.1,yes
+FT_1.197_409.16583,no name,C24 H26 O6,L4.1,yes
+FT_1.207_367.15525,no name,C19 H28 O5 S,L4.3,yes
+FT_1.211_395.11430,no name,C18 H24 N2 O4 S2,L4.3,yes
+FT_1.198_253.14456,no name,C14 H22 O4,L4.1,yes
+FT_1.201_361.16591,no name,C20 H26 O6,L4.1,yes
+FT_1.206_263.05615,no name,C13 H12 O6,L4.1,yes
+FT_1.216_265.07182,no name,C13 H14 O6,L4.3,yes
+FT_1.227_379.11892,no name,C22 H20 O6,L4.3,yes
+FT_1.213_265.07180,no name,C12 H12 O4,L4.1,yes
+FT_1.215_711.28043,no name,C38 H36 N10 O5,L4.3,na
+FT_1.230_411.07272,no name,C19 H16 N4 O5 S,L4.3,yes
+FT_1.219_287.22285,no name,C16 H32 O4,L4.1,yes
+FT_1.223_327.16036,no name,C20 H24 O4,L4.1,yes
+FT_1.223_401.12465,no name,C13 H28 N2 O8 P2,L4.3,na
+FT_1.223_467.28041,no name,C29 H40 O5,L4.1,yes
+FT_1.225_339.12397,6-Prenylnaringenin,C20 H20 O5,L3.3,na
+FT_1.235_325.14473,no name,C20 H22 O4,L4.3,yes
+FT_1.230_387.07246,9'-Methylprotocetraric acid,C19 H16 O9,L3.3,na
+FT_1.236_403.10379,no name,C20 H20 O9,L4.3,yes
+FT_1.233_413.23389,no name,C25 H34 O5,L4.1,yes
+FT_1.233_525.21344,no name,C22 H34 N6 O7 S,L4.3,na
+FT_1.240_495.16651,no name,C27 H28 O9,L4.3,yes
+FT_1.250_339.19997,no name,C15 H32 O8,L4.3,yes
+FT_1.237_249.11303,no name,C14 H18 O4,L4.1,yes
+FT_1.238_429.11936,no name,C22 H22 O9,L4.1,yes
+FT_1.254_409.12952,no name,C23 H22 O7,L4.3,yes
+FT_1.242_497.18200,no name,C27 H30 O9,L4.1,yes
+FT_1.244_275.05607,no name,C15 H16 O S2,L4.3,na
+FT_1.245_261.11298,no name,C15 H18 O4,L4.1,yes
+FT_1.246_319.15525,no name,C18 H24 O5,L4.1,yes
+FT_1.246_357.26494,no name,C20 H38 O5,L4.1,yes
+FT_1.250_233.04553,Hexaketide pyrone,C12 H10 O5,L3.3,na
+FT_1.267_399.21817,no name,C24 H32 O5,L4.3,yes
+FT_1.253_251.09247,no name,C13 H16 O5,L4.1,yes
+FT_1.268_397.20232,no name,C21 H34 O5 S,L4.3,yes
+FT_1.257_491.19164,no name,no formula,L5,na
+FT_1.261_467.17135,no name,C26 H28 O8,L4.1,yes
+FT_1.264_481.15057,no name,C25 H24 O7,L4.1,yes
+FT_1.264_493.18725,no name,C28 H30 O8,L4.3,na
+FT_1.276_497.14575,no name,C26 H26 O10,L4.3,yes
+FT_1.267_427.14013,no name,C23 H24 O8,L4.1,yes
+FT_1.285_379.11892,no name,C22 H20 O6,L4.3,yes
+FT_1.271_525.17657,no name,C28 H30 O10,L4.1,yes
+FT_1.271_525.24919,no name,C30 H38 O8,L4.1,yes
+FT_1.271_531.18693,no name,no formula,L5,na
+FT_1.273_347.11378,no name,C18 H20 O7,L4.1,yes
+FT_1.294_495.20267,no name,C24 H28 N6 O6,L4.3,yes
+FT_1.277_411.10877,"6-acetyl-13-hydroxy-16,17-dimethoxy-2,7,20-trioxapentacyclo[11.8.0.0^{3,11}.0^{4,8}.0^{14,19}]henicosa-3,8,10,14(19),15,17-hexaen-12-one",C22 H20 O8,L3.3,na
+FT_1.284_309.09815,no name,C12 H10 N10 O,L4.3,na
+FT_1.285_377.12507,no name,no formula,L5,na
+FT_1.295_465.11930,no name,C25 H22 O9,L4.3,yes
+FT_1.285_387.21811,no name,C23 H32 O5,L4.1,yes
+FT_1.285_467.20745,no name,C27 H32 O7,L4.1,yes
+FT_1.297_311.11391,no name,C15 H20 O7,L4.3,yes
+FT_1.286_373.09304,Clinopodic Acid B,C19 H18 O8,L3.3,na
+FT_1.287_359.07738,(R)-rosmarinate,C18 H16 O8,L3.3,na
+FT_1.288_285.11331,no name,C17 H18 O4,L4.1,yes
+FT_1.288_545.16573,no name,no formula,L5,na
+FT_1.289_685.22874,no name,no formula,L5,na
+FT_1.290_311.16868,no name,C17 H28 O3 S,L4.1,yes
+FT_1.290_385.20224,no name,C23 H30 O5,L4.1,yes
+FT_1.291_237.07697,no name,C12 H14 O5,L4.1,yes
+FT_1.291_305.06679,no name,C15 H14 O7,L4.1,yes
+FT_1.291_423.10895,no name,C23 H20 O8,L4.1,yes
+FT_1.292_295.08236,no name,C13 H14 O5,L4.1,yes
+FT_1.293_267.08754,no name,C13 H16 O6,L4.1,yes
+FT_1.293_281.10314,no name,C13 H16 O4,L4.1,yes
+FT_1.294_281.10314,no name,C14 H18 O6,L4.1,yes
+FT_1.300_393.13452,no name,C23 H22 O6,L4.3,yes
+FT_1.306_415.21323,no name,C24 H32 O6,L4.3,yes
+FT_1.296_357.17100,no name,C21 H26 O5,L4.1,yes
+FT_1.297_239.05629,no name,C12 H16 O S2,L4.3,na
+FT_1.306_495.13006,no name,C26 H24 O10,L4.3,yes
+FT_1.297_333.09825,no name,C17 H18 O7,L4.1,yes
+FT_1.298_355.15506,no name,C21 H24 O5,L4.1,yes
+FT_1.298_395.15023,no name,C23 H24 O6,L4.1,yes
+FT_1.300_219.02975,no name,C11 H8 O5,L4.1,yes
+FT_1.300_263.05622,8-Acetyl-7-deuteriooxy-4-methylchromen-2-one,C12 H10 O4,L3.3,na
+FT_1.312_479.17134,no name,C27 H28 O8,L4.3,yes
+FT_1.301_263.05623,no name,C13 H12 O6,L4.1,yes
+FT_1.301_383.18654,no name,C23 H28 O5,L4.1,yes
+FT_1.303_563.22840,no name,C38 H33 N2 O P,L4.3,na
+FT_1.313_415.24926,no name,C25 H36 O5,L4.3,yes
+FT_1.315_429.22855,no name,C25 H34 O6,L4.3,yes
+FT_1.306_505.18822,no name,no formula,L5,na
+FT_1.307_247.06142,no name,C13 H12 O5,L4.1,yes
+FT_1.308_327.16034,no name,C20 H24 O4,L4.1,yes
+FT_1.308_343.15527,no name,C20 H24 O5,L4.1,yes
+FT_1.310_427.21304,no name,C25 H32 O6,L4.1,yes
+FT_1.312_273.13465,no name,C14 H26 O S2,L4.3,na
+FT_1.322_431.13506,no name,C22 H24 O9,L4.3,yes
+FT_1.322_445.11422,no name,C22 H22 O10,L4.3,yes
+FT_1.314_537.21302,no name,C35 H30 N4 S,L4.3,na
+FT_1.315_319.15528,no name,C18 H24 O5,L4.1,yes
+FT_1.328_437.12457,no name,C24 H22 O8,L4.3,yes
+FT_1.320_271.15503,no name,C14 H24 O5,L4.3,na
+FT_1.321_457.11446,no name,no formula,L5,na
+FT_1.321_467.17130,no name,C26 H28 O8,L4.1,yes
+FT_1.332_517.20787,no name,C27 H34 O10,L4.3,yes
+FT_1.334_485.18203,no name,C26 H30 O9,L4.3,yes
+FT_1.327_325.14472,no name,C20 H22 O4,L4.1,yes
+FT_1.336_383.15002,no name,C22 H24 O6,L4.3,yes
+FT_1.330_425.08821,no name,C22 H18 O9,L4.1,yes
+FT_1.332_169.08703,no name,C9 H14 O3,L4.1,yes
+FT_1.338_513.21351,no name,C28 H34 O9,L4.3,yes
+FT_1.339_481.11549,no name,C25 H22 O10,L4.3,yes
+FT_1.335_199.09780,no name,C10 H16 O4,L4.1,yes
+FT_1.342_499.12488,no name,C25 H24 O11,L4.3,yes
+FT_1.337_381.13431,no name,C22 H22 O6,L4.1,yes
+FT_1.337_533.18236,no name,no formula,L5,na
+FT_1.343_411.18174,no name,C24 H28 O6,L4.3,yes
+FT_1.348_343.11892,no name,C19 H20 O6,L4.3,yes
+FT_1.340_713.26015,no name,no formula,L5,na
+FT_1.341_319.11885,mycophenolate,C17 H20 O6,L3.3,yes
+FT_1.341_427.17662,no name,C24 H28 O7,L4.1,yes
+FT_1.342_181.08697,dihydroconiferyl alcohol,C10 H14 O3,L3.3,yes
+FT_1.349_525.21326,no name,C29 H34 O9,L4.3,yes
+FT_1.343_409.12946,Rotenalone,C23 H22 O7,L3.3,na
+FT_1.352_411.10878,no name,C22 H20 O8,L4.3,yes
+FT_1.343_429.11941,no name,C22 H22 O9,L4.1,yes
+FT_1.344_469.25995,no name,C28 H38 O6,L4.1,yes
+FT_1.344_495.16626,no name,C27 H28 O9,L4.1,yes
+FT_1.356_421.09320,no name,C23 H18 O8,L4.3,yes
+FT_1.349_255.16010,no name,C14 H24 O4,L4.3,na
+FT_1.349_483.20246,no name,C27 H32 O8,L4.1,yes
+FT_1.356_447.23908,no name,C22 H40 O7 S,L4.3,yes
+FT_1.357_465.19223,no name,C27 H30 O7,L4.3,yes
+FT_1.356_395.11391,no name,C22 H20 O7,L4.1,yes
+FT_1.362_495.20089,no name,C28 H32 O8,L4.3,yes
+FT_1.363_443.09955,no name,C22 H20 O10,L4.3,yes
+FT_1.365_483.16688,no name,C26 H28 O9,L4.3,yes
+FT_1.361_399.25398,no name,C25 H36 O4,L4.3,na
+FT_1.366_453.15591,no name,C25 H26 O8,L4.3,yes
+FT_1.369_497.25494,no name,C29 H38 O7,L4.3,yes
+FT_1.373_477.15607,no name,C27 H26 O8,L4.3,yes
+FT_1.364_485.29102,no name,C29 H42 O6,L4.1,yes
+FT_1.378_487.27051,no name,C28 H40 O7,L4.3,yes
+FT_1.366_331.11917,no name,C18 H20 O6,L4.1,yes
+FT_1.379_411.21792,no name,C25 H32 O5,L4.3,yes
+FT_1.367_295.08240,no name,C14 H16 O7,L4.1,yes
+FT_1.368_179.07147,no name,C10 H12 O3,L4.1,yes
+FT_1.368_425.12456,villosinol,C23 H22 O8,L3.3,na
+FT_1.368_451.13998,no name,C25 H24 O8,L4.1,yes
+FT_1.369_265.07184,no name,C14 H10 N4 O2,L4.3,na
+FT_1.369_403.21305,no name,C23 H32 O6,L4.1,yes
+FT_1.380_439.14010,no name,C24 H24 O8,L4.3,yes
+FT_1.370_399.18175,no name,C23 H28 O6,L4.1,yes
+FT_1.381_485.25517,no name,C28 H38 O7,L4.3,yes
+FT_1.376_291.08756,Lachnone C,C15 H16 O6,L3.3,yes
+FT_1.376_291.08757,no name,C14 H14 O4,L4.1,yes
+FT_1.376_401.12467,no name,C21 H22 O8,L4.1,yes
+FT_1.377_701.25927,no name,C39 H42 O12,L4.3,na
+FT_1.393_371.15016,no name,C21 H24 O6,L4.3,yes
+FT_1.394_423.14534,no name,C24 H24 O7,L4.3,yes
+FT_1.395_399.21801,no name,C24 H32 O5,L4.3,yes
+FT_1.402_237.07710,no name,C12 H14 O5,L4.3,yes
+FT_1.382_321.09818,no name,C15 H16 O5,L4.1,na
+FT_1.382_371.18649,no name,C22 H28 O5,L4.1,yes
+FT_1.382_453.19203,no name,C26 H30 O7,L4.1,yes
+FT_1.384_321.09819,no name,C16 H18 O7,L4.1,yes
+FT_1.384_483.23888,no name,C28 H36 O7,L4.1,yes
+FT_1.385_209.08175,no name,C11 H14 O4,L4.1,yes
+FT_1.385_401.19722,no name,C23 H30 O6,L4.1,yes
+FT_1.386_285.11333,no name,C17 H18 O4,L4.1,yes
+FT_1.389_473.29108,no name,C28 H42 O6,L4.1,yes
+FT_1.393_249.11310,no name,C14 H18 O4,L4.1,yes
+FT_1.403_469.15056,no name,C25 H26 O9,L4.3,yes
+FT_1.407_395.15012,no name,C23 H24 O6,L4.3,yes
+FT_1.408_481.15076,no name,C26 H26 O9,L4.3,yes
+FT_1.397_233.08536,no name,C10 H18 O4 S,L4.1,yes
+FT_1.400_181.08699,no name,C10 H14 O3,L4.1,yes
+FT_1.400_399.07233,no name,C17 H16 N6 O2 S2,L4.3,na
+FT_1.413_417.22861,no name,C24 H34 O6,L4.3,yes
+FT_1.419_265.10821,no name,C14 H18 O5,L4.3,yes
+FT_1.406_481.18639,no name,C27 H30 O8,L4.1,yes
+FT_1.407_281.06671,no name,C13 H14 O7,L4.1,yes
+FT_1.407_297.07691,no name,C17 H14 O5,L4.1,yes
+FT_1.422_415.24924,no name,C25 H36 O5,L4.3,yes
+FT_1.407_413.19720,no name,C24 H30 O6,L4.1,yes
+FT_1.407_481.11420,no name,C25 H22 O10,L4.1,yes
+FT_1.408_427.14016,no name,C23 H24 O8,L4.1,yes
+FT_1.433_431.13514,no name,C22 H24 O9,L4.3,yes
+FT_1.409_385.16590,no name,C22 H26 O6,L4.1,yes
+FT_1.434_279.12386,no name,C15 H20 O5,L4.3,yes
+FT_1.413_429.22854,no name,C25 H34 O6,L4.1,yes
+FT_1.414_271.15491,no name,C15 H28 S2,L4.3,na
+FT_1.414_343.15521,no name,C20 H24 O5,L4.1,yes
+FT_1.415_529.17154,no name,C27 H30 O11,L4.3,na
+FT_1.417_183.10271,no name,C10 H16 O3,L4.1,yes
+FT_1.437_293.10315,no name,C15 H18 O6,L4.3,yes
+FT_1.439_411.10866,no name,C22 H20 O8,L4.3,yes
+FT_1.422_515.26523,no name,C29 H40 O8,L4.1,yes
+FT_1.424_501.28601,no name,C29 H42 O7,L4.1,yes
+FT_1.425_409.09319,no name,C25 H19 N2 P S,L4.3,na
+FT_1.428_405.22860,no name,C23 H34 O6,L4.1,yes
+FT_1.432_215.09294,no name,no formula,L5,na
+FT_1.432_535.19797,no name,no formula,L5,na
+FT_1.432_729.25478,no name,no formula,L5,na
+FT_1.439_497.14564,no name,C26 H26 O10,L4.3,yes
+FT_1.446_497.18158,no name,C27 H30 O9,L4.3,yes
+FT_1.451_441.11948,no name,C19 H26 O5 P2,L4.3,yes
+FT_1.439_265.07184,no name,C13 H14 O6,L4.1,yes
+FT_1.455_221.04562,no name,C11 H10 O5,L4.3,yes
+FT_1.458_253.14459,no name,C13 H20 O2,L4.3,yes
+FT_1.442_309.09816,no name,C15 H18 O7,L4.1,yes
+FT_1.443_267.12388,no name,C14 H20 O5,L4.1,yes
+FT_1.443_375.07241,Decarboxythamnolic acid,C18 H16 O9,L3.3,na
+FT_1.444_491.26514,no name,C21 H41 N4 O7 P,L4.3,na
+FT_1.466_411.14501,no name,C23 H24 O7,L4.3,yes
+FT_1.447_413.16100,no name,C23 H26 O7,L4.1,yes
+FT_1.475_337.09346,no name,C15 H16 O6,L4.3,yes
+FT_1.453_209.04535,Methyl Haematommate,C10 H10 O5,L3.3,na
+FT_1.453_441.11948,no name,C23 H22 O9,L4.1,yes
+FT_1.475_487.16140,no name,C26 H24 N4 O6,L4.3,yes
+FT_1.478_425.12450,no name,C23 H22 O8,L4.3,yes
+FT_1.463_401.19727,no name,C23 H30 O6,L4.1,yes
+FT_1.479_269.13945,no name,C14 H22 O5,L4.3,yes
+FT_1.471_363.10885,no name,C18 H20 O8,L4.1,yes
+FT_1.475_233.04552,no name,C12 H10 O5,L4.1,yes
+FT_1.482_405.22850,no name,C23 H34 O6,L4.3,yes
+FT_1.488_519.26008,no name,C28 H40 O9,L4.3,yes
+FT_1.477_371.18639,no name,C22 H28 O5,L4.1,yes
+FT_1.511_200.97954,no name,C7 H7 O3 P S,L4.3,yes
+FT_1.478_471.13017,no name,no formula,L5,na
+FT_1.530_293.06676,no name,C14 H14 O7,L4.3,yes
+FT_1.533_415.06742,no name,C20 H16 O10,L4.3,yes
+FT_1.484_399.14526,no name,no formula,L5,na
+FT_1.486_305.10319,no name,C16 H18 O6,L4.1,yes
+FT_1.486_443.09873,no name,C22 H20 O10,L4.1,yes
+FT_1.487_253.07182,no name,C12 H14 O6,L4.1,yes
+FT_1.569_325.09309,no name,C15 H18 O8,L4.3,yes
+FT_1.491_485.18187,no name,C26 H30 O9,L4.1,yes
+FT_1.492_501.17691,no name,C26 H30 O10,L4.1,yes
+FT_1.494_433.22349,no name,C24 H34 O7,L4.1,yes
+FT_1.579_513.17674,no name,C27 H30 O10,L4.3,yes
+FT_1.512_253.10815,no name,C13 H18 O5,L4.1,yes
+FT_1.524_429.19235,no name,C24 H30 O7,L4.1,yes
+FT_1.594_387.14517,no name,C21 H24 O7,L4.3,yes
+FT_1.533_281.06672,no name,C13 H14 O7,L4.1,yes
+FT_1.613_283.11874,no name,C14 H20 O6,L4.3,yes
+FT_1.537_265.07183,no name,C13 H14 O6,L4.1,yes
+FT_1.538_265.07183,no name,C12 H12 O4,L4.1,yes
+FT_1.539_527.15592,no name,C17 H39 O12 P3,L4.3,na
+FT_1.545_511.16110,no name,C38 H25 P,L4.3,na
+FT_1.551_309.13447,no name,C16 H22 O6,L4.1,yes
+FT_1.553_223.09739,no name,C12 H16 O4,L4.1,yes
+FT_1.554_225.04041,caffeate,C9 H8 O4,L3.3,na
+FT_1.558_419.20800,no name,C23 H32 O7,L4.1,yes
+FT_1.566_295.08239,no name,C14 H16 O7,L4.1,yes
+FT_1.568_277.10820,no name,C15 H18 O5,L4.1,yes
+FT_1.569_321.09815,no name,C16 H18 O7,L4.1,yes
+FT_1.624_297.06180,no name,C14 H10 N4 O4,L4.3,yes
+FT_1.571_225.04041,no name,C10 H10 O6,L4.1,yes
+FT_1.579_387.18133,no name,C22 H28 O6,L4.1,yes
+FT_1.646_513.14088,no name,C25 H24 O9,L4.3,yes
+FT_1.583_321.13449,no name,C17 H22 O6,L4.1,yes
+FT_1.583_545.20286,no name,C26 H37 N4 O3 P3,L4.3,na
+FT_1.585_195.06629,no name,C10 H12 O4,L4.1,yes
+FT_1.585_235.09746,no name,C13 H16 O4,L4.1,yes
+FT_1.589_237.07700,no name,C12 H14 O5,L4.1,yes
+FT_1.593_277.07172,no name,C14 H14 O6,L4.1,yes
+FT_1.654_313.09314,no name,C14 H18 O8,L4.3,yes
+FT_1.601_209.04540,no name,C10 H10 O5,L4.1,yes
+FT_1.603_397.05673,no name,C20 H14 O9,L4.1,yes
+FT_1.603_473.10916,no name,C15 H28 N2 O11 P2,L4.3,na
+FT_1.606_263.09265,no name,C14 H16 O5,L4.1,yes
+FT_1.611_247.06140,no name,C13 H12 O5,L4.1,yes
+FT_1.612_267.05121,no name,C12 H12 O7,L4.1,yes
+FT_1.613_267.05109,no name,C11 H10 O5,L4.1,yes
+FT_1.657_255.08748,no name,C11 H14 O4,L4.3,yes
+FT_1.613_449.21858,no name,C24 H34 O8,L4.1,yes
+FT_1.618_351.10866,no name,C17 H20 O8,L4.1,yes
+FT_1.621_225.07685,no name,C11 H14 O5,L4.1,yes
+FT_1.623_323.07742,no name,C15 H16 O8,L4.1,yes
+FT_1.659_257.10292,no name,C12 H18 O6,L4.3,yes
+FT_1.634_303.12380,no name,C17 H20 O5,L4.1,yes
+FT_1.659_295.11873,no name,C14 H18 O4,L4.3,yes
+FT_1.647_421.22384,no name,C23 H34 O7,L4.1,yes
+FT_1.650_239.05615,no name,C11 H12 O6,L4.1,yes
+FT_1.652_219.02972,7-Hydroxycoumarin-4-acetic acid,C11 H8 O5,L3.3,na
+FT_1.659_419.20802,no name,C23 H32 O7,L4.3,yes
+FT_1.656_193.05069,no name,C10 H10 O4,L4.1,yes
+FT_1.656_229.10770,no name,no formula,L5,na
+FT_1.656_279.08746,no name,C14 H16 O6,L4.1,yes
+FT_1.656_335.11393,no name,C17 H20 O7,L4.1,yes
+FT_1.656_461.14579,no name,C28 H30 S3,L4.3,na
+FT_1.661_469.11485,no name,C24 H22 O10,L4.3,yes
+FT_1.662_429.19233,no name,C24 H30 O7,L4.3,yes
+FT_1.659_279.08747,no name,C13 H14 O4,L4.1,yes
+FT_1.664_363.10904,no name,C18 H20 O8,L4.3,yes
+FT_1.664_447.20291,no name,C24 H32 O8,L4.3,yes
+FT_1.660_307.08253,no name,C14 H14 O5,L4.1,yes
+FT_1.660_543.18795,no name,C28 H32 O11,L4.3,na
+FT_1.661_295.11875,no name,C15 H20 O6,L4.1,yes
+FT_1.661_339.10889,no name,C13 H12 N10 O2,L4.3,na
+FT_1.664_447.23921,no name,C25 H36 O7,L4.3,yes
+FT_1.661_485.14584,no name,no formula,L5,na
+FT_1.661_531.26078,no name,no formula,L5,na
+FT_1.661_533.27608,no name,no formula,L5,na
+FT_1.665_317.10293,no name,C17 H18 O6,L4.3,yes
+FT_1.662_471.16685,no name,C27 H20 N8 O,L4.3,na
+FT_1.663_267.12364,no name,C14 H20 O5,L4.1,yes
+FT_1.663_307.08258,no name,C15 H16 O7,L4.1,yes
+FT_1.663_309.09811,no name,C14 H16 O5,L4.1,yes
+FT_1.663_431.20791,no name,no formula,L5,na
+FT_1.663_445.22349,"[(2R,3R,4aR,7S,8R,8aR)-7'-formyl-3,4'-dihydroxy-6'-(hydroxymethyl)-4,4,7,8a-tetramethylspiro[2,3,4a,5,6,7-hexahydro-1H-naphthalene-8,2'-3H-1-benzofuran]-2-yl] acetate",C25 H34 O7,L3.3,na
+FT_1.664_343.15524,"(1S,9R,10R)-3,4-dihydroxy-11,11-dimethyl-5-propan-2-yl-16-oxatetracyclo[7.5.2.01,10.02,7]hexadeca-2,4,6-triene-8,15-dione",C20 H24 O5,L3.3,na
+FT_1.665_353.08835,no name,C16 H18 O9,L4.3,yes
+FT_1.665_455.17188,no name,C25 H28 O8,L4.3,yes
+FT_1.665_501.24932,no name,C28 H38 O8,L4.3,yes
+FT_1.666_445.18754,no name,C24 H30 O8,L4.3,yes
+FT_1.664_531.22338,no name,C20 H42 N2 O10 P2,L4.3,na
+FT_1.665_311.11389,no name,C19 H22 P2,L4.3,na
+FT_1.668_373.12969,no name,C20 H22 O7,L4.3,yes
+FT_1.668_379.14023,no name,C16 H30 O6 P2,L4.3,yes
+FT_1.665_377.12496,no name,C19 H22 O8,L4.3,na
+FT_1.665_443.20801,no name,C25 H32 O7,L4.3,na
+FT_1.665_449.21855,no name,C24 H34 O8,L4.1,yes
+FT_1.668_401.16104,no name,C22 H26 O7,L4.3,yes
+FT_1.668_415.10426,no name,C21 H20 O9,L4.3,yes
+FT_1.665_515.19266,no name,C27 H32 O10,L4.3,na
+FT_1.666_223.06103,no name,C11 H12 O5,L4.1,yes
+FT_1.666_225.07686,no name,C10 H12 O3,L4.1,yes
+FT_1.666_323.11403,no name,C15 H18 O5,L4.1,yes
+FT_1.668_473.14544,no name,C24 H26 O10,L4.3,yes
+FT_1.667_207.02984,no name,C10 H8 O5,L4.1,yes
+FT_1.667_305.10312,no name,C16 H18 O6,L4.1,yes
+FT_1.667_335.11389,no name,C16 H18 O5,L4.1,yes
+FT_1.667_367.14004,no name,C19 H28 O3 S2,L4.3,na
+FT_1.667_403.14010,no name,C21 H24 O8,L4.1,yes
+FT_1.667_415.13977,no name,C19 H16 N10 O2,L4.3,na
+FT_1.667_431.24411,no name,C25 H36 O6,L4.3,na
+FT_1.667_471.13030,no name,no formula,L5,na
+FT_1.667_487.16129,no name,C18 H33 O13 P,L4.3,na
+FT_1.668_225.07690,no name,C11 H14 O5,L4.1,yes
+FT_1.668_267.08740,"1-(2,4-Dimethoxyphenyl)butane-1,3-dione",C12 H14 O4,L3.3,na
+FT_1.668_319.19177,no name,C19 H28 O4,L4.1,yes
+FT_1.668_321.09816,no name,C15 H16 O5,L4.1,na
+FT_1.668_361.12955,no name,C19 H22 O7,L4.1,na
+FT_1.668_483.13005,no name,C25 H24 O10,L4.3,yes
+FT_1.669_319.11869,no name,C17 H20 O6,L4.3,yes
+FT_1.669_333.13436,no name,C18 H22 O6,L4.3,yes
+FT_1.668_413.12507,no name,C25 H23 N2 P S,L4.3,na
+FT_1.669_475.12491,no name,C22 H22 O9,L4.3,yes
+FT_1.668_417.19239,no name,C23 H30 O7,L4.1,na
+FT_1.668_443.17136,no name,no formula,L5,na
+FT_1.668_457.18774,no name,C27 H22 N8,L4.3,na
+FT_1.670_217.10742,no name,C10 H18 O5,L4.3,yes
+FT_1.670_429.15601,no name,C23 H26 O8,L4.3,yes
+FT_1.668_529.20881,no name,C22 H30 N10 O4 S,L4.3,na
+FT_1.668_547.25517,no name,C40 H37 P,L4.3,na
+FT_1.669_251.05608,"Cinnamic acid, p-hydroxy-, acetate",C11 H10 O4,L3.3,na
+FT_1.669_283.15515,no name,C15 H24 O5,L4.1,na
+FT_1.669_311.11388,no name,C14 H18 O5,L4.1,na
+FT_1.670_459.20242,no name,C25 H32 O8,L4.3,yes
+FT_1.670_475.12502,no name,C23 H24 O11,L4.3,yes
+FT_1.669_365.16126,no name,no formula,L5,na
+FT_1.669_401.12462,no name,no formula,L5,na
+FT_1.669_405.19270,no name,C22 H30 O7,L4.3,na
+FT_1.669_461.21802,no name,C17 H40 N2 O8 P2,L4.3,na
+FT_1.669_473.21806,no name,C23 H34 N6 O S2,L4.3,na
+FT_1.671_265.14448,no name,C15 H22 O4,L4.3,yes
+FT_1.669_499.16165,no name,C31 H24 N4 O S,L4.3,na
+FT_1.669_517.17239,no name,no formula,L5,na
+FT_1.669_517.24449,no name,C28 H38 O9,L4.3,na
+FT_1.669_519.25974,no name,C21 H45 O12 P,L4.3,na
+FT_1.670_181.05059,"1-(2,3-Dihydroxy-4-methoxyphenyl)ethanone",C9 H10 O4,L3.3,na
+FT_1.671_319.08282,no name,C16 H16 O7,L4.3,yes
+FT_1.670_281.13935,no name,C15 H22 O5,L4.1,na
+FT_1.670_331.11950,no name,C18 H20 O6,L4.1,na
+FT_1.670_333.09818,no name,C17 H18 O7,L4.1,na
+FT_1.670_347.15044,no name,C19 H24 O6,L4.1,na
+FT_1.670_389.12457,no name,C12 H28 N2 O8 P2,L4.3,na
+FT_1.670_391.14039,no name,C12 H30 N2 O8 P2,L4.3,na
+FT_1.670_423.12996,no name,C20 H24 O10,L4.3,na
+FT_1.671_447.16771,no name,C23 H28 O9,L4.3,yes
+FT_1.672_319.08280,no name,C15 H14 O5,L4.3,yes
+FT_1.670_471.13034,no name,C17 H18 N10 O2 S,L4.3,na
+FT_1.672_379.17641,no name,C20 H28 O7,L4.3,yes
+FT_1.671_251.05608,no name,C12 H12 O6,L4.1,na
+FT_1.672_403.17678,no name,C22 H28 O7,L4.3,yes
+FT_1.671_285.13465,no name,C14 H22 O6,L4.1,na
+FT_1.672_417.15587,no name,C22 H26 O8,L4.3,yes
+FT_1.671_363.14495,no name,C19 H24 O7,L4.1,na
+FT_1.671_387.14538,no name,C21 H24 O7,L4.1,na
+FT_1.671_391.14027,no name,C11 H28 N2 O6 P2,L4.3,na
+FT_1.671_407.17142,no name,no formula,L5,na
+FT_1.671_409.15084,no name,no formula,L5,na
+FT_1.672_475.19772,no name,C25 H32 O9,L4.3,yes
+FT_1.672_209.04538,no name,C9 H8 O3,L4.1,na
+FT_1.672_215.09272,no name,C10 H16 O5,L4.1,na
+FT_1.672_237.07704,no name,C12 H14 O5,L4.1,na
+FT_1.672_297.13448,no name,C15 H22 O6,L4.1,na
+FT_1.673_405.11934,no name,C19 H20 O7,L4.3,yes
+FT_1.672_335.15020,no name,C18 H24 O6,L4.1,na
+FT_1.674_463.19756,no name,C24 H32 O9,L4.3,yes
+FT_1.674_469.15143,no name,C25 H26 O9,L4.3,yes
+FT_1.675_467.22887,no name,C24 H36 O9,L4.3,yes
+FT_1.672_435.20253,no name,C24 H28 N4 O4,L4.3,na
+FT_1.672_443.13496,no name,C23 H24 O9,L4.3,na
+FT_1.672_457.11489,no name,C16 H16 N10 O2 S,L4.3,na
+FT_1.672_461.18210,no name,C16 H36 N2 O9 P2,L4.3,na
+FT_1.682_311.07737,no name,C14 H16 O8,L4.3,yes
+FT_1.673_235.06131,no name,C12 H12 O5,L4.1,na
+FT_1.673_299.15064,no name,C16 H20 N4 O2,L4.3,na
+FT_1.673_377.16086,no name,C20 H26 O7,L4.1,na
+FT_1.673_405.11927,no name,no formula,L5,na
+FT_1.700_283.11875,no name,C14 H20 O6,L4.3,yes
+FT_1.673_473.18140,no name,no formula,L5,na
+FT_1.673_531.18803,no name,C29 H24 N8 O3,L4.3,na
+FT_1.674_339.14516,no name,no formula,L5,na
+FT_1.674_395.13575,no name,no formula,L5,na
+FT_1.707_319.05735,no name,C19 H12 O5,L4.3,yes
+FT_1.818_379.01296,no name,C16 H12 O9 S,L4.3,yes
+FT_1.674_487.19764,no name,C20 H28 N10 O3 S,L4.3,na
+FT_1.674_515.15663,no name,C24 H24 N10 S2,L4.3,na
+FT_1.674_527.15629,no name,no formula,L5,na
+FT_1.675_207.06611,"1-(2,4-Dihydroxy-6-methoxyphenyl)but-2-en-1-one",C11 H12 O4,L3.3,na
+FT_1.675_349.16541,no name,no formula,L5,na
+FT_1.675_421.18688,no name,C26 H32 O P2,L4.3,na
+FT_1.844_199.97823,no name,C7 H7 O3 P2,L4.3,yes
+FT_1.676_277.07167,no name,C14 H14 O6,L4.1,na
+FT_1.676_279.12381,no name,C15 H20 O5,L4.1,na
+FT_1.676_437.21851,no name,C23 H34 O8,L4.3,na
+FT_1.678_295.08240,no name,C13 H14 O5,L4.1,na
+FT_1.680_217.05042,8-Acetyl-7-deuteriooxy-4-methylchromen-2-one,C12 H10 O4,L3.3,na
+FT_1.681_237.04042,no name,C10 H8 O4,L4.1,na
+FT_1.681_295.08240,no name,C14 H16 O7,L4.1,na
+FT_1.845_216.98085,no name,C7 H8 O4 P2,L4.3,yes
+FT_1.686_261.04054,no name,C13 H10 O6,L4.1,yes
+FT_1.689_283.11872,no name,C13 H18 O4,L4.1,yes
+FT_1.690_203.03465,no name,C11 H8 O4,L4.1,yes
+FT_1.697_187.06115,no name,C8 H12 O5,L4.1,yes
+FT_1.699_247.02483,no name,C12 H8 O6,L4.1,yes
+FT_1.939_216.98085,no name,C7 H8 O4 P2,L4.3,yes
+FT_1.978_315.10881,no name,C14 H20 O8,L4.3,yes
+FT_1.709_189.07684,no name,C8 H14 O5,L4.1,yes
+FT_1.731_323.07746,no name,C15 H16 O8,L4.1,yes
+FT_1.750_211.06112,no name,C10 H12 O5,L4.1,yes
+FT_1.783_295.04601,no name,C13 H12 O8,L4.1,yes
+FT_1.807_279.08746,no name,C14 H16 O6,L4.1,yes
+FT_1.979_256.97591,no name,C9 H8 O5 P2,L4.3,yes
+FT_1.980_242.02817,no name,C6 H14 N O5 P S,L4.3,yes
+FT_10.760_485.15131,no name,C18 H30 O15,L4.3,yes
+FT_1.865_309.06179,no name,C14 H14 O8,L4.1,yes
+FT_1.904_269.10308,no name,C13 H18 O6,L4.1,yes
+FT_10.760_553.13878,no name,C21 H30 O17,L4.3,yes
+FT_1.978_157.05057,Isopropylidene-succinic acid,C7 H10 O4,L3.3,na
+FT_10.760_585.07635,no name,C21 H24 N4 O12 P2,L4.3,yes
+FT_11.141_455.10204,no name,C17 H20 N4 O11,L4.3,yes
+FT_11.147_441.03427,no name,C10 H16 N6 O10 P2,L4.3,yes
+FT_10.165_266.08820,adenosine,C10 H13 N5 O4,L3.3,na
+FT_10.165_329.08405,no name,C10 H14 N6 O7,L4.3,na
+FT_10.211_401.13034,Hep-Hep,C14 H26 O13,L3.3,na
+FT_10.755_259.12997,gamma-Glu-leu,C11 H20 N2 O5,L3.3,na
+FT_12.208_441.03444,no name,C10 H16 N6 O10 P2,L4.3,yes
+FT_12.209_729.23024,no name,C31 H40 O17,L4.3,yes
+FT_12.211_444.03209,no name,C10 H17 N5 O11 P2,L4.3,yes
+FT_10.768_401.13033,no name,C14 H26 O13,L4.1,yes
+FT_10.775_157.06179,no name,C6 H10 N2 O3,L4.1,yes
+FT_10.894_315.13125,N-acetyl-L-glutaminyl-L-glutamine,C12 H20 N4 O6,L3.3,yes
+FT_12.212_455.10198,no name,C21 H20 N4 O6 S,L4.3,yes
+FT_11.145_404.10479,no name,C12 H23 N O14,L4.3,na
+FT_12.214_427.12053,no name,C14 H24 N2 O13,L4.3,yes
+FT_11.151_459.04495,no name,no formula,L5,na
+FT_11.478_245.11431,glutamylvaline,C10 H18 N2 O5,L3.3,na
+FT_11.767_487.16695,solatriose,C18 H32 O15,L3.3,na
+FT_11.780_225.06158,no name,C7 H14 O8,L4.1,yes
+FT_11.815_173.00260,no name,C5 H6 N2 O3 S,L4.1,yes
+FT_12.130_267.07223,inosinum,C10 H12 N4 O5,L3.3,na
+FT_12.203_459.04506,no name,no formula,L5,na
+FT_12.207_404.10475,no name,C12 H23 N O14,L4.3,na
+FT_12.660_592.06935,no name,C17 H20 N7 O15 P,L4.3,yes
+FT_12.662_557.13355,no name,C27 H26 O13,L4.3,yes
+FT_12.663_366.99751,no name,C11 H14 O10 P2,L4.3,yes
+FT_12.664_335.05996,no name,C12 H16 O11,L4.3,yes
+FT_12.664_349.99486,no name,C7 H14 N O11 P S,L4.3,yes
+FT_12.588_421.06592,Trehalose 2-sulfate,C12 H22 O14 S,L3.3,na
+FT_12.667_369.99465,no name,C8 H20 O8 P S3,L4.3,yes
+FT_12.668_696.21990,no name,C24 H39 N7 O15 S,L4.3,yes
+FT_12.672_546.07685,no name,C21 H17 N5 O13,L4.3,yes
+FT_12.663_535.15166,no name,C18 H32 O18,L4.1,yes
+FT_12.664_267.07219,inosinum,C10 H12 N4 O5,L3.3,na
+FT_12.684_542.13382,no name,C15 H25 N7 O15,L4.3,yes
+FT_12.842_543.06597,no name,C18 H26 O15 P2,L4.3,yes
+FT_12.933_530.08007,no name,C15 H26 N5 O10 P S2,L4.3,yes
+FT_13.009_565.10152,no name,C17 H30 N2 O15 S2,L4.3,yes
+FT_13.273_529.05022,no name,C17 H24 O15 P2,L4.3,yes
+FT_12.676_474.14656,no name,C15 H27 N O13,L4.1,yes
+FT_12.680_491.13674,no name,no formula,L5,na
+FT_13.282_335.07517,no name,C10 H17 N4 O7 P,L4.3,yes
+FT_12.806_421.06605,no name,C12 H22 O14 S,L4.1,yes
+FT_13.283_429.12512,no name,C10 H23 N8 O9 P,L4.3,yes
+FT_12.933_462.09245,7-(Methylthio)heptyl-glucosinolate,C15 H29 N O9 S3,L3.3,na
+FT_13.319_603.05365,no name,C18 H27 N2 O15 P3,L4.3,yes
+FT_12.933_565.01559,no name,no formula,L5,na
+FT_13.904_429.12517,no name,C15 H26 O14,L4.3,yes
+FT_14.028_603.08687,no name,C20 H24 N6 O12 S2,L4.3,yes
+FT_14.029_606.08502,no name,C22 H26 N O17 P,L4.3,yes
+FT_14.029_617.15437,no name,C23 H30 N4 O16,L4.3,yes
+FT_13.293_649.21933,Fuc(a1-2)[Gal(a1-3)]Gal(b1-4)Glc,C24 H42 O20,L3.3,yes
+FT_14.032_559.08117,no name,C19 H28 O15 S2,L4.3,yes
+FT_13.321_503.12848,alpha-D-ManAc-(1-P-6)-alpha-D-ManAc,C16 H29 N2 O14 P,L3.3,na
+FT_13.830_274.10456,gamma-Glutamylglutamine,C10 H17 N3 O6,L3.3,na
+FT_14.250_419.08676,no name,C17 H24 O8 S2,L4.3,yes
+FT_14.266_636.19911,no name,C22 H39 N O20,L4.3,yes
+FT_14.029_566.15742,no name,no formula,L5,na
+FT_14.691_446.09756,no name,C19 H13 N9 O5,L4.3,yes
+FT_14.736_269.95928,no name,C5 H7 N O8 P2,L4.3,yes
+FT_14.029_621.09731,no name,no formula,L5,na
+FT_14.745_275.95730,no name,C9 H N4 O5 S,L4.3,yes
+FT_14.071_563.18295,beta-D-Glc-(1->4)-[L-alpha-D-Hep-(1->3)]-L-alpha-D-Hep,C20 H36 O18,L3.3,na
+FT_14.186_421.06603,"[(2S,3S,4S,5R)-3,4-dihydroxy-5-(hydroxymethyl)-2-[(2R,3R,4S,5S,6R)-3,4,5-trihydroxy-6-(hydroxymethyl)oxan-2-yl]oxyoxolan-2-yl]methyl hydrogen sulfate",C12 H22 O14 S,L3.3,yes
+FT_14.755_500.91975,no name,C6 H8 N4 O19 P2,L4.3,yes
+FT_14.255_566.15747,no name,no formula,L5,na
+FT_14.756_272.95894,no name,C2 H2 N4 O12,L4.3,yes
+FT_14.339_355.08840,GlcA(b1-4)a-Glc,C12 H20 O12,L3.3,na
+FT_14.370_421.06602,2-sulfotrehalose,C12 H22 O14 S,L3.3,yes
+FT_14.398_446.09757,no name,C14 H25 N O13 S,L4.1,yes
+FT_14.759_160.97604,no name,C2 H2 N4 O3 S,L4.3,yes
+FT_14.760_158.97849,no name,C2 N4 O5,L4.3,yes
+FT_14.974_314.86449,no name,C H5 N2 O7 P S4,L4.3,yes
+FT_14.754_114.98873,no name,no formula,L5,na
+FT_15.006_711.21974,no name,C32 H40 O18,L4.3,yes
+FT_15.255_647.13409,no name,C21 H33 N2 O19 P,L4.3,yes
+FT_16.005_304.91409,no name,C2 H2 N4 O10 S2,L4.3,yes
+FT_16.005_564.82986,no name,C13 H5 N4 O10 P3 S3,L4.3,yes
+FT_14.760_159.97896,no name,no formula,L5,na
+FT_2.068_379.01299,no name,C10 H13 N4 O8 P S,L4.3,yes
+FT_14.983_196.88536,no name,no formula,L5,na
+FT_14.985_96.96012,no name,no formula,L5,na
+FT_14.987_194.92751,no name,no formula,L5,na
+FT_14.988_197.88548,no name,no formula,L5,na
+FT_2.098_286.98634,no name,C10 H10 O6 P2,L4.3,yes
+FT_15.006_763.18139,no name,no formula,L5,na
+FT_15.009_711.21976,Isomaltotetraose,C24 H42 O21,L3.3,na
+FT_15.112_462.10202,"[3-Acetamido-4,5-dihydroxy-6-(hydroxymethyl)oxan-2-yl] (3,4,5,6-tetrahydroxyoxan-2-yl)methyl hydrogen phosphate",C14 H26 N O14 P,L3.3,na
+FT_2.202_278.99668,no name,C12 H10 O4 P2,L4.3,yes
+FT_2.225_247.05869,no name,C10 H17 O3 P S,L4.3,yes
+FT_2.240_171.02745,no name,C5 H6 N3 O4,L4.3,yes
+FT_16.041_873.27215,Laminaripentaose,C30 H52 O26,L3.3,yes
+FT_16.807_989.31879,Glc(b1-4)Glc(b1-3)Glc(b1-4)Glc(b1-4)Glc(b1-3)Glc,C36 H62 O31,L3.3,na
+FT_2.025_225.04042,no name,C10 H10 O6,L4.1,yes
+FT_2.028_311.11385,no name,C15 H20 O7,L4.1,yes
+FT_2.039_319.05733,no name,C14 H12 N2 O7,L4.1,yes
+FT_2.062_279.08747,no name,C14 H16 O6,L4.1,yes
+FT_2.241_202.96511,no name,C6 H6 O4 P2,L4.3,yes
+FT_2.245_287.08846,no name,C8 H19 O6 P,L4.3,yes
+FT_2.130_202.96513,no name,no formula,L5,na
+FT_2.134_309.06182,no name,C14 H14 O8,L4.1,yes
+FT_2.168_281.06672,no name,C13 H14 O7,L4.1,yes
+FT_2.182_269.10307,no name,C13 H18 O6,L4.1,yes
+FT_2.313_265.91220,no name,C4 H N2 O8 P2,L4.3,yes
+FT_2.215_83.02511,no name,C3 H4 N2 O,L4.1,yes
+FT_2.319_282.90214,no name,C6 H7 N O2 P S4,L4.3,yes
+FT_2.321_304.07877,no name,C10 H15 N3 O8,L4.3,yes
+FT_2.472_395.00774,no name,C16 H12 O10 S,L4.3,yes
+FT_2.242_215.07315,no name,no formula,L5,na
+FT_2.243_155.03505,no name,C7 H8 O4,L4.1,yes
+FT_2.243_271.99940,no name,no formula,L5,na
+FT_2.492_289.00213,no name,C10 H10 O8 S,L4.3,yes
+FT_2.312_146.96601,no name,no formula,L5,na
+FT_2.688_253.06373,no name,C12 H15 O4 P,L4.3,yes
+FT_2.316_162.91378,no name,no formula,L5,na
+FT_2.318_186.90600,no name,no formula,L5,na
+FT_2.709_318.95529,no name,C9 H8 N2 O5 S3,L4.3,yes
+FT_2.320_161.91358,no name,no formula,L5,na
+FT_2.320_248.92177,no name,no formula,L5,na
+FT_2.710_287.01750,no name,C7 H13 O10 P,L4.3,yes
+FT_2.345_253.03532,(+/-)-strobide B,C11 H10 O7,L3.3,na
+FT_2.350_155.03503,2-methyl-muconate,C7 H8 O4,L3.3,na
+FT_2.351_380.99229,no name,C15 H10 O10 S,L4.1,yes
+FT_2.357_195.02996,no name,C9 H8 O5,L4.1,yes
+FT_2.455_253.03537,no name,C11 H10 O7,L4.1,yes
+FT_3.855_594.16781,no name,C19 H37 N3 O14 S2,L4.3,yes
+FT_2.474_209.04539,no name,C10 H10 O5,L4.1,na
+FT_2.475_295.08237,no name,C14 H16 O7,L4.1,yes
+FT_2.491_189.07685,no name,C8 H14 O5,L4.1,yes
+FT_3.856_296.04220,no name,C13 H7 N5 O4,L4.3,yes
+FT_2.501_183.06629,no name,C9 H12 O4,L4.1,yes
+FT_2.544_219.02978,7-Hydroxycoumarin-4-acetic acid,C11 H8 O5,L3.3,na
+FT_2.623_269.06672,no name,C12 H14 O7,L4.1,yes
+FT_2.626_183.02982,3-O-methylgallate,C8 H8 O5,L3.3,na
+FT_3.967_357.05539,no name,C7 H12 N4 O10,L4.3,yes
+FT_6.178_335.06127,no name,C13 H12 N4 O7,L4.3,yes
+FT_7.677_632.72756,no name,C8 H4 N4 O12 P2 S7,L4.3,yes
+FT_2.713_219.02977,7-Hydroxycoumarin-4-acetic acid,C11 H8 O5,L3.3,na
+FT_2.893_242.07043,no name,C7 H17 N O6 S,L4.1,yes
+FT_2.965_200.94972,no name,no formula,L5,na
+FT_3.024_246.99165,no name,no formula,L5,na
+FT_3.056_211.02467,no name,C9 H8 O6,L4.1,yes
+FT_3.102_195.02996,no name,C9 H8 O5,L4.1,yes
+FT_3.208_173.04552,no name,C7 H10 O5,L4.1,yes
+FT_3.516_178.84406,no name,no formula,L5,na
+FT_3.571_216.94452,no name,no formula,L5,na
+FT_3.854_228.05468,no name,C6 H15 N O6 S,L4.1,yes
+FT_3.855_168.03357,no name,C4 H11 N O4 S,L4.1,yes
+FT_7.681_548.76647,no name,C10 H4 N2 O9 P2 S6,L4.3,yes
+FT_7.848_240.95581,no name,C4 H6 N O7 P2,L4.3,yes
+FT_3.883_312.09517,no name,C11 H15 N5 O6,L4.1,yes
+FT_3.966_306.05808,no name,C7 H18 N O10 P,L4.3,na
+FT_8.842_520.91024,no name,C5 H8 N4 O21 P2,L4.3,yes
+FT_8.842_588.89767,no name,C11 H10 N8 O11 S5,L4.3,yes
+FT_6.564_226.07544,no name,C7 H17 N O5 S,L4.1,yes
+FT_6.806_162.84249,no name,no formula,L5,na
+FT_6.807_163.84027,no name,no formula,L5,na
+FT_6.807_92.92804,no name,no formula,L5,na
+FT_6.808_153.86863,no name,no formula,L5,na
+FT_6.812_164.83945,no name,no formula,L5,na
+FT_7.117_152.03873,2-(Dimethylamino)ethanesulfonic acid,C4 H11 N O3 S,L3.3,na
+FT_7.117_212.05976,no name,C6 H15 N O5 S,L4.1,yes
+FT_8.843_452.92293,no name,C8 H4 N6 O13 P2,L4.3,yes
+FT_7.681_296.88234,no name,no formula,L5,na
+FT_8.844_248.96047,no name,C4 H4 N4 O5 P2,L4.3,yes
+FT_7.682_128.95964,no name,no formula,L5,na
+FT_7.682_464.80511,no name,no formula,L5,na
+FT_7.683_130.95772,no name,no formula,L5,na
+FT_8.844_384.93558,no name,C5 H4 N6 O11 P2,L4.3,yes
+FT_0.997_560.01525,no name,C26 H16 N3 O6 P S2,L4.3,yes
+FT_1.003_473.94210,no name,C12 H16 N O9 P3 S2,L4.3,yes
+FT_1.008_695.28631,no name,C36 H44 N2 O12,L4.3,yes
+FT_8.843_656.88486,no name,no formula,L5,na
+FT_1.051_422.78092,no name,C7 H6 N O2 S9,L4.3,yes
+FT_1.184_319.11876,no name,C16 H18 O4,L4.3,yes
+FT_8.845_724.87206,no name,no formula,L5,na

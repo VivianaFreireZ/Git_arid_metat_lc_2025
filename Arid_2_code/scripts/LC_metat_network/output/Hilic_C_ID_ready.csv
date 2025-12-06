@@ -1,0 +1,48 @@
+query,ko,name
+Curcumin,cpd:C10443,Curcumin; Kacha haldi
+Acetovanillone,cpd:C11380,Apocynin; Acetovanillone
+Hexadecanedioic acid,cpd:C19615,Hexadecanedioate; Hexadecanedioic acid
+Umbelliferone,cpd:C09315,Umbelliferone; 7-Hydroxycoumarin
+Ferulic acid,cpd:C01494,Ferulate; Ferulic acid; 4-Hydroxy-3-methoxycinnamic acid; 3-Methoxy-4-hydroxy-trans-cinnamate; 4-Hydroxy-3-methoxycinnamate
+Suberic acid,cpd:C08278,"Suberic acid; Cork acid; 1,8-Octanedioic acid; Octanedioic acid; 1,6-Hexanedicarboxylic acid"
+Caffeic acid,cpd:C01481,"Caffeate; Caffeic acid; 3,4-Dihydroxycinnamic acid"
+Vanillic acid,cpd:C06672,Vanillate; Vanillic acid; 4-Hydroxy-3-methoxybenzoate; 4-Hydroxy-3-methoxybenzoic acid
+Syringic acid,cpd:C10833,"Syringic acid; Syringate; 4-Hydroxy-3,5-dimethoxybenzoate; Gallic acid 3,5-dimethyl ether"
+Maleic acid,cpd:C01384,Maleic acid; Maleate; cis-Butenedioic acid
+Sucrose,cpd:C00089,Sucrose; Cane sugar; Saccharose; 1-alpha-D-Glucopyranosyl-2-beta-D-fructofuranoside
+Sucrose,cpd:C00492,Raffinose; Melitose; Melitriose; Gossypose; 6G-alpha-D-galactosylsucrose
+D-Glutamic acid,cpd:C00217,D-Glutamate; D-Glutamic acid; D-Glutaminic acid; D-2-Aminoglutaric acid
+3-hydroxybutyric acid,cpd:C01089,(R)-3-Hydroxybutanoate; (R)-3-Hydroxybutanoic acid; (R)-3-Hydroxybutyric acid; D-beta-Hydroxybutyric acid
+2-Methylsuccinic acid,cpd:C02614,(S)-2-Methylmalate; (S)-2-Methylmalic acid; (S)-Citramalate; (S)-Citramalic acid; (S)-alpha-Hydroxypyrotartaric acid; L-Citramalate; L-Citramalic acid; L-alpha-Hydroxypyrotartaric acid; (2S)-2-Hydroxy-2-methylbutanedioate; (S)-2-Hydroxy-2-methylsuccinic acid
+Adenine,cpd:C00147,Adenine; 6-Aminopurine
+Succinic acid,cpd:C00042,Succinate; Succinic acid; Butanedionic acid; Ethylenesuccinic acid
+Uridine,cpd:C00299,Uridine
+2'-Deoxyinosine,cpd:C05512,Deoxyinosine; 2'-Deoxyinosine
+Allantoin,cpd:C01551,Allantoin; 5-Ureidohydantoin; Glyoxyldiureide
+Allantoin,cpd:C02348,(R)(-)-Allantoin; (R)-Allantoin
+Allantoin,cpd:C02350,(S)-Allantoin; (S)(+)-Allantoin
+Inosine,cpd:C00294,Inosine
+N-Acetyl-D-mannosamine,cpd:C00645,N-Acetyl-D-mannosamine; 2-Acetamido-2-deoxy-D-mannose
+Mannitol,cpd:C00392,Mannitol; D-Mannitol
+16-Hydroxyhexadecanoic acid,cpd:C18218,16-Hydroxypalmitate; 16-Hydroxypalmitic acid; 16-Hydroxyhexadecanoic acid; Juniperic acid
+melitose,cpd:C00492,Raffinose; Melitose; Melitriose; Gossypose; 6G-alpha-D-galactosylsucrose
+4-Methylumbelliferone,cpd:C03081,4-Methylumbelliferone; Hymecromone
+urocanate,cpd:C00785,Urocanate; Urocanic acid
+Azelaic acid,cpd:C08261,"Azelaic acid; Nonanedioic acid; 1,7-Heptanedicarboxylic acid"
+Genipin,cpd:C09780,Genipin
+Glycitein,cpd:C14536,"Glycitein; 7,4'-Dihydroxy-6-methoxyisoflavone"
+Guanosine,cpd:C00387,Guanosine
+Isoferulic acid,cpd:C10470,Isoferulic acid
+Mevalonic acid,cpd:C00418,"(R)-Mevalonate; Mevalonic acid; 3,5-Dihydroxy-3-methylvaleric acid; (3R)-3,5-Dihydroxy-3-methylpentanoic acid; (R)-Mevalonic acid"
+Mevalonic acid,cpd:C02104,"(S)-Mevalonate; (S)-Mevalonic acid; (S)-3,5-Dihydroxy-3-methylvaleric acid"
+Propyl gallate,cpd:C11155,n-Propyl gallate; Propyl gallate
+Tetracycline,cpd:C06570,Tetracycline
+Trinexapac,cpd:C18541,Trinexapac-ethyl
+coniferaldehyde,cpd:C02666,Coniferyl aldehyde; Coniferaldehyde; 4-Hydroxy-3-methoxycinnamaldehyde; Ferulaldehyde
+6-Prenylnaringenin,cpd:C09832,"6-Prenylnaringenin; 5,7,4'-Trihydroxy-6-prenylflavanone"
+mycophenolate,cpd:C20380,Mycophenolate
+dihydroconiferyl alcohol,cpd:C10448,Dihydroconiferyl alcohol; 4-Hydroxy-3-methoxy-benzenepropanol
+caffeate,cpd:C01481,"Caffeate; Caffeic acid; 3,4-Dihydroxycinnamic acid"
+adenosine,cpd:C00212,Adenosine
+2-sulfotrehalose,cpd:C20985,"2-Sulfotrehalose; 2-O-Sulfo-alpha,alpha-trehalose"
+3-O-methylgallate,cpd:C05616,"3-O-Methylgallate; 3-O-Methylgallic acid; 5-Hydroxyvanillic acid; 3,4-Dihydroxy-5-methoxybenzoate"

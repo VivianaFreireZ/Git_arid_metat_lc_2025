@@ -1,0 +1,564 @@
+---
+title: "Figure 2 - Cazyme metaT"
+author: 'Viviana Freire Zapata'
+output: html_notebook
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r}
+library(patchwork)
+library(ggh4x)
+library(readxl)
+library(treedataverse)
+library(ggpubr)
+library(vegan)
+library(ggtext)
+library(ggforce)
+library(reshape2)
+library(rstatix)
+library(ggsankey)
+library(tidyverse)
+
+```
+
+# Loading data
+
+## Metadata
+
+```{r}
+metadata <- read_csv('input/metadata_omics.csv') 
+
+metadata_ready <- metadata %>% 
+  mutate(Month = factor(month, levels = c("May", "July_1", "July_2", "July_3",
+                                          "August", "October", "May_22")))
+```
+
+## Taxonomy
+
+```{r}
+mag_taxonomy <- read_csv('input/mag_taxonomy_denovo.csv') %>%
+  mutate(Class = ifelse(is.na(Class), 
+                        glue::glue('Unassigned Class \nof {Phylum}'),
+                        Class))
+
+```
+
+
+## CAZyme results - updated dbcan v3
+
+```{r}
+## Summarizes CAZyme predictions across tools, including SignalP results.
+
+dbcan_sub <- read_tsv("input/CAZyme_dbcan3/dbcan_output/dbcan-sub.hmm.out") %>% 
+  select(Geneid = `Gene ID`, dbcan_sub = `dbCAN subfam`, 
+         Substrate)
+
+```
+
+
+## geTMM
+
+```{r}
+geTMM <- read_csv("output/geTMM_normalized_matrix_2025.csv")
+
+geTMM_long <- geTMM %>% 
+  pivot_longer(!Geneid, names_to = "sampleid", values_to = "geTMM")
+
+```
+
+## DE expression
+
+## Loading DE genes
+```{r}
+
+de_res <- read_csv("output/DE_result_month_slice_10_2025.csv") %>% 
+  filter(padj <= 0.01) %>% 
+  filter(abs(log2FoldChange) > 2) ### REMEMBER THIS FILTERS FOR SELECTING DE GENES
+
+```
+
+
+## Loading HCLUST results
+
+```{r}
+
+hclust <- read_csv('output/Hclust_MAG_expression_2025.csv')
+
+
+plot_groups <- hclust %>% 
+  rename(cluster = order) %>% 
+  mutate(cluster = paste0('Cluster ', cluster),
+         response_type = case_when(str_detect(cluster, 'Cluster 1') ~ 'Dry',
+                                   str_detect(cluster, 'Cluster 2') ~ 'Wet',
+                                   .default = 'Pulse')) %>% 
+  select(genome, cluster, response_type) %>% 
+  distinct()
+
+```
+
+
+## Expressed genes
+
+```{r}
+expressed_cazy <- dbcan_sub %>% 
+  inner_join(geTMM_long, by = 'Geneid') %>% 
+  mutate(cazy_fam = case_when(str_detect(dbcan_sub, 'GH') ~ 'Glycoside Hydrolases',
+                              str_detect(dbcan_sub, 'GT') ~ 'Glycosyl Transferases',
+                              str_detect(dbcan_sub, 'PL') ~ 'Polysaccharide Lyases',
+                              str_detect(dbcan_sub, 'CE') ~ 'Carbohydrate Esterases',
+                              str_detect(dbcan_sub, 'AA') ~ 'Auxiliary Activities',
+                              str_detect(dbcan_sub, 'CBM') ~ 'Carbohydrate Binding Module'),
+         cazy_sub = str_remove(dbcan_sub, '_e.*'))
+
+## Number of expressed subfamilies families
+ex_sub_family <- expressed_cazy %>% 
+  filter(geTMM > 0) %>% 
+  select(Geneid, cazy_fam, cazy_sub) %>% 
+  distinct() %>% 
+  group_by(cazy_fam, cazy_sub) %>% 
+  count(name = 'num_subfamilies')
+
+
+ex_family <- expressed_cazy %>% 
+  filter(geTMM > 0) %>% 
+  select(Geneid, cazy_fam) %>% 
+  distinct() %>% 
+  group_by(cazy_fam) %>% 
+  count(name = 'num_subfamilies')
+
+```
+
+
+## Supplementary table 5
+
+```{r}
+
+de_cazy_genes <- de_res %>% 
+  filter(FeatureID %in% expressed_cazy$Geneid) %>% 
+  inner_join(expressed_cazy, by = c('FeatureID' = 'Geneid')) %>%
+  select(!c(sampleid, geTMM)) %>% 
+  distinct()
+
+write_csv(de_cazy_genes, "output_tables/Supplementary_table_5.csv")
+
+
+```
+
+## Joining genes to annotations -- Finding novelty
+
+```{r}
+
+annotations <- read_csv("input/annot_with_cydbs_2.23.25.csv") %>% 
+  rename(Geneid = `...1`)
+
+ko_pathway <- read_csv("input/ko_pathways_UPDATE_10_23_24.csv")
+
+vip_cazy <- expressed_cazy %>% 
+  filter(str_detect(dbcan_sub, 'GT4_') | str_detect(dbcan_sub, 'GT2$')) %>%
+  left_join(annotations, by = 'Geneid') %>% 
+  filter(geTMM > 0) %>% 
+  filter(!is.na(ko_id)) %>% 
+  left_join(ko_pathway, by = 'ko_id')
+
+write_csv(vip_cazy, "output_tables/Supplementary_table_6.csv")
+
+
+```
+
+
+## Expression by substrate
+
+### Number of Cazymes per substrate
+
+```{r}
+cazy_per_sub <- expressed_cazy %>% 
+  filter(geTMM > 0) %>% 
+  select(Geneid, Substrate, cazy_fam) %>% 
+  distinct() %>%
+  mutate(Substrate = ifelse(Substrate == '-', 'No substrate', Substrate)) %>% 
+  separate_longer_delim(Substrate, delim = ', ') %>% 
+  distinct() %>% 
+  group_by(Substrate, cazy_fam) %>% 
+  count()
+
+cazy_per_sub_plot <- cazy_per_sub %>% 
+  filter(n >= 25) %>% 
+  group_by(Substrate) %>% 
+  mutate(total = sum(n)) %>% 
+  ggplot(aes(x = n,
+             y = fct_reorder(Substrate, total),
+             fill = cazy_fam))+
+  geom_col(color = 'black')+
+  labs(x = 'Number of genes expressed',
+       y = 'Substrate',
+       fill = 'CAZy family')+
+  guides(fill = guide_legend(ncol = 1))+
+  scale_fill_brewer(palette = 'Set2') +
+  theme_bw()+
+  theme(panel.grid = element_blank(),
+        legend.position = c(0.7, 0.25),
+        legend.text = element_text(size = 5),
+        legend.title = element_text(size = 6),
+        legend.box.spacing = unit(.05, 'lines'),
+        legend.key.size = unit(.5, 'lines'),
+        legend.title.position = 'top',
+        axis.title.x = element_text(size = 7),
+        axis.title.y = element_text(size = 7),
+        axis.text.y = element_text(size = 6))
+
+cazy_per_sub_plot
+
+
+```
+
+## Counting the number of Cazymes families per MAGs - DE expressed
+
+```{r}
+cazy_per_class <- expressed_cazy %>% 
+  filter(Geneid %in% de_res$FeatureID) %>% 
+  filter(geTMM > 0) %>% 
+  select(Geneid, Substrate) %>% 
+  distinct() %>%
+  mutate(bin = str_remove(Geneid, '_k.*')) %>% 
+  inner_join(mag_taxonomy, by = 'bin') %>% 
+  mutate(Substrate = ifelse(Substrate == '-', 'No substrate', Substrate)) %>% 
+  separate_longer_delim(Substrate, delim = ', ') %>% 
+  distinct() %>% 
+  group_by(Substrate, Class, Phylum) %>% 
+  count()
+
+cazy_class_bubble <- cazy_per_class %>%
+  filter(Substrate != 'No substrate') %>% 
+  rename('DE CAZyme' = 'n') %>% 
+  ggplot() +
+  geom_point(aes(x = Class,
+                 y = Substrate,
+                 size = `DE CAZyme`,
+                 fill = Phylum),
+             shape = 21,
+             alpha = .5,
+             color = 'black') + 
+  # facet_grid(cols = vars(Phylum),
+  #            scales = 'free',
+  #            space = 'free') +
+  guides(fill = guide_legend(ncol =1),
+         size = guide_legend(ncol = 1))+
+  theme_bw() +
+  theme(axis.text.x = element_text(angle = 45, size = 6, hjust = 1),
+        axis.text.y.left = element_text(size = 6),
+        axis.title.y = element_text(size = 6),
+        panel.grid = element_blank(),
+        strip.background = element_rect(fill = 'white'),
+        strip.text.x.top = element_text(size = 7, , angle = 90),
+        legend.position = 'right',
+        legend.text = element_text(size = 5),
+        legend.title = element_text(size = 6),
+        legend.box.spacing = unit(.05, 'lines'),
+        legend.key.size = unit(.5, 'lines'),
+        legend.title.position = 'top')
+
+cazy_class_bubble
+
+
+```
+
+
+## Plotting expressed cazymes and substrates - Heatmap
+
+
+## Heatmap of expression
+
+```{r}
+metaT_cazy_heat <- expressed_cazy %>% 
+  filter(Geneid %in% de_res$FeatureID) %>% 
+  select(Geneid, sampleid, dbcan_sub, geTMM) %>% 
+  distinct() %>% 
+  mutate(bin = str_remove(Geneid, '_k.*')) %>% 
+  inner_join(mag_taxonomy, by = 'bin') %>% 
+  left_join(plot_groups, by = c('bin' = 'genome')) %>% 
+  group_by(Phylum, Class, sampleid, dbcan_sub, response_type) %>% 
+  summarise(total_expression = sum(geTMM)) %>%
+  mutate(sampleid = str_replace_all(sampleid, '-', '_')) %>% 
+  inner_join(metadata_ready, by = c('sampleid' = 'treatment_code')) %>% 
+  group_by(Phylum, Class, dbcan_sub, Month, response_type) %>% 
+  summarise(mean_expr = mean(total_expression))
+
+```
+
+
+```{r}
+
+substrate_subfamily <- expressed_cazy %>% 
+  filter(Geneid %in% de_res$FeatureID) %>% 
+  select(dbcan_sub, Substrate) %>% 
+  mutate(Substrate = ifelse(Substrate == '-', 'No substrate', Substrate)) %>% 
+  separate_longer_delim(Substrate, delim = ', ') %>% 
+  distinct()
+
+## Filter Class that express only 1 class
+
+filter_class <- c('Blastocatellia', 'Chloroflexia', 'Dehalococcoidia', 
+                  'Gemmatimonadetes', 'Methylomirabilia', 'Binatia')
+
+cazy_heat <- metaT_cazy_heat %>%
+  inner_join(substrate_subfamily, by = 'dbcan_sub') %>%
+  group_by(dbcan_sub, Substrate) %>% 
+  mutate(to_order = mean(mean_expr)) %>% 
+  arrange(to_order) %>% 
+  mutate(order = n():1) %>% 
+  filter(!Substrate == 'No substrate',
+         !(Class %in% filter_class)) %>% 
+  ggplot(aes(x = Month,
+             y = fct_reorder(dbcan_sub, order),
+             fill = log(mean_expr + 1)))+
+  geom_tile()+
+  scale_fill_viridis_c(option = 'A', direction = -1)+
+  facet_grid2(rows = vars(Substrate),
+              cols = vars(Class),
+              scales = 'free',
+              space = 'free',
+              strip = strip_nested(clip = 'off'),
+              switch = 'y')+
+  labs(y = 'CAZyme subfamily',
+       fill = 'Mean expression per month')+
+  theme_bw()+
+  theme(axis.title.x = element_blank(),
+        legend.position = 'bottom',
+        axis.ticks.y = element_blank(),
+        strip.text.y.left = element_text(angle = 0, hjust = 1, size = 5),
+        strip.text.x.top = element_text(hjust = 1, angle = 90, size = 5),
+        strip.background = element_blank(),
+        axis.text.x = element_text(angle = 90, size = 6),
+        axis.text.y = element_text(size = 5),
+        panel.grid = element_blank(),
+        strip.placement = 'outer',
+        legend.text = element_text(size = 6),
+        legend.key.size = unit(.5, 'lines'),
+        legend.box.spacing = unit(.01, 'lines'),
+        legend.title = element_text(size = 6))
+
+cazy_heat
+
+ggsave("output_figures/Sup_figure_2.png", cazy_heat, dpi = 300,
+       units = 'mm', 
+       height = 225, 
+       width = 180)
+
+
+
+```
+
+# Per substrate
+
+```{r}
+metaT_cazy_heat_subs <- expressed_cazy %>% 
+  filter(Geneid %in% de_res$FeatureID) %>%
+  select(Geneid, sampleid, Substrate, geTMM) %>% 
+  mutate(Substrate = ifelse(Substrate == '-', 'No substrate', Substrate)) %>% 
+  separate_longer_delim(Substrate, delim = ', ') %>% 
+  distinct() %>% 
+  mutate(bin = str_remove(Geneid, '_k.*')) %>% 
+  inner_join(mag_taxonomy, by = 'bin') %>% 
+  left_join(plot_groups, by = c('bin' = 'genome')) %>% 
+  group_by(Phylum, Class, sampleid, Substrate, response_type) %>% 
+  summarise(total_expression = sum(geTMM)) %>%
+  mutate(sampleid = str_replace_all(sampleid, '-', '_')) %>% 
+  inner_join(metadata_ready, by = c('sampleid' = 'treatment_code')) %>%
+  group_by(Phylum, Class, Substrate, Month, response_type) %>% 
+  summarise(mean_expr = mean(total_expression)) 
+
+
+cazy_heat_subs <- metaT_cazy_heat_subs %>% 
+  filter(Substrate != 'No substrate') %>% 
+  ggplot(aes(x = Month,
+             y = Substrate,
+             fill = log(mean_expr + 1)))+
+  geom_tile()+
+  scale_fill_viridis_c(option = 'A', direction = -1) +
+  facet_grid2(cols = vars(response_type, Class),
+              scales = 'free',
+              space = 'free',
+              strip = strip_nested(clip = 'off')) +
+  labs(y = 'Substrate',
+       fill = 'Mean expression per month')+
+  theme_bw()+
+  theme(axis.title.x = element_blank(),
+        legend.position = 'bottom',
+        # strip.text.y.left = element_text(angle = 0, size = 6),
+        # strip.text.y.right = element_text(angle = 0, size = 6),
+        strip.text.x.top = element_text(angle = 90, size = 6),
+        strip.background.x = element_blank(),
+        axis.text.x = element_text(angle = 90, size = 6),
+        axis.text.y = element_text(size = 6),
+        axis.title.y = element_text(size = 7),
+        panel.grid = element_blank(),
+        strip.placement = 'outer',
+        legend.text = element_text(size = 5),
+        legend.title = element_text(size = 6),
+        legend.box.spacing = unit(.05, 'lines'),
+        legend.key.size = unit(.5, 'lines'))
+
+cazy_heat_subs
+
+
+```
+
+
+## Filtering cazyme most expressed
+
+
+```{r}
+## Filter only highly expressed modules
+
+top_modules <- metaT_cazy_heat_subs %>% 
+  filter(!Substrate == 'No substrate') %>% 
+  group_by(Substrate) %>% 
+  summarise(total_exp = sum(mean_expr)) %>% 
+  slice_max(order_by = total_exp, n = 10)
+
+```
+
+
+## Sankey
+
+```{r}
+
+taxonomy_order <- mag_taxonomy %>% 
+  select(Domain, Phylum, Class) %>%
+  distinct() %>% 
+  arrange(Domain, Phylum, Class) %>% 
+  pivot_longer(everything(), names_to = 'name', values_to = 'node') %>% 
+  filter(!str_detect(node, '^ ')) %>% 
+  distinct() %>% 
+  mutate(order = n():1)
+
+month_order <- tibble(node = c('May', 
+                               'July_1',
+                               'July_2',
+                               'July_3',
+                               'August',
+                               'October',
+                               'May_22')) %>% 
+  mutate(name = 'Month',
+         order = 1:7)
+
+substrate_order <- tibble(node = c("beta-mannan",
+                                   "cellulose",
+                                   "chitin",
+                                   "exo-polysaccharide",
+                                   "glucooligosaccharide",
+                                   "glycogen",
+                                   "peptidoglycan",
+                                   "starch",
+                                   "sucrose",
+                                   "xylan")) %>% 
+    mutate(name = 'Substrate',
+         order = 10:1)
+
+## Create Sankey ready df
+
+df_long <- metaT_cazy_heat_subs %>% 
+  filter(Substrate %in% top_modules$Substrate) %>%
+  #filter(Substrate != 'No substrate') %>% 
+  mutate(month_response = glue::glue('{Month}-{response_type}')) %>% 
+  split(.$month_response) %>% 
+  imap(function(df, m){
+    df %>% 
+      ungroup() %>% 
+      make_long(Phylum, Class, Substrate, value = mean_expr)%>% 
+      left_join(rbind(taxonomy_order, month_order, substrate_order), by = c('node', 
+                                                                            'x' = 'name')) %>% 
+      mutate(x = factor(x, levels = c('Phylum', 'Class', 'Substrate')),
+             order = ifelse(is.na(order), 1, order),
+             month_response = m)
+  }) %>% purrr::reduce(rbind) %>% 
+  separate_wider_delim(month_response, names = c('Month', 'response_type'), delim = '-') %>% 
+  mutate(Month = factor(Month, levels = c('May', 'July_1', 'July_2', 'July_3',
+                                          'August', 'October', 'May_22'))) %>% 
+  filter(Month %in% c('May', 'July_1', 'October'),
+         response_type != 'Pulse')
+
+
+sankey_plot <- df_long %>% 
+  mutate(response_type = glue::glue('{response_type}\nadapted')) %>% 
+  ggplot(aes(x = x,
+             next_x = next_x,
+             node = fct_reorder(node, dplyr::desc(order)),
+             next_node = next_node,
+             fill = factor(node),
+             label = node,
+             value = value)) +
+  geom_sankey(show.legend = FALSE,
+              flow.alpha = 0.5,
+              node.color = 'black') +
+  # geom_sankey_text(size = 2,
+  #                  show.legend = FALSE,
+  #                  position = position_nudge(x = .1),
+  #                  hjust = 0) +
+  geom_sankey_label(size = 1.8, color = 1, fill = "white") +
+  facet_grid(cols = vars(Month),
+             rows = vars(response_type),
+             switch = 'y',
+             space = 'free_y',
+             scales = 'free_y') +
+  theme_sankey(base_size = 10) +
+  theme(axis.title = element_blank(),
+        plot.title = element_text(face = 'bold', hjust = 0.5),
+        plot.subtitle = element_text(hjust = 0.5),
+        strip.placement = 'outer',
+        strip.text = element_text(angle = 0, size = 6),
+        strip.text.y.left = element_text(angle = 0, size = 6),
+        panel.spacing.y = unit(0, 'lines')) +
+  coord_cartesian(clip = 'off') +
+  scale_fill_manual(values = ggpubr::get_palette('Paired', 27))
+
+
+sankey_plot
+
+```
+
+
+## Saving plot
+
+```{r}
+
+## Final figure
+des <- "
+AB
+CC
+"
+
+
+final_fig <- free(cazy_per_sub_plot) + free(cazy_class_bubble) + sankey_plot +
+  plot_layout(heights = c(1, 2),
+              design = des) +
+  plot_annotation(tag_levels = list(c('A', 'B', 'C'))) &
+  theme(axis.title.y = element_blank(),
+        legend.key.spacing = unit(.2, 'lines'))
+
+final_fig
+
+```
+
+
+
+## Save final plot
+
+
+```{r}
+
+ggsave("output_figures/Figure_2.svg", final_fig, dpi = 300,
+       units = 'mm', 
+       height = 220, 
+       width = 180)
+
+ggsave("output_figures/Figure_2.png", final_fig, dpi = 300,
+       units = 'mm', 
+       height = 220, 
+       width = 180)
+
+
+```
+

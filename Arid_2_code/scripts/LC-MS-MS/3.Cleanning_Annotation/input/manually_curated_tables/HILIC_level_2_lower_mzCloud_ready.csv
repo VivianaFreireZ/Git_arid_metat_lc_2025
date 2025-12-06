@@ -1,0 +1,21 @@
+FeatureID,Name,Formula,Notes,Action_decision,Other_mzcloud_match,Sirus_notes,Sirius_formula,Correlation_duplicated annotations,Final_decision
+FT_1.584_177.05573,coniferaldehyde,C10H10O3,,keep sirius,,coniferaldehyde,C10H10O3,,L3.3
+FT_1.554_179.07146,"[Similar to: 1-[2-O-Acetyl-5-O-{3-[(1-carboxyvinyl)oxy]-4-hydroxybenzoyl}-3-O-(4-hydroxy-2-methoxy-6-methylbenzoyl)pentofuranosyl]-2,4(1H,3H)-pyrimidinedione; ΔMass: -476.0702 Da]",C10 H12 O3,low quality,,,,,,DELETE
+FT_1.322_183.10268,Ieodomycin D,C10H16O3,,keep sirius,,Ieodomycin D,C10H16O3,,L3.3
+FT_2.691_273.07284,[Similar to: 2'-Deoxyuridine; ΔMass: 0.0000 Da],C9 H12 N2 O5,,"no sirius results, keep CD",,,,,L3.3
+FT_12.351_317.05494,glyceryl sulfoquinovoside,C9H18O10S,,keep sirius,,glyceryl sulfoquinovoside,C9H18O10S,,L3.3
+FT_1.615_267.16035,Waraterpol,C15H24O4,,keep sirius,,Waraterpol,C15H24O4,,L3.3
+FT_1.628_337.12961,"[(3aS,4R,5R,6S,6aR,8R,9bS)-5,6,8-trihydroxy-6,9-dimethyl-3-methylidene-2-oxo-4,5,6a,7,8,9b-hexahydro-3aH-azuleno[4,5-b]furan-4-yl] acetate",C17H22O7,,keep sirius,,"[(3aS,4R,5R,6S,6aR,8R,9bS)-5,6,8-trihydroxy-6,9-dimethyl-3-methylidene-2-oxo-4,5,6a,7,8,9b-hexahydro-3aH-azuleno[4,5-b]furan-4-yl] acetate",C17H22O7,,L3.3
+FT_1.640_223.02477,Dehydrochorismic acid,C10 H8 O6,,keep sirius,,Dehydrochorismic acid,C10H8O6,,L3.3
+FT_1.770_263.05617,Penicimarin E,C13H12O6,,keep sirius,,,,,L3.3
+FT_12.209_387.11466,beta1-6Galactobiose,C12H22O11,,keep sirius,,beta1-6Galactobiose,C12H22O11,,L3.3
+FT_12.390_387.11470,"[Similar to: α,α-Trehalose; ΔMass: 46.0058 Da]",C13 H24 O13,low quality,,,,,,DELETE
+FT_12.841_511.12815,"[Similar to: N-[4-(2-Anilino-2-oxoethyl)-7-hydroxy-8-(hydroxymethyl)-4a,8-dimethyl-4,4a,5,6,7,8,8a,9-octahydronaphtho[2,3-d][1,3]thiazol-2-yl]-4-fluorobenzamide; ΔMass: -25.0743 Da]",C19 H28 O16,,keep CD,,,,,L2
+FT_2.628_205.01382,7-Hydroxy-2-oxo-2H-chromene-6-carboxylic acid,C10 H6 O5,,keep sirius,,7-Hydroxy-2-oxo-2H-chromene-6-carboxylic acid,C10H6O5,,L3.3
+FT_1.362_347.15043,[Similar to: NP-002047; ΔMass: -0.0360 Da],C12 H24 N6 O4 S,low quality,,,,,,DELETE
+FT_1.158_235.06121,O-acetylferulic acid,C12 H12 O5,,keep sirius,,O-acetylferulic acid,C12H12O5,,L3.3
+FT_1.268_413.12484,[Similar to: Prednisone; ΔMass: 55.9541 Da],C23 H18 N4 O4,,"keep CD, invalid mass",,,,,L3.3
+FT_1.309_413.19722,[Similar to: Prednisone; ΔMass: 56.0265 Da],C17 H32 N6 O2 P2,,"keep CD, invalid mass",,,,,L3.3
+FT_1.321_413.23379,[Similar to: Prednisone; ΔMass: 56.0630 Da],C25 H34 O5,,"keep CD, invalid mass",,,,,L3.3
+FT_1.669_223.09681,[Similar to: Resorcinol monoacetate; ΔMass: 72.0572 Da],C6 H17 N4 O3 P,low quality,,,,,,DELETE
+FT_2.236_179.07135,3-(2-Methoxyphenyl)propanoic acid,C10H12O3,,keep sirius,,3-(2-Methoxyphenyl)propanoic acid,C10H12O3,,L3.3

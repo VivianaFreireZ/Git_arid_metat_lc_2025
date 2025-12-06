@@ -1,0 +1,533 @@
+---
+title: "Linear mixed effect model - metabolites - RP"
+author: "Viviana Freire Zapata"
+date: "9/30/2025"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: '2'
+    collapsed: false
+    highlight: tango
+    css: style.css
+editor_options: 
+  chunk_output_type: console
+---
+
+# Data Pre-processing
+
+
+
+# Importing libraries
+
+```{r libraries, message=FALSE, warning=FALSE}
+
+library(easystats)
+library(matrixStats)
+library(vegan)
+library(GGally)
+library(ggpubr)
+library(glmnet)
+library(ggbeeswarm)
+library(lme4)
+library(lmerTest)
+library(readxl)
+library(ggforce)
+library(ggtext)
+library(partR2)
+library(tidyverse)
+source('scripts/LC-MS-MS/5.Metabolite_model/functions_cdis_norm_stats.R')
+
+
+```
+
+# Loading data 
+
+```{r}
+## Raw matrix
+
+RP_df <- read_csv("scripts/LC-MS-MS/1.Pre-processing/output/RP_matrix_clean_2025.csv")
+
+
+## Loading annotation
+
+annot <- read_csv("scripts/LC-MS-MS/3.Cleanning_Annotation/output/RP_final_annotation_checked.csv")
+
+
+```
+
+# ENVS 
+
+```{r}
+
+evs <- read_csv("input/env_data_ready_2025.csv") %>% 
+  filter(!sample == c('SAMP1-S1-22', 'SAMP1-S2-22', 'SAMP1-S3-22', 'SAMP1-S4-22'))%>% 
+  mutate(sample = str_replace_all(sample, "-", "_")) %>% 
+  rename(SampleID = sample)
+
+```
+
+# Microbial diversity
+
+```{r}
+
+avs_shannon <- read_csv("input/ASV_shannon.csv") %>% 
+  mutate(sample = str_replace_all(sample, "-", "_")) %>% 
+  rename(SampleID = sample) %>% 
+  select(!dataset)
+
+```
+
+# Metadata
+
+```{r}
+
+metadata <- read_csv("input/metadata_omics.csv") %>% 
+  select(!c(SampleID_metaT, SampleID_HILIC))
+
+```
+
+
+## Prepare matrix
+
+```{r}
+
+RP_ready <- RP_df %>% 
+  select(FeatureID, contains("RP")) %>% 
+  filter(FeatureID %in% annot$FeatureID) %>% 
+  column_to_rownames(var = "FeatureID")
+
+```
+
+# Preprare matrix - envs and microbial diversity
+
+```{r}
+
+envs_microbe <- evs %>% 
+  mutate(C_N = total_C/total_N) %>% 
+  left_join(avs_shannon, by = 'SampleID') %>% 
+  left_join(metadata, by = c('SampleID' = 'treatment_code')) %>% 
+  dplyr::select(!c(SampleID, sampling, stage, month, site)) %>%
+  rename(SampleID = SampleID_RP) %>% 
+  column_to_rownames(var = 'SampleID') %>% 
+  select(total_N, ph_mean, moisture, NDVI, C_N)
+
+```
+
+
+## Standarization of envs matrix
+
+```{r}
+
+env_std <- decostand(envs_microbe, method = 'standardize') %>% 
+  rownames_to_column(var = 'SampleID')
+
+```
+
+
+# Feature filtering
+
+```{r}
+### Calculating IQR to keep only traits that are changing more
+## Filtering metabolites and genes that doesn't change much
+## Idea decrease the number of features to have a more balance matrices 
+
+iqr_test_matrix <- rowIQRs(as.matrix(RP_ready))
+
+iqr_res <- as.data.frame(as.matrix(iqr_test_matrix))
+
+# Filtering according to metaboAnalyts
+
+# 1) Less than 250 variables: 5% will be filtered; 
+# 2) Between 250 - 500 variables: 10% will be filtered; 
+# 3) Between 500 - 1000 variables: 25% will be filtered; and 
+# 4) Over 1000 variables: 40% will be filtered.
+
+## 10% of the features will be filtered
+
+# Sorting from largest to smallest (higher ranking = low iqr)
+rk <- rank(-iqr_test_matrix, ties.method = 'random')
+
+# Determining the number of remaining features
+remain.num <- nrow(RP_ready)*.9
+
+remain <- rk <= remain.num
+
+features_keep <- rownames(RP_ready)[remain] 
+  
+## Filter matrix
+
+matrix_ft <- RP_ready[features_keep,]
+
+## Note: 919 features kept for downstream analysis
+```
+
+
+# Metabolite Normalization
+
+## Median normalization
+
+```{r}
+
+norm_matrix <- median.norm(matrix_ft, transform_data = TRUE)
+
+```
+
+# Joining with metadata 
+
+```{r}
+
+temp_matrix <- as.data.frame(t(norm_matrix)) %>% 
+  rownames_to_column(var = "SampleID") %>% 
+  left_join(env_std, by = "SampleID") %>%
+  left_join(metadata, c('SampleID' = 'SampleID_RP')) %>% 
+  dplyr::select(!c(treatment_code, sampling, month, stage)) %>% 
+  pivot_longer(!c(SampleID, total_N, moisture, ph_mean, C_N, NDVI, site),
+               names_to = 'feature', values_to = 'intensity')
+
+```
+
+
+## Testing linear mixed-effect models
+
+## Setting pH and MOISTURE as fixed effect and SITE as Random effect
+
+
+```{r}
+
+safe_lmer <- safely(lmerTest::lmer, otherwise = 'Model not worked')
+
+lmer <- temp_matrix %>% 
+  group_by(feature) %>%
+  tidyr::nest() %>% # makes tibble of data for each feature, saves as 'lmer' column
+  mutate( # change the data in 'lmer' column
+    lmer_res = purrr::map(data, function(x) {
+      lmer <- safe_lmer(intensity ~ total_N + moisture + ph_mean + C_N + NDVI + (1|site), 
+                        data = x) # do the lmer test
+      
+      if(is.null(lmer$error)){
+        return(lmer$result)
+      } else {
+        return(lmer$error)
+      }
+    } )
+    
+  )
+
+
+```
+
+
+## Calculating Contrast
+
+```{r}
+
+# Order of parameters using fixef(lmer$lmer_res[[1]])
+# (Intercept)     total_N    moisture     ph_mean         C_N        NDVI 
+# (Intercept) represents the fixed effect
+# Thus,
+# total_N  ---  L = c(0, 1, 0, 0, 0, 0)
+# moisture ---  L = c(0, 0, 1, 0, 0, 0)
+# pH_mean  ---  L = c(0, 0, 0, 1, 0, 0)
+# C_N      ---  L = c(0, 0, 0, 0, 1, 0) 
+# NDVI     ---  L = c(0, 0, 0, 0, 0, 1)
+
+```
+
+
+## total N
+
+```{r}
+df_contrasts_TN <- lmer %>%
+  group_by(feature) %>%
+  group_modify(~ {
+    contest(.x$lmer_res[[1]],
+            L = c(0, 1, 0, 0, 0, 0),
+            joint = FALSE)
+  }) %>%
+  magrittr::set_colnames(c('feature', 'estimate', 'stderror', 
+                           'df', 'tvalue', 'lower', 'upper', 'pvalue')) %>%
+  ungroup() %>% 
+  mutate(padj = p.adjust(pvalue, method = 'fdr')) 
+
+sig_feature_TN <- df_contrasts_TN %>% 
+  filter(padj < 0.05) %>% 
+  rename(FeatureID = feature)
+
+
+
+```
+
+
+### moisture
+
+```{r}
+
+
+df_contrasts_moisture <- lmer %>%
+  group_by(feature) %>%
+  group_modify(~ {
+    contest(.x$lmer_res[[1]],
+            L = c(0, 0, 1, 0, 0, 0),
+            joint = FALSE)
+  }) %>%
+  magrittr::set_colnames(c('feature', 'estimate', 'stderror', 
+                           'df', 'tvalue', 'lower', 'upper', 'pvalue')) %>%
+  ungroup() %>% 
+  mutate(padj = p.adjust(pvalue, method = 'fdr')) 
+
+sig_feature_moisture <- df_contrasts_moisture %>% 
+  filter(padj < 0.05) %>% 
+  rename(FeatureID = feature)
+
+
+```
+
+
+## pH
+
+```{r}
+
+df_contrasts_pH <- lmer %>%
+  group_by(feature) %>%
+  group_modify(~ {
+    contest(.x$lmer_res[[1]],
+            L = c(0, 0, 0, 1, 0, 0),
+            joint = FALSE)
+  }) %>%
+  magrittr::set_colnames(c('feature', 'estimate', 'stderror', 
+                           'df', 'tvalue', 'lower', 'upper', 'pvalue')) %>%
+  ungroup() %>% 
+  mutate(padj = p.adjust(pvalue, method = 'fdr')) 
+
+sig_feature_pH <- df_contrasts_pH %>% 
+  filter(padj < 0.05) %>% 
+  rename(FeatureID = feature)
+
+
+
+
+```
+
+## CN
+
+```{r}
+
+df_contrasts_cn <- lmer %>%
+  group_by(feature) %>%
+  group_modify(~ {
+    contest(.x$lmer_res[[1]],
+            L = c(0, 0, 0, 0, 1, 0),
+            joint = FALSE)
+  }) %>%
+  magrittr::set_colnames(c('feature', 'estimate', 'stderror', 
+                           'df', 'tvalue', 'lower', 'upper', 'pvalue')) %>%
+  ungroup() %>% 
+  mutate(padj = p.adjust(pvalue, method = 'fdr')) 
+
+sig_feature_cn <- df_contrasts_cn %>% 
+  filter(padj < 0.05) %>% 
+  rename(FeatureID = feature)
+
+
+
+```
+
+
+## NDVI
+
+```{r}
+
+df_contrasts_ndvi <- lmer %>%
+  group_by(feature) %>%
+  group_modify(~ {
+    contest(.x$lmer_res[[1]],
+            L = c(0, 0, 0, 0, 0, 1),
+            joint = FALSE)
+  }) %>%
+  magrittr::set_colnames(c('feature', 'estimate', 'stderror', 
+                           'df', 'tvalue', 'lower', 'upper', 'pvalue')) %>%
+  ungroup() %>% 
+  mutate(padj = p.adjust(pvalue, method = 'fdr')) 
+
+sig_feature_ndvi <- df_contrasts_ndvi %>% 
+  filter(padj < 0.05) %>% 
+  rename(FeatureID = feature)
+
+
+
+```
+
+
+
+#################### Testing foward selected model #############################
+
+
+```{r}
+
+safe_lmer <- safely(lmerTest::lmer, otherwise = 'Model not worked')
+
+lmer_2 <- temp_matrix %>% 
+  group_by(feature) %>%
+  tidyr::nest() %>% # makes tibble of data for each feature, saves as 'lmer' column
+  mutate( # change the data in 'lmer' column
+    lmer_res = purrr::map(data, function(x) {
+      lmer <- safe_lmer(intensity ~ moisture + ph_mean + C_N + (1|site), 
+                        data = x) # do the lmer test
+      
+      if(is.null(lmer$error)){
+        return(lmer$result)
+      } else {
+        return(lmer$error)
+      }
+    } )
+    
+  )
+
+
+
+```
+
+
+## Check model performance - lmer
+
+```{r}
+
+performance_list <- map2(lmer_2$feature, lmer_2$lmer_res, function(featureid, model){
+  
+  df_performance <- model_performance(model) %>% 
+    mutate(featureID = featureid)
+  
+  if(ncol(df_performance) == 8){
+    df_performance <- df_performance %>% 
+      mutate(ICC = NA)
+  }
+  
+  return(df_performance)
+  
+})
+
+performance_df <- reduce(performance_list, rbind)
+
+write_csv(performance_df, "scripts/LC-MS-MS/5.Metabolite_model/output/RP-Performance_model_results_forward.csv")
+
+
+```
+
+
+## Calculating Contrast
+
+```{r}
+
+# Order of parameters using fixef(lmer$lmer_res[[1]])
+# (Intercept)    moisture     ph_mean         C_N  
+# (Intercept) represents the fixed effect
+# Thus,
+# moisture  ---  L = c(0, 1, 0, 0)
+# pH_mean ---    L = c(0, 0, 1, 0)
+# C_N  ---       L = c(0, 0, 0, 1)
+
+
+```
+
+
+### moisture
+
+```{r}
+
+
+df_contrasts_moisture <- lmer_2 %>%
+  group_by(feature) %>%
+  group_modify(~ {
+    contest(.x$lmer_res[[1]],
+            L = c(0, 1, 0, 0),
+            joint = FALSE)
+  }) %>%
+  magrittr::set_colnames(c('feature', 'estimate', 'stderror', 
+                           'df', 'tvalue', 'lower', 'upper', 'pvalue')) %>%
+  ungroup() %>% 
+  mutate(padj = p.adjust(pvalue, method = 'fdr')) 
+
+sig_feature_moisture <- df_contrasts_moisture %>% 
+  filter(padj < 0.05) %>% 
+  rename(FeatureID = feature)
+
+
+```
+
+
+## pH
+
+```{r}
+
+df_contrasts_pH <- lmer_2 %>%
+  group_by(feature) %>%
+  group_modify(~ {
+    contest(.x$lmer_res[[1]],
+            L = c(0, 0, 1, 0),
+            joint = FALSE)
+  }) %>%
+  magrittr::set_colnames(c('feature', 'estimate', 'stderror', 
+                           'df', 'tvalue', 'lower', 'upper', 'pvalue')) %>%
+  ungroup() %>% 
+  mutate(padj = p.adjust(pvalue, method = 'fdr')) 
+
+sig_feature_pH <- df_contrasts_pH %>% 
+  filter(padj < 0.05) %>% 
+  rename(FeatureID = feature)
+
+
+
+```
+
+## CN
+
+```{r}
+
+df_contrasts_cn <- lmer_2 %>%
+  group_by(feature) %>%
+  group_modify(~ {
+    contest(.x$lmer_res[[1]],
+            L = c(0, 0, 0, 1),
+            joint = FALSE)
+  }) %>%
+  magrittr::set_colnames(c('feature', 'estimate', 'stderror', 
+                           'df', 'tvalue', 'lower', 'upper', 'pvalue')) %>%
+  ungroup() %>% 
+  mutate(padj = p.adjust(pvalue, method = 'fdr')) 
+
+sig_feature_cn <- df_contrasts_cn %>% 
+  filter(padj < 0.05) %>% 
+  rename(FeatureID = feature)
+
+
+
+```
+
+
+## Saving significant features
+
+```{r}
+
+moisture_ready <- sig_feature_moisture %>% 
+  left_join(annot, by = 'FeatureID') %>% 
+  mutate(env_sig = 'moisture')
+
+
+ph_ready <- sig_feature_pH %>% 
+  left_join(annot, by = 'FeatureID') %>% 
+  mutate(env_sig = 'pH')
+
+
+CN_ready <- sig_feature_cn %>% 
+  left_join(annot, by = 'FeatureID') %>% 
+  mutate(env_sig = 'CN')
+
+
+full_table <- rbind(moisture_ready, ph_ready)
+
+
+write_csv(full_table, "scripts/LC-MS-MS/5.Metabolite_model/output/RP_sig_features_model_fwd_selected_RP.csv")
+
+```
+

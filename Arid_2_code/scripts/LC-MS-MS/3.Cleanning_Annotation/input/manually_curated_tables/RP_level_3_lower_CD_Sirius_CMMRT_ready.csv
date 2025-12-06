@@ -1,0 +1,48 @@
+FeatureID,Formula_CD,Potential_fragment,Formula_sirius,Formula_cmmrt,zscore_cmmrt,name_cmmrt,cd_vs_sirius,cd_vs_cmmrt,cmmrt_vs_sirius,Notes_name,Sirius_structure_percentage,use_Sirius_class,Final_name,Keep_formula,Final_annotation_comment
+FT_0.887_128.01924,NA,NA,C H5 N O6,NA,NA,NA,FALSE,TRUE,FALSE,na,na,yes,no name,C H5 N O6,L3.3
+FT_0.890_148.97575,NA,NA,C2 H N2 O4 P,NA,NA,NA,FALSE,TRUE,FALSE,na,na,yes,no name,C2 H N2 O4 P,L3.3
+FT_0.890_474.83348,NA,NA,C6 H9 N2 O7 P3 S5,NA,NA,NA,FALSE,TRUE,FALSE,delete,delete,delete,delete,delete,delete
+FT_0.891_102.97023,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE,na,na,na,no name,na,L5
+FT_0.891_105.00324,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE,na,na,na,no name,na,L5
+FT_0.891_114.98758,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE,na,na,na,no name,na,L5
+FT_0.891_125.98621,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE,na,na,na,no name,na,L5
+FT_0.891_130.96515,NA,NA,NA,C2 H4 Cl2 O2,2.3255327,"2,2-Dichloro-1,1-ethanediol",TRUE,FALSE,FALSE,na,na,na,no name,na,L5
+FT_0.891_130.96515,NA,NA,NA,C2 H2 CaO4,1.4444926,Calcium formate,TRUE,FALSE,FALSE,na,na,na,no name,na,L5
+FT_0.891_216.95059,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE,na,na,na,no name,na,L5
+FT_0.891_234.96119,NA,NA,C2 H7 N2 O5 P S2,C7 H7 I O,3.0547636,2-Iodoanisole,FALSE,FALSE,FALSE,na,na,na,no name,na,L5
+FT_0.891_234.96119,NA,NA,C2 H7 N2 O5 P S2,C7 H7 I O,2.9975095,4-Iodoanisole,FALSE,FALSE,FALSE,na,na,na,no name,na,L5
+FT_0.891_84.95972,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE,na,na,na,no name,na,L5
+FT_0.891_86.99273,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE,na,na,na,no name,na,L5
+FT_0.892_101.00834,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE,delete,delete,delete,delete,delete,delete
+FT_0.892_116.98586,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE,delete,delete,delete,delete,delete,delete
+FT_0.892_119.01888,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE,na,na,na,no name,na,L5
+FT_0.893_200.97310,NA,NA,C3 H6 O6 P2,NA,NA,NA,FALSE,TRUE,FALSE,na,na,yes,no name,C3 H6 O6 P2,L3.3
+FT_0.894_133.03457,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE,na,na,na,no name,na,L5
+FT_0.896_556.85864,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE,delete,delete,delete,delete,delete,delete
+FT_0.981_158.96409,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE,na,na,na,no name,na,L5
+FT_0.981_634.87626,NA,NA,C11 H14 N2 O17 P4 S2,NA,NA,NA,FALSE,TRUE,FALSE,delete,delete,delete,delete,delete,delete
+FT_0.982_258.89935,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE,na,na,na,no name,na,L5
+FT_0.982_260.89730,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE,na,na,na,no name,na,L5
+FT_0.982_770.85085,NA,NA,C7 H8 N4 O35 P2,NA,NA,NA,FALSE,TRUE,FALSE,delete,delete,delete,delete,delete,delete
+FT_0.983_190.91197,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE,na,na,na,no name,na,L5
+FT_0.984_122.92447,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE,na,na,na,no name,na,L5
+FT_0.984_274.87332,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE,na,na,na,no name,na,L5
+FT_0.985_206.88585,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE,na,na,na,no name,na,L5
+FT_0.985_290.84726,NA,NA,NA,Ca2 H2 O9 S2,1.5694381,Calcium Sulfate Hemihydrate,TRUE,FALSE,FALSE,delete,delete,delete,delete,delete,delete
+FT_1.095_203.05263,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE,na,na,na,no name,na,L5
+FT_1.179_203.05265,NA,NA,NA,NA,NA,NA,TRUE,TRUE,TRUE,delete,delete,delete,delete,delete,delete
+FT_1.327_443.04845,NA,NA,C14 H18 O14 S,NA,NA,NA,FALSE,TRUE,FALSE,delete,delete,delete,delete,delete,delete
+FT_1.647_157.01077,NA,NA,C4 H2 N3 O4,NA,NA,NA,FALSE,TRUE,FALSE,na,na,yes,no name,C4 H2 N3 O4,L3.3
+FT_14.354_377.07109,NA,NA,C18 H16 O7 S,C14 H16 O12,3.065953,6-Methyl 2-galloylgalactarate,FALSE,FALSE,FALSE,delete,delete,delete,delete,delete,delete
+FT_14.354_377.07109,NA,NA,C18 H16 O7 S,C14 H16 O12,3.065953,1-Methyl 2-galloylgalactarate,FALSE,FALSE,FALSE,delete,delete,delete,delete,delete,delete
+FT_17.038_203.10660,NA,NA,C13 H14 O2,C13 H14 O2,1.4630979,3-(3-Methylbutylidene)-1(3H)-isobenzofuranone,FALSE,FALSE,TRUE,match name sirius and cmmrt,56.42,na,"1-(2,2-Dimethylchromen-6-yl)ethanone",C13 H14 O2,L3.1
+FT_17.038_203.10660,NA,NA,C13 H14 O2,C13 H14 O2,1.4325411,"1-(2,2-Dimethylchromen-6-yl)ethanone",FALSE,FALSE,TRUE,match name sirius and cmmrt,56.42,na,"1-(2,2-Dimethylchromen-6-yl)ethanone",C13 H14 O2,L3.1
+FT_17.038_203.10660,NA,NA,C13 H14 O2,C13 H14 O2,1.2332412,Tremetone,FALSE,FALSE,TRUE,match name sirius and cmmrt,56.42,na,"1-(2,2-Dimethylchromen-6-yl)ethanone",C13 H14 O2,L3.1
+FT_17.647_203.07061,NA,NA,C12 H10 O3,C12 H10 O3,2.5479074,"3,4',5-Biphenyltriol",FALSE,FALSE,TRUE,match name sirius and cmmrt,51.5,na,"3,4',5-Biphenyltriol",C12 H10 O3,L3.1
+FT_17.647_203.07061,NA,NA,C12 H10 O3,C12 H10 O3,1.9119793,2-[(R)-hydroxy(phenyl)methyl]pyran-4-one,FALSE,FALSE,TRUE,match name sirius and cmmrt,51.5,na,"3,4',5-Biphenyltriol",C12 H10 O3,L3.1
+FT_17.647_203.07061,NA,NA,C12 H10 O3,C12 H10 O3,1.7791027,3-(2-Hydroxyphenyl)catechol,FALSE,FALSE,TRUE,match name sirius and cmmrt,51.5,na,"3,4',5-Biphenyltriol",C12 H10 O3,L3.1
+FT_18.063_503.16830,NA,NA,C29 H26 O8,C24 H27 ClN4 O6,2.88002,Clozapine glucuronide,FALSE,FALSE,FALSE,delete,delete,delete,delete,delete,delete
+FT_2.079_174.03864,NA,NA,C6 H7 N O5,NA,NA,NA,FALSE,TRUE,FALSE,na,na,yes,no name,C6 H7 N O5,L3.3
+FT_2.988_159.02775,NA,NA,C6 H6 O5,C6 H6 O5,0.6547839,4-Methylene-2-oxoglutarate,FALSE,FALSE,TRUE,keep sirius,54.66,na,Pentahydroxybenzene,C6 H6 O5,L3.3
+FT_2.988_159.02775,NA,NA,C6 H6 O5,C6 H6 O5,0.65085644,(Z)-5-oxohex-2-enedioic acid,FALSE,FALSE,TRUE,keep sirius,54.66,na,Pentahydroxybenzene,C6 H6 O5,L3.3
+FT_2.988_159.02775,NA,NA,C6 H6 O5,C6 H6 O5,0.60070825,4-Oxohex-2-enedioate,FALSE,FALSE,TRUE,keep sirius,54.66,na,Pentahydroxybenzene,C6 H6 O5,L3.3

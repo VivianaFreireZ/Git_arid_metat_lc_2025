@@ -1,0 +1,169 @@
+---
+title: "Arid metaT - MAG level - dinamyc time warpping"
+author: "Viviana Freire Zapata"
+date: "9/16/2025"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: '2'
+    collapsed: false
+    highlight: tango
+    css: style.css
+editor_options: 
+  chunk_output_type: console
+---
+
+# Data Pre-processing
+
+## 1. Setup
+
+### Importing libraries
+
+```{r libraries, message=FALSE, warning=FALSE}
+library(readxl)
+library(ggpubr)
+library(vegan)
+library(rstatix)
+library(factoextra)
+library(pheatmap)
+library(patchwork)
+library(ggforce)
+library(ggtext)
+library(dtwclust)
+library(ggrepel)
+library(ropls)
+library(ggh4x)
+library(tidyverse)
+
+```
+
+
+## Loading data
+
+## geTMM normalized transcripts
+
+```{r import_data, message=FALSE}
+
+geTMM <- read_csv("output/geTMM_normalized_matrix_2025.csv") 
+
+getmm_long <- geTMM %>% 
+  pivot_longer(!Geneid, names_to = 'SampleID', values_to = 'geTMM') %>% 
+  mutate(SampleID = str_replace_all(SampleID, '-', '_'))
+
+taxonomy <- read_csv("input/mag_taxonomy_denovo.csv")
+
+
+metadata <- read_csv("input/metadata_omics.csv")
+
+```
+
+## Checking number of genes that mapped to each MAG
+
+```{r}
+
+genes_per_mag <- getmm_long %>% 
+  mutate(bin = str_remove(Geneid, '_k.*')) %>% 
+  dplyr::select(Geneid, bin) %>% 
+  distinct() %>% 
+  group_by(bin) %>% 
+  dplyr::count()
+
+## NOTE: A total of 3 MAGs have only 1 and 6 genes. Delete these MAGs
+## bcn_bin_145_1
+
+## bco_bin_69_1
+
+## bco_bin_177_1
+
+```
+
+
+## Calculate expression per MAGs 
+
+```{r}
+
+## Total 282 MAGs
+
+delete_mags <- c('bcn_bin_145_1', 'bco_bin_69_1', 'bco_bin_177_1')
+
+## Total 279 MAGs
+
+mags_metaT <- getmm_long %>% 
+  mutate(genome = str_remove(Geneid, '_k.*')) %>% 
+  filter(!genome %in% delete_mags) %>% 
+  group_by(genome, SampleID) %>% 
+  summarise(geTMM_MAG = sum(geTMM)) %>% 
+  left_join(taxonomy, by = c('genome' = 'bin')) %>% 
+  left_join(metadata, by = c('SampleID' = 'treatment_code'))
+
+
+```
+
+
+## Hierachical clustering following Santos-Medellin et al
+
+## https://github.com/cmsantosm/WetupViromes/blob/main/Notebooks/asv_trend_groups.Rmd
+
+```{r}
+
+## Calculating zscore
+
+mag_dtw_zscore <- mags_metaT %>% 
+  group_by(month, genome) %>% 
+  summarise(geTMM_month = mean(geTMM_MAG)) %>%
+  group_by(genome) %>% 
+  mutate(mean_zs = (geTMM_month - mean(geTMM_month))/sd(geTMM_month)) %>%
+  select(-geTMM_month) %>% 
+  pivot_wider(names_from = genome, values_from = mean_zs) %>% 
+  column_to_rownames(var = "month")
+
+
+## Calculate distance matrix
+
+dist_matrix <- dist(t(as.matrix(mag_dtw_zscore)), method = 'euclidean')
+
+
+# Perform hierarchical clustering using average linkage
+hc <- hclust(dist_matrix, method = "average")
+
+plot(hc, main = "Hierarchical Clustering Dendrogram", xlab = "", sub = "", cex = 0.8)
+
+
+# Ordering
+
+ord.names <- hc$labels[hc$order] 
+
+ord.tmp <- data.frame(mags = ord.names, order = 1:length(ord.names))
+
+# K = 2
+
+k = 3
+
+cut <- cutree(hc[c(1,2,4)], k = k)
+
+ord.tmp$order <- as.factor(cut[ord.tmp$mags])
+
+
+```
+
+
+## Plotting HCLUST results
+
+```{r}
+
+mag_dtw_zscore_plot <- mags_metaT %>% 
+  group_by(month, genome) %>% 
+  summarise(geTMM_month = mean(geTMM_MAG)) %>%
+  group_by(genome) %>% 
+  mutate(mean_zs = (geTMM_month - mean(geTMM_month))/sd(geTMM_month)) %>% 
+  left_join(ord.tmp, by = c('genome' = 'mags')) %>% 
+  inner_join(taxonomy, by = c('genome' = 'bin'))
+
+
+write_csv(mag_dtw_zscore_plot, 'output/Hclust_MAG_expression_2025.csv')
+
+
+```
+
+

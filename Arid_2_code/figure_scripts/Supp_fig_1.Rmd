@@ -1,0 +1,1153 @@
+---
+title: "Supplementary figure 1"
+author: "Viviana Freire Zapata"
+date: "12/3/2025"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: '2'
+    collapsed: false
+    highlight: tango
+    css: style.css
+editor_options: 
+  chunk_output_type: console
+---
+
+# Data Pre-processing
+
+
+
+# Importing libraries
+
+```{r libraries, message=FALSE, warning=FALSE}
+
+library(vegan)
+library(matrixStats)
+library(GGally)
+library(ggpubr)
+library(performance)
+library(ggtext)
+library(ggforce)
+library(grid)
+library(ggplotify)
+library(ggh4x)
+library(patchwork)
+library(tidyverse)
+
+source('figure_scripts/functions_cdis_norm_stats.R')
+source('figure_scripts/functions_cdis_exploration.R')
+
+```
+
+# Loading data 
+
+# Loading data RP
+
+```{r}
+## Raw matrix
+
+
+RP_df <- read_csv("scripts/LC-MS-MS/1.Pre-processing/output/RP_matrix_clean_2025.csv")
+
+
+## Loading annotation
+
+annot_rp <- read_csv("scripts/LC-MS-MS/3.Cleanning_Annotation/output/RP_final_annotation_11_20_25.csv")
+
+```
+
+
+# Loading data HILIC
+
+```{r}
+## Raw matrix
+
+
+HILIC_df <- read_csv("scripts/LC-MS-MS/1.Pre-processing/output/HILIC_matrix_clean_2025.csv")
+
+
+## Loading annotation
+
+annot_hilic <- read_csv("scripts/LC-MS-MS/3.Cleanning_Annotation/output/HILIC_final_annotation_11_20_25.csv")
+
+```
+
+
+## Loading significant features
+
+```{r}
+
+sig_features_rp <- read_csv("scripts/LC-MS-MS/5.Metabolite_model/output/RP_sig_features_model_fwd_selected_RP.csv")
+
+
+sig_features_hilic <- read_csv("scripts/LC-MS-MS/5.Metabolite_model/output/HILIC_sig_features_model_fwd_selected.csv")
+
+
+```
+
+
+# Metadata
+
+```{r}
+
+## Metadata
+
+metadata <- read_csv("input/metadata_omics.csv") %>% 
+  filter(month != 'May_22')
+
+
+```
+
+
+## Prepare matrix RP
+
+```{r}
+
+RP_ready <- RP_df %>% 
+  select(FeatureID, contains("RP")) %>% 
+  filter(FeatureID %in% annot_rp$FeatureID) %>% 
+  column_to_rownames(var = "FeatureID")
+
+```
+
+
+# Metabolite Normalization
+
+## Median normalization
+
+```{r}
+
+norm_matrix_rp <- median.norm(RP_ready, transform_data = TRUE)
+
+```
+
+
+## Filtering full matrix 
+
+```{r}
+
+norm_matrix_sig_rp <- norm_matrix_rp %>% 
+  rownames_to_column(var = 'FeatureID') %>% 
+  filter(FeatureID %in% sig_features_rp$FeatureID) %>% 
+  pivot_longer(!FeatureID, names_to = 'SampleID', values_to = 'norm_int')
+
+```
+
+
+## Prepare matrix HILIC
+
+```{r}
+
+hilic_ready <- HILIC_df %>% 
+  select(FeatureID, contains("HILIC")) %>% 
+  filter(FeatureID %in% annot_hilic$FeatureID) %>% 
+  column_to_rownames(var = "FeatureID")
+
+```
+
+
+# Metabolite Normalization
+
+## Median normalization
+
+```{r}
+
+norm_matrix_hilic <- median.norm(hilic_ready, transform_data = TRUE)
+
+```
+
+
+
+## Filtering full matrix HILIC
+
+```{r}
+
+norm_matrix_sig_hilic <- norm_matrix_hilic %>% 
+  rownames_to_column(var = 'FeatureID') %>% 
+  filter(FeatureID %in% sig_features_hilic$FeatureID) %>% 
+  pivot_longer(!FeatureID, names_to = 'SampleID', values_to = 'norm_int')
+
+
+```
+
+## Checking similar sig features between HILIC and RP
+
+
+```{r}
+
+combined_sig <- rbind(norm_matrix_sig_rp, norm_matrix_sig_hilic)
+
+
+```
+
+
+## Adding class info
+
+## HILIC
+
+```{r}
+
+## Loading class of compounds
+
+name_class_hilic <- read_csv("scripts/LC-MS-MS/4.Get_inchis/output/HILIC_classyfire_from_name.csv") %>% 
+  filter(FeatureID %in% sig_features_hilic$FeatureID) %>% 
+  select(FeatureID, Name, superclass, class, subclass, level_5 = `level 5`) %>% 
+  mutate(LC_mode = 'HILIC')
+
+canopus_class_hilic <- read_csv("scripts/LC-MS-MS/4.Get_inchis/output/HILIC_classyfire_canopus.csv") %>% 
+  filter(FeatureID %in% sig_features_hilic$FeatureID) %>% 
+  select(FeatureID, Name,
+         superclass = `ClassyFire#superclass`,
+         class = `ClassyFire#class`, 
+         subclass = `ClassyFire#subclass`, 
+         level_5 = `ClassyFire#level 5`) %>% 
+  mutate(LC_mode = 'HILIC')
+
+```
+
+## RP
+
+```{r}
+
+name_class_rp <- read_csv("scripts/LC-MS-MS/4.Get_inchis/output/RP_classyfire_from_name_ready.csv") %>% 
+  filter(FeatureID %in% norm_matrix_sig_rp$FeatureID) %>% 
+  dplyr::select(FeatureID, Name, superclass, class, subclass, level_5 = `level 5`) %>% 
+  mutate(LC_mode = 'RP')
+
+canopus_class_rp <- read_csv("scripts/LC-MS-MS/4.Get_inchis/output/RP_classyfire_canopus_ready.csv") %>% 
+  filter(FeatureID %in% norm_matrix_sig_rp$FeatureID) %>% 
+  dplyr::select(FeatureID, Name,
+                superclass = `ClassyFire#superclass`,
+                class = `ClassyFire#class`, 
+                subclass = `ClassyFire#subclass`, 
+                level_5 = `ClassyFire#level 5`) %>% 
+  mutate(LC_mode = 'RP')
+
+
+```
+
+
+## Combine class info in a single df
+
+```{r}
+
+class_info <- rbind(name_class_hilic, canopus_class_hilic, 
+                    name_class_rp, canopus_class_rp)
+
+```
+
+
+## Joining CLASS info to df
+
+```{r}
+
+metadata_com <- metadata %>% 
+  mutate(sampleid_com = str_remove(SampleID_RP, 'RP_'))
+
+combined_sig_ready <- combined_sig %>% 
+  mutate(sampleid_com = str_remove(SampleID, 'RP_|HILIC_')) %>% 
+  left_join(metadata_com, by ='sampleid_com') %>% 
+  left_join(class_info, by = c('FeatureID')) %>%
+  mutate(Name = case_when(str_detect(Name, 'melitose') ~ 'D-Raffinose',
+                          .default = Name),
+         Name = case_when(str_detect(Name, 'alpha-alpha-Trehalose') ~ 'Trehalose',
+                          .default = Name),
+         Name = str_remove(Name, "\\(\\+\\)-")) %>% 
+  group_by(FeatureID, Name, month) %>% 
+  summarise(mean_int = mean(norm_int),
+            sd = sd(norm_int))
+  
+
+```
+
+
+## Heatmap
+
+```{r}
+
+combined_sig_split <- combined_sig_ready %>% 
+  left_join(class_info, by = 'FeatureID')%>%
+  select(!c(Name.y)) %>% 
+  rename(Name = Name.x) %>% 
+  split(.$superclass)
+
+heat_vip <- imap(combined_sig_split, function(df, code_id){
+  
+  superclass <- df %>% pull(superclass) %>% unique
+  class <- df %>% pull(class) %>% unique
+  subclass <- df %>% pull(subclass) %>% unique
+  level_5 <- df %>% pull(level_5) %>% unique
+  
+  class_tax <- str_flatten(c(superclass, class, subclass, level_5),
+                           collapse = '; ', na.rm = TRUE)
+  
+  comp_name <- df %>% pull(Name) %>% unique
+  
+  plot <- df %>% 
+    mutate(month = factor(month, levels = c('May', 'June', 'July_1', 'July_2',
+                                            'July_3', 'August', 'September', 
+                                            'October'))) %>% 
+    group_by(Name, month, LC_mode) %>% 
+    group_by(Name, LC_mode) %>% 
+    mutate(zscore = (mean_int - mean(mean_int))/ sd(mean_int)) %>% 
+    ungroup() %>% 
+    ggplot(aes(x = month,
+               y = Name,
+               fill = zscore)) +
+    geom_tile() +
+    facet_grid2(rows = vars(LC_mode),
+                space = 'free',
+                scales = 'free')+
+    scale_fill_distiller(palette = 'RdBu', 
+                         #limits = c(-3, 3)
+                         )+
+    labs(x = 'Month',
+         title = subclass)+
+    theme_bw() +
+    theme(plot.title = element_text(face = 'bold', hjust = 0.5, size = 5),
+          axis.text.x = element_text(angle = 90, hjust = 1, size = 5),
+          axis.text.y = element_text(size = 5),
+          axis.title.x = element_blank(),
+          axis.title.y = element_blank(),
+          strip.text.x = element_text(face = 'bold'),
+          strip.text.y.right = element_text(angle = 0, size = 5),
+          legend.position = 'bottom',
+          strip.background = element_rect(fill = 'white'),
+          panel.grid = element_blank(),
+          strip.text.x.top = element_text(size = 5),
+          strip.background.x = element_blank(),
+          strip.background.y = element_blank())
+  
+  return(plot)
+  
+})
+
+
+
+heat_vip$`Organic acids and derivatives`
+
+
+```
+
+
+
+```{r}
+
+keep_plot <- c(2, 4, 6, 7, 8, 9)
+
+heat_filtered <- heat_vip[keep_plot]
+
+des <- "
+ABC
+DEF
+"
+
+plot_filt <- purrr::reduce(heat_filtered, `+`)+
+  plot_layout(design = des
+              ) &
+  theme(legend.position = 'none')
+
+
+plot_filt
+
+```
+
+
+## Save final plot
+
+
+```{r}
+
+ggsave("output_figures/Supp_Figure_6.svg", plot_filt, dpi = 300,
+       units = 'mm',
+       width = 300)
+
+ggsave("output_figures/Supp_Figure_6.png", plot_filt, dpi = 300,
+       units = 'mm',
+       width = 300)
+
+
+
+```
+
+
+## All metabolites heatmap
+
+```{r}
+
+
+norm_matrix_rp_ln <- norm_matrix_rp %>% 
+  rownames_to_column(var = 'FeatureID') %>% 
+  pivot_longer(!FeatureID, names_to = 'SampleID', values_to = 'norm_int') %>% 
+  left_join(annot_rp, by = 'FeatureID') %>% 
+  mutate(LC_mode = 'RP')
+
+
+norm_matrix_hilic_ln <- norm_matrix_hilic %>% 
+  rownames_to_column(var = 'FeatureID') %>% 
+  pivot_longer(!FeatureID, names_to = 'SampleID', values_to = 'norm_int') %>% 
+  left_join(annot_hilic, by = 'FeatureID') %>% 
+  mutate(LC_mode = 'HILIC')
+
+
+combined_all <- rbind(norm_matrix_rp_ln, norm_matrix_hilic_ln)
+
+## Prepare matrix
+
+combined_all_ready <- combined_all %>% 
+  filter(Annotation_level %in% c('L1', 'L2')) %>% 
+  mutate(sampleid_com = str_remove(SampleID, 'RP_|HILIC_')) %>% 
+  left_join(metadata_com, by ='sampleid_com') %>% 
+  mutate(Name = case_when(str_detect(Name, 'melitose') ~ 'D-Raffinose',
+                          .default = Name),
+         Name = case_when(str_detect(Name, 'alpha-alpha-Trehalose') ~ 'Trehalose',
+                          .default = Name),
+         Name = str_remove(Name, "\\(\\+\\)-")) %>% 
+  group_by(FeatureID, Name, month, LC_mode) %>% 
+  summarise(mean_int = mean(norm_int)) %>% 
+  group_by(FeatureID, Name, LC_mode) %>% 
+  mutate(zscore = (mean_int - mean(mean_int))/ sd(mean_int)) %>% 
+  ungroup()
+
+
+## Heatmap
+
+
+plot_all <- combined_all_ready %>% 
+  filter(!str_detect(Name, 'Similar'),
+         !str_detect(Name, 'NP-')) %>% 
+  group_by(Name, FeatureID, LC_mode) %>%
+  mutate(for_order = mean(zscore)) %>%
+  ungroup() %>%
+  arrange(for_order) %>%
+  mutate(order = n():1) %>% 
+  mutate(month = factor(month, levels = c('May', 'June', 'July_1', 'July_2',
+                                          'July_3', 'August', 'September', 
+                                          'October'))) %>% 
+  ggplot(aes(x = month,
+             y = fct_reorder(Name, order),
+             fill = zscore)) +
+  
+  geom_tile() +
+  facet_grid2(rows = vars(LC_mode),
+              space = 'free',
+              scales = 'free')+
+  scale_fill_distiller(palette = 'RdBu', 
+                       #limits = c(-3, 3)
+  )+
+  labs(x = 'Month')+
+  theme_bw() +
+  theme(plot.title = element_text(face = 'bold', hjust = 0.5, size = 6),
+        axis.text.x = element_text(angle = 90, hjust = 1, size = 5),
+        #axis.text.y = element_blank(),
+        axis.title.x = element_blank(),
+        axis.title.y = element_blank(),
+        strip.text.x = element_text(face = 'bold'),
+        strip.text.y.right = element_text(angle = 0, size = 5),
+        legend.position = 'bottom',
+        strip.background = element_rect(fill = 'white'),
+        panel.grid = element_blank(),
+        strip.text.x.top = element_text(size = 6),
+        strip.background.x = element_blank(),
+        strip.background.y = element_blank())
+
+plot_all
+
+```
+
+
+# HILIC NMDS
+
+# Feature filtering
+
+```{r}
+### Calculating IQR to keep only traits that are changing more
+## Filtering metabolites and genes that doesn't change much
+## Idea decrease the number of features to have a more balance matrices 
+
+iqr_test_matrix <- rowIQRs(as.matrix(hilic_ready))
+
+iqr_res <- as.data.frame(as.matrix(iqr_test_matrix))
+
+# Filtering according to metaboAnalyts
+
+# 1) Less than 250 variables: 5% will be filtered; 
+# 2) Between 250 - 500 variables: 10% will be filtered; 
+# 3) Between 500 - 1000 variables: 25% will be filtered; and 
+# 4) Over 1000 variables: 40% will be filtered.
+
+## 10% of the features will be filtered
+
+# Sorting from largest to smallest (higher ranking = low iqr)
+rk <- rank(-iqr_test_matrix, ties.method = 'random')
+
+# Determining the number of remaining features
+remain.num <- nrow(hilic_ready)*.9
+
+remain <- rk <= remain.num
+
+features_keep <- rownames(hilic_ready)[remain] 
+  
+## Filter matrix
+
+matrix_ft <- hilic_ready[features_keep,]
+
+## Note: 816 features kept for downstream analysis
+```
+
+
+# Metabolite Normalization
+
+## Median normalization
+
+```{r}
+
+norm_matrix <- median.norm(matrix_ft, transform_data = TRUE)
+
+
+```
+
+
+## Creating colors 
+
+```{r}
+
+month_list <- metadata_com %>% 
+  mutate(month = factor(month, levels = c('May', 'June', 'July_1', 'July_2',
+                                          'July_3', 'August', 'September', 
+                                          'October'))) %>% 
+  select(month) %>% 
+  distinct() %>% 
+  pull()
+
+my_colors_lc <- set_names(get_palette('Spectral', 12)[c(1:2, 9:12, 4, 5)],
+                          nm = levels(month_list))
+
+stage_list <- metadata %>% 
+  mutate(stage = factor(stage, levels = c('Pre_monsoon', 'During_monsoon', 
+                                          'Post_monsoon'))) %>%
+  select(stage) %>% 
+  distinct() %>% 
+  pull()
+
+stage_colors <- set_names(c('#FEDD7F', '#9bc1bc', '#ed6a5a'),
+                          nm = levels(stage_list))
+
+```
+
+
+### NMDS - LC-MS
+
+Calculating distance matrix
+
+```{r}
+t_norm_matrix <- t(norm_matrix)
+
+
+dm <- vegdist(t_norm_matrix[metadata$SampleID_HILIC,], method = 'bray')
+
+
+
+```
+
+
+Performing NMDS analysis
+
+#NMDS stress
+# > 0.2 is deemed suspect
+# approaching 0.3 is arbitrary
+# = < 0.1 fair
+# = < 0.5 good
+
+
+```{r}
+set.seed(123)
+nmds <- metaMDS(dm,
+                k = 2,
+                maxit = 999,
+                trymax = 500,
+                wascores = TRUE)
+stressplot(nmds)
+```
+
+
+Extracting NMDS scores and plotting
+
+```{r}
+
+nmds_scores <- as.data.frame(scores(nmds, display = 'sites')) %>%
+  rownames_to_column(var = 'SampleID') %>% 
+  left_join(metadata_com, by = c('SampleID' = 'SampleID_HILIC'))
+
+nmds_scores$month <- factor(nmds_scores$month, levels = c("May", "June", "July_1", "July_2", "July_3", "August", "September", "October"))
+
+nmds_scores$stage <- factor(nmds_scores$stage, levels = c("Pre_monsoon", "During_monsoon", "Post_monsoon"))
+
+
+```
+
+
+```{r}
+## Testing PERMANOVA
+
+# distance matrix by Bray because relative abundance mode was selected
+
+dm_all <- vegdist(t_norm_matrix[metadata_com$SampleID_HILIC,], method = "bray")
+
+set.seed(456)
+
+permanova <- adonis2(dm_all ~ month,
+                     data=metadata_com, 
+                     permutations=999,
+                     strata = metadata_com$site,
+                     method="bray",
+                     by = 'terms')
+
+permanova
+
+```
+
+## get Centroid
+
+```{r}
+
+centroid <- nmds_scores %>% 
+  group_by(stage) %>% 
+  summarise(axis1 = mean(NMDS1),
+              axis2 = mean(NMDS2)) %>% 
+  ungroup()
+
+```
+
+## extract convex hull
+
+```{r}
+
+stage.hull <- nmds_scores %>% 
+    group_by(stage) %>%
+    slice(chull(NMDS1, NMDS2))
+
+```
+
+```{r}
+
+nmds_plot_hilic <- nmds_scores %>% 
+  ggplot(aes(x = NMDS1,
+             y = NMDS2))+
+  # geom_mark_ellipse(aes(fill = stage),
+  #                   alpha = 0.05,
+  #                   show.legend = FALSE) +
+  #scale_fill_manual(values = c('firebrick4', 'steelblue', 'orange')) +
+  geom_point(aes(color = month),
+             size = 3) +
+  geom_point(data = centroid, 
+             aes(x = axis1, y = axis2, 
+                 color = stage), 
+             size = 5, shape = 17)+
+  geom_polygon(data = stage.hull, 
+               aes(x = NMDS1, y = NMDS2, 
+                   fill = stage, 
+                   group = stage), 
+               alpha = 0.30) +
+  scale_color_manual(values = my_colors_lc)+
+  scale_fill_manual(values = stage_colors)+
+  annotate("text", x = -0.013, y = 0.007,
+           label = paste(c('Stress: ', round(nmds$stress, 4), "\n",
+                          'Month pvalue: ', 
+                          round(permanova$`Pr(>F)`[1], 4),"\n",
+                          'Month R²: ', round(permanova$R2[1], 2)),
+                         collapse = ''),
+           size = 2)+
+  labs(fill = "Monsoon stage", shape = "Monsoon stage",
+       title = "Metabolomics - HILIC mode")+
+  theme_bw() +
+  theme(plot.title = element_text(face = 'bold', hjust = 0.5),
+        plot.subtitle = element_markdown(),
+        legend.position = 'none',
+        legend.box = 'vertical',
+        panel.grid = element_blank(),
+        legend.text = element_markdown()) 
+
+nmds_plot_hilic
+
+
+```
+
+
+# Creating metadata for plot
+
+```{r}
+
+### Creating Month lengend
+
+metadata_plot <- tibble(Month = c('May', 'June', 'July_1', 'July_2',
+                                          'July_3', 'August', 'September', 
+                                          'October', 'May_22'),
+                        Stage = c('Pre monsoon', 'Pre monsoon', 'During monsoon', 
+                                  'During monsoon', 'During monsoon', 'During monsoon',
+                                  'Post monsoon','Post monsoon', 'Pre monsoon'))
+
+final_colors <- set_names(get_palette('Spectral', 12)[c(1:2, 9:12, 4, 5, 3)],
+                          nm = levels(metadata_plot$Month))
+
+plot_label <- metadata_plot %>% 
+  mutate(Month = factor(Month, levels = c('May', 'June', 'July_1', 'July_2',
+                                          'July_3', 'August', 'September', 
+                                          'October', 'May_22'))) %>% 
+  ggplot()+
+  geom_point(aes(x = Month,
+                 y = 1,
+                 color = Month))+
+  scale_color_manual(values = final_colors)+
+  theme_bw()+
+  theme(legend.position = 'bottom')
+
+plot_label
+
+leg_month <- get_legend(plot_label)
+
+
+### Creating monsoon stage
+
+stage_list <- metadata_plot %>% 
+  dplyr::select(Stage) %>% 
+  distinct() %>% 
+  mutate(Stage = factor(Stage, levels = c('Pre monsoon', 'During monsoon',
+                                          'Post monsoon')))
+                         
+
+stage_colors2 <- set_names(c('#FEDD7F', '#9bc1bc', '#ed6a5a'),
+                          nm = levels(stage_list))
+
+plot_stage <- metadata_plot %>% 
+  mutate(Stage = factor(Stage, levels = c('Pre monsoon', 'During monsoon',
+                                          'Post monsoon'))) %>% 
+   mutate(Month = factor(Month, levels = c('May', 'June', 'July_1', 'July_2',
+                                          'July_3', 'August', 'September', 
+                                          'October', 'May_22'))) %>% 
+  ggplot()+
+  geom_point(aes(x = Stage,
+                 y = 1,
+                 color = Stage),
+             shape = 15)+
+  scale_color_manual(values = stage_colors2) +
+  ggnewscale::new_scale_color() +
+  geom_point(aes(x = Month,
+                 y = 1,
+                 color = Month),
+             shape = 16) +
+  scale_color_manual(values = final_colors) +
+  guides(color = guide_legend(nrow = 2)) +
+  theme_bw()+
+  theme(legend.position = 'bottom',
+        legend.box = 'vertical',
+        legend.title = element_text(size = 7),
+        legend.text = element_text(size = 6),
+        legend.key.size = unit(.1, 'lines'),
+        legend.key.spacing = unit(0.3, 'lines'),
+        legend.spacing.y = unit(-0.1, 'lines'))
+
+plot_stage
+
+leg_stage <- get_legend(plot_stage)
+leg_stage
+
+```
+
+
+
+## RDA - HILIC MODE
+
+# ENVS 
+
+```{r}
+
+evs <- read_csv("input/env_data_ready_2025.csv") %>% 
+  filter(!sample == c('SAMP1-S1-22', 'SAMP1-S2-22', 'SAMP1-S3-22', 'SAMP1-S4-22'))%>% 
+  mutate(sample = str_replace_all(sample, "-", "_")) %>% 
+  rename(SampleID = sample)
+
+```
+
+# Microbial diversity
+
+```{r}
+
+avs_shannon <- read_csv("input/ASV_shannon.csv") %>% 
+  mutate(sample = str_replace_all(sample, "-", "_")) %>% 
+  rename(SampleID = sample) %>% 
+  select(!dataset)
+
+```
+
+
+# Preprare matrix - envs and microbial diversity
+
+```{r}
+
+envs_microbe <- evs %>% 
+  mutate(C_N = total_C/total_N) %>% 
+  left_join(avs_shannon, by = 'SampleID') %>% 
+  left_join(metadata_com, by = c('SampleID' = 'treatment_code')) %>% 
+  dplyr::select(!c(SampleID, sampling, stage, month, site)) %>%
+  rename(SampleID = SampleID_RP) %>% 
+  column_to_rownames(var = 'SampleID') %>% 
+  select(total_N, ph_mean, moisture, C_N, `NO3-N (ppm)`, `NH4-N (ppm)`, Shannon)
+
+```
+
+
+## Standarization of envs matrix
+
+```{r}
+
+env_std <- decostand(envs_microbe, method = 'standardize')
+
+```
+
+## Checking for collinearity 
+
+
+
+```{r}
+## Transpose normalized matrix
+
+rp_df2 <- as.data.frame(t(norm_matrix))
+
+# Building model with all variables
+
+rda_model <- rda(rp_df2 ~ ., data = env_std)
+
+plot(performance::check_collinearity(rda_model))
+
+# Quick plot to see how it is working
+
+ordiplot(rda_model, scaling = 1, choices = c(1,2))
+
+```
+
+
+```{r}
+
+summary(rda_model)
+
+anova.cca(rda_model, step = 1000)
+
+anova.cca(rda_model, step = 1000, by = "term")
+
+```
+
+
+```{r}
+
+# Selecting variables ----
+
+fwd.sel <- ordiR2step(rda(rp_df2 ~ 1, data = env_std), # simple model,
+                      scope = rda_model, # full model
+                      direction = 'forward',
+                      R2scope = TRUE,
+                      pstep = 1000,
+                      trace = TRUE,
+                      na.action = na.exclude) 
+
+fwd.sel$call
+
+```
+
+## Model based on foward selection
+
+```{r}
+
+envs_fwd_sel <- envs_microbe %>% 
+  select(moisture, ph_mean, C_N)
+
+env_std3 <- decostand(envs_fwd_sel, method = 'standardize')
+
+
+# Building model with all variables
+
+rda_model_fwd <- rda(rp_df2 ~ ., data = env_std3)
+
+
+```
+
+## Check R2 of the new model
+```{r}
+
+
+RsquareAdj(rda_model_fwd)
+## 0.2
+
+```
+
+
+## Testing the singnificace of the model
+
+
+```{r}
+
+anova.cca(rda_model_fwd, step = 1000)
+
+anova.cca(rda_model_fwd, step = 1000, by = 'term')
+
+
+total_variance <- sum(rda_model_fwd$CCA$eig)/(sum(rda_model_fwd$CCA$eig)+ sum(rda_model_fwd$CA$eig)) *100
+
+```
+
+
+## RDA plot 
+
+```{r}
+
+#### Scaling 2
+
+# Custom triplot code!
+
+## extract % explained by the first 2 axes
+perc <- round(100*(summary(rda_model_fwd)$cont$importance[2, 1:2]), 2)
+
+## extract scores - these are coordinates in the RDA space
+sc_sites <- as.data.frame(scores(rda_model_fwd, display="sites", choices=c(1,2), 
+                                 scaling=2)) %>%
+  rownames_to_column(var = 'SampleID') %>% 
+  left_join(metadata_com, by = c('SampleID' = 'SampleID_HILIC')) %>% 
+  mutate(color = my_colors_lc[month]) 
+
+
+sc_species <- as.data.frame(scores(rda_model_fwd, display="species", choices=c(1,2), scaling=2))
+
+sc_bp <- as.data.frame(scores(rda_model_fwd, display="bp", choices=c(1, 2), scaling=2)) %>% 
+  rownames_to_column(var = 'envs')
+
+
+
+RDA_plot_hilic <- sc_sites %>% 
+  ggplot()+
+  geom_point(aes(x = RDA1,
+                 y = RDA2,
+                 color = month),
+             size = 2) +
+  scale_color_manual(values = my_colors_lc)+
+  geom_point(data = sc_species,
+             aes(x = RDA1,
+                 y = RDA2),
+             fill = 'gray80',
+             size = 1,
+             shape = 22) +
+  geom_segment(data = sc_bp, 
+               aes(x = 0, y = 0, 
+                   xend = 3*RDA1, yend = 3*RDA2), 
+               color = "black", 
+               linewidth = 0.5,
+               arrow = arrow(length = unit(.5, 'lines'))) +
+  geom_text(data = sc_bp,
+            aes(x = 3*RDA1+.3, y = 3*RDA2 +.3,
+                label = envs),
+            color = "black",
+            fontface = "bold",
+            size = 2) +
+  labs(title = "Metabolomics - RDA - Scaling 2",
+       x = paste0("RDA1 (", perc[1], "%)" ) ,
+       y = paste0("RDA2 (", perc[2], "%)"))+
+  theme_bw() +
+  theme(plot.title = element_text(face = 'bold', hjust = 0.5),
+        plot.subtitle = element_markdown(),
+        panel.grid = element_blank(),
+        legend.position = 'none',
+        legend.box = 'vertical',
+        legend.text = element_markdown()) 
+
+RDA_plot_hilic
+
+```
+
+## Metabolite classes
+
+## HILIC
+
+```{r}
+
+## Loading class of compounds
+
+name_class_hilic_all <- read_csv("scripts/LC-MS-MS/4.Get_inchis/output/HILIC_classyfire_from_name.csv") %>% 
+  select(FeatureID, Name, superclass, class, subclass, level_5 = `level 5`) %>% 
+  mutate(LC_mode = 'HILIC')
+
+canopus_class_hilic_all <- read_csv("scripts/LC-MS-MS/4.Get_inchis/output/HILIC_classyfire_canopus.csv") %>% 
+  select(FeatureID, Name,
+         superclass = `ClassyFire#superclass`,
+         class = `ClassyFire#class`, 
+         subclass = `ClassyFire#subclass`, 
+         level_5 = `ClassyFire#level 5`) %>% 
+  mutate(LC_mode = 'HILIC')
+
+```
+
+## RP
+
+```{r}
+
+name_class_rp_all <- read_csv("scripts/LC-MS-MS/4.Get_inchis/output/RP_classyfire_from_name_ready.csv") %>% 
+  dplyr::select(FeatureID, Name, superclass, class, subclass, level_5 = `level 5`) %>% 
+  mutate(LC_mode = 'RP')
+
+canopus_class_rp_all <- read_csv("scripts/LC-MS-MS/4.Get_inchis/output/RP_classyfire_canopus_ready.csv") %>% 
+  dplyr::select(FeatureID, Name,
+                superclass = `ClassyFire#superclass`,
+                class = `ClassyFire#class`, 
+                subclass = `ClassyFire#subclass`, 
+                level_5 = `ClassyFire#level 5`) %>% 
+  mutate(LC_mode = 'RP')
+
+
+```
+
+
+
+## Combine class info in a single df
+
+```{r}
+
+class_info_rp_all <- rbind(name_class_rp_all, canopus_class_rp_all) %>% 
+  mutate(superclass = ifelse(is.na(superclass), 'No assigned', superclass),
+         class = ifelse(is.na(class), glue::glue('Unassigned class of {superclass}'),
+                        class),
+         subclass = ifelse(is.na(subclass), glue::glue('Unassigned subclass of {class}'),
+                           subclass))
+
+
+class_info_hilic_all <- rbind(name_class_hilic_all, canopus_class_hilic_all)%>%
+  mutate(superclass = ifelse(is.na(superclass), 'No assigned', superclass),
+         class = ifelse(is.na(class), glue::glue('Unassigned class of {superclass}'),
+                        class),
+         subclass = ifelse(is.na(subclass), glue::glue('Unassigned subclass of {class}'),
+                           subclass))
+
+```
+
+
+## Piechart metabolite class - RP mode
+
+```{r}
+
+
+all_clusters <- class_info_rp_all %>% 
+  select(FeatureID, superclass, class) %>% 
+  distinct() %>% 
+  group_by(superclass, class) %>% 
+  summarise(class_n = n()) %>% 
+  group_by(superclass) %>% 
+  mutate(superclass_n = sum(class_n),
+         superclass = factor(superclass),
+         class = str_replace(class, 'Unassigned class of No assigned', 'No assigned')) %>% 
+  arrange(superclass, class)
+
+superclass_clusters <- all_clusters %>%
+  select(superclass, superclass_n) %>%
+  distinct() %>% 
+  ungroup() %>% 
+  mutate(perc = superclass_n / sum(superclass_n),
+         label_pos = cumsum(perc) - 0.5 * perc)
+
+class_clusters <- all_clusters %>%
+  ungroup() %>% 
+  select(superclass, class, class_n) %>%
+  distinct() %>% 
+  mutate(class = factor(class, levels = rev(all_clusters$class))) %>% 
+  arrange(class) %>% 
+  mutate(perc = class_n / sum(class_n),
+         label_pos = cumsum(perc) - 0.5 * perc)
+```
+
+
+## Pie chart
+
+```{r}
+
+pie_plot_rp <- superclass_clusters %>% 
+  ggplot() +
+  geom_col(aes(x = 'A',
+               y = perc,
+               fill = superclass),
+           color = 'white') +
+  geom_col(data = class_clusters,
+           aes(x = 'B',
+               y = perc,
+               fill = superclass,
+               alpha = 0.7),
+           color = 'white',
+           show.legend = FALSE) +
+  # geom_text(aes(x = 'A',
+  #               y = 1 - label_pos,
+  #               label = superclass,
+  #           size = 2)) +
+  geom_text(data = class_clusters %>% filter(perc > 0.03),
+            (aes(x = 'B',
+                 y = label_pos,
+                 label = class)),
+            size = 2) +
+  scale_x_discrete(limits = c('', 'A', 'B')) +
+  scale_fill_manual(values = ggpubr::get_palette('Paired', 15)) +
+  theme_void() +
+  guides(fill = guide_legend(ncol = 3)) +
+  coord_polar('y')+
+  theme(legend.position = 'bottom',
+        legend.title = element_text(size = 7),
+        legend.title.position = 'top',
+        legend.text = element_text(size = 5),
+        legend.key.size = unit(.5, 'lines'),
+        legend.key.spacing = unit(0.3, 'lines'),
+        legend.spacing.y = unit(-0.1, 'lines'))
+
+pie_plot_rp
+
+```
+
+
+## Saving plot
+
+```{r}
+
+## Final figure
+des <- "
+ABE
+CCE
+DDE
+"
+
+
+final_fig <- nmds_plot_hilic + RDA_plot_hilic + leg_stage + free(pie_plot_rp)+ plot_all + 
+
+  plot_layout(design = des,
+              heights = c(1, 0.1, 1)) +
+  plot_annotation(tag_levels = list(c('A', 'B', '', 'C', 'D'))) &
+  theme(text = element_text(size = 6))
+
+final_fig
+
+```
+
+
+
+## Save final plot
+
+
+```{r}
+
+ggsave("output_figures/Sup_figure_1.svg", final_fig, dpi = 300,
+       units = 'mm', 
+       height = 310, 
+       width = 300)
+
+ggsave("output_figures/Sup_figure_1.png", final_fig, dpi = 300,
+       units = 'mm', 
+       height = 310, 
+       width = 300)
+
+
+```
+
+
+

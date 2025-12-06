@@ -1,0 +1,758 @@
+---
+title: "Omic integration"
+author: "Viviana Freire Zapata"
+output: html_notebook
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r}
+library(DESeq2)
+library(edgeR)
+library(limma)
+library(patchwork)
+library(ggh4x)
+library(readxl)
+library(ggpubr)
+library(vegan)
+library(ggrepel)
+library(clusterProfiler)
+library(VennDiagram)
+library(mixOmics)
+library(ggtext)
+library(devtools)
+library(SLIDE)
+library(pROC)
+library(caret)
+library(ROCR)
+library(tidyverse)
+source('scripts/LC-MS-MS/5.Metabolite_model/functions_cdis_norm_stats.R')
+
+```
+
+# Loading data
+
+## Metadata
+
+```{r}
+metadata <- read_csv('input/metadata_omics.csv') 
+
+metadata_ready <- metadata %>% 
+  mutate(Month = factor(month, levels = c("May", "July_1", "July_2", "July_3",
+                                          "August", "October", "May_22"))) 
+
+metatadata_metaT <- metadata_ready %>% 
+  filter(!is.na(SampleID_metaT))
+```
+
+## Taxonomy
+
+```{r}
+
+mag_taxonomy <- read_csv('input/mag_taxonomy_denovo.csv') %>% 
+  mutate(Class = ifelse(is.na(Class), 
+                        glue::glue('Unassigned Class \nof {Phylum}'),
+                        Class))
+
+```
+
+
+```{r}
+## annotation
+
+annot <- read_csv("input/annot_with_cydbs_2.23.25.csv") %>% 
+  rename(geneid = `...1`)
+```
+
+# Metagenomics
+
+## Laoding metaG TMM noralized counts
+
+```{r}
+# 
+# tmm_mag <- read_csv("output/TMM_gene_counts_mags_2025.csv") %>% 
+#   column_to_rownames(var = 'mag_geneid')
+
+```
+
+## Keep more abundant features and Scale
+
+```{r}
+# Calculate variance per feature
+#  MAG-KO matrix, rows = features, columns = samples
+# 
+# var_genes <- apply(tmm_mag, 1, var)
+# 
+# # keep top 1% most variable features
+# 
+# tmm_mag_ft <- tmm_mag[var_genes > quantile(var_genes, 0.995), ]
+# 
+# # Scale
+# 
+# tmm_mag_scaled <- t(scale(t(tmm_mag_ft)))
+
+```
+
+
+# Metatranscriptomics
+
+## Loading metaT data
+
+```{r}
+
+## Raw counts
+
+rnaseq_counts <- read_tsv('input/rnaseq_counts_final_2025.txt', skip = 1) %>%
+  filter(!str_detect(Geneid, 'RNA'))
+
+## Sequences names
+
+sra_table <- read_csv("input/SraRunTable.csv") %>%
+  dplyr::select(Run, `Sample Name`) %>%
+  mutate(treatment_code = str_replace_all(`Sample Name`, '-', '_'))
+
+
+```
+
+
+```{r}
+# Fixing names
+
+raw_matrix <- rnaseq_counts %>%
+  dplyr::select(!c(Chr, Start, End, Strand, Length)) %>%
+  column_to_rownames(var = "Geneid") %>%
+  rename_with(.fn = function(x) str_remove(x, '/xdisk/tfaily/vfreirezapata/metat_2025_final/bowtie_results/')) %>%
+  rename_with(.fn = function(x) str_remove(x, '_mapped_sorted.bam'))
+
+# Summing counts per sample
+
+matrix_sum <- raw_matrix %>%
+  rownames_to_column(var = 'Geneid') %>%
+  pivot_longer(!Geneid, names_to = 'Run', values_to = 'counts') %>%
+  left_join(sra_table, by = 'Run') %>%
+  group_by(treatment_code, Geneid) %>%
+  summarise(counts_sum = sum(counts))
+
+
+```
+
+## Creating matrix per KO (sum expression of genes with same annotation)
+
+```{r}
+
+countData_long <- matrix_sum %>%
+  left_join(annot, by = c('Geneid' = 'geneid')) %>%
+  filter(!is.na(ko_id)) %>%
+  group_by(fasta, ko_id, treatment_code) %>%
+  summarise(sum_counts = sum(counts_sum))
+
+## Filter low-count KOs
+
+countData_filter <- countData_long %>%
+  filter(sum_counts > 20) ## Filtering low-count KOs
+
+countData_temp <- countData_long %>%
+  pivot_wider(names_from = 'treatment_code', values_from = 'sum_counts', values_fill = 0) %>%
+  ungroup() %>%
+  unite(fasta_ko, fasta, ko_id, sep = '__') %>%
+  column_to_rownames(var = 'fasta_ko')
+
+countData_ready <- countData_temp[rowSums(countData_temp != 0) >= 10,
+                                  metatadata_metaT$treatment_code]
+
+```
+
+## Normalize counts - edgeR + voom
+
+```{r}
+
+# KO_counts: rows = KO, cols = samples
+
+dge <- DGEList(counts = countData_ready)
+
+keep <- filterByExpr(dge, group = metatadata_metaT$month)
+
+dge <- dge[keep, keep.lib.sizes=FALSE]
+
+dge <- calcNormFactors(dge, method = "TMM")
+
+design <- model.matrix(~0 + metatadata_metaT$month)
+
+v <- voom(dge, design=design, plot=TRUE)   # v$E is log2-CPM (voom)
+
+expr <- v$E
+
+expr_scaled <- t(scale(t(expr)))# scale KOs (rows) before integration
+
+# Save v$weights for diagnostics if needed
+
+```
+
+## Keep only the top 5% more variant genes
+
+```{r}
+
+var_genes_metat <- apply(expr, 1, var)
+
+expr_filt <- expr[var_genes_metat > quantile(var_genes_metat, 0.95), ]
+
+```
+
+## Sanitycheck outliers / batch effects
+
+```{r}
+
+# PCA before normalization and scaling
+
+# 1. Transpose (PCA expects samples as rows)
+count_t <- t(countData_ready)
+
+# 2. Run PCA
+pca_res <- prcomp(count_t, scale. = TRUE)
+
+# Build data frame for ggplot
+pca_df <- as.data.frame(pca_res$x)
+pca_df2 <- pca_df %>% 
+  rownames_to_column(var = 'treatment_code') %>% 
+  left_join(metatadata_metaT, by = 'treatment_code')
+
+ggplot(pca_df2, aes(x = PC1, y = PC2, color = month)) +
+  geom_point(size = 3, alpha = 0.8) +
+  theme_minimal(base_size = 14) +
+  labs(x = paste0("PC1 (", round(100*summary(pca_res)$importance[2,1], 1), "%)"),
+       y = paste0("PC2 (", round(100*summary(pca_res)$importance[2,2], 1), "%)")) +
+  scale_color_brewer(palette = "Set2")
+
+# PCA after normalization and scaling
+
+# 1. Transpose (PCA expects samples as rows)
+expr_t <- t(expr)
+
+# 2. Run PCA
+pca_res <- prcomp(expr_t, scale. = TRUE)
+
+# Build data frame for ggplot
+pca_df <- as.data.frame(pca_res$x)
+
+pca_df2 <- pca_df %>% 
+  rownames_to_column(var = 'treatment_code') %>% 
+  left_join(metatadata_metaT, by = 'treatment_code')
+
+ggplot(pca_df2, aes(x = PC1, y = PC2, color = month)) +
+  geom_point(size = 3, alpha = 0.8) +
+  theme_minimal(base_size = 14) +
+  labs(x = paste0("PC1 (", round(100*summary(pca_res)$importance[2,1], 1), "%)"),
+       y = paste0("PC2 (", round(100*summary(pca_res)$importance[2,2], 1), "%)")) +
+  scale_color_brewer(palette = "Set2")
+
+```
+
+
+## Metabolomics
+
+
+# Loading data 
+
+```{r}
+## Raw matrix
+
+RP_df <- read_csv("scripts/LC-MS-MS/1.Pre-processing/output/RP_matrix_clean_2025.csv")
+
+
+## Loading annotation
+
+annot_metabo <- read_csv("scripts/LC-MS-MS/3.Cleanning_Annotation/output/RP_final_annotation_checked.csv")
+
+
+```
+
+## Prepare matrix
+
+```{r}
+
+RP_ready <- RP_df %>% 
+  dplyr::select(FeatureID, contains("RP")) %>% 
+  filter(FeatureID %in% annot_metabo$FeatureID) %>% 
+  column_to_rownames(var = "FeatureID")
+
+```
+
+# Feature filtering
+
+```{r}
+### Calculating IQR to keep only traits that are changing more
+## Filtering metabolites and genes that doesn't change much
+## Idea decrease the number of features to have a more balance matrices 
+
+iqr_test_matrix <- rowIQRs(as.matrix(RP_ready))
+
+iqr_res <- as.data.frame(as.matrix(iqr_test_matrix))
+
+# Filtering according to metaboAnalyts
+
+# 1) Less than 250 variables: 5% will be filtered; 
+# 2) Between 250 - 500 variables: 10% will be filtered; 
+# 3) Between 500 - 1000 variables: 25% will be filtered; and 
+# 4) Over 1000 variables: 40% will be filtered.
+
+## 10% of the features will be filtered
+
+# Sorting from largest to smallest (higher ranking = low iqr)
+rk <- rank(-iqr_test_matrix, ties.method = 'random')
+
+# Determining the number of remaining features
+remain.num <- nrow(RP_ready)*.9
+
+remain <- rk <= remain.num
+
+features_keep <- rownames(RP_ready)[remain] 
+
+## Filter matrix
+
+matrix_LC_ft <- RP_ready[features_keep,]
+
+## Note: 919 features kept for downstream analysis
+```
+
+
+# Metabolite Normalization and scaling
+
+## Median normalization
+
+```{r}
+
+LC_matrix_ready <- median.norm(matrix_LC_ft, transform_data = TRUE)
+
+```
+
+
+# DIABLO
+
+## Step 1 - PLS-DA
+## Following - mixOMics tutorial 
+## https://mixomicsteam.github.io/mixOmics-Vignette/id_05.html
+
+## Running NON scal
+
+```{r}
+## X matrix - samples in rows, metabolites in columns (24 samples x 1624 metabolites)
+
+## Matching sample names
+
+# Metabolomics
+
+metabolomics_mx <- as.data.frame(t(LC_matrix_ready)) %>% 
+  rownames_to_column(var = 'sampleid') %>% 
+  left_join(metadata_ready, by = c('sampleid' = 'SampleID_RP')) %>% 
+  filter(!is.na(SampleID_metaT)) %>% 
+  dplyr::select(!c(SampleID_metaT, sampleid, SampleID_HILIC, site, sampling,
+                   month, stage, Month)) %>%
+  column_to_rownames(var = 'treatment_code')
+
+# Metagenomics
+
+# metag_mx <- as.data.frame(t(tmm_mag_scaled)) %>% 
+#   rownames_to_column(var = 'sampleid') %>% 
+#   mutate(sampleid = str_replace_all(sampleid, '-', '_')) %>% 
+#   left_join(metadata_ready, by = c('sampleid' = 'treatment_code')) %>% 
+#   filter(month != 'May_22') %>% 
+#   dplyr::select(!c(SampleID_metaT, SampleID_RP, SampleID_HILIC, site, sampling,
+#                    month, stage, Month)) %>%
+#   column_to_rownames(var = 'sampleid')
+#   
+
+# Metatranscriptomics
+
+expression_matrix <- as.data.frame(t(expr_filt)) %>%
+  rownames_to_column(var = 'sampleid') %>%
+  left_join(metadata_ready, by = c('sampleid' = 'treatment_code')) %>%
+  filter(month != 'May_22') %>%
+  dplyr::select(!c(SampleID_metaT, SampleID_RP, SampleID_HILIC, site, sampling,
+                   month, stage, Month)) %>%
+  column_to_rownames(var = 'sampleid')
+
+
+```
+
+
+########################
+# Model by dry and wet
+########################
+
+```{r}
+
+## Creating multiomic matrix
+
+X <- list(metabolomics = metabolomics_mx,
+          metaT = expression_matrix)
+
+## Y matrix - metadata, using month
+
+metadata_int <- metadata_ready %>% 
+  filter(month != 'May_22') %>% 
+  filter(!is.na(SampleID_metaT)) %>% 
+  dplyr::select(treatment_code, month, stage) %>% 
+  mutate(moisture = if_else(stage %in% c("During_monsoon"), 'wet', 'dry'))
+
+Y <- factor(metadata_int$moisture)
+
+
+```
+
+```{r}
+# Matrix design - data driven
+
+# Regression analysis with PLS to understand correlation bt omics
+
+## RP vs metaG
+
+# res1.pls <- pls(X$metabolomics, X$metaG, ncomp = 1)
+# 
+# cor(res1.pls$variates$X, res1.pls$variates$Y)
+
+## RP vs metaT
+
+res2.pls <- pls(X$metabolomics, X$metaT, ncomp = 1)
+
+cor(res2.pls$variates$X, res2.pls$variates$Y)
+
+## metaT vs metaG
+
+# res3.pls <- pls(X$metaG, X$metaT, ncomp = 1)
+# 
+# cor(res3.pls$variates$X, res3.pls$variates$Y)
+
+## RP vs metaG
+#           comp1
+# comp1 0.7204116
+
+## RP vs metaT
+
+#           comp1
+# comp1 0.8783546
+
+## metaG vs metaT
+#           comp1
+# comp1 0.5597737
+
+
+## Matrix design
+
+
+design <- matrix(0.8, ncol = length(X), nrow = length(X), 
+                 dimnames = list(names(X), names(X)))
+
+diag(design) <- 0
+
+design 
+
+
+```
+
+# Number of components
+
+```{r}
+
+diablo <- block.plsda(X, Y, ncomp = 5, design = design)
+
+set.seed(123) # For reproducibility, remove for your analyses
+
+perf.diablo = perf(diablo, validation = c('Mfold'), folds = 5, nrepeat = 50)
+
+perf.diablo$error.rate  # Lists the different types of error rates
+
+# Plot of the error rates based on weighted vote
+plot(perf.diablo)
+
+## Component
+
+perf.diablo$choice.ncomp$WeightedVote
+
+ncomp <- 3 #
+
+```
+
+
+
+## Tunning
+
+```{r}
+
+
+set.seed(456) # for reproducibility
+
+
+list.test.keepX <- list(
+  metaT = seq(200, 250, 10),
+  metabolomics = seq(100, 250, 10)
+)
+
+
+tune.diablo <- tune.block.splsda(X, Y, ncomp = ncomp, 
+                                 test.keepX = list.test.keepX, 
+                                 design = design,
+                                 validation = 'Mfold', folds = 5, 
+                                 nrepeat = 50, 
+                                 BPPARAM = BiocParallel::SnowParam(workers = 12),
+                                 dist = "centroids.dist",
+                                 measure = 'BER')
+
+list.keepX_res <- tune.diablo$choice.keepX
+
+list.keepX_res
+
+
+```
+
+# Final model
+
+```{r}
+
+diablo_moisture_final <- block.splsda(X, Y, ncomp = 3, 
+                                      keepX = list.keepX_res, design = design)
+
+```
+
+# Model performance
+
+```{r}
+
+## Mfold test 
+set.seed(456) # For reproducibility
+
+
+perf.diablo_final = perf(diablo_moisture_final, validation = 'Mfold', 
+                         folds = 5, nrepeat = 100, dist = "centroids.dist")
+
+# Performance with Majority vote
+perf.diablo_final$MajorityVote.error.rate
+
+# Performance with Weighted vote
+perf.diablo_final$WeightedVote.error.rate
+
+## LOO test 
+set.seed(456) # For reproducibility
+
+
+perf.diablo_final = perf(diablo_moisture_final, validation = 'loo', 
+                         nrepeat = 10, dist = "centroids.dist")
+
+# Performance with Majority vote
+perf.diablo_final$MajorityVote.error.rate
+
+# Performance with Weighted vote
+perf.diablo_final$WeightedVote.error.rate
+
+```
+
+
+```{r}
+plot(perf.diablo_final)
+
+perf.diablo_final$WeightedVote.error.rate
+
+auc <- auroc(diablo_moisture_final, roc.block = "metaT", roc.comp = 3,
+             print = FALSE)
+
+auc
+
+plotArrow(diablo_moisture_final, ind.names = FALSE, legend = TRUE, 
+          title = 'DIABLO comp 1 - 2')
+
+```
+
+## Plots
+
+```{r}
+
+plotDiablo(diablo_moisture_final, ncomp = 1)
+
+scores <- plotIndiv(diablo_moisture_final, ind.names = TRUE, legend = TRUE,
+                    ellipse = TRUE,
+                    block = 'weighted.average',
+                    title = 'OMICs, DIABLO')
+
+## Extracting PCA values
+
+scores_df <- scores$df
+
+write_csv(scores_df, "output/Diablo_scores_11_10_25.csv")
+
+saveRDS(diablo_moisture_final, "output/diablo_moisture_final_11_10_25.rds")
+
+## Check plots
+
+plotVar(diablo_moisture_final)
+
+```
+
+# Test for overfitting
+
+```{r}
+
+nperm <- 100
+perm_errors <- data.frame(iteration = 1:nperm,
+                          metaT_comp1 = rep(NA, nperm),
+                          metaT_comp2 = rep(NA, nperm),
+                          metaT_comp3 = rep(NA, nperm),
+                          metaB_comp1 = rep(NA, nperm),
+                          metaB_comp2 = rep(NA, nperm),
+                          metaB_comp3 = rep(NA, nperm))
+
+for(i in 1:nperm){
+  Y_perm <- sample(Y)  # shuffle labels
+  diablo_perm <- block.splsda(X, Y_perm, ncomp = 3,
+                              keepX = list.keepX_res, 
+                              design = design)
+  
+  perf_perm <- perf(diablo_perm, validation = 'Mfold', folds = 5, 
+                    nrepeat = 10, dist = 'centroids.dist',
+                    cpus = 12)
+  
+  perm_errors$metaT_comp1[i] <- perf_perm$error.rate$metaT[1]
+  perm_errors$metaT_comp2[i] <- perf_perm$error.rate$metaT[2]
+  perm_errors$metaT_comp3[i] <- perf_perm$error.rate$metaT[3]
+  perm_errors$metaB_comp1[i] <- perf_perm$error.rate$metabolomics[1]
+  perm_errors$metaB_comp2[i] <- perf_perm$error.rate$metabolomics[2]
+  perm_errors$metaB_comp3[i] <- perf_perm$error.rate$metabolomics[3]
+}
+
+
+perf_perm$WeightedVote.error.rate
+
+## Error rate null model plot
+
+error_null <- perm_errors %>% 
+  pivot_longer(!iteration, names_to = 'omic_component', values_to = 'error rate') %>% 
+  ggplot() +
+  ggridges::geom_density_ridges(aes(x= `error rate`,
+                                    y = omic_component,
+                                    fill = omic_component),
+                                alpha = 0.5) +
+  geom_vline(xintercept = 0.4, color = "red", lty = 2)+
+  scale_y_discrete(limits = rev) +
+  #scale_color_manual(values = assembly_color) +
+  labs(title = 'Permutation test for DIABLO',
+       y = 'Omics - component') +
+  theme_bw() +
+  theme(plot.title = element_text(face = 'bold', hjust = 0.5)) 
+
+error_null
+
+
+
+```
+
+# Test for stability
+## Check if the same features are consistently selected across folds
+
+```{r}
+
+## Increasing nrepeat to 50
+
+perf.diablo_final = perf(diablo_moisture_final, validation = 'Mfold', 
+                         folds = 5, nrepeat = 50, dist = "centroids.dist")
+
+stability <- imap(perf.diablo_final$features$stable, function(obj_rep, rep){
+  
+  dataset_level <- imap(obj_rep, function(obj_dataset, dataset){
+    
+    component_level <- imap(obj_dataset, function(obj_comp, comp){
+      
+      res <- as.data.frame(obj_comp) %>% 
+        rename(FeatureID = Var1) %>% 
+        mutate(component = comp)
+      
+    }) %>% 
+      reduce(rbind) %>% 
+      mutate(dataset = dataset)
+    
+  }) %>% 
+    reduce(rbind) %>% 
+    mutate(rep = rep)
+  
+}) %>% reduce(rbind)
+
+```
+
+## Extracting variables
+
+```{r}
+
+# Metabolomics
+
+loadings_df_comp1 <- plotLoadings(diablo_moisture_final, contrib = 'max', comp = 1) %>% 
+  reduce(rbind) %>% 
+  rownames_to_column(var = 'FeatureID') %>% 
+  mutate(component = 'comp1')
+
+loadings_df_comp2 <- plotLoadings(diablo_moisture_final, contrib = 'max', comp = 2) %>% 
+  reduce(rbind) %>% 
+  rownames_to_column(var = 'FeatureID') %>% 
+  mutate(component = 'comp2')
+
+loadings_df_comp3 <- plotLoadings(diablo_moisture_final, contrib = 'max', comp = 3) %>% 
+  reduce(rbind) %>% 
+  rownames_to_column(var = 'FeatureID') %>% 
+  mutate(component = 'comp3')
+
+loadings_all <- rbind(loadings_df_comp1, loadings_df_comp2, loadings_df_comp3)
+
+loadings_unique <- loadings_all %>% 
+  select(FeatureID, component) %>% 
+  mutate(selected = TRUE)
+
+
+stability_summarized <- stability %>% 
+  filter(Freq > 0.5) %>% 
+  left_join(loadings_unique, by = c('FeatureID', 'component')) %>% 
+  mutate(selected = ifelse(is.na(selected), FALSE, selected),
+         FeatureID_check = ifelse(selected, 
+                                  glue::glue("<i style='color:red'>{FeatureID}</i>"),
+                                  FeatureID)) %>% 
+  ggplot() +
+  geom_tile(aes(y = FeatureID_check,
+                x = rep),
+            fill = 'steelblue') +
+  facet_grid2(rows = vars(dataset, component),
+              space = 'free',
+              scale = 'free') +
+  theme_bw() +
+  theme(axis.text.y = element_markdown(size = 3),
+        axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+stability_summarized
+
+
+write_csv(loadings_all, "output/DIABLO_selected_features_11_10_25.csv")
+
+```
+
+
+## Joining with annotations
+
+# Metabolomics
+
+```{r}
+
+metabolomics_features <- loadings_all %>% 
+  filter(str_detect(FeatureID, 'FT_')) %>% 
+  left_join(annot_metabo, by = 'FeatureID')
+
+ko_pathway <- read_csv("input/ko_pathways_UPDATE_10_23_24.csv")
+
+metag_features <- loadings_all %>% 
+  filter(!str_detect(FeatureID, 'FT_')) %>% 
+  separate_wider_delim(FeatureID, names = c('MAG', 'KO'), delim = '__') %>% 
+  left_join(mag_taxonomy, by = c('MAG' = 'bin')) %>% 
+  left_join(ko_pathway, by = c('KO' = 'ko_id'))
+
+write_csv(metabolomics_features, 'output/DIABLO_metabolomics_features_11-10-2025.csv')
+
+write_csv(metag_features, 'output/DIABLO_metaG_features_11-10-2025.csv')
+
+```
+
+

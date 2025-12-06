@@ -1,0 +1,660 @@
+ID,Name,Category_1,Category_2,Definition
+ExDef00001_001,carbon dioxide => formate,Reductive glycine pathway,Carbon fixation,"K05299+K15022,K22015+K25123+K25124"
+ExDef00001_002,formate+THF => formyl-H4MPT,Reductive glycine pathway,Carbon fixation,K01938
+ExDef00001_003,"5,10_methenyl_H4F => 5,10_methylene_H4F",Reductive glycine pathway,Carbon fixation,K01491
+ExDef00001_004,"5,10_methylene_H4F+ammonium+carbon-dioxide => glycine",Reductive glycine pathway,Carbon fixation,"K02437+(K00282+K00283,K00281)+K00605+K00382"
+ExDef00001_005,"5,10_methylene_H4F+glycine => serine",Reductive glycine pathway,Carbon fixation,K00600
+ExDef00001_006,serine => pyruvate+ammonium,Reductive glycine pathway,Carbon fixation,"K01752,K01754"
+ExDef00001_007,glycine => acetyl-P+ammonium,Reductive glycine pathway,Carbon fixation,K10670+K10671+K10672+K21576+K21577
+ExDef00001_008,acetyl-CoA => acetyl-P,Reductive glycine pathway,Carbon fixation,"K00625,K13788,K04020"
+ExDef00001_009,acetyl-P => acetate,Reductive glycine pathway,Carbon fixation,"K01512,K00925"
+ExDef00001_010,acetate => acetyl-CoA,Reductive glycine pathway,Carbon fixation,K01895
+ExDef00001_011,acetyl-CoA+carbon-dioxide => pyruvate,Reductive glycine pathway,Carbon fixation,"(K00169+K00170+K00171+K00172),(K00169+K00170+K00171+K00189),(K03737)"
+ExDef00002_001,PEP => pyruvate-PO3,anabolic_phosphate_reduction,phosphorous_redox,"K01841,K23999"
+ExDef00002_002,pyruvate-PO3 => acetaldehyde-PO3,anabolic_phosphate_reduction,phosphorous_redox,K09459
+ExDef00003_001,phosphite=>phosphate,phosphite_oxidation,phosphorous_redox,K18916
+ExDef00004_001,methyl-phosphonate => phosphate,assimilatory_phosphonate_oxidation,phosphorous_redox,"(K06166+K06165+K06164+K06162+K05780+K06163+K05781),(K23996+K05915)"
+ExDef00004_002,pyruvate-phosphonate => phosphate,assimilatory_phosphonate_oxidation,phosphorous_redox,K19669
+ExDef00004_003,acetate-phosphonate => phosphate,assimilatory_phosphonate_oxidation,phosphorous_redox,K19670
+ExDef00004_004,acetaldehyde-phosphonate => phosphate,assimilatory_phosphonate_oxidation,phosphorous_redox,K05306
+ExDef00005_001,glycerone => glycerone-P,glycerone_degradation,glycerol_degradation,"(K05878+K05879+K05881),(K00863)"
+ExDef00005_002,glycerone-P => glyceraldehyde-3-P,glycerone_degradation,glycerol_degradation,K01803
+ExDef00006_001,glycerol => glycerol-3-P,glycerol_degradation,glycerol_degradation,K00864
+ExDef00006_002,glycerol-3-P => glycerone-P,glycerol_degradation,glycerol_degradation,"(K00111+K00112+K00113),(K00057)"
+ExDef00006_003,glycerone-P => glyceraldehyde-3-P,glycerol_degradation,glycerol_degradation,K01803
+ExDef00009_001,pyruvate => acetyl-CoA,ethanol_fermentation,Fermentation,"(K00163+K00627),(K00161+K00162+K00627),(K00169+K00170+K00171+K00172),(K00169+K00170+K00171+K00189),(K03737),(K00174+K00175),(K00656)"
+ExDef00009_002,acetyl-CoA => acetaldehyde,ethanol_fermentation,Fermentation,"K00132,K04072,K04073,K18366"
+ExDef00009_003,acetaldehyde => ethanol,ethanol_fermentation,Fermentation,"K13953,K13954,K00001,K00121,K04072,K00002,K12957,K13979,K14028+K14029,K00114"
+ExDef00009_004,pyruvate => acetaldehyde,ethanol_fermentation,Fermentation,K01568
+ExDef00009_005,ethanol => acetaldehyde,ethanol_fermentation,Fermentation,K22473+K22474
+ExDef00010_001,pyruvate => L-lactate,lactate_fermentation,Fermentation,"K00016,K00101"
+ExDef00010_002,pyruvate => D-lactate,lactate_fermentation,Fermentation,"K03777,K03778,K00102,K18930,K21836"
+ExDef00011_001,succinyl-CoA => R-methylmalonyl-CoA,propionate_fermentation_succinate_pathway,Fermentation,"K01847,(K01848+K01849)"
+ExDef00011_002,R-methylmalonyl-CoA => S-methylmalonyl-CoA,propionate_fermentation_succinate_pathway,Fermentation,K05606
+ExDef00011_003,S-methylmalonyl-CoA => propionyl-CoA,propionate_fermentation_succinate_pathway,Fermentation,"K11264,K03416"
+ExDef00011_004,propionyl-CoA => propionate,propionate_fermentation_succinate_pathway,Fermentation,"K01026,(K01905+K22224),K24012"
+ExDef00012_001,pyruvate => lactate,propionate_fermentation_acrylate_pathway,Fermentation,"K00016,K00101,K03777,K03778,K00102,K18930,K21836"
+ExDef00012_002,lactate => lactoyl-CoA,propionate_fermentation_acrylate_pathway,Fermentation,K01026
+ExDef00012_003,lactoyl-CoA => acryloyl-CoA,propionate_fermentation_acrylate_pathway,Fermentation,K20626+K20627
+ExDef00012_004,acryloyl-CoA => propionyl-CoA,propionate_fermentation_acrylate_pathway,Fermentation,"K20143,K19745,K00248,K00232"
+ExDef00013_001,succinyl-CoA => succinate semialdehyde,butanoate_fermentation_succinate_pathway,Fermentation,K18119
+ExDef00013_002,succinate semialdehyde => 4-hydroxybutanoate,butanoate_fermentation_succinate_pathway,Fermentation,"K18120,K00043,K08318"
+ExDef00013_003,4-hydroxybutanoate => 4-hydroxybutanoyl-CoA,butanoate_fermentation_succinate_pathway,Fermentation,K18122
+ExDef00013_004,4-hydroxybutanoyl-CoA => crotonoyl-CoA,butanoate_fermentation_succinate_pathway,Fermentation,K14534
+ExDef00013_005,crotonoyl-CoA => butanoyl-CoA,butanoate_fermentation_succinate_pathway,Fermentation,"K17829,K00209"
+ExDef00013_006,butanoyl-CoA => butanoate,butanoate_fermentation_succinate_pathway,Fermentation,"(K01034+K01035),K19709"
+ExDef00013_007,butanoyl-CoA => butanoyl-P,butanoate_fermentation_succinate_pathway,Fermentation,K00634
+ExDef00013_008,butanoyl-P => butanoate,butanoate_fermentation_succinate_pathway,Fermentation,K00929
+ExDef00014_001,pyruvate => acetyl-CoA,butanoate_fermentation_acetyl_coa_pathway,Fermentation,"(K00163+K00627),(K00161+K00162+K00627),(K00169+K00170+K00171+K00172),(K00169+K00170+K00171+K00189),(K03737),(K00174+K00175),(K00656)"
+ExDef00014_002,acetyl-CoA => acetatoacetyl-CoA,butanoate_fermentation_acetyl_coa_pathway,Fermentation,K00626
+ExDef00014_003,acetatoacetyl-CoA => 3-hydroxybutanoyl-CoA,butanoate_fermentation_acetyl_coa_pathway,Fermentation,"K07516,K00022,K00074,K00023"
+ExDef00014_004,3-hydroxybutanoyl-CoA => crotonoyl-CoA,butanoate_fermentation_acetyl_coa_pathway,Fermentation,"K01825,K01782,K01715,K01692,K17865"
+ExDef00014_005,crotonoyl-CoA => butanoyl-CoA,butanoate_fermentation_acetyl_coa_pathway,Fermentation,"K17829,K00209"
+ExDef00014_006,butanoyl-CoA => butanoate,butanoate_fermentation_acetyl_coa_pathway,Fermentation,"(K01034+K01035),K19709"
+ExDef00014_007,butanoyl-CoA => butanoyl-P,butanoate_fermentation_acetyl_coa_pathway,Fermentation,K00634
+ExDef00014_008,butanoyl-P => butanoate,butanoate_fermentation_acetyl_coa_pathway,Fermentation,K00929
+ExDef00015_001,alpha amylase,starch_degradation,polysaccharide_degradation,"K01176,K05343,K07405"
+ExDef00015_002,beta amylase,starch_degradation,polysaccharide_degradation,K01177
+ExDef00015_003,limit dextrinase,starch_degradation,polysaccharide_degradation,"K01182,K01203"
+ExDef00015_004,pullulanase,starch_degradation,polysaccharide_degradation,K01200
+ExDef00016_001,alpha-arabinofuranosidase,hemicellulose_degradation,polysaccharide_degradation,K06113
+ExDef00016_002,alpha-galactosidase,hemicellulose_degradation,polysaccharide_degradation,"K01189,K07406,K07407"
+ExDef00016_003,alpha-glucuronidase,hemicellulose_degradation,polysaccharide_degradation,K01235
+ExDef00016_004,"endo-1,4-beta-mannase",hemicellulose_degradation,polysaccharide_degradation,"K01218,K19355"
+ExDef00016_005,"endo-1,4-beta-xylanase",hemicellulose_degradation,polysaccharide_degradation,"K01181,K13465"
+ExDef00016_006,"endo-1,4-betagalactase",hemicellulose_degradation,polysaccharide_degradation,K01224
+ExDef00016_007,"endo-alpha-1,5-arabinanase",hemicellulose_degradation,polysaccharide_degradation,K06113
+ExDef00016_008,"exo-1,4-beta-mannosidase",hemicellulose_degradation,polysaccharide_degradation,K01192
+ExDef00016_009,"exo-1,4-beta-xylosidase",hemicellulose_degradation,polysaccharide_degradation,"K01198,K15920,K22268"
+ExDef00016_010,p-cumaric esterase,hemicellulose_degradation,polysaccharide_degradation,"K09252,K21016"
+ExDef00017_001,cellobiases,cellulose_degradation,polysaccharide_degradation,"K01188,K05349,K05350"
+ExDef00017_002,endocellulases,cellulose_degradation,polysaccharide_degradation,"K01179,K19357,K20542"
+ExDef00017_003,exocellulase,cellulose_degradation,polysaccharide_degradation,"K01225,K19668"
+ExDef00018_001,chitin deacetylase,chitin_degradation,polysaccharide_degradation,K01452
+ExDef00018_002,chitinase,chitin_degradation,polysaccharide_degradation,"K01183,K13381,K20547,K26440"
+ExDef00019_001,lignin peroxidase,lignin_degradation,polysaccharide_degradation,K23515
+ExDef00019_002,manganese peroxidase,lignin_degradation,polysaccharide_degradation,K20205
+ExDef00019_003,phenol oxidase,lignin_degradation,polysaccharide_degradation,"K00421,K05909"
+ExDef00020_001,pectin depolymerase,pectin_degradation,polysaccharide_degradation,K01184
+ExDef00020_002,pectin methyl esterase,pectin_degradation,polysaccharide_degradation,K01051
+ExDef00020_003,protopectinases,pectin_degradation,polysaccharide_degradation,K06113
+Extra_001,"Hydrogen sulfide => Polysulfide, sqr","Hydrogen sulfide => Polysulfide, sqr",Sulfur metabolism,K17218
+Extra_002,"Thiosulfate => HSO3- + Hydrogen sulfide, phsA","Thiosulfate => HSO3- + Hydrogen sulfide, phsA",Sulfur metabolism,K08352
+Extra_003,sor,Sulfur  => hydrogen sulfide,Sulfur metabolism,K16952
+Extra_004,sreABC,Sulfur  => hydrogen sulfide,Sulfur metabolism,K17219
+Extra_005,sreABC,Sulfur  => hydrogen sulfide,Sulfur metabolism,K17220
+Extra_006,sreABC,Sulfur  => hydrogen sulfide,Sulfur metabolism,K17221
+Extra_007,Thiosulfate => Sulfite,Thiosulfate => Sulfite,Sulfur metabolism,K01011
+Extra_008,Thiosulfate => Sulfite,Thiosulfate => Sulfite,Sulfur metabolism,K02439
+Extra_009,,Multicomponent Na+/H+ antiporter,Multicomponent Na+/H+ antiporter,K05565+K05566+K05567+K05568+K05569+K05570+K05571
+Extra_010,,methanophenazine hydrogenase ,hydrogenase,K14068+K14069+K14070
+Extra_011,,ech hydrogenase subunit,hydrogenase,K14086+K14087+K14088+K14089+K14090+K14091
+Extra_012,,energy-converting hydrogenase A,hydrogenase,K14092+K14093+K14094+K14095+K14096+K14097+K14098+K14099+K14100+K14101+K14102+K14103+K14104+K14105+K14106+K14107+K14108+K14109
+Extra_013,,energy-converting hydrogenase B,hydrogenase,K14110+K14111+K14112+K14113+K14114+K14115+K14116+K14117+K14118+K14119+K14120+K14121+K14122+K14123+K14124+K14125
+Extra_014,,membrane-bound hydrogenase,hydrogenase,K18016+K18017+K18023
+Extra_015,,NADP-reducing hydrogenase subunits,hydrogenase,K18330+K18331+K18332+K17992
+Extra_016,,"putative two-component system protein, hydrogenase maturation factor HypX/HoxX",hydrogenase,K19640
+Extra_017,,uptake hydrogenase small and large subunit,hydrogenase,K23548+K23549
+M00416,,Cytochrome aa3-600 menaquinol oxidase,Energy metabolism,K02827+K02826+K02828+K02829
+M00152,,Cytochrome bc1 complex,Energy metabolism,K00410+K00411+K00412+K00413+K00414+K00415+K00416+K00417+K00418+K00419+K00420
+Extra_018,,Na+-transporting NADH:ubiquinone oxidoreductase subunits,Na+-transporting NADH:ubiquinone oxidoreductase,K00346+K00347+K00348+K00349+K00350+K00351
+M00151,,Cytochrome bc1 complex respiratory unit,Energy metabolism,"((K00412+K00413,K00410)+K00411),K03886+K03887+K03888,K03890+K03891+K03889"
+M00153,,Cytochrome bd ubiquinol oxidase,Energy metabolism,"K00425+K00426+(K00424,K22501)"
+Extra_019,,Cytochrome c oxidase,oxygen,K02256+K02257+K02258+K02259+K02260+K02261+K02262+K02263+K02264+K02265+K02266+K02267+K02268+K02269+K02270+K02271+K02272+K02273
+M00156,,"Cytochrome c oxidase, cbb3-type",Energy metabolism,"((K00404+K00405,K15862)+K00407+K00406)"
+M00155,,"Cytochrome c oxidase, prokaryotes",Energy metabolism,"K02275+(K02274+K02276,K15408)-(K02277,K27109)"
+Extra_020,,RNF complex,RNF complex,K03612+K03613+K03614+K03615+K03616+K03617
+Extra_021,,NAD-reducing hydrogenase large and small subunits [EC:1.12.1.2],hydrogenase,K00436+K18007
+Extra_022,,[NiFe] hydrogenase large and samll subunits [EC:1.12.2.1],hydrogenase,K00437+K18008
+Extra_023,,[NiFe] hydrogenase diaphorase moiety large and small subunit[EC:1.12.1.2],hydrogenase,K18005+K18006
+Extra_024,,coenzyme F420 hydrogenase subunits,hydrogenase,K00440+K00441+K00442+K00443
+Extra_025,,coenzyme F420 non_reducing hydrogenase subunits,hydrogenase,K14126+K14127+K14128
+Extra_026,,ferredoxin hydrogenase subunits,hydrogenase,K00532+K00533+K00534+K06441
+Extra_027,,bidirectional [NiFe] hydrogenase diaphorase subunits,hydrogenase,K05586+K05587+K05588
+Extra_028,,"5,10-methenyltetrahydromethanopterin hydrogenase",hydrogenase,K06862
+Extra_029,,glycerol degradation alternative,glycerol degradation alternative,"K00005,(K06122,K06121,K06120)"
+M00001_001,glucose => glucose-6P,Glycolysis (Embden-Meyerhof pathway),Central carbon metabolism,"(K00844,K12407,K00845,K25026,K00886,K08074,K00918)"
+M00001_002,glucose-6P => fructose-6P,Glycolysis (Embden-Meyerhof pathway),Central carbon metabolism,"(K01810,K06859,K13810,K15916)"
+M00001_003,fructose-6P => fructose-1-6-biP,Glycolysis (Embden-Meyerhof pathway),Central carbon metabolism,"(K00850,K16370,K21071,K00918)"
+M00001_004,fructose-1-6-biP => glycerone P,Glycolysis (Embden-Meyerhof pathway),Central carbon metabolism,"(K01623,K01624,K11645,K16305,K16306)"
+M00001_005,glycerone P => glyceraldehyde-3P,Glycolysis (Embden-Meyerhof pathway),Central carbon metabolism,K01803
+M00001_006,glyceraldehyde-3P => 3-Phospho-D-glyceroyl P,Glycolysis (Embden-Meyerhof pathway),Central carbon metabolism,"((K00134,K00150) K00927,K11389)"
+M00001_007,3-Phospho-D-glycerate => 2-Phospho-D-glycerate,Glycolysis (Embden-Meyerhof pathway),Central carbon metabolism,"(K01834,K15633,K15634,K15635)"
+M00001_008,2-Phospho-D-glycerate => Phosphoenolpyruvate,Glycolysis (Embden-Meyerhof pathway),Central carbon metabolism,"(K01689,K27394)"
+M00001_009,Phosphoenolpyruvate => Pyruvate,Glycolysis (Embden-Meyerhof pathway),Central carbon metabolism,"(K00873,K12406)"
+M00002_001,glycerone P => glyceraldehyde-3P,"Glycolysis, core module involving three-carbon compounds",Central carbon metabolism,K01803
+M00002_002,glyceraldehyde-3P => 3-Phospho-D-glyceroyl P,"Glycolysis, core module involving three-carbon compounds",Central carbon metabolism,"((K00134,K00150) K00927,K11389)"
+M00002_003,3-Phospho-D-glycerate => 2-Phospho-D-glycerate,"Glycolysis, core module involving three-carbon compounds",Central carbon metabolism,"(K01834,K15633,K15634,K15635)"
+M00002_004,2-Phospho-D-glycerate => Phosphoenolpyruvate,"Glycolysis, core module involving three-carbon compounds",Central carbon metabolism,"(K01689,K27394)"
+M00002_005,Phosphoenolpyruvate => Pyruvate,"Glycolysis, core module involving three-carbon compounds",Central carbon metabolism,"(K00873,K12406)"
+M00004_001,"glucose-6P => glucono-1,5-lactone-6P",Pentose P cycle,Central carbon metabolism,"K13937,(K00036,K19243)"
+M00004_002,"glucono-1,5-lactone-6P => 6-phospho-D-gluconate",Pentose P cycle,Central carbon metabolism,"K13937,(K01057,K07404)"
+M00004_003,6-phospho-D-gluconate => ribulose-5P,Pentose P cycle,Central carbon metabolism,K00033
+M00004_004,ribulose-5P => xylulose-5P,Pentose P cycle,Central carbon metabolism,K01783
+M00004_005,ribulose-5P => ribose-5P,Pentose P cycle,Central carbon metabolism,"(K01807,K01808)"
+M00004_006,ribose-5P + xylulose-5P => sedoheptulase-7P,Pentose P cycle,Central carbon metabolism,K00615
+M00004_007,sedoheptulase-7P => erythrose-4P +fructose-6P,Pentose P cycle,Central carbon metabolism,"K00616,K13810"
+M00004_008,erythrose-4P => fructose-6P,Pentose P cycle,Central carbon metabolism,K00615
+M00004_009,fructose-6P => glucose-6P,Pentose P cycle,Central carbon metabolism,"(K01810,K06859,K15916),K13810"
+M00005_001,ribose 5P => PRPP,"PRPP biosynthesis,",Central carbon metabolism,K00948
+M00006_001,"glucose-6P => glucono-1,5-lactone-6P","Pentose P pathway, oxidative phase",Central carbon metabolism,"K13937,(K00036,K19243)"
+M00006_002,"glucono-1,5-lactone-6P => 6-phospho-D-gluconate","Pentose P pathway, oxidative phase",Central carbon metabolism,"K13937,(K01057,K07404)"
+M00006_003,6-phospho-D-gluconate => ribulose-5P,"Pentose P pathway, oxidative phase",Central carbon metabolism,K00033
+M00007_001,fructose-6P => erythrose-4P,"Pentose P pathway, non-oxidative phase",Central carbon metabolism,K00615
+M00007_002,erythrose-4P + fructose-6P => seduheptulose-7P,"Pentose P pathway, non-oxidative phase",Central carbon metabolism,"K00616,K13810"
+M00007_003,sedoheptulase-7P => ribose-5P + xylulose-5P,"Pentose P pathway, non-oxidative phase",Central carbon metabolism,K00615
+M00007_004,xylulose-5P => ribulose-5P,"Pentose P pathway, non-oxidative phase",Central carbon metabolism,K01783
+M00007_005,ribulose-5P => ribose-5P,"Pentose P pathway, non-oxidative phase",Central carbon metabolism,"(K01807,K01808)"
+M00008_001,glucose => glucose-6P,Entner-Doudoroff pathway,Central carbon metabolism,"(K00844,K12407,K00845,K25026,K00886,K08074,K00918)"
+M00008_002,"glucose-6P => glucono-1,5-lactone-6P",Entner-Doudoroff pathway,Central carbon metabolism,K00036
+M00008_003,"glucono-1,5-lactone-6P => 6-phospho-D-gluconate",Entner-Doudoroff pathway,Central carbon metabolism,"(K01057,K07404)"
+M00008_004,"6-phospho-D-gluconate => 	
+2-Dehydro-3-deoxy-6-phospho-D-gluconate",Entner-Doudoroff pathway,Central carbon metabolism,K01690
+M00008_005,2-Dehydro-3-deoxy-6-phospho-D-gluconate => glyceraldehyde-P + pyruvate,Entner-Doudoroff pathway,Central carbon metabolism,K01625
+M00009_001,Acetyl-CoA => Citrate,TCA,Central carbon metabolism,"(K01647,K05942,K01659)"
+M00009_002,Citrate => isocitrate,TCA,Central carbon metabolism,"(K01681,K27802,K01682)"
+M00009_003,Isocitrate => 2-oxoglutarate,TCA,Central carbon metabolism,"(K00031,K00030)"
+M00009_004,2-oxoglutarate => Succynil-CoA,TCA,Central carbon metabolism,"((K00164+K00658,K01616)+K00382,K00174+K00175-K00177-K00176)"
+M00009_005,Succinyl-CoA => Succinate,TCA,Central carbon metabolism,"(K01902+K01903,K01899+K01900,K18118)"
+M00009_006,Succinate => Fumarate,TCA,Central carbon metabolism,"(K00234+K00235+K00236+(K00237,K25801),K00239+K00240+K00241-(K00242,K18859,K18860),K00244+K00245+K00246-K00247)"
+M00009_007,Fumarate => Malate,TCA,Central carbon metabolism,"(K01676,K01679,K01677+K01678)"
+M00009_008,Malate => Oxaloacetate,TCA,Central carbon metabolism,"(K00026,K00025,K00024,K00116)"
+M00010_001,oxaloacetate + acetyl-CoA => citrate,"Citrate cycle, first carbon oxidation",Central carbon metabolism,"(K01647,K05942,K01659)"
+M00010_002,citrate => isocitrate,"Citrate cycle, first carbon oxidation",Central carbon metabolism,"(K01681,K27802,K01682)"
+M00010_003,isocitrate => 2-oxoglutarate,"Citrate cycle, first carbon oxidation",Central carbon metabolism,"K00031,K00030"
+M00011_001,2-oxoglutarate => succinyl-CoA,"Citrate cycle, second carbon oxidation",Central carbon metabolism,"((K00164+K00658,K01616)+K00382,K00174+K00175-K00177-K00176)"
+M00011_002,succinyl-CoA => succinate,"Citrate cycle, second carbon oxidation",Central carbon metabolism,"(K01902+K01903,K01899+K01900,K18118)"
+M00011_003,succinate => fumarate,"Citrate cycle, second carbon oxidation",Central carbon metabolism,"(K00234+K00235+K00236+(K00237,K25801),K00239+K00240+K00241-(K00242,K18859,K18860),K00244+K00245+K00246-K00247)"
+M00011_004,fumarate - malate,"Citrate cycle, second carbon oxidation",Central carbon metabolism,"(K01676,K01679,K01677+K01678)"
+M00011_005,malate => oxaloacetate,"Citrate cycle, second carbon oxidation",Central carbon metabolism,"(K00026,K00025,K00024,K00116)"
+M00012_001,acetyl-CoA + oxaloacetate => citrate,Glyoxylate cycle,Other carbohydrate metabolism,"(K01647,K01659)"
+M00012_002,citrate => cis-aconitate => isocitrate,Glyoxylate cycle,Other carbohydrate metabolism,"(K01681,K27802,K01682)"
+M00012_003,isocitrate => glyoxylate,Glyoxylate cycle,Other carbohydrate metabolism,K01637
+M00012_004,glyoxylate => malate,Glyoxylate cycle,Other carbohydrate metabolism,"(K01638,K19282)"
+M00012_005,malate => oxaloacetate,Glyoxylate cycle,Other carbohydrate metabolism,"(K00026,K00025,K00024)"
+M00013_001,propanoyl-CoA => propenoyl-CoA,Malonate semialdehyde pathway,Other carbohydrate metabolism,"(K00248,K00232)"
+M00013_002,propenoyl-CoA => 3-hydroxypropionyl-CoA,Malonate semialdehyde pathway,Other carbohydrate metabolism,"(K07511,K14729)"
+M00013_003,3-hydroxypropionyl-CoA => 3-hydroxypropanoate,Malonate semialdehyde pathway,Other carbohydrate metabolism,K05605
+M00013_004,3-hydroxypropanoate => 3-oxopropanoate,Malonate semialdehyde pathway,Other carbohydrate metabolism,K23146
+M00013_005,3-oxopropanoate => acetyl-CoA,Malonate semialdehyde pathway,Other carbohydrate metabolism,K00140
+M00018_001,,"Threonine biosynthesis, aspartate => homoserine => threonine",Amino acid metabolism,"(K00928,K12524,K12525,K12526) "
+M00018_002,,"Threonine biosynthesis, aspartate => homoserine => threonine",Amino acid metabolism,K00133 
+M00018_003,,"Threonine biosynthesis, aspartate => homoserine => threonine",Amino acid metabolism,"(K00003,K12524,K12525) "
+M00018_004,,"Threonine biosynthesis, aspartate => homoserine => threonine",Amino acid metabolism,"(K00872,K02204,K02203)"
+M00018_005,,"Threonine biosynthesis, aspartate => homoserine => threonine",Amino acid metabolism,K01733
+M00020_001,3-phospho-D-glycerate => 3-phosponooxypyruvate,Serine biosynthesis,Amino acid metabolism,K00058
+M00020_002,3-phosponooxypyruvate => O-phospho-L-serine,Serine biosynthesis,Amino acid metabolism,K00831
+M00020_003,O-phospho-L-serine => serine,Serine biosynthesis,Amino acid metabolism,"K01079,K02203,K22305,K25528"
+M00021_001,serine => O-acetyl-serine,Cysteine biosynthesis,Amino acid metabolism,"K00640,K23304"
+M00021_002,O-acetyl-serine => cysteine,Cysteine biosynthesis,Amino acid metabolism,"K01738,K13034,K17069"
+M00028_001,,"Ornithine biosynthesis, glutamate => ornithine",Amino acid metabolism,"(K00618,K00619,K14681,K14682,K00620,K22477,K22478)"
+M00028_002,,"Ornithine biosynthesis, glutamate => ornithine",Amino acid metabolism,"((K00930,K22478) K00145,K12659)"
+M00028_003,,"Ornithine biosynthesis, glutamate => ornithine",Amino acid metabolism,"(K00818,K00821)"
+M00028_004,,"Ornithine biosynthesis, glutamate => ornithine",Amino acid metabolism,"(K01438,K14677,K00620)"
+M00029_001,,Urea cycle,Amino acid metabolism,K01948
+M00029_002,,Urea cycle,Amino acid metabolism,K00611 
+M00029_003,,Urea cycle,Amino acid metabolism,K01940 
+M00029_004,,Urea cycle,Amino acid metabolism,"(K01755,K14681) "
+M00029_005,,Urea cycle,Amino acid metabolism,K01476
+M00033_001,,"Ectoine biosynthesis, aspartate => ectoine",Amino acid metabolism,K00928 
+M00033_002,,"Ectoine biosynthesis, aspartate => ectoine",Amino acid metabolism,K00133 
+M00033_003,,"Ectoine biosynthesis, aspartate => ectoine",Amino acid metabolism,K00836 
+M00033_004,,"Ectoine biosynthesis, aspartate => ectoine",Amino acid metabolism,K06718 
+M00033_005,,"Ectoine biosynthesis, aspartate => ectoine",Amino acid metabolism,K06720
+M00035_001,,Methionine degradation,Amino acid metabolism,K00789 
+M00035_002,,Methionine degradation,Amino acid metabolism,"(K00552,K00558,K17398,K17399) "
+M00035_003,,Methionine degradation,Amino acid metabolism,K01251 
+M00035_004,,Methionine degradation,Amino acid metabolism,"(K01697,K10150)"
+M00120,,pantothenate => CoA,Coenzyme A biosynthesis,"(K00867,K03525,K01947,K09680) ((K01922,K21977) K01598,K13038) (K02318,(K00954,K02201) K00859)"
+M00122_sub1,,"cobyrinate a,c-diamide => cobalamin",Cobalamin biosynthesis,"(K00798,K19221) K02232 (K02225,K02227) K02231"
+M00122_sub2,,"cobyrinate a,c-diamide => cobalamin",Cobalamin biosynthesis,"K00768 (K02226,K22316)"
+M00122_sub3,,"cobyrinate a,c-diamide => cobalamin",Cobalamin biosynthesis,K02233
+M00126_001,,"Tetrahydrofolate biosynthesis, GTP => THF",Metabolism of cofactors and vitamins,"(K01495,K09007,K22391) "
+M00126_002,,"Tetrahydrofolate biosynthesis, GTP => THF",Metabolism of cofactors and vitamins,"(K01077,K01113,(K08310,K19965)) "
+M00126_003,,"Tetrahydrofolate biosynthesis, GTP => THF",Metabolism of cofactors and vitamins,"((K13939,(K13940,K01633 K00950) K00796),(K01633 K13941)) "
+M00126_004,,"Tetrahydrofolate biosynthesis, GTP => THF",Metabolism of cofactors and vitamins,"(K11754,K20457) "
+M00126_005,,"Tetrahydrofolate biosynthesis, GTP => THF",Metabolism of cofactors and vitamins,"(K00287,K13998)"
+M00140_001,,"C1-unit interconversion, prokaryotes",Metabolism of cofactors and vitamins,K00600 
+M00140_002,,"C1-unit interconversion, prokaryotes",Metabolism of cofactors and vitamins,"(K01491,(K00300 K01500)) "
+M00140_003,,"C1-unit interconversion, prokaryotes",Metabolism of cofactors and vitamins,K01938
+M00144 ,,"NADH:quinone oxidoreductase, prokaryotes",Energy metabolism,"K00330+(K00331+K00332+K00333,K00331+K13378,K13380)+K00334+K00335+K00336+K00337+K00338+K00339+K00340+(K00341+K00342)+K00343"
+M00145,,"NAD(P)H:quinone oxidoreductase, chloroplasts and cyanobacteria",Energy metabolism,K05574+K05582+K05581+K05579+K05572+K05580+K05578+K05576+K05577+K05575+K05573-K05583-K05584-K05585
+M00146,,NADH dehydrogenase (ubiquinone) 1 alpha subcomplex,Energy metabolism,K03945+K03946+K03947+K03948+K03949+K03950+K03951+K03952+K03953+K03954+K03955+K03956+K11352+K11353
+M00147,,NADH dehydrogenase (ubiquinone) 1 beta subcomplex,Energy metabolism,K03957+K03958+K03959+K03960+K03961+K03962+K03963+K03964+K03965+K03966+K11351+K03967+K03968
+M00148 ,,Succinate dehydrogenase (ubiquinone),Energy metabolism,"K00236+(K00237,K25801)+K00234+K00235"
+M00149 ,,"Succinate dehydrogenase, prokaryotes",Energy metabolism,"K00241+(K00242,K18859,K18860)+K00239+K00240"
+M00150,,"Fumarate reductase, prokaryotes",Energy metabolism,K00244+K00245+K00246+K00247
+M00157  ,,"F-type ATPase, prokaryotes and chloroplasts",Energy metabolism,K02111+K02112+K02113+K02114+K02115+K02108+K02109+K02110
+M00159,,"V/A-type ATPase, prokaryotes",Energy metabolism,K02117+K02118+K02119+K02120+K02121+K02122+K02107+K02123+K02124
+M00161,,Photosystem II,Oxygenic photosynthesis in plants and cyanobacteria,K02703+K02706+K02705+K02704+K02707+K02708
+M00162,,Cytochrome b6f complex,photosynthesis,K02635+K02637+K02634+K02636+K02642+K02643+K03689+K02640
+M00163,,Photosystem I,Oxygenic photosynthesis in plants and cyanobacteria,K02689+K02690+K02691+K02692+K02693+K02694
+M00165_001,"D-ribulose-5P => D-ribulose-1,5-biP",Calvin cycle,Carbon fixation,K00855
+M00165_002,"D-ribulose-1,5-biP => 3-phosphoglycerate",Calvin cycle,Carbon fixation,K01601 K01602
+M00165_003,3-phosphoglycerate => 3-phospho-D-glyceroil P,Calvin cycle,Carbon fixation,K00927
+M00165_004,3-phospho-D-glyceroil P => D-glyceraldehyde-3P,Calvin cycle,Carbon fixation,"(K05298,K00150,K00134)"
+M00165_005,D-glyceraldehyde-3P => Glycerone P,Calvin cycle,Carbon fixation,K01803
+M00165_006,"D-glyceraldehyde-3P + glycerone P => D-fructose-1,6-biP",Calvin cycle,Carbon fixation,"(K01623,K01624)"
+M00165_007,"D-fructose-1,6-biP => D-fructose-6P",Calvin cycle,Carbon fixation,"(K03841,K02446,K11532,K01086)"
+M00165_008,D-fructose-6P + D-glyceraldehyde-3P => D-erythrose 4-P + D-xylulose-5P,Calvin cycle,Carbon fixation,K00615
+M00165_009,"Sedoheptulose-1,7-biP => Sedoheptulose-7P",Calvin cycle,Carbon fixation,"(K01100,K11532,K01086)"
+M00165_010,D-ribose-5P => D-ribulose-5P,Calvin cycle,Carbon fixation,"(K01807,K01808)"
+M00165_011,D-xylulose-5P => D-ribulose-5P,Calvin cycle,Carbon fixation,K01783
+M00173_001,acetyl-CoA => pyruvate,Reductive citrate cycle,Carbon fixation,"(K00169+K00170+K00171+K00172,K03737)"
+M00173_002,pyruvate => phosphoenolpyruvate,Reductive citrate cycle,Carbon fixation,"K01007,K01006"
+M00173_003,phosphoenolpyruvate => oxaloacetate,Reductive citrate cycle,Carbon fixation,K01595
+M00173_004,pyruvate => oxaloacetate,Reductive citrate cycle,Carbon fixation,"K01959+K01960,K01958"
+M00173_005,oxaloacetate => malate,Reductive citrate cycle,Carbon fixation,K00024
+M00173_006,malate => fumarate,Reductive citrate cycle,Carbon fixation,"(K01676,K01679,K01677+K01678)"
+M00173_007,fumarate => succinate,Reductive citrate cycle,Carbon fixation,"(K00239+K00240-K00241-K00242,K18556+K18557+K18558+K18559+K18560)"
+M00173_008,succinate => succinyl-CoA,Reductive citrate cycle,Carbon fixation,(K01902+K01903)
+M00173_009,succinyl-CoA => 2-oxoglutarate,Reductive citrate cycle,Carbon fixation,(K00174+K00175-K00177-K00176)
+M00173_010,2-oxoglutarate => isocitrate,Reductive citrate cycle,Carbon fixation,K00031
+M00173_011,isocitrate => cis-aconitate => citrate,Reductive citrate cycle,Carbon fixation,"(K01681,K27802,K01682)"
+M00173_012,citrate => acetyl-CoA,Reductive citrate cycle,Carbon fixation,"(K15230+K15231,K15232+K15233 K15234)"
+M00174_001,methane => methanol,Methane oxidation,Methane metabolism,"((K109442+K109452+K109462),(K16157+K16158+K16159+K16160+K16161+K16162))"
+M00174_002,methanol => formaldehyde,Methane oxidation,Methane metabolism,"((K14028-K14029),K23995)"
+M00175_001,nitrogen => ammonia,Nitrogen fixation,Nitrogen metabolism,"K02588+K02586+K02591-K00531,K22896+K22897+K22898+K22899"
+M00176_001,sulfate => APS => PAPS => sulfite,Assimilatory sulfate reduction,Sulfur metabolism,"(K00958+K00860,K00955+K00957,K00956+K00957+K00860)"
+M00176_002,sulfite => H2S,Assimilatory sulfate reduction,Sulfur metabolism,K00390
+M00176_003,sulfite => H2S,Assimilatory sulfate reduction,Sulfur metabolism,"(K00380+K00381,K00392)"
+M00307_001,pyruvate => acetyl-CoA,Pyruvate oxidation,Central carbon metabolism,"((K00163,K00161+K00162)+K00627+K00382-K13997),K00169+K00170+K00171+(K00172,K00189),K03737"
+M00308_001,gluconic acid => 2-dehydro-3-deoxy-gluconate,Semi-phosphorylative Entner-Doudoroff pathway (euryarcheota),Central carbon metabolism,K05308
+M00308_002,2-dehydro-3-deoxy-gluconate => 2-dehydro-3-deoxy-6P-gluconate,Semi-phosphorylative Entner-Doudoroff pathway (euryarcheota),Central carbon metabolism,K00874
+M00308_003,2-dehydro-3-deoxy-6P-gluconate => glyceraldehyde-3P + pyruvate,Semi-phosphorylative Entner-Doudoroff pathway (euryarcheota),Central carbon metabolism,K01625
+M00308_004,glyceraldehyde-3P => 3P-glyceroil phosphate,Semi-phosphorylative Entner-Doudoroff pathway (euryarcheota),Central carbon metabolism,K00134
+M00308_005,3P-glyceroil phosphate => glycerate-3P,Semi-phosphorylative Entner-Doudoroff pathway (euryarcheota),Central carbon metabolism,K00927
+M00308_006,glyceraldehyde-3P => glycerate-3P,Semi-phosphorylative Entner-Doudoroff pathway (euryarcheota),Central carbon metabolism,"K00131,K18978"
+M00309_001,gluconic acid => 2-dehydro-3-deoxy-gluconate,Non-phosphorylative Entner-Doudoroff pathway (crenarcheota),Central carbon metabolism,K05308
+M00309_002,2-dehydro-3-deoxy-gluconate => glyceraldehyde + pyruvate,Non-phosphorylative Entner-Doudoroff pathway (crenarcheota),Central carbon metabolism,"(K11395,K18127)"
+M00309_003,galactonate => 2-dehydro-3-deoxy-galactonate,Non-phosphorylative Entner-Doudoroff pathway (crenarcheota),Central carbon metabolism,K05308
+M00309_004,2-dehydro-3-deoxy-galactonate => glyceraldehyde + pyruvate,Non-phosphorylative Entner-Doudoroff pathway (crenarcheota),Central carbon metabolism,"(K11395,K18127)"
+M00309_005,glyceraldehyde => glycerate,Non-phosphorylative Entner-Doudoroff pathway (crenarcheota),Central carbon metabolism,"(K18020+K18021+K18022,K18128,K03738)"
+M00344_001,formaldehyde => glycerone,"Formaldehyde assimilation, xylulose monophosphate pathway",Methane metabolism,K17100
+M00344_002,glycerone => glycerone-P,"Formaldehyde assimilation, xylulose monophosphate pathway",Methane metabolism,K00863
+M00344_003,"glycerone-P => fructose-1,6-biP","Formaldehyde assimilation, xylulose monophosphate pathway",Methane metabolism,K01624
+M00344_004,"fructose-1,6-biP => fructose-6P","Formaldehyde assimilation, xylulose monophosphate pathway",Methane metabolism,K03841
+M00345_001,ribulose-5P + formaldehyde => arabino-3-hex-ulose-6P,"Formaldehyde assimilation,ribulose monophosphate pathway",Methane metabolism,"(K08093,K13812),K13831"
+M00345_002,arabino-3-hex-ulose-6P => fructose-6P,"Formaldehyde assimilation,ribulose monophosphate pathway",Methane metabolism,"K08094,K13831"
+M00345_003,"fructose-6P => fructose-1,6-biP","Formaldehyde assimilation,ribulose monophosphate pathway",Methane metabolism,"K00850,K16370,K21071"
+M00345_004,"fructose-1,6-biP => glyceraldehyde-3P","Formaldehyde assimilation,ribulose monophosphate pathway",Methane metabolism,K01624
+M00346_001,glycine => serine,"Formaldehyde assimilation,serine pathway",Methane metabolism,K00600
+M00346_002,serine => hydroxypyruvate,"Formaldehyde assimilation,serine pathway",Methane metabolism,K00830
+M00346_003,hydroxypyruvate => glycerate,"Formaldehyde assimilation,serine pathway",Methane metabolism,K00018
+M00346_004,glycerate => glycerate-2P,"Formaldehyde assimilation,serine pathway",Methane metabolism,K11529
+M00346_005,glycerate-2P => phosphoenolpyruvate,"Formaldehyde assimilation,serine pathway",Methane metabolism,K01689
+M00346_006,phsophoenolpyruvate => oxaloacetate,"Formaldehyde assimilation,serine pathway",Methane metabolism,K01595
+M00346_007,oxaloacetate => malate,"Formaldehyde assimilation,serine pathway",Methane metabolism,K00024
+M00346_008,malate => malyl-CoA,"Formaldehyde assimilation,serine pathway",Methane metabolism,K08692+K14067
+M00346_009,malyl-CoA => glyoxylate,"Formaldehyde assimilation,serine pathway",Methane metabolism,K08691
+M00346_010,glyoxylate => glycine,"Formaldehyde assimilation,serine pathway",Methane metabolism,K00830
+M00356_001,methanol => methyl-CoM,"Methanogenesis, methanol => methane",Methane metabolism,K14080+K04480+K14081
+M00356_002,methyl-CoM + CoB => methane + CoM-S-S-CoB,"Methanogenesis, methanol => methane",Methane metabolism,K00399+K00401+K00402
+M00356_003,CoM-S-S-CoB => CoB,"Methanogenesis, methanol => methane",Methane metabolism,"(K22480+K22481+K22482,K03388+K03389+K03390,K08264+K08265,K03388+K03389+K03390+K14127+(K14126+K14128,K22516+K00125))"
+M00357_001,acetate => acetyl-P,"Methanogenesis, acetate => methane",Methane metabolism,K00925
+M00357_002,acetyl-P => acetyl-CoA,"Methanogenesis, acetate => methane",Methane metabolism,K00625
+M00357_003,acetate => acetyl-CoA,"Methanogenesis, acetate => methane",Methane metabolism,K01895
+M00357_004,acetyl-CoA => 5-Methyl-THMPT,"Methanogenesis, acetate => methane",Methane metabolism,(K00193+K00197+K00194)
+M00357_005,5-Methyl-THMPT + CoM => methyl-CoM,"Methanogenesis, acetate => methane",Methane metabolism,(K00577+K00578+K00579+K00580+K00581-K00582-K00583+K00584)
+M00357_006,methyl-CoM + CoB => methane + CoM-S-S-CoB,"Methanogenesis, acetate => methane",Methane metabolism,K00399+K00401+K00402
+M00357_007,CoM-S-S-CoB => CoB,"Methanogenesis, acetate => methane",Methane metabolism,"(K22480+K22481+K22482,K03388+K03389+K03390,K08264+K08265,K03388+K03389+K03390+K14127+(K14126+K14128,K22516+K00125))"
+M00358 ,,Coenzyme M biosynthesis,Coenzyme M biosynthesis,K08097 K05979 K05884 K13039+K06034
+M00373_001,2 Acetyl-CoA <=> CoA + Acetoacetyl-CoA,Ethylmalonyl pathway,Other carbohydrate metabolism,K00626
+M00373_002,(R)-3-Hydroxybutanoyl-CoA + NADP+ <=> Acetoacetyl-CoA + NADPH + H+,Ethylmalonyl pathway,Other carbohydrate metabolism,K00023 
+M00373_003,(R)-3-Hydroxybutanoyl-CoA <=> Crotonoyl-CoA + H2O,Ethylmalonyl pathway,Other carbohydrate metabolism,K17865 
+M00373_004,(2S)-Ethylmalonyl-CoA + NADP+ <=> Crotonoyl-CoA + CO2 + NADPH + H+,Ethylmalonyl pathway,Other carbohydrate metabolism,K14446 
+M00373_005,(2S)-Ethylmalonyl-CoA <=> (2R)-Ethylmalonyl-CoA,Ethylmalonyl pathway,Other carbohydrate metabolism,K05606 
+M00373_006,(2R)-Ethylmalonyl-CoA <=> (2S)-Methylsuccinyl-CoA,Ethylmalonyl pathway,Other carbohydrate metabolism,K14447 
+M00373_007,(2S)-Methylsuccinyl-CoA + Electron-transferring flavoprotein <=> 2-Methylfumaryl-CoA + Reduced electron-transferring flavoprotein,Ethylmalonyl pathway,Other carbohydrate metabolism,K14448 
+M00373_008,L-erythro-3-Methylmalyl-CoA <=> 2-Methylfumaryl-CoA + H2O,Ethylmalonyl pathway,Other carbohydrate metabolism,K14449 
+M00373_009,Propanoyl-CoA + Glyoxylate <=> L-erythro-3-Methylmalyl-CoA,Ethylmalonyl pathway,Other carbohydrate metabolism,K08691 
+M00373_010,L-Malyl-CoA <=> Acetyl-CoA + Glyoxylate,Ethylmalonyl pathway,Other carbohydrate metabolism,K08691 
+M00373_011,L-Malyl-CoA + H2O <=> (S)-Malate + CoA,Ethylmalonyl pathway,Other carbohydrate metabolism,K14451
+M00373_012,ATP + Propanoyl-CoA + HCO3- <=> ADP + Orthophosphate + (S)-Methylmalonyl-CoA,Ethylmalonyl pathway,Other carbohydrate metabolism,K01965+K01966 
+M00373_013,(R)-Methylmalonyl-CoA <=> (S)-Methylmalonyl-CoA,Ethylmalonyl pathway,Other carbohydrate metabolism,K05606 
+M00373_014,(R)-Methylmalonyl-CoA <=> Succinyl-CoA,Ethylmalonyl pathway,Other carbohydrate metabolism,K01847
+M00374_001,acetyl-CoA => pyruvate,Dicarboxylate-hydroxybutyrate cycle,Carbon fixation,(K00169+K00170+K00171+K00172)
+M00374_002,pyruvate => phosphoenolpyruvate,Dicarboxylate-hydroxybutyrate cycle,Carbon fixation,K01007
+M00374_003,phosphoenolpyruvate => oxaloacetate,Dicarboxylate-hydroxybutyrate cycle,Carbon fixation,K01595
+M00374_005,oxaloacetate => malate,Dicarboxylate-hydroxybutyrate cycle,Carbon fixation,K00024
+M00374_006,malate => fumarate,Dicarboxylate-hydroxybutyrate cycle,Carbon fixation,(K01677+K01678)
+M00374_007,fumarate => succinate,Dicarboxylate-hydroxybutyrate cycle,Carbon fixation,(K00239+K00240-K00241-K18860)
+M00374_008,succinate => succinyl-CoA,Dicarboxylate-hydroxybutyrate cycle,Carbon fixation,(K01902+K01903)
+M00374_009,succinyl-CoA => succinate semialdehyde,Dicarboxylate-hydroxybutyrate cycle,Carbon fixation,"(K15038,K15017)"
+M00374_010,succinate semialdehyde => 4-hydroxybutanoic acid,Dicarboxylate-hydroxybutyrate cycle,Carbon fixation,K14465
+M00374_011,4-hydroxybutanoic acid => 4-hydroxybutyryl CoA,Dicarboxylate-hydroxybutyrate cycle,Carbon fixation,"(K14467,K18861,K25774)"
+M00374_012,4-hydroxybutyryl CoA => 4-crotonoyl CoA,Dicarboxylate-hydroxybutyrate cycle,Carbon fixation,K14534
+M00374_013,4-crotonoyl CoA => 3-hydroxybutanoyl CoA,Dicarboxylate-hydroxybutyrate cycle,Carbon fixation,K15016
+M00374_014,3-hydroxybutanoyl CoA => acetoacyl CoA,Dicarboxylate-hydroxybutyrate cycle,Carbon fixation,K00626
+M00375_001,Acetyl-CoA => malonyl-CoA,Hydroxypropionate-hydroxybutylate cycle,Carbon fixation,"(K01964+K15037+K15036),(K01962+K01963+K02160),(K01962+K18472+K02160)"
+M00375_002,malonyl-CoA => 3-oxopropanoate,Hydroxypropionate-hydroxybutylate cycle,Carbon fixation,K15017
+M00375_003,3-oxopropanoate =>3-hydroxypropanoate,Hydroxypropionate-hydroxybutylate cycle,Carbon fixation,K15039
+M00375_004,3-hydroxypropanoate => 3-hydroxypropionyl-CoA,Hydroxypropionate-hydroxybutylate cycle,Carbon fixation,K15018
+M00375_005,3-hydroxypropionyl-CoA => propenoyl-CoA,Hydroxypropionate-hydroxybutylate cycle,Carbon fixation,K15019
+M00375_006,propenoyl-CoA => propanoyl-CoA,Hydroxypropionate-hydroxybutylate cycle,Carbon fixation,K15020
+M00375_007,propanoyl-CoA => S-methylmalonyl-CoA,Hydroxypropionate-hydroxybutylate cycle,Carbon fixation,K05606
+M00375_008,S-methylmalonyl-CoA => R-methylmalonyl-CoA,Hydroxypropionate-hydroxybutylate cycle,Carbon fixation,(K01848+K01849)
+M00375_009,R-methylmalonyl-CoA => succinyl-CoA,Hydroxypropionate-hydroxybutylate cycle,Carbon fixation,"(K15038,K15017)"
+M00375_010,succinyl-CoA => succinate semialdehyde,Hydroxypropionate-hydroxybutylate cycle,Carbon fixation,K14465
+M00375_011,succinate semialdehyde => 4-hydroxybutanoic acid,Hydroxypropionate-hydroxybutylate cycle,Carbon fixation,"(K14466,K18861,K25774)"
+M00375_012,4-hidroxybutanoic acid => 4-hydroxybutyryl CoA,Hydroxypropionate-hydroxybutylate cycle,Carbon fixation,K14534
+M00375_013,4-hydroxybutyryl CoA => crotonoyl-CoA,Hydroxypropionate-hydroxybutylate cycle,Carbon fixation,K15016
+M00375_014,crotonoyl-CoA => 3-hydroxybutanoyl-CoA,Hydroxypropionate-hydroxybutylate cycle,Carbon fixation,K00626
+M00376_001,acetyl-CoA => malonyl-CoA,3-Hydroxypropionate bi-cycle,Carbon fixation,K02160+K01961+K01962+K01963
+M00376_002,malonyl-CoA => 3-oxopropanoate => 3-hydroxypropanoate,3-Hydroxypropionate bi-cycle,Carbon fixation,K14468
+M00376_003,3-hydroxypropanoate => propanoyl-CoA,3-Hydroxypropionate bi-cycle,Carbon fixation,K14469
+M00376_004,propanoyl-CoA => s-methylmalonyl-CoA,3-Hydroxypropionate bi-cycle,Carbon fixation,K15052
+M00376_005,s-methylmalonyl-CoA => r-methylmalonyl-CoA,3-Hydroxypropionate bi-cycle,Carbon fixation,K05606
+M00376_006,r-methylmalonyl-CoA => succinyl-CoA,3-Hydroxypropionate bi-cycle,Carbon fixation,"(K01847,K01848+K01849)"
+M00376_007,succinyl-CoA + malate => succinate + malyl-CoA,3-Hydroxypropionate bi-cycle,Carbon fixation,K14471+K14472
+M00376_008,succinate => fumarate,3-Hydroxypropionate bi-cycle,Carbon fixation,K00239+K00240+K00241
+M00376_009,fumarate => malate,3-Hydroxypropionate bi-cycle,Carbon fixation,K01679
+M00376_010,malyl-CoA => glyoxylate + acetyl-CoA,3-Hydroxypropionate bi-cycle,Carbon fixation,K08691
+M00376_011,erythro-methylmalyl-CoA => 2-methylfumaryl-CoA,3-Hydroxypropionate bi-cycle,Carbon fixation,K14449
+M00376_012,2-methylfumaryl-CoA => 3-methylfumaryl-CoA,3-Hydroxypropionate bi-cycle,Carbon fixation,K14470
+M00376_013,3-methylfumaryl-CoA => citramalyl-CoA,3-Hydroxypropionate bi-cycle,Carbon fixation,K09709
+M00377_001,CO2 => CO,Wood-Ljungdahl pathway,Carbon fixation,K00198
+M00377_002,CO2 => formate,Wood-Ljungdahl pathway,Carbon fixation,"(K05299-K15022,K22015+K25123+K25124)"
+M00377_003,tetrahydrofolate => 10-formyltetrahydrofolate,Wood-Ljungdahl pathway,Carbon fixation,K01938
+M00377_004,"10-formyltetrahydrofolate => 5,10-Methenyltetrahydrofolate",Wood-Ljungdahl pathway,Carbon fixation,K01491-K01500
+M00377_005,"5,10-Methenyltetrahydrofolate => 5,10-Methylenetetrahydrofolate",Wood-Ljungdahl pathway,Carbon fixation,K00297-K25007-K25008
+M00377_006,"5,10-Methylenetetrahydrofolate => 5,10-Methyltetrahydrofolate",Wood-Ljungdahl pathway,Carbon fixation,K15023
+M00377_007,"5,10-Methyltetrahydrofolate => tetrahydrofolate",Wood-Ljungdahl pathway,Carbon fixation,K14138+K00197+K00194
+M00378_sub1,,"F420 biosynthesis, archaea","F420 biosynthesis, archaea",K11780+K11781
+M00378_sub2,,"F420 biosynthesis, archaea","F420 biosynthesis, archaea",K14941
+M00378_sub3,,"F420 biosynthesis, archaea","F420 biosynthesis, archaea",K11212 K12234
+M00422_001,CO2 => CO,Acetyl-CoA pathway,Methane metabolism,K00192+K00195
+M00422_002,CO => Acetyl-CoA,Acetyl-CoA pathway,Methane metabolism,K00193+K00197+K00194
+M00528_001,ammonia => hydroxylamine,Nitrification,Nitrogen metabolism,K109441+K109451+K109461
+M00528_002,hydroxylamine => nitrite,Nitrification,Nitrogen metabolism,K10535
+M00529_001,nitrate => nitrite,Denitrification,Nitrogen metabolism,"(K00370+K00371+K00374,K02567+K02568)"
+M00529_002,nitrite => nitric oxide,Denitrification,Nitrogen metabolism,"(K00368,K15864)"
+M00529_003,nitric oxide => nitrous oxide,Denitrification,Nitrogen metabolism,(K04561+K02305)
+M00529_004,nitrous oxide => nitrogen,Denitrification,Nitrogen metabolism,K00376
+M00530_001,nitrate => nitrite,Dissimilatory nitrate reduction,Nitrogen metabolism,"(K00370+K00371+K00374,K02567+K02568)"
+M00530_002,nitrite => ammonia,Dissimilatory nitrate reduction,Nitrogen metabolism,"(K00362+K00363,K03385+K15876)"
+M00531_001,nitrate => nitrite,Assimilatory nitrate reduction,Nitrogen metabolism,"(K00367,K10534,K00372-K00360)"
+M00531_002,nitrite => ammonia,Assimilatory nitrate reduction,Nitrogen metabolism,"(K00366,K17877,K26139+K26138,K00361)"
+M00532_001,"ribulose-1,5-biP => 2-phosphoglycolate + 3-phospho-glycerate",Photorespiration,Other carbohydrate metabolism,(K01601-K01602)
+M00532_002,2-phosphoglycolate => glycolate,Photorespiration,Other carbohydrate metabolism,K19269
+M00532_003,glycolate => glyoxylate + H2O2,Photorespiration,Other carbohydrate metabolism,K11517
+M00532_004,H2O2 => O2,Photorespiration,Other carbohydrate metabolism,K03781
+M00532_005,glyoxylate + glutamate => glycine + 2-oxoglutarate,Photorespiration,Other carbohydrate metabolism,K14272
+M00532_006,glycine => serine,Photorespiration,Other carbohydrate metabolism,K00600
+M00532_007,serine + glyoxylate => hydroxypyruvate + glycine,Photorespiration,Other carbohydrate metabolism,K00830
+M00532_008,hydropyruvate => glycerate,Photorespiration,Other carbohydrate metabolism,"K15893,K15919"
+M00532_009,glycerate => 3-phospho-glycerate,Photorespiration,Other carbohydrate metabolism,K15918
+M00532_010,glycine => ammonia,Photorespiration,Other carbohydrate metabolism,K00281+K00605+K00382+K02437
+M00552,,D-galactonate => glycerate-3P,"D-galactonate degradation, De Ley-Doudoroff pathway",K01684 K00883 K01631 K00134 K00927
+M00555_001,,"Betaine biosynthesis, choline => betaine",Amino acid metabolism,"K17755,(K00108,K11440,K00499)"
+M00555_002,,"Betaine biosynthesis, choline => betaine",Amino acid metabolism,"K17755,(K00130,K14085)"
+M00563_001,methylamine/dimethylamine/trimethylamine => methyl-CoM,"Methanogenesis, methylamine/dimethylamine/trimethylamine => methane",Methane metabolism,"K14082 ((K16177-K16176),(K16179-K16178),(K14084-K14083))"
+M00563_002,methyl-CoM + CoB => methane + CoM-S-S-CoB,"Methanogenesis, methylamine/dimethylamine/trimethylamine => methane",Methane metabolism,K00399+K00401+K00402
+M00563_003,CoM-S-S-CoB => CoB,"Methanogenesis, methylamine/dimethylamine/trimethylamine => methane",Methane metabolism,"(K22480+K22481+K22482,K03388+K03389+K03390,K08264+K08265,K03388+K03389+K03390+K14127+(K14126+K14128,K22516+K00125))"
+M00567_001,CO2 => Formylmethanofuran,"Methanogenesis, CO2 => methane",Methane metabolism,"(K00200+K00201+K00202+K00203-K11261+(K00205,K11260,K00204))"
+M00567_002,Formylmethanofuran => 5-Formyl-H4MPT,"Methanogenesis, CO2 => methane",Methane metabolism,K00672
+M00567_003,"5-Formyl-H4MPT => 5,10-Methenyltetrahydromethanopterin","Methanogenesis, CO2 => methane",Methane metabolism,K01499
+M00567_004,"5,10-Methenyltetrahydromethanopterin => 5,10-Methylenetetrahydromethanopterin","Methanogenesis, CO2 => methane",Methane metabolism,"K00319,K13942"
+M00567_005,"5,10-Methylenetetrahydromethanopterin => 5-Methyl-H4MPT","Methanogenesis, CO2 => methane",Methane metabolism,K00320
+M00567_006,5-Methyl-H4MPT + CoM => methyl-CoM,"Methanogenesis, CO2 => methane",Methane metabolism,K00577+K00578+K00579+K00580+K00581-K00582-K00583+K00584
+M00567_007,methyl-CoM + CoB => methane + CoM-S-S-CoB,"Methanogenesis, CO2 => methane",Methane metabolism,K00399+K00401+K00402
+M00567_008,CoM-S-S-CoB => CoB,"Methanogenesis, CO2 => methane",Methane metabolism,"(K22480+K22481+K22482,K03388+K03389+K03390,K08264+K08265,K03388+K03389+K03390+K14127+(K14126+K14128,K22516+K00125))"
+M00579_001,acetyl-CoA => acetyl phosphate,P acetyltransferase-acetate kinase pathway,Carbon fixation,"(K00625,K13788,K15024)"
+M00579_002,acetyl phosphate => acetate,P acetyltransferase-acetate kinase pathway,Carbon fixation,K00925
+M00580_001,fructose-6P => arabino-hex-3-ulose-6P,"Pentose P pathway, archaea",Central carbon metabolism,"K08094,K13831"
+M00580_002,arabino-hex-3-ulose-6P => ribulose-5P,"Pentose P pathway, archaea",Central carbon metabolism,"(K08093,K13812),K13831"
+M00580_003,ribulose-5P => ribose-5P,"Pentose P pathway, archaea",Central carbon metabolism,K01807
+M00595_001,thiosulfate => sulfate,Thiosulfate oxidation (SOX),Sulfur metabolism,K17222+K17223+K17224-K17225-K22622+K17226+K17227
+M00596_001,sulfate => adenyl sulfate,Dissimilatory sulfate reduction,Sulfur metabolism,K00958
+M00596_002,adenyl sulfate => sulfite,Dissimilatory sulfate reduction,Sulfur metabolism,(K00394+K00395)
+M00596_003,sulfite => protein-trisulfide,Dissimilatory sulfate reduction,Sulfur metabolism,(K11180+K11181-K27196)
+M00596_004,protein-trisulfide => hydrogen sulfide,Dissimilatory sulfate reduction,Sulfur metabolism,(K27187+K27188+K27189+K27190+K27191)
+M00597,,Anoxygenic photosystem II,Anoxygenic photosynthesis,K08928+K08929
+M00620_001,acetyl-CoA => pyruvate,"Incomplete reductive citrate cycle, acetyl-CoA => oxoglutarate",Carbon fixation,(K00169+K00170+K00171+K00172)
+M00620_002,pyruvate => oxaloacetate,"Incomplete reductive citrate cycle, acetyl-CoA => oxoglutarate",Carbon fixation,(K01959+K01960)
+M00620_003,oxaloacetate => malate,"Incomplete reductive citrate cycle, acetyl-CoA => oxoglutarate",Carbon fixation,K00024
+M00620_004,malate => fumarate,"Incomplete reductive citrate cycle, acetyl-CoA => oxoglutarate",Carbon fixation,(K01677+K01678)
+M00620_005,fumarate => succinate,"Incomplete reductive citrate cycle, acetyl-CoA => oxoglutarate",Carbon fixation,(K18209+K18210)
+M00620_006,succinate => succinyl-CoA,"Incomplete reductive citrate cycle, acetyl-CoA => oxoglutarate",Carbon fixation,(K01902+K01903)
+M00620_007,succinyl-CoA => 2-oxoglutarate,"Incomplete reductive citrate cycle, acetyl-CoA => oxoglutarate",Carbon fixation,(K00174+K00175+K00176+K00177)
+M00621_001,glycine => CO2,Glycine cleavage system,Amino acid metabolism,"K00281,K00282+K00283"
+M00621_002,Tetrahydrofolate <=> Ammonia,Glycine cleavage system,Amino acid metabolism,K00605
+M00621_003,Dihydrolipoylprotein => lipoylprotein,Glycine cleavage system,Amino acid metabolism,K00382
+M00631 ,,D-galacturonate => pyruvate + D-glyceraldehyde 3P,D-Galacturonate degradation (bacteria),"K01812 K00041 (K01685,K16849+K16850) K00874 (K01625,K17463)"
+M00632 ,,galactose => alpha-D-glucose-1P,"Galactose degradation, Leloir pathway",K01785 K00849 K00965 K01784
+M00633_001,gluconic acid => 2-dehydro-3-deoxy-gluconate,Semi-phosphorylative Entner-Doudoroff pathway (crenarcheota),Central carbon metabolism,K05308
+M00633_002,2-dehydro-3-deoxy-gluconate => 2-dehydro-3-deoxy-6P-gluconate,Semi-phosphorylative Entner-Doudoroff pathway (crenarcheota),Central carbon metabolism,K18126
+M00633_003,2-dehydro-3-deoxy-6P-gluconate => pyruvate + glyceraldehyde-3P,Semi-phosphorylative Entner-Doudoroff pathway (crenarcheota),Central carbon metabolism,K11395
+M00633_004,galactonate => 2-dehydro-3-deoxy-galactonate,Semi-phosphorylative Entner-Doudoroff pathway (crenarcheota),Central carbon metabolism,K05308
+M00633_005,2-dehydro-3-deoxy-galactonate => 2-dehydro-3-deoxy-6P-galactonate,Semi-phosphorylative Entner-Doudoroff pathway (crenarcheota),Central carbon metabolism,K18126
+M00633_006,2-dehydro-3-deoxy-6P-galactonate => glyceraldehyde-3P,Semi-phosphorylative Entner-Doudoroff pathway (crenarcheota),Central carbon metabolism,K11395
+M00633_007,glyceraldehyde-3P => glycerate-3P,Semi-phosphorylative Entner-Doudoroff pathway (crenarcheota),Central carbon metabolism,K18978
+M00740_001,oxaloacetate + acetyl-CoA => citrate,Methylaspartate cycle,Other carbohydrate metabolism,"(K01647,K01659)"
+M00740_002,citrate => cis-aconitate,Methylaspartate cycle,Other carbohydrate metabolism,K27802
+M00740_003,cis-aconitate => isocitrate,Methylaspartate cycle,Other carbohydrate metabolism,K27802
+M00740_004,isocitrate => oxalosuccinate,Methylaspartate cycle,Other carbohydrate metabolism,K00031
+M00740_005,oxalosuccinate => 2-oxoglutarate,Methylaspartate cycle,Other carbohydrate metabolism,K00031
+M00740_006,2-oxoglutarate => glutamate,Methylaspartate cycle,Other carbohydrate metabolism,K00261
+M00740_007,glutamate => threo-3-methylaspartate,Methylaspartate cycle,Other carbohydrate metabolism,K19268+K01846
+M00740_008,threo-3-methylaspartate => mesaconate,Methylaspartate cycle,Other carbohydrate metabolism,K04835
+M00740_009,mesaconate => 2-methylfumaryl-CoA,Methylaspartate cycle,Other carbohydrate metabolism,K19280
+M00740_010,2-methylfumaryl-CoA => erythro-3-methylmalyl-CoA,Methylaspartate cycle,Other carbohydrate metabolism,K14449
+M00740_011,erythro-3-methylmalyl-CoA => glyoxylate,Methylaspartate cycle,Other carbohydrate metabolism,K19281
+M00740_012,glyoxylate + acetyl-CoA => malyl-CoA,Methylaspartate cycle,Other carbohydrate metabolism,K19282
+M00740_013,malyl-CoA => s-malate,Methylaspartate cycle,Other carbohydrate metabolism,K19282
+M00740_014,s-malate => oxaloacetate,Methylaspartate cycle,Other carbohydrate metabolism,K00024
+M00741_001,propanoyl-CoA => D-methylmalonyl-CoA,Propanoyl-CoA metabolism,Other carbohydrate metabolism,"(K01965+K01966,K11263+(K18472,K27094+K27095,K19312+K22568),K01964+K15036+K15037)"
+M00741_002,D-methylmalonyl-CoA => L-methylmalonyl-CoA,Propanoyl-CoA metabolism,Other carbohydrate metabolism,K05606
+M00741_003,L-methylmalonyl-CoA => succinyl-CoA,Propanoyl-CoA metabolism,Other carbohydrate metabolism,"(K01847,K01848+K01849)"
+M00763_001,,"Ornithine biosynthesis, mediated by LysW, glutamate => ornithine",Amino acid metabolism,K05826
+M00763_002,,"Ornithine biosynthesis, mediated by LysW, glutamate => ornithine",Amino acid metabolism,K19412
+M00763_003,,"Ornithine biosynthesis, mediated by LysW, glutamate => ornithine",Amino acid metabolism,K05828
+M00763_004,,"Ornithine biosynthesis, mediated by LysW, glutamate => ornithine",Amino acid metabolism,K05829
+M00763_005,,"Ornithine biosynthesis, mediated by LysW, glutamate => ornithine",Amino acid metabolism,K05830
+M00763_006,,"Ornithine biosynthesis, mediated by LysW, glutamate => ornithine",Amino acid metabolism,K05831
+M00804_001,ammonia => hydroxylamine,Commamox,Nitrogen metabolism,K109441+K109451+K109461
+M00804_002,hydroxylamine => nitrite,Commamox,Nitrogen metabolism,K10535
+M00804_003,nitrite => nitrate,Commamox,Nitrogen metabolism,K00370+K00371
+M00836,,sirohydrochlorin => coenzyme F430,Coenzyme F430 biosynthesis,K22011 K22012 (K21610+K21611) K21612
+M00844_001,,"Arginine biosynthesis, ornithine => arginine",Amino acid metabolism,K00611
+M00844_002,,"Arginine biosynthesis, ornithine => arginine",Amino acid metabolism,K01940
+M00844_003,,"Arginine biosynthesis, ornithine => arginine",Amino acid metabolism,"(K01755,K14681)"
+M00845_001,,"Arginine biosynthesis, glutamate => acetylcitrulline => arginine",Amino acid metabolism,K22478 
+M00845_002,,"Arginine biosynthesis, glutamate => acetylcitrulline => arginine",Amino acid metabolism,K00145 
+M00845_003,,"Arginine biosynthesis, glutamate => acetylcitrulline => arginine",Amino acid metabolism,K00821 
+M00845_004,,"Arginine biosynthesis, glutamate => acetylcitrulline => arginine",Amino acid metabolism,K09065 
+M00845_005,,"Arginine biosynthesis, glutamate => acetylcitrulline => arginine",Amino acid metabolism,K01438 
+M00845_006,,"Arginine biosynthesis, glutamate => acetylcitrulline => arginine",Amino acid metabolism,K01940 
+M00845_007,,"Arginine biosynthesis, glutamate => acetylcitrulline => arginine",Amino acid metabolism,K01755
+M00846,,glutamyl-tRNA => siroheme,Siroheme biosynthesis,"K02492 K01845 K01698 K01749 (K01719,K13542,K13543) (K02302,(K00589,K02303,K02496,K13542,K13543)+(K02304,(K24866+K03794)))"
+M00847,,siroheme => heme,"Heme biosynthesis, archaea, ","K22225 K22226 (K22227,K25033)"
+M00914,,2-oxoisovalerate => 4-phosphopantoate => CoA,"Coenzyme A biosynthesis, archaea",K00606 K00077 K06982 K09722 K13038 K02201 K09735
+M00919_001,,"Ectoine degradation, ectoine => aspartate",Amino acid metabolism,K15783 
+M00919_002,,"Ectoine degradation, ectoine => aspartate",Amino acid metabolism,K15784 
+M00919_003,,"Ectoine degradation, ectoine => aspartate",Amino acid metabolism,K15785 
+M00919_004,,"Ectoine degradation, ectoine => aspartate",Amino acid metabolism,K15786
+M00925,,"uroporphyrinogen III => precorrin 2 => cobyrinate a,c-diamide","Cobalamin biosynthesis, aerobic","(K02303,K13542) (K03394,K13540) K02229 (K05934,K13540,K13541) K05936 K02228 K05895 K00595 K06042 K02224 K02230+K09882+K09883"
+M00973_001,nitrite => nitric oxide,Anammox,Nitrogen metabolism,"(K00368,K15864)"
+M00973_002,nitric oxide + ammonia => hydrazine,Anammox,Nitrogen metabolism,(K20932+K20933+K20934)
+M00973_003,hydrazine => nitrogen,Anammox,Nitrogen metabolism,K20935
+M00975_001,,"Betaine degradation, bacteria, betaine => pyruvate",Amino acid metabolism,K00479+K21832 
+M00975_002,,"Betaine degradation, bacteria, betaine => pyruvate",Amino acid metabolism,"(((K00309,K00315) (K00301,K00302+K00303+K00304+K00305)),K21833+K21834+K25960+K25961) "
+M00975_003,,"Betaine degradation, bacteria, betaine => pyruvate",Amino acid metabolism,K00600 
+M00975_004,,"Betaine degradation, bacteria, betaine => pyruvate",Amino acid metabolism,"(K01752,K01754)"
+M00978_001,,Ornithine-ammonia cycle,Amino acid metabolism,K01915 
+M00978_002,,Ornithine-ammonia cycle,Amino acid metabolism,K01955+K01956 
+M00978_003,,Ornithine-ammonia cycle,Amino acid metabolism,K00611 
+M00978_004,,Ornithine-ammonia cycle,Amino acid metabolism,K01940 
+M00978_005,,Ornithine-ammonia cycle,Amino acid metabolism,K01755 
+M00978_006,,Ornithine-ammonia cycle,Amino acid metabolism,"(K27542,K27545)"
+M00982_001,2-Methylcitrate + CoA <=> Propanoyl-CoA + Oxaloacetate + H2O,Methylcitrate cycle,Other carbohydrate metabolism,K01659
+M00982_002,"2-Methylcitrate <=> (Z)-But-2-ene-1,2,3-tricarboxylate",Methylcitrate cycle,Other carbohydrate metabolism,"(K01720,(K20455 K09788))"
+M00982_003,"(2S,3R)-3-Hydroxybutane-1,2,3-tricarboxylate <=> (Z)-But-2-ene-1,2,3-tricarboxylate + H2O",Methylcitrate cycle,Other carbohydrate metabolism,"(K01682,K27802) "
+M00982_004,"(2S,3R)-3-Hydroxybutane-1,2,3-tricarboxylate <=> Pyruvate + Succinate",Methylcitrate cycle,Other carbohydrate metabolism,"(K03417,K01637) "
+M00982_005,Quinone + Succinate <=> Hydroquinone + Fumarate,Methylcitrate cycle,Other carbohydrate metabolism,"(K00239+K00240+K00241,K00244+K00245+K00246) "
+M00982_006,(S)-Malate <=> Fumarate + H2O,Methylcitrate cycle,Other carbohydrate metabolism,"(K01676,K01679,K01677+K01678) "
+M00982_007,(S)-Malate + NAD+ <=> Oxaloacetate + NADH + H+,Methylcitrate cycle,Other carbohydrate metabolism,"(K00024,K00116)"
+M00984_001,thiosulfate => tetrathionate,"Sulfur oxidation, tetrathionate intermediate (S4I) pathway",Sulfur metabolism,"(K16937+K16936,K05908,K19713)"
+M00984_002,Tetrathionate + H2O <=> Thiosulfate + Sulfur + Sulfate + H+,"Sulfur oxidation, tetrathionate intermediate (S4I) pathway",Sulfur metabolism,K27925
+M00985_001,sulfide => sulfur,Sulfur oxidation,Sulfur metabolism,K17229+K17230
+M00986_001,sulfur => sulfide,Sulfur reduction,Sulfur metabolism,"K18367,(K17219+K17220+K17221)"
+M00990_001,"S,S-Dimethyl-beta-propiothetin + Tetrahydrofolate <=> 3-(Methylthio)propanoate + 5-Methyltetrahydrofolate","Dimethylsulfoniopropionate (DMSP) degradation, demethylation pathway, DMSP => methanethiol",Sulfur metabolism,K17486
+M00990_002,ATP + 3-(Methylthio)propanoate + CoA <=> AMP + Diphosphate + 3-(Methylthio)propanoyl-CoA,"Dimethylsulfoniopropionate (DMSP) degradation, demethylation pathway, DMSP => methanethiol",Sulfur metabolism,K20034
+M00990_003,3-(Methylthio)propanoyl-CoA + Acceptor <=> 3-(Methylthio)acryloyl-CoA + Reduced acceptor,"Dimethylsulfoniopropionate (DMSP) degradation, demethylation pathway, DMSP => methanethiol",Sulfur metabolism,K20035
+M00990_004,3-(Methylthio)acryloyl-CoA + 2 H2O <=> Acetaldehyde + Methanethiol + CoA + CO2,"Dimethylsulfoniopropionate (DMSP) degradation, demethylation pathway, DMSP => methanethiol",Sulfur metabolism,K20036
+M00991_001,"S,S-Dimethyl-beta-propiothetin + H2O <=> Dimethyl sulfide + 3-Hydroxypropanoate","Dimethylsulfoniopropionate (DMSP) degradation, cleavage pathway, DMSP => acetyl-CoA",Sulfur metabolism,K28073
+M00991_002,3-Hydroxypropanoate <=> 3-Oxopropanoate,"Dimethylsulfoniopropionate (DMSP) degradation, cleavage pathway, DMSP => acetyl-CoA",Sulfur metabolism,"(K28060,K28061)"
+M00991_003,3-Oxopropanoate + CoA + NAD+ <=> Acetyl-CoA + CO2 + NADH + H+,"Dimethylsulfoniopropionate (DMSP) degradation, cleavage pathway, DMSP => acetyl-CoA",Sulfur metabolism,K00140
+M00992_001,"S,S-Dimethyl-beta-propiothetin <=> Dimethyl sulfide + Acrylic acid","Dimethylsulfoniopropionate (DMSP) degradation, cleavage pathway, DMSP => acrylate => acetyl-CoA",Sulfur metabolism,K28069
+M00992_002,Acrylic acid <=> Propenoyl-CoA,"Dimethylsulfoniopropionate (DMSP) degradation, cleavage pathway, DMSP => acrylate => acetyl-CoA",Sulfur metabolism,K28070
+M00992_003,Propenoyl-CoA <=> 3-Hydroxypropanoate,"Dimethylsulfoniopropionate (DMSP) degradation, cleavage pathway, DMSP => acrylate => acetyl-CoA",Sulfur metabolism,K28071
+M00992_004,3-Hydroxypropanoate <=> 3-Oxopropanoate,"Dimethylsulfoniopropionate (DMSP) degradation, cleavage pathway, DMSP => acrylate => acetyl-CoA",Sulfur metabolism,K28060
+M00992_005,3-Oxopropanoate + CoA + NAD+ <=> Acetyl-CoA + CO2 + NADH + H+,"Dimethylsulfoniopropionate (DMSP) degradation, cleavage pathway, DMSP => acrylate => acetyl-CoA",Sulfur metabolism,K00140
+M00993_001,"S,S-Dimethyl-beta-propiothetin + ATP + CoA <=> Dimethyl sulfide + Propenoyl-CoA + ADP + Orthophosphate","Dimethylsulfoniopropionate (DMSP) degradation, cleavage pathway, DMSP => propionyl-CoA",Sulfur metabolism,K28072 
+M00993_002,Propanoyl-CoA + NADP+ <=> Propenoyl-CoA + NADPH + H+,"Dimethylsulfoniopropionate (DMSP) degradation, cleavage pathway, DMSP => propionyl-CoA",Sulfur metabolism,K19745
+Sugars00001_001,hexokinase,fructose degradation,Fructose and mannose metabolism,K00844
+Sugars00001_002,fructokinase,fructose degradation,Fructose and mannose metabolism,K00847
+Sugars00001_003,1-phosphofructokinase,fructose degradation,Fructose and mannose metabolism,K00882
+Sugars00002_001,beta-galactosidase,lactose degradation,Galactose metabolism,K01190
+Sugars00002_002,evolved beta-galactosidase subunit alpha,lactose degradation,Galactose metabolism,K12111
+Sugars00002_003,evolved beta-galactosidase subunit beta,lactose degradation,Galactose metabolism,K12112
+Sugars00002_004,beta-galactosidase,lactose degradation,Galactose metabolism,K12309
+Sugars00003_001,L-fuculokinase,fucose degradation,Fructose and mannose metabolism,K00879
+Sugars00003_002,L-fuculose-phosphate aldolase,fucose degradation,Fructose and mannose metabolism,K01628
+Sugars00003_003,L-fucose/D-arabinose isomerase,fucose degradation,Fructose and mannose metabolism,K01818
+Sugars00004_001,sucrose phosphorylase,sucrose degradation,Starch and sucrose metabolism,K00690
+Sugars00004_002,alpha-glucosidase,sucrose degradation,Starch and sucrose metabolism,K01187
+Sugars00004_003,beta-fructofuranosidase,sucrose degradation,Starch and sucrose metabolism,K01193
+Sugars00004_004,sucrase-isomaltase,sucrose degradation,Starch and sucrose metabolism,K01203
+Sugars00004_005,maltase-glucoamylase,sucrose degradation,Starch and sucrose metabolism,K12047
+Sugars00004_006,lysosomal alpha-glucosidase,sucrose degradation,Starch and sucrose metabolism,K12316
+Sugars00004_007,neutral alpha-glucosidase C,sucrose degradation,Starch and sucrose metabolism,K12317
+Sugars00004_008,sulfoquinovosidase,sucrose degradation,Starch and sucrose metabolism,K15922
+Sugars00005_001,hexokinase,mannose degradation,Fructose and mannose metabolism,K00844
+Sugars00005_002,mannose-6-phosphate isomerase,mannose degradation,Fructose and mannose metabolism,K01809
+Sugars00005_003,mannose PTS system EIIA component,mannose degradation,Fructose and mannose metabolism,K02793
+Sugars00005_004,mannose PTS system EIIAB component,mannose degradation,Fructose and mannose metabolism,K02794
+Sugars00005_005,mannose PTS system EIIC component,mannose degradation,Fructose and mannose metabolism,K02795
+Sugars00005_006,mannose PTS system EIID component,mannose degradation,Fructose and mannose metabolism,K02796
+Sugars00006_001,xylulokinase,xylose degradation (isomerase pathway),Fructose and mannose metabolism,K00854
+Sugars00006_002,xylose isomerase,xylose degradation (isomerase pathway),Fructose and mannose metabolism,K01805
+Sugars00007_001,tagaturonate reductase,galacturonic acid degradation,Pentose and glucuronate interconversions,K00041
+Sugars00007_002,2-dehydro-3-deoxygluconokinase,galacturonic acid degradation,Pentose and glucuronate interconversions,K00874
+Sugars00007_003,2-dehydro-3-deoxyphosphogluconate aldolase / (4S)-4-hydroxy-2-oxoglutarate aldolase,galacturonic acid degradation,Pentose and glucuronate interconversions,K01625
+Sugars00007_004,altronate hydrolase,galacturonic acid degradation,Pentose and glucuronate interconversions,K01685
+Sugars00007_005,altronate dehydratase small subunit,galacturonic acid degradation,Pentose and glucuronate interconversions,K16849
+Sugars00007_006,altronate dehydratase large subunit,galacturonic acid degradation,Pentose and glucuronate interconversions,K16850
+Sugars00008_001,L-iditol 2-dehydrogenase,xylose degradation (oxidoreductase pathway),Pentose and glucuronate interconversions,K00008
+Sugars00008_002,aldehyde reductase,xylose degradation (oxidoreductase pathway),Pentose and glucuronate interconversions,K00011
+Sugars00008_003,xylulokinase,xylose degradation (oxidoreductase pathway),Pentose and glucuronate interconversions,K00854
+Sugars00008_004,D-xylulose reductase,xylose degradation (oxidoreductase pathway),Pentose and glucuronate interconversions,K05351
+Sugars00008_005,D-xylose reductase,xylose degradation (oxidoreductase pathway),Pentose and glucuronate interconversions,K17743
+Sugars00009_001,dihydrodiol dehydrogenase / D-xylose 1-dehydrogenase (NADP),xylose degradation (weimburg/dahms),Pentose and glucuronate interconversions,K00078
+Sugars00009_002,D-xylose 1-dehydrogenase (NADP+),xylose degradation (weimburg/dahms),Pentose and glucuronate interconversions,K14273
+Sugars00009_003,"xylono-1,5-lactonase",xylose degradation (weimburg/dahms),Pentose and glucuronate interconversions,K14274
+Sugars00009_004,D-xylonate dehydratase,xylose degradation (weimburg/dahms),Pentose and glucuronate interconversions,K14275
+Sugars00010_001,D-xylonate dehydratase,xylose degradation (xylonate hydratase pathway),Pentose and glucuronate interconversions,K14275
+Sugars00011_001,,maltose degradation,maltose degradation,"K00705,K22451"
+Sugars00012_001,trehalose<->maltose,trehalose degradation,trehalose degradation,K05343
+Thermo_001,Acetyl-CoA => malonyl-CoA,Hydroxypropionate-hydroxybutylate_Thermoproteota,Carbon fixation,K18603+K18604+K18605
+Thermo_002,malonate semialdehyde => 3-hydroxypropanoate,Hydroxypropionate-hydroxybutylate_Thermoproteota,Carbon fixation,K18602
+Thermo_003,3-hydroxypropanoate => 3-hydroxypropionyl-CoA,Hydroxypropionate-hydroxybutylate_Thermoproteota,Carbon fixation,K18594
+Thermo_004,3-hydroxypropionyl-CoA => acryloyl-CoA,Hydroxypropionate-hydroxybutylate_Thermoproteota,Carbon fixation,K15019
+Thermo_005,propionyl-CoA =>  S-methylmalonyl-CoA,Hydroxypropionate-hydroxybutylate_Thermoproteota,Carbon fixation,K18603+K18604+K18605
+Thermo_006,S-methylmalonyl-CoA => succinyl-CoA,Hydroxypropionate-hydroxybutylate_Thermoproteota,Carbon fixation,K01848+K01849
+Thermo_007,4-hydroxybutyrate => 4-hydroxybutyryl-CoA,Hydroxypropionate-hydroxybutylate_Thermoproteota,Carbon fixation,K18593
+Thermo_008,4-hydroxybutyryl-CoA => crotonoyl-CoA,Hydroxypropionate-hydroxybutylate_Thermoproteota,Carbon fixation,K14534
+Thermo_009,crotonoyl-CoA => 3-hydroxybutanoyl-CoA,Hydroxypropionate-hydroxybutylate_Thermoproteota,Carbon fixation,K15016
+Thermo_010,3-hydroxybutanoyl-CoA => acetoacetyl-CoA,Hydroxypropionate-hydroxybutylate_Thermoproteota,Carbon fixation,K15016
+Thermo_011,acetoacetyl-CoA => acetyl-CoA,Hydroxypropionate-hydroxybutylate_Thermoproteota,Carbon fixation,K00626
+Thermo2_001,glucose => glucose-6P,Glycolysis_gluconeogenesis_Thermoproteota,Central carbon metabolism,K15778
+Thermo2_002,glucose-6P => fructose-6P,Glycolysis_gluconeogenesis_Thermoproteota,Central carbon metabolism,"(K01810,K06859,K13810,K15916)"
+Thermo2_003,fructose-6P => fructose-1-6-biP,Glycolysis_gluconeogenesis_Thermoproteota,Central carbon metabolism,K01622
+Thermo2_004,fructose-1-6-biP => glyceraldehyde-3P,Glycolysis_gluconeogenesis_Thermoproteota,Central carbon metabolism,K01622
+Thermo2_005,glyceraldehyde-3P => dihydroxyacetone phosphate,Glycolysis_gluconeogenesis_Thermoproteota,Central carbon metabolism,K01803
+Thermo2_006,"glyceraldehyde-3P => 1,3-bisphosphoglycerate",Glycolysis_gluconeogenesis_Thermoproteota,Central carbon metabolism,K00150
+Thermo2_007,"1,3-bisphosphoglycerate => 3-phosphoglycerate",Glycolysis_gluconeogenesis_Thermoproteota,Central carbon metabolism,K00927
+Thermo2_008,3-phosphoglycerate =>  2-phosphoglycerate,Glycolysis_gluconeogenesis_Thermoproteota,Central carbon metabolism,"K15634,K15635"
+Thermo2_009,2-phosphoglycerate => phosphoenolpyruvate,Glycolysis_gluconeogenesis_Thermoproteota,Central carbon metabolism,K01689
+Thermo2_010,phosphoenolpyruvate => pyruvate,Glycolysis_gluconeogenesis_Thermoproteota,Central carbon metabolism,"(K00873,K12406)"
+M00003_001,,Gluconeogenesis,Central carbon metabolism,"K01596,K01610"
+M00003_002,,Gluconeogenesis,Central carbon metabolism,"K01689,K27394"
+M00003_003,,Gluconeogenesis,Central carbon metabolism,"K01834,K15633,K15634,K15635"
+M00003_004,,Gluconeogenesis,Central carbon metabolism,K00927
+M00003_005,,Gluconeogenesis,Central carbon metabolism,"K00134,K00150"
+M00003_006,,Gluconeogenesis,Central carbon metabolism,K01803
+M00003_007,,Gluconeogenesis,Central carbon metabolism,"((K01623,K01624,K11645) (K03841,K02446,K11532,K01086,K04041),K01622)"
+M00048_001,,"De novo purine biosynthesis, PRPP + glutamine => IMP",Purine metabolism,K00764
+M00048_002,,"De novo purine biosynthesis, PRPP + glutamine => IMP",Purine metabolism,"(K01945,K11787,K11788,K13713)"
+M00048_003,,"De novo purine biosynthesis, PRPP + glutamine => IMP",Purine metabolism,"(K00601,K11175,K08289,K11787,K01492)"
+M00048_004,,"De novo purine biosynthesis, PRPP + glutamine => IMP",Purine metabolism,"(K01952,(K23269+K23264+K23265),(K23270+K23265))"
+M00048_005,,"De novo purine biosynthesis, PRPP + glutamine => IMP",Purine metabolism,"(K01933,K11787,K11788 (K01587,K11808,K01589 K01588))"
+M00048_006,,"De novo purine biosynthesis, PRPP + glutamine => IMP",Purine metabolism,"(K01923,K01587,K13713)"
+M00048_007,,"De novo purine biosynthesis, PRPP + glutamine => IMP",Purine metabolism,K01756
+M00048_008,,"De novo purine biosynthesis, PRPP + glutamine => IMP",Purine metabolism,"(K00602,(K01492,K06863 K11176))"
+M00049_001,,"Adenine ribonucleotide biosynthesis, IMP => ADP,ATP",Purine metabolism,K01939
+M00049_002,,"Adenine ribonucleotide biosynthesis, IMP => ADP,ATP",Purine metabolism,K01756
+M00049_003,,"Adenine ribonucleotide biosynthesis, IMP => ADP,ATP",Purine metabolism,"(K00939,K18532,K18533,K00944)"
+M00049_004,,"Adenine ribonucleotide biosynthesis, IMP => ADP,ATP",Purine metabolism,K00940
+M00050_001,,"Guanine ribonucleotide biosynthesis, IMP => GDP,GTP",Purine metabolism,K00088
+M00050_002,,"Guanine ribonucleotide biosynthesis, IMP => GDP,GTP",Purine metabolism,K01951
+M00050_003,,"Guanine ribonucleotide biosynthesis, IMP => GDP,GTP",Purine metabolism,K00942
+M00050_004,,"Guanine ribonucleotide biosynthesis, IMP => GDP,GTP",Purine metabolism,"(K00940,K18533)"
+M00053_001,,Deoxyribonucleotide biosynthesis,Purine metabolism,"(K00525+K00526,K10807+K10808)"
+M00053_002,,Deoxyribonucleotide biosynthesis,Purine metabolism,"(K00940,K18533)"
+M00958_001,,"Adenine ribonucleotide degradation, AMP => Urate",Purine metabolism,"(K01490 (K01081,K19970,K03787,K18550)),((K01081,K19970,K11751,K03787,K02566,K08693) (K01488,K19572,K05810))"
+M00958_002,,"Adenine ribonucleotide degradation, AMP => Urate",Purine metabolism,"(K03783,K03784,K09913,K05810)"
+M00958_003,,"Adenine ribonucleotide degradation, AMP => Urate",Purine metabolism,"(K00106,K00087+K13479+K13480,K13481+K13482,K11177+K11178+K13483)"
+M00959_001,,"Guanine ribonucleotide degradation, GMP => Urate",Purine metabolism,"(K01081,K19970,K11751,K03787,K02566,K08693,K20881)"
+M00959_002,,"Guanine ribonucleotide degradation, GMP => Urate",Purine metabolism,"(K03783,K03784,K09913,K05810)"
+M00959_003,,"Guanine ribonucleotide degradation, GMP => Urate",Purine metabolism,K01487
+M00959_004,,"Guanine ribonucleotide degradation, GMP => Urate",Purine metabolism,"(K00106,K00087+K13479+K13480,K13481+K13482,K11177+K11178+K13483)"
+M00546_001,,"Purine degradation, xanthine => urea",Purine metabolism,"(K00106,K00087+K13479+K13480,K13481+K13482,K11177+K11178+K13483)"
+M00546_002,,"Purine degradation, xanthine => urea",Purine metabolism,"(K00365,K16838,K16839,K22879)"
+M00546_003,,"Purine degradation, xanthine => urea",Purine metabolism,"(K13484,K07127 (K13485,K16838,K16840))"
+M00546_004,,"Purine degradation, xanthine => urea",Purine metabolism,"(K01466,K16842)"
+M00546_005,,"Purine degradation, xanthine => urea",Purine metabolism,K01477
+M00968_001,,"Pentose bisphosphate pathway (nucleoside degradation), archaea",Purine metabolism,"(((K00757,K26211,K26212) (K21056,K26208)),K18931) K18237 (K01601,(K26210 K01636))"
+M00051_001,,"De novo pyrimidine biosynthesis, glutamine (+ PRPP) => UMP",Pyrimidine metabolism,"(K11540,(K11541 K01465),((K01954,K01955+K01956) (K00609+K00610,K00608) K01465))"
+M00051_002,,"De novo pyrimidine biosynthesis, glutamine (+ PRPP) => UMP",Pyrimidine metabolism,"(K00226,K00254,K17828)"
+M00051_003,,"De novo pyrimidine biosynthesis, glutamine (+ PRPP) => UMP",Pyrimidine metabolism,"(K13421,K00762 K01591)"
+M00052_001,,"Pyrimidine ribonucleotide biosynthesis, UMP => UDP/UTP,CDP/CTP",Pyrimidine metabolism,"(K13800,K13809,K09903)"
+M00052_002,,"Pyrimidine ribonucleotide biosynthesis, UMP => UDP/UTP,CDP/CTP",Pyrimidine metabolism,"(K00940,K18533)"
+M00052_003,,"Pyrimidine ribonucleotide biosynthesis, UMP => UDP/UTP,CDP/CTP",Pyrimidine metabolism,K01937
+M00938_001,,"Pyrimidine deoxyribonucleotide biosynthesis, UDP => dTTP",Pyrimidine metabolism,"(K00525+K00526,K10807+K10808)"
+M00938_002,,"Pyrimidine deoxyribonucleotide biosynthesis, UDP => dTTP",Pyrimidine metabolism,"(K00940,K18533)"
+M00938_003,,"Pyrimidine deoxyribonucleotide biosynthesis, UDP => dTTP",Pyrimidine metabolism,K01520
+M00938_004,,"Pyrimidine deoxyribonucleotide biosynthesis, UDP => dTTP",Pyrimidine metabolism,"(K00560,K13998,K03465)"
+M00938_005,,"Pyrimidine deoxyribonucleotide biosynthesis, UDP => dTTP",Pyrimidine metabolism,K00943
+M00046_001,,"Pyrimidine degradation, uracil => beta-alanine, thymine => 3-aminoisobutanoate",Pyrimidine metabolism,"(K00207,K17722+K17723)"
+M00046_002,,"Pyrimidine degradation, uracil => beta-alanine, thymine => 3-aminoisobutanoate",Pyrimidine metabolism,K01464
+M00046_003,,"Pyrimidine degradation, uracil => beta-alanine, thymine => 3-aminoisobutanoate",Pyrimidine metabolism,"(K01431,K06016)"
+M00939_001,,"Pyrimidine degradation, uracil => 3-hydroxypropanoate",Pyrimidine metabolism,K09018+K09024
+M00939_002,,"Pyrimidine degradation, uracil => 3-hydroxypropanoate",Pyrimidine metabolism,K09020
+M00939_003,,"Pyrimidine degradation, uracil => 3-hydroxypropanoate",Pyrimidine metabolism,K09021
+M00939_004,,"Pyrimidine degradation, uracil => 3-hydroxypropanoate",Pyrimidine metabolism,K09023
+M00939_005,,"Pyrimidine degradation, uracil => 3-hydroxypropanoate",Pyrimidine metabolism,"(K09019,K16066)"
+M00417,,Cytochrome o ubiquinol oxidase,Energy metabolism,K02297+K02298+K02299+K02300
+M00935_sub_1,,Methanofuran biosynthesis,Methane metabolism,K09733 K19793 K07144
+M00935_sub_2,,Methanofuran biosynthesis,Methane metabolism,K18933 K06914
+M00935_sub_3,,Methanofuran biosynthesis,Methane metabolism,K07072
+M00172,,"C4-dicarboxylic acid cycle, NADP - malic enzyme type",Carbon fixation,K01595 K00051 K00029 K01006
+M00854_001,,"Glycogen biosynthesis, glucose-1P => glycogen/starch",Other carbohydrate metabolism,"(K00963 (K00693+K00750,K16150,K16153,K13679,K20812)),(K00975 (K00703,K13679,K20812))"
+M00854_002,,"Glycogen biosynthesis, glucose-1P => glycogen/starch",Other carbohydrate metabolism,"(K00700,K16149)"
+M00855_001,,"Glycogen degradation, glycogen => glucose-6P",Other carbohydrate metabolism,"(K00688,K16153) (K01196,((K00705,K22451) (K02438,K01200))) (K15779,K01835,K15778)"
+M00565,,"Trehalose biosynthesis, D-glucose 1P => trehalose",Other carbohydrate metabolism,"K00975 K00703 (K00700,K16149) K01214 K06044 K01236"
+M00061,,"D-Glucuronate degradation, D-glucuronate => pyruvate + D-glyceraldehyde 3P",Other carbohydrate metabolism,"K01812 K00040 (K01686,K08323) K00874 (K01625,K17463)"
+M00081,,Pectin degradation,Other carbohydrate metabolism,K01051 K01184 K01213
+Extra_030,resorcinol->hydroxyhydroquinone,resorcinol degradation,resorcinol degradation,K20942
+M00019_001,,Valiene/isoleucine bio,Amino acid metabolism,"K01652+(K01653,K11258)"
+M00019_002,,Valiene/isoleucine bio,Amino acid metabolism,K00053
+M00019_003,,Valiene/isoleucine bio,Amino acid metabolism,K01687
+M00019_004,,Valiene/isoleucine bio,Amino acid metabolism,K00826
+M00570_001,,Isoleucine biosynthesis,Amino acid metabolism,"(K17989,K01754)"
+M00570_002,,Isoleucine biosynthesis,Amino acid metabolism,"K01652+(K01653,K11258)"
+M00570_003,,Isoleucine biosynthesis,Amino acid metabolism,K00053
+M00570_004,,Isoleucine biosynthesis,Amino acid metabolism,K01687
+M00570_005,,Isoleucine biosynthesis,Amino acid metabolism,K00836
+M00432_001,,Leucine biosynthesis,Amino acid metabolism,K01649
+M00432_002,,Leucine biosynthesis,Amino acid metabolism,"(K01702,K01703+K01704)"
+M00432_003,,Leucine biosynthesis,Amino acid metabolism,K00052

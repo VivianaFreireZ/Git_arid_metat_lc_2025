@@ -1,0 +1,168 @@
+---
+title: "Normalization and CID"
+author: "Viviana Freire Zapata"
+date: "12/4/2024"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: '2'
+    collapsed: false
+    highlight: tango
+    css: style.css
+editor_options: 
+  chunk_output_type: console
+---
+
+# Data Pre-processing
+
+
+
+# Importing libraries
+
+```{r libraries, message=FALSE, warning=FALSE}
+
+library(matrixStats)
+library(tidyverse)
+
+source('figure_scripts/functions_cdis_norm_stats.R')
+
+```
+
+
+# LC-MS - RP
+
+# Loading data 
+
+```{r}
+## Raw matrix
+
+RP_df <- read_csv("scripts/LC-MS-MS/1.Pre-processing/output/RP_matrix_clean_2025.csv")
+
+
+## Loading annotation
+
+annot_rp <- read_csv("scripts/LC-MS-MS/3.Cleanning_Annotation/output/RP_final_annotation_checked.csv")
+
+
+metadata <- read_csv("input/metadata_omics.csv") %>% 
+  select(!SampleID_metaT)
+
+```
+
+
+## Joining annotated metabolites with CID table
+
+```{r}
+cid_table <- read_csv("scripts/LC_metaT_network/output/CID_combined_table.csv")
+```
+
+## Prepare matrix
+
+```{r}
+
+rp_ready <- RP_df %>% 
+  select(FeatureID, contains("RP")) %>% 
+  filter(FeatureID %in% annot_rp$FeatureID) %>% 
+  column_to_rownames(var = "FeatureID")
+
+```
+
+
+# Metabolite Normalization
+
+## Median normalization
+
+```{r}
+
+norm_matrix_rp <- median.norm(rp_ready, transform_data = FALSE)
+
+norm_matrix_rp_l <- norm_matrix_rp %>% 
+  rownames_to_column(var = 'FeatureID') %>% 
+  pivot_longer(!FeatureID, names_to = 'SampleID', values_to = 'norm') %>% 
+  left_join(metadata, by = c('SampleID' = 'SampleID_RP')) %>% 
+  left_join(annot_rp, by = 'FeatureID') %>% 
+  filter(Name != 'no name') %>% 
+  left_join(cid_table, by = c('Name' = 'compound')) %>% 
+  filter(!is.na(kegg_cid)) %>% 
+  group_by(kegg_cid, SampleID, month) %>% 
+  summarise(median_int = median(norm)) %>%
+  group_by(kegg_cid, month) %>% 
+  summarise(month_mean_int = mean(median_int)) %>% 
+  mutate(log_int = log2(month_mean_int + sqrt(month_mean_int^2 + 1)))
+  
+
+```
+
+
+# Loading data HILIC
+
+```{r}
+## Raw matrix
+
+HILIC_df <- read_csv("scripts/LC-MS-MS/1.Pre-processing/output/HILIC_matrix_clean_2025.csv")
+
+
+## Loading annotation
+
+annot_hilic <- read_csv("scripts/LC-MS-MS/3.Cleanning_Annotation/output/HILIC_final_annotation_checked.csv")
+
+
+```
+
+## Prepare matrix HILIC
+
+```{r}
+
+hilic_ready <- HILIC_df %>% 
+  select(FeatureID, contains("HILIC")) %>% 
+  filter(FeatureID %in% annot_hilic$FeatureID) %>% 
+  column_to_rownames(var = "FeatureID")
+
+```
+
+
+# Metabolite Normalization
+
+## Median normalization
+
+```{r}
+
+norm_matrix_hilic <- median.norm(hilic_ready, transform_data = FALSE)
+
+
+norm_matrix_hilic_l <- norm_matrix_hilic %>% 
+  rownames_to_column(var = 'FeatureID') %>% 
+  pivot_longer(!FeatureID, names_to = 'SampleID', values_to = 'norm') %>% 
+  left_join(metadata, by = c('SampleID' = 'SampleID_HILIC')) %>% 
+  left_join(annot_hilic, by = 'FeatureID') %>% 
+  filter(Name != 'no name') %>% 
+  left_join(cid_table, by = c('Name' = 'compound')) %>% 
+  filter(!is.na(kegg_cid)) %>% 
+  group_by(kegg_cid, SampleID, month) %>% 
+  summarise(median_int = median(norm)) %>%
+  group_by(kegg_cid, month) %>% 
+  summarise(month_mean_int = mean(median_int)) %>% 
+  mutate(log_int = log2(month_mean_int + sqrt(month_mean_int^2 + 1)))
+
+```
+
+
+## Save
+
+```{r}
+
+
+write_csv(norm_matrix_rp_l, 'scripts/LC_metaT_network/output/RP_CID_norm.csv')
+
+write_csv(norm_matrix_hilic_l, 'scripts/LC_metaT_network/output/HILIC_CID_norm.csv')
+
+# Sanity check
+length(unique(norm_matrix_rp_l$kegg_cid))
+
+length(unique(norm_matrix_hilic_l$kegg_cid))
+
+length(unique(cid_table$kegg_cid))
+
+```
+

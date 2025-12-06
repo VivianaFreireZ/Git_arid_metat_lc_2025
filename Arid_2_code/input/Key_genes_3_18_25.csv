@@ -1,0 +1,238 @@
+ko_id,gene_name,gene_abb,Category_1,Category_2
+K14467,4-hydroxybutyrate---CoA ligase (AMP-forming),4hbl,Dicarboxylate-hydroxybutyrate cycle,Carbon fixation
+K14534,4-Hydroxybutyryl-CoA dehydratase,abfD,Dicarboxylate-hydroxybutyrate cycle,Carbon fixation
+K01962,acetyl-CoA carboxylase carboxyl transferase subunit alpha,accA,3-Hydroxypropionate bi-cycle,Carbon fixation
+K02160,acetyl-CoA carboxylase biotin carboxyl carrier protein,accB,3-Hydroxypropionate bi-cycle,Carbon fixation
+K01961,"acetyl-CoA carboxylase, biotin carboxylase subunit",accC,3-Hydroxypropionate bi-cycle,Carbon fixation
+K01963,acetyl-CoA carboxylase carboxyl transferase subunit beta,accD,3-Hydroxypropionate bi-cycle,Carbon fixation
+K18472,acetyl-CoA/propionyl-CoA carboxylase carboxyl transferase subunit,accD6,Hydroxypropionate-hydroxybutylate cycle,Carbon fixation
+K01637,isocitrate/methylisocitrate lyase,aceA,,Glyoxylate bypass
+K01638,malate synthase,glcB,,Glyoxylate bypass
+K19282,bifunctional (S)-malyl-CoA lyase/thioesterase,aceB,,Glyoxylate bypass
+K00163,pyruvate dehydrogenase E1 component,aceE,,Piruvate oxidation
+K00925,acetate kinase,ackA,Phosphate acetyltransferase-acetate kinase pathway,Carbon fixation
+K15230,ATP-citrate lyase,aclA,Reductive TCA (rTCA) Cycle,Carbon fixation
+K15231,ATP-citrate lyase,aclB,Reductive TCA (rTCA) Cycle,Carbon fixation
+K01681,aconitate hydrolase,aco,,TCA
+K00198,anaerobic carbon-monoxide dehydrogenase catalytic subunit,acsA,Wood-Ljungdahl pathway,Carbon fixation
+K14138,Acetyl-CoA synthase,acsB,Wood-Ljungdahl pathway,Carbon fixation
+K00197,"acetyl-CoA decarbonylase/synthase, CODH/ACS complex subunit gamma",acsC,Wood-Ljungdahl pathway,Carbon fixation
+K00194,"acetyl-CoA decarbonylase/synthase, CODH/ACS complex subunit delta",acsD,Wood-Ljungdahl pathway,Carbon fixation
+K14260,alanine-synthesizing transaminase,alaA,AA,Nitrogen metabolism
+K28059,"MFS transporter, DHA2 family, low affinity ammonium transporter",AMF-1,Ammonium transporter,Nitrogen metabolism
+K109441,ammonia monooxygenase subunit A,amoA,Nitrification,Nitrogen metabolism
+K109451,ammonia monooxygenase subunit B,amoB,Nitrification,Nitrogen metabolism
+K109461,ammonia monooxygenase subunit C,amoC,Nitrification,Nitrogen metabolism
+K03320,ammonium transporter,amt,Ammonium transporter,Nitrogen metabolism
+K00531,nitrogenase delta subunit,anfG,N fixation,Nitrogen metabolism
+K00394,"adenylylsulfate reductase, subunit A",aprA,Dissimilatory sulfate reduction,Sulfur metabolism
+K00395,"adenylylsulfate reductase, subunit B",aprB,Dissimilatory sulfate reduction,Sulfur metabolism
+K00812,aspartate aminotransferase,aspB,AA,Nitrogen metabolism
+K00813,aspartate aminotransferase,aspC,AA,Nitrogen metabolism
+K00166,2-oxoisovalerate dehydrogenase E1 component subunit alpha,BCKDHA,AA,Nitrogen metabolism
+K00167,2-oxoisovalerate dehydrogenase E1 component subunit beta,BCKDHB,AA,Nitrogen metabolism
+K11381,2-oxoisovalerate dehydrogenase E1 component,bkdA,AA,Nitrogen metabolism
+K15234,citryl-CoA lyase,ccl,Reductive TCA (rTCA) Cycle,Carbon fixation
+K14446,crotonyl-CoA carboxylase/reductase,ccr,,EMC
+K15232,citryl-CoA synthetase large subunit,ccsA,Reductive TCA (rTCA) Cycle,Carbon fixation
+K15233,citryl-CoA synthetase small subunit,ccsB,Reductive TCA (rTCA) Cycle,Carbon fixation
+K00192,"anaerobic carbon-monoxide dehydrogenase, CODH/ACS complex subunit alpha",cdhA,Wood-Ljungdahl pathway,Carbon fixation
+K00195,"anaerobic carbon-monoxide dehydrogenase, CODH/ACS complex subunit epsilon",cdhB,Wood-Ljungdahl pathway,Carbon fixation
+K01948,carbamoyl-phosphate synthase (ammonia),CPS1,Ammonia Carbamoyl-P,Nitrogen metabolism
+K01647,citrate synthase,CS,,TCA
+K00860,adenylylsulfate kinase,cysC,Assimilatory sulfate reduction,Sulfur metabolism
+K00957,sulfate adenylyltransferase subunit 2,cysD,Assimilatory sulfate reduction,Sulfur metabolism
+K00390,phosphoadenosine phosphosulfate reductase,cysH,Assimilatory sulfate reduction,Sulfur metabolism
+K00381,sulfite reductase (NADPH) hemoprotein beta-component,cysI,Assimilatory sulfate reduction,Sulfur metabolism
+K00380,sulfite reductase (NADPH) flavoprotein alpha-component,cysJ,Assimilatory sulfate reduction,Sulfur metabolism
+K00956,sulfate adenylyltransferase subunit 1,cysN,Assimilatory sulfate reduction,Sulfur metabolism
+K00955,bifunctional enzyme CysN/CysC,cysNC,Assimilatory sulfate reduction,Sulfur metabolism
+K00627,pyruvate dehydrogenase E2 component (dihydrolipoyllysine-residue acetyltransferase),DLAT,,Piruvate oxidation
+K11180,dissimilatory sulfite reductase alpha subunit,dsrA,Dissimilatory sulfate reduction,Sulfur metabolism
+K11181,dissimilatory sulfite reductase beta subunit,dsrB,Dissimilatory sulfate reduction,Sulfur metabolism
+K27189,[DsrC]-trisulfide reductase subunit J,dsrJ,Dissimilatory sulfate reduction,Sulfur metabolism
+K27188,[DsrC]-trisulfide reductase subunit K,dsrK,Dissimilatory sulfate reduction,Sulfur metabolism
+K27196,dissimilatory sulfite reductase flavoprotein subunit,dsrL,Dissimilatory sulfate reduction,Sulfur metabolism
+K27187,[DsrC]-trisulfide reductase subunit M,dsrM,Dissimilatory sulfate reduction,Sulfur metabolism
+K27190,[DsrC]-trisulfide reductase subunit O,dsrO,Dissimilatory sulfate reduction,Sulfur metabolism
+K27191,[DsrC]-trisulfide reductase subunit P,dsrP,Dissimilatory sulfate reduction,Sulfur metabolism
+K01455,formamidase,E3.5.1.49,Formamide Ammonia,Nitrogen metabolism
+K14447,ethylmalonyl-CoA mutase,ecm,,EMC
+K01625,KDPG aldolase,eda,,Entner-Doudoroff pathway
+K01690,6-phosphogluconate dehydratase,edd,,Entner-Doudoroff pathway
+K20247,hercynylcysteine S-oxide lyase,EGT2,Ergothioneine,Other
+K18913,hercynylcysteine S-oxide lyase,egtE,Ergothioneine,Other
+K01689,enolase,eno,,Glycolisis
+K01679,fumarate hydratase,fumC,,TCA
+K00134,G3P dehydrogenase,GAPDH,,Glycolisis
+K00282,glycine cleavage system P protein (glycine dehydrogenase) subunit 1,gcvPA,,Glycine cleavage
+K00283,glycine cleavage system P protein (glycine dehydrogenase) subunit 2,gcvPB,,Glycine cleavage
+K00605,glycine cleavage system T protein (aminomethyltransferase),gcvT,,Glycine cleavage
+K15371,glutamate dehydrogenase,GDH2,Glutamine_glutamate_ammonium assimilation,Nitrogen metabolism
+K00261,glutamate dehydrogenase (NAD(P)+),gdhA,Glutamine_glutamate_ammonium assimilation,Nitrogen metabolism
+K00262,glutamate dehydrogenase (NADP+),E1.4.1.4,Glutamine_glutamate_ammonium assimilation,Nitrogen metabolism
+K00681,gamma-glutamyltranspeptidase / glutathione hydrolase,ggt,Glutamine_glutamate_ammonium assimilation,Nitrogen metabolism
+K18592,gamma-glutamyltranspeptidase / glutathione hydrolase / leukotriene-C4,GGT1_5,Glutamine_glutamate_ammonium assimilation,Nitrogen metabolism
+K00281,glycine cleavage system P protein,GLDC,,Glycine cleavage
+K01915,glutamine synthetase,glnA,Glutamine_glutamate_ammonium assimilation,Nitrogen metabolism
+K01425,glutaminase,glsA,AA,Nitrogen metabolism
+K00264,glutamate synthase (NADH),GLT1,Glutamine_glutamate_ammonium assimilation,Nitrogen metabolism
+K00265,glutamate synthase (NADPH) large chain,gltB,Glutamine_glutamate_ammonium assimilation,Nitrogen metabolism
+K09681,LysR - transcriptional activator glutamate synthase operon,gltC,Glutamine_glutamate_ammonium assimilation,Nitrogen metabolism
+K00266,glutamate synthase (NADPH) small chain,gltD,Glutamine_glutamate_ammonium assimilation,Nitrogen metabolism
+K00284,glutamate synthase (ferredoxin),GLU,Glutamine_glutamate_ammonium assimilation,Nitrogen metabolism
+K00432,glutathione peroxidase,gpx,Glutathione metabolism,Nitrogen metabolism
+K01919,glutamate--cysteine ligase,gshA,Glutathione metabolism,Nitrogen metabolism
+K01920,glutathione synthase,gshB,Glutathione metabolism,Nitrogen metabolism
+K00260,glutamate dehydrogenase,gudB,Glutamine_glutamate_ammonium assimilation,Nitrogen metabolism
+K10535,hydroxylamine dehydrogenase,hao,Nitrification,Nitrogen metabolism
+K20935,hydrazine dehydrogenase,hdh,Hidrazine Nitrogen,Nitrogen metabolism
+K00031,isocitrate dehydrogenase,IDH1,,TCA
+K01964,acetyl-CoA/propionyl-CoA carboxylase,K01964,Hydroxypropionate-hydroxybutylate cycle,Carbon fixation
+K14465,succinate semialdehyde reductase (NADPH),K14465,Dicarboxylate-hydroxybutyrate cycle,Carbon fixation
+K18603,acetyl-CoA/propionyl-CoA carboxylase,K18603,Hydroxypropionate-hydroxybutylate cycle,Carbon fixation
+K18604,acetyl-CoA/propionyl-CoA carboxylase,K18604,Hydroxypropionate-hydroxybutylate cycle,Carbon fixation
+K18861,4-hydroxybutyrate---CoA ligase (AMP-forming),K18861,Dicarboxylate-hydroxybutyrate cycle,Carbon fixation
+K20932,hydrazine synthase subunit,K20932,Ammonia Hidrazine,Nitrogen metabolism
+K20933,hydrazine synthase subunit,K20933,Ammonia Hidrazine,Nitrogen metabolism
+K20934,hydrazine synthase subunit,K20934,Ammonia Hidrazine,Nitrogen metabolism
+K25774,4-hydroxybutyrate---CoA ligase (AMP-forming),K25774,Dicarboxylate-hydroxybutyrate cycle,Carbon fixation
+K00174,2-oxoglutarate:ferredoxin oxidoreductase,korA,Reductive TCA (rTCA) Cycle,Carbon fixation
+K00175,2-oxoglutarate:ferredoxin oxidoreductase,korB,Reductive TCA (rTCA) Cycle,Carbon fixation
+K00176,2-oxoglutarate ferredoxin oxidoreductase subunit delta,korD,Reductive TCA (rTCA) Cycle,Carbon fixation
+K05606,methylmalonyl-CoA/ethylmalonyl-CoA epimerase,MCEE,3-Hydroxypropionate bi-cycle,Carbon fixation
+K14449,2-methylfumaryl-CoA hydratase,mch,3-Hydroxypropionate bi-cycle,Carbon fixation
+K08691,malyl-CoA/(S)-citramalyl-CoA lyase,mcl,3-Hydroxypropionate bi-cycle,Carbon fixation
+K14468,malonyl-CoA reductase / 3-hydroxypropionate dehydrogenase (NADP+),mcr,3-Hydroxypropionate bi-cycle,Carbon fixation
+K14470,2-methylfumaryl-CoA isomerase,mct,3-Hydroxypropionate bi-cycle,Carbon fixation
+K00024,malate dehydrogenase,mdh,,TCA
+K09709,3-methylfumaryl-CoA hydratase,meh,3-Hydroxypropionate bi-cycle,Carbon fixation
+K02567,nitrate reductase (cytochrome),napA,Nitrate Nitrite,Nitrogen metabolism
+K02568,"nitrate reductase (cytochrome), electron transfer subunit",napB,Nitrate Nitrite,Nitrogen metabolism
+K00367,ferredoxin-nitrate reductase,narB,Nitrate Nitrite,Nitrogen metabolism
+K00370,"nitrate reductase / nitrite oxidoreductase, alpha subunit",narG,Nitrate Nitrite,Nitrogen metabolism
+K00371,"nitrate reductase / nitrite oxidoreductase, beta subunit",narH,Nitrate Nitrite,Nitrogen metabolism
+K00374,nitrate reductase gamma subunit,narI,Nitrate Nitrite,Nitrogen metabolism
+K00360,assimilatory nitrate reductase electron transfer subunit,nasB,Assimilatory nitrate_nitrite reduction,Nitrogen metabolism
+K00361,nitrite reductase [NAD(P)H],nasB_EC:1.7.1.4,Assimilatory nitrate_nitrite reduction,Nitrogen metabolism
+K00372,assimilatory nitrate reductase catalytic subunit,nasC,Assimilatory nitrate_nitrite reduction,Nitrogen metabolism
+K26139,nitrite reductase [NAD(P)H] large subunit,nasD,Assimilatory nitrate_nitrite reduction,Nitrogen metabolism
+K26138,nitrite reductase [NAD(P)H] small subunit,nasE,Assimilatory nitrate_nitrite reduction,Nitrogen metabolism
+K02586,nitrogenase molybdenum-iron protein alpha chain,nifD,N fixation,Nitrogen metabolism
+K02588,nitrogenase iron protein NifH,nifH,N fixation,Nitrogen metabolism
+K02591,nitrogenase molybdenum-iron protein beta chain,nifK,N fixation,Nitrogen metabolism
+K00366,ferredoxin-nitrite reductase,nirA,Assimilatory nitrate_nitrite reduction,Nitrogen metabolism
+K00362,nitrite reductase (NADH) large subunit,nirB,Nitrite Ammonia,Nitrogen metabolism
+K00363,nitrite reductase (NADH) small subunit,nirD,Nitrite Ammonia,Nitrogen metabolism
+K00368,nitrite reductase (NO-forming),nirK,Nitrite Nitric oxide,Nitrogen metabolism
+K15864,nitrite reductase (NO-forming) / hydroxylamine reductase,nirS,Nitrite Nitric oxide,Nitrogen metabolism
+K17877,nitrite reductase (NAD(P)H),NIT-6,Nitrite Ammonia,Nitrogen metabolism
+K27148,nitric oxide dismutase,nod,Nitric oxide Nitrogen,Nitrogen metabolism
+K04561,nitric oxide reductase subunit B,norB,Nitric oxide Nitrous oxide,Nitrogen metabolism
+K02305,nitric oxide reductase subunit C,norC,Nitric oxide Nitrous oxide,Nitrogen metabolism
+K00376,nitrous-oxide reductase,nosZ,Nitroux oxide Nitrogen,Nitrogen metabolism
+K10534,nitrate reductase (NAD(P)H),NR,Nitrate Nitrite,Nitrogen metabolism
+K03385,nitrite reductase (cytochrome c-552),nrfA,Dissimilatory nitrate reduction,Nitrogen metabolism
+K15876,cytochrome c nitrite reductase small subunit,nrfH,Dissimilatory nitrate reduction,Nitrogen metabolism
+K10850,"MFS transporter, NNP family, putative nitrate transporter",narT,Nitrate nitrite transporters,Nitrogen metabolism
+K02575,"MFS transporter, NNP family, nitrate/nitrite transporter",NRT2,Nitrate nitrite transporters,Nitrogen metabolism
+K15576,nitrate/nitrite transport system substrate-binding protein,nrtA,Nitrate nitrite transporters,Nitrogen metabolism
+K15577,nitrate/nitrite transport system permease protein,nrtB,Nitrate nitrite transporters,Nitrogen metabolism
+K15578,nitrate/nitrite transport system ATP-binding protein,nrtC,Nitrate nitrite transporters,Nitrogen metabolism
+K15579,nitrate/nitrite transport system ATP-binding protein,nrtD,Nitrate nitrite transporters,Nitrogen metabolism
+K00697,trehalose 6-phosphate synthase,otsA,Other,Other
+K01087,trehalose 6-phosphate phosphatase,otsB,Other,Other
+K01958,pyruvate carboxylase,PC,,Gluconeogenesis
+K01966,propionyl-CoA carboxylase beta subunit,pccB,3-Hydroxypropionate bi-cycle,Carbon fixation
+K01596,phosphoenolpyruvate carboxykinase,PCK,,Gluconeogenesis
+K01610,phosphoenolpyruvate carboxykinase (ATP),pckA,,Gluconeogenesis
+K00161,pyruvate dehydrogenase E1 component subunit alpha,pdhA,,Piruvate oxidation
+K00162,pyruvate dehydrogenase E1 component subunit beta,pdhB,,Piruvate oxidation
+K00382,dihydrolipoyl dehydrogenase,pdhD,,TCA
+K01255,leucyl aminopeptidase,pepA,AA,Nitrogen metabolism
+K01256,aminopeptidase N,pepN,AA,Nitrogen metabolism
+K01262,Xaa-Pro aminopeptidase,pepP,AA,Nitrogen metabolism
+K21071,ATP-dependent phosphofructokinase,pfk,,Glycolisis
+K00033,6-phosphogluconate dehydrogenase,PGD,,Pentose phosphate pathway
+K00927,Phosphoglycerate kinase,pgk,,Glycolisis
+K16322,low-affinity inorganic phosphate transporter,pit,Phosphate assimilation,Phosphorous metabolism
+K03737,pyruvate-ferredoxin/flavodoxin oxidoreductase,por,Phosphate assimilation,Piruvate oxidation
+K00169,pyruvate ferredoxin oxidoreductase alpha subunit,porA,Phosphate assimilation,Piruvate oxidation
+K00170,pyruvate ferredoxin oxidoreductase beta subunit,porB,Phosphate assimilation,Piruvate oxidation
+K00172,pyruvate ferredoxin oxidoreductase gamma subunit,porC,,Piruvate oxidation
+K00171,pyruvate ferredoxin oxidoreductase delta subunit,porD,,Piruvate oxidation
+K00189,2-oxoisovalerate/pyruvate ferredoxin oxidoreductase gamma subunit,porG,,Piruvate oxidation
+K01006,orthophosphate dikinase,ppdK,,Glycolisis
+K00855,Phosphoribulokinase,prk,Calvin-Benson-Bassham,Carbon fixation
+K00147,glutamate-5-semialdehyde dehydrogenase,proA,AA,Nitrogen metabolism
+K00931,glutamate 5-kinase,proB,AA,Nitrogen metabolism
+K02038,phosphate transport system permease protein,pstA,Phosphate assimilation,Phosphorous metabolism
+K02036,phosphate transport system ATP-binding protein,pstB,Phosphate assimilation,Phosphorous metabolism
+K02037,phosphate transport system permease protein,pstC,Phosphate assimilation,Phosphorous metabolism
+K02040,phosphate transport system substrate-binding protein,pstS,Phosphate assimilation,Phosphorous metabolism
+K01113,alkaline phosphatase D,phoD,alkaline phosphatase,Phosphorous metabolism
+K01077,alkaline phosphatase D,phoA,alkaline phosphatase,Phosphorous metabolism
+K07636,"two-component system, OmpR family, phosphate regulon sensor histidine kinase",phoR,Phosphate assimilation,Phosphorous metabolism
+K07657,"two-component system, OmpR family, phosphate regulon response regulator PhoB",phoB,Phosphate assimilation,Phosphorous metabolism
+K07658,"two-component system, OmpR family, alkaline phosphatase synthesis response regulator PhoP",phoP,Phosphate assimilation,Phosphorous metabolism
+K06163,alpha-D-ribose 1-methylphosphonate 5-phosphate C-P lyase [EC:4.7.1.1],phnJ,Phosphonate and phosphinate metabolism,Phosphorous metabolism
+K02041,phosphonate transport system ATP-binding protein,phnC,ABC transporters,Phosphorous metabolism
+K02042,phosphonate transport system permease protein,phnE,ABC transporters,Phosphorous metabolism
+K02044,phosphonate transport system substrate-binding protein,phnD,ABC transporters,Phosphorous metabolism
+K05815,sn-glycerol 3-phosphate transport system permease protein,ugpE,ABC transporters,Phosphorous metabolism
+K05816,sn-glycerol 3-phosphate transport system ATP-binding protein,ugpC,ABC transporters,Phosphorous metabolism
+K05813,sn-glycerol 3-phosphate transport system substrate-binding protein,ugpB,ABC transporters,Phosphorous metabolism
+K05814,sn-glycerol 3-phosphate transport system permease protein,ugpA,ABC transporters,Phosphorous metabolism
+K00625,phosphate acetyltransferase,pta_K00625,Phosphate acetyltransferase-acetate kinase pathway,Carbon fixation
+K13788,phosphate acetyltransferase,pta_K13788,Phosphate acetyltransferase-acetate kinase pathway,Carbon fixation
+K15024,putative phosphotransacetylase,K15024,Phosphate acetyltransferase-acetate kinase pathway,Carbon fixation
+K01959,pyruvate carboxylase subunit A,pycA,,Gluconeogenesis
+K01960,pyruvate carboxylase subunit B,pycB,,Gluconeogenesis
+K00873,pyruvate kinase,pyk,,Glycolisis
+K01601,RuBisCO,rbcL,Calvin-Benson-Bassham,Carbon fixation
+K01602,RuBisCO,rbcS,Calvin-Benson-Bassham,Carbon fixation
+K01783,ribulose-phosphate 3-epimerase,rpe,,Pentose phosphate pathway
+K01807,ribose 5-phosphate isomerase A,rpiA,,Pentose phosphate pathway
+K01808,ribose 5-phosphate isomerase B,rpiB,,Pentose phosphate pathway
+K00958,sulfate adenylyltransferase,sat,Assimilatory sulfate reduction,Sulfur metabolism
+K00239,succinate dehydrogenase flavoprotein subunit,sdhA,,TCA
+K00240,succinate dehydrogenase iron-sulfur subunit,sdhB,,TCA
+K00241,succinate dehydrogenase cytochrome b subunit,sdhC,3-Hydroxypropionate bi-cycle,Carbon fixation
+K00392,sulfite reductase (ferredoxin),sir,Assimilatory sulfate reduction,Sulfur metabolism
+K14471,succinyl-CoA:(S)-malate CoA-transferase subunit A,smtA,3-Hydroxypropionate bi-cycle,Carbon fixation
+K14472,succinyl-CoA:(S)-malate CoA-transferase subunit B,smtB,3-Hydroxypropionate bi-cycle,Carbon fixation
+K00164,2-oxoglutarate dehydrogenase E1,sucA,,TCA
+K00658,2-oxoglutarate dehydrogenase E2,sucB,,TCA
+K01903,succinyl-CoA synthetase beta subunit,sucC,,TCA
+K01902,succinyl-CoA synthetase alpha subunit,sucD,,TCA
+K00616,transaldolase,tal,,Pentose phosphate pathway
+K00615,transketolase,tkt,,Pentose phosphate pathway
+K05343,maltose alpha-D-glucosyltransferase / alpha-amylase,treS,Other,Other
+K06044,maltooligosyl trehalose synthase,treY,Other,Other
+K01236,malto-oligosyltrehalose trehalohydrolase,treZ,Other,Other
+K01430,urease subunit gamma,ureA,Urease,Nitrogen metabolism
+K14048,urease subunit gamma/beta,ureAB,Urease,Nitrogen metabolism
+K01429,urease subunit beta,ureB,Urease,Nitrogen metabolism
+K22896,vanadium-dependent nitrogenase alpha chain,vnfD,N fixation,Nitrogen metabolism
+K22898,vanadium nitrogenase delta subunit,vnfG,N fixation,Nitrogen metabolism
+K22899,vanadium nitrogenase iron protein,vnfH,N fixation,Nitrogen metabolism
+K22897,vanadium-dependent nitrogenase beta chain,vnfK,N fixation,Nitrogen metabolism
+K11358,aspartate aminotransferase,yhdR,AA,Nitrogen metabolism
+K07673,"two-component system, NarL family, nitrate/nitrite sensor histidine kinase NarX",narX,Nitrate Nitrite,Nitrogen metabolism
+K07674,"two-component system, NarL family, nitrate/nitrite sensor histidine kinase NarQ",narQ,Nitrate Nitrite,Nitrogen metabolism
+K07684,"two-component system, NarL family, nitrate/nitrite response regulator NarL",narL,Nitrate Nitrite,Nitrogen metabolism
+K07685,"two-component system, NarL family, nitrate/nitrite response regulator NarP",narP,Nitrate Nitrite,Nitrogen metabolism
+K07708,"two-component system, NtrC family, nitrogen regulation sensor histidine kinase GlnL",glnL,N availability low,Nitrogen metabolism
+K13598,"two-component system, NtrC family, nitrogen regulation sensor histidine kinase NtrY",ntrY,N availability low,Nitrogen metabolism
+K07712,"two-component system, NtrC family, nitrogen regulation response regulator GlnG",glnG,N availability low,Nitrogen metabolism
+K13599,"two-component system, NtrC family, nitrogen regulation response regulator NtrX",ntrX,N availability low,Nitrogen metabolism
+K02584,Nif-specific regulatory protein,nifA,N availability low,Nitrogen metabolism
+K00036,Glucose-6-phosphate 1-dehydrogenase,zwf,,Pentose phosphate pathway
+K01595,phosphoenolpyruvate carboxylase,ppc,,Glycine cleavage
+K01940,argininosuccinate synthetase,argG,,Arginine biosynthesis
+K01755,argininosuccinate lyase,argH,,Arginine biosynthesis
+K07304,peptide-methionine (S)-S-oxide reductase,msrA,,methionine sulfoxide reductases
+K07305,peptide-methionine (R)-S-oxide reductase,msrB,,methionine sulfoxide reductases
+K12267,peptide methionine sulfoxide reductase msrA/msrB,msrAB,,methionine sulfoxide reductases
+K03320,"ammonium transporter, Amt family",amt,Ammonium transporter,Nitrogen metabolism
+K28059,"MFS transporter, DHA2 family, low affinity ammonium transporter",amf1,Ammonium transporter,Nitrogen metabolism

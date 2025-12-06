@@ -1,0 +1,301 @@
+---
+title: "Normalization and feature reduction"
+author: "Viviana Freire Zapata"
+date: "12/4/2024"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: '2'
+    collapsed: false
+    highlight: tango
+    css: style.css
+editor_options: 
+  chunk_output_type: console
+---
+
+# Data Pre-processing
+
+
+
+# Importing libraries
+
+```{r libraries, message=FALSE, warning=FALSE}
+
+library(httr)
+library(vegan)
+library(matrixStats)
+library(GGally)
+library(ggpubr)
+library(performance)
+library(ggtext)
+library(ggforce)
+library(KEGGREST)
+library(tidyverse)
+
+```
+
+# Loading HILIC and RP annotations
+
+```{r}
+
+## Loading annotation
+
+annot_hilic <- read_csv("../UPDATE_LC_2024/3.Cleanning_Annotation/output/HILIC_final_annotation_table_12_3_24.csv") %>% 
+  filter(!Name == 'no name') %>% 
+  select(!use_Sirius_class) %>% 
+  mutate(LC_mode = 'HILIC')
+
+
+annot_RP <- read_csv("../UPDATE_LC_2024/3.Cleanning_Annotation/output/RP_final_annotation_table_1_2_25.csv") %>% 
+  filter(!Name == 'no name') %>% 
+  select(!use_Sirius_class) %>% 
+  mutate(LC_mode = 'RP')
+
+```
+
+
+## Combining HILIC and RP 
+
+```{r}
+
+lc_combined <- rbind(annot_hilic, annot_RP)
+
+```
+
+
+## Getting metabolites compounds ID from KEGG
+
+```{r}
+
+metabo_name <- lc_combined %>% 
+  select(Name) %>% 
+  filter(!str_detect(Name, 'Similar to')) %>% 
+  distinct() %>% 
+  pull()
+
+get_names <- list()
+
+for(i in 1:length(metabo_name)){
+  
+  nx <- str_remove_all(metabo_name[i], '±') %>%  
+    str_remove_all(',') %>% 
+    str_remove_all('\\[') %>% 
+    str_remove_all('\\]') %>% 
+    str_remove_all('\\{') %>% 
+    str_remove_all('\\}') %>% 
+    str_remove_all('Δ') %>% 
+    str_remove_all('\\+') %>% 
+    str_remove_all('\\^') %>% 
+    str_remove_all('\\>') %>% 
+    str_remove_all('\\<') %>% 
+    str_remove_all('\\/') %>% 
+    str_remove_all('\\γ-') %>% 
+    str_remove_all('\\:') %>% 
+    str_remove_all('\\µ') %>% 
+    str_remove_all('\\Â') %>% 
+    str_remove_all('\\â') %>% 
+    str_remove_all('\\°')
+  
+  res <- try(keggFind('compound', nx))
+  
+  if(is(res, 'try-error')){
+    get_names[[i]] <- tibble(query = metabo_name[i], ko = NA, name = NA)
+  } else if(length(res) == 0) {
+    get_names[[i]] <- tibble(query = metabo_name[i], ko = NA, name = NA)
+  } else {
+     get_names[[i]] <- tibble(query = metabo_name[i], ko = names(res), name = res)
+  }
+  
+  print(paste0('Finished: ', i))
+  
+  if(i%%5 == 0){
+    Sys.sleep(2)
+  }
+}
+
+get_names_df <- reduce(get_names, rbind)
+
+write_csv(get_names_df, "output/Combined_CID_to_clean.csv")
+
+```
+
+## Loading other sources with CID
+
+```{r}
+
+HILIC_ichy <- read_csv("../UPDATE_LC_2024/4.Get_inchis/output/HILIC_classyfire_from_name.csv") %>% 
+  select(Name, CID) %>% 
+  distinct()
+
+RP_ichy <- read_csv("../UPDATE_LC_2024/4.Get_inchis/output/RP_classyfire_from_name_ready.csv") %>% 
+  select(Name, CID) %>% 
+  distinct()
+
+
+combined_2 <- rbind(HILIC_ichy, RP_ichy) %>% 
+  distinct()
+
+
+```
+
+
+## Final table
+
+```{r}
+
+df_na <- get_names_df %>% 
+  filter(is.na(ko)) %>% 
+  left_join(combined_2, by = c('query' = 'Name')) %>% 
+  filter(!is.na(CID))
+
+```
+
+## Getting KEGG CID using Pubchem CID
+
+
+
+```{r}
+
+pubchem_cids <- df_na %>% 
+  select(CID) %>% 
+  distinct() %>% 
+  pull()
+
+safe_GET <- safely(httr::GET)
+
+get_kegg_from_pubchem <- function(cid){
+   url <- paste0('https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/',
+                 cid,
+                 '/xrefs/RegistryID/TXT')
+   
+   r <- safe_GET(url)
+   
+    if(is.null(r$error)){
+    content <- try(
+      suppressMessages(httr::content(r$result, 'parsed', type = 'text/csv', 
+                                 encoding = "UTF-8", col_names = 'KEGG_ID'))
+    ) %>% 
+      filter(str_detect(KEGG_ID, '^C[0-9]{5}$|^D[0-9]{5}$')) %>% 
+      mutate(PubChem_CID = cid) %>% 
+      # Checking if results are real KEGG Identifiers
+      mutate(is_real = map_lgl(KEGG_ID, function(x){
+        res <- try(keggGet(x))
+        return(!is(res, 'try-error'))
+      })) %>% 
+      filter(is_real) %>% 
+      select(-is_real)
+    
+    if(nrow(content) == 0){
+      content <- tibble(KEGG_ID = NA,
+                        PubChem_CID = cid)
+    }
+    
+  } else {
+    content <- tibble(KEGG_ID = NA,
+                        PubChem_CID = cid)
+  }
+   
+   return(content)
+}
+
+i <- 1
+pubchem_searches <- map(pubchem_cids, function(x){
+  print(paste0(i, '.  Searching: ', x))
+  
+  df <- get_kegg_from_pubchem(x)
+  
+  i <<- i + 1
+  
+  if(i%%5 == 0){
+    Sys.sleep(2)
+  }
+  
+  return(df)
+})
+
+pubchem_searches_df <- reduce(pubchem_searches, rbind) 
+  
+
+## Keeping metabolite names
+
+pubchem_cids2 <- df_na %>% 
+  select(query, CID) %>% 
+  distinct()
+
+df <- pubchem_searches_df %>% 
+  left_join(pubchem_cids2, by = c('PubChem_CID' = 'CID'))
+  
+
+#write_csv(df, "output/Combined_pubchem_search_to_check.csv")
+
+```
+
+
+## Retrieving CHEBI ID
+
+```{r}
+
+pubchem_cids <- df_na %>% 
+  select(CID) %>% 
+  distinct() %>% 
+  pull()
+
+safe_GET <- safely(httr::GET)
+
+get_kegg_from_pubchem <- function(cid){
+   url <- paste0('https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/',
+                 cid,
+                 '/xrefs/RegistryID/TXT')
+   
+   r <- safe_GET(url)
+   
+    if(is.null(r$error)){
+    content <- try(
+      suppressMessages(httr::content(r$result, 'parsed', type = 'text/csv', 
+                                 encoding = "UTF-8", col_names = 'CHEBI_ID'))
+    ) %>% 
+      filter(str_detect(CHEBI_ID, 'CHEBI:')) %>% 
+      mutate(PubChem_CID = cid)
+    
+  } else {
+    content <- tibble(KEGG_ID = NA,
+                        PubChem_CID = cid)
+  }
+   
+   return(content)
+}
+
+i <- 1
+pubchem_searches <- map(pubchem_cids, function(x){
+  print(paste0(i, '.  Searching: ', x))
+  
+  df <- get_kegg_from_pubchem(x)
+  
+  i <<- i + 1
+  
+  if(i%%5 == 0){
+    Sys.sleep(2)
+  }
+  
+  return(df)
+})
+
+pubchem_chebi <- reduce(pubchem_searches, rbind) 
+  
+
+## Keeping metabolite names
+
+pubchem_cids2 <- df_na %>%
+  select(query, CID) %>%
+  distinct()
+
+df <- pubchem_chebi %>%
+  left_join(pubchem_cids2, by = c('PubChem_CID' = 'CID'))
+
+
+write_csv(df, "output/Compounds_chebi_CID_combined.csv")
+  
+
+```
+

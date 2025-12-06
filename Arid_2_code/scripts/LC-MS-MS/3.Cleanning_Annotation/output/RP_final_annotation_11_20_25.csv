@@ -1,0 +1,1024 @@
+FeatureID,Name,Formula,Annotation_level,use_Sirius_class
+FT_1.012_175.11897,D-Arginine,C6 H14 N4 O2,L1,na
+FT_1.074_104.10696,Choline,C5 H13 N O,L1,na
+FT_1.080_106.04983,D-Serine,C3 H7 N O3,L1,na
+FT_1.090_133.06074,D-Asparagine,C4 H8 N2 O3,L1,na
+FT_1.100_365.10547,Sucrose,C12 H22 O11,L1,na
+FT_1.103_365.10547,Sucrose,C12 H22 O11,L1,na
+FT_1.106_134.04476,D-Aspartic acid,C4 H7 N O4,L1,na
+FT_1.106_90.05498,Sarcosine,C3 H7 N O2,L1,na
+FT_1.112_104.07058,γ-Aminobutyric acid,C4 H9 N O2,L1,na
+FT_1.112_147.07644,L-Glutamine,C5 H10 N2 O3,L1,na
+FT_1.124_522.20317,D-Melezitose,C18 H32 O16,L1,na
+FT_1.135_120.06548,D-Threonine,C4 H9 N O3,L1,na
+FT_1.141_162.11250,L-Carnitine,C7 H15 N O3,L1,na
+FT_1.157_148.06046,D-Glutamic acid,C5 H9 N O4,L1,na
+FT_1.183_176.10298,L-Citrulline,C6 H13 N3 O3,L1,na
+FT_1.188_132.06551,cis-4-Hydroxy-D-proline,C5 H9 N O3,L1,na
+FT_1.189_104.10691,Choline,C5 H13 N O,L1,na
+FT_1.200_118.08621,Betaine,C5 H11 N O2,L1,na
+FT_1.262_222.09723,N-Acetyl-D-galactosamine,C8 H15 N O6,L1,na
+FT_1.271_146.11757,Acetylcholine,C7 H16 N O2,L1,na
+FT_1.310_360.15014,D-(+)-Cellobiose,C12 H22 O11,L1,na
+FT_1.311_191.10270,"2,6-Diaminopimelic Acid",C7 H14 N2 O4,L1,na
+FT_1.312_365.10543,Sucrose,C12 H22 O11,L1,na
+FT_1.323_138.05494,Trigonelline,C7 H7 N O2,L1,na
+FT_1.323_522.20307,D-(+)-Raffinose,C18 H32 O16,L1,na
+FT_1.328_116.07056,L-Proline,C5 H9 N O2,L1,na
+FT_1.354_222.09721,N-Acetyl-D-galactosamine,C8 H15 N O6,L1,na
+FT_1.390_163.06023,D-(+)-Glucosamine,C6 H15 N O5,L1,na
+FT_1.412_522.20299,Maltotriose,C18 H32 O16,L1,na
+FT_1.413_522.20300,D-(+)-Raffinose,C18 H32 O16,L1,na
+FT_1.427_365.10546,D-(+)-Turanose,C12 H22 O11,L1,na
+FT_1.431_365.10548,Sucrose,C12 H22 O11,L1,na
+FT_1.774_118.08621,D-Valine,C5 H11 N O2,L1,na
+FT_1.892_146.09241,4-Guanidinobutyric acid,C5 H11 N3 O2,L1,na
+FT_1.972_136.06176,Adenine,C5 H5 N5,L1,na
+FT_1.973_244.09277,Cytidine,C9 H13 N3 O5,L1,na
+FT_11.965_225.07577,Sinapic acid,C11 H12 O5,L1,na
+FT_16.500_347.22172,Corticosterone,C21 H30 O4,L1,na
+FT_2.047_204.12298,O-Acetyl-L-carnitine,C9 H17 N O4,L1,na
+FT_2.188_150.05834,L-Methionine,C5 H11 N O2 S,L1,na
+FT_2.253_139.05020,trans-Urocanic Acid,C6 H6 N2 O2,L1,na
+FT_2.389_124.03927,Nicotinic acid,C6 H5 N O2,L1,na
+FT_2.989_159.02775,Hypoxanthine,C5 H4 N4 O,L1,na
+FT_3.008_130.04984,L-Pyroglutamic acid,C5 H7 N O3,L1,na
+FT_3.668_182.08119,L-Tyrosine,C9 H11 N O3,L1,na
+FT_3.874_132.10187,D-Leucine,C6 H13 N O2,L1,na
+FT_6.003_268.10405,Adenosine,C10 H13 N5 O4,L1,na
+FT_6.199_252.10911,2'-Deoxyadenosine,C10 H13 N5 O3,L1,na
+FT_6.246_284.09896,Guanosine,C10 H13 N5 O5,L1,na
+FT_6.845_166.08628,D-Phenylalanine,C9 H11 N O2,L1,na
+FT_7.909_220.11801,D-Pantothenate,C9 H17 N O5,L1,na
+FT_8.403_205.09712,L-Tryptophan,C11 H12 N2 O2,L1,na
+FT_0.985_380.09553,Toxin B1,C10H17N7O7S,L3.3,na
+FT_1.068_150.11249,no name,C6 H15 N O3,L4.3,na
+FT_1.097_208.11789,no name,C8 H17 N O5,L4.3,na
+FT_1.107_527.15854,D-Raffinose,C18 H32 O16,L2,na
+FT_1.125_423.08999,"5-hydroxy-6,8-dimethoxy-7-{[(2S,3R,4S,5S,6R)-3,4,5-trihydroxy-6-(hydroxymethyl)oxan-2-yl]oxy}-2H-chromen-2-one",C17 H20 O11,L2,na
+FT_1.177_180.08671,3-hydroxy-3-methylpentanedioic acid,C6 H10 O5,L2,na
+FT_1.187_183.08644,Dulcitol,C6 H14 O6,L2,na
+FT_1.202_166.05326,Methionine sulfoxide,C5 H11 N O3 S,L2,na
+FT_1.228_196.06391,no name,no formula,L5,na
+FT_1.229_182.08459,no name,C6H15NO3S,L4.3,na
+FT_1.236_106.04984,D-Serine,C3 H7 N O3,L2,na
+FT_1.237_290.08472,(2S)-2-(3-carboxypropanamido)-6-oxoheptanedioic acid,C11H15NO8,L3.3,na
+FT_1.242_452.13762,O-(2-O-Mannopyranosyl-mannopyranosyl)serine,C15H27NO13,L3.3,na
+FT_1.251_162.07613,2-Aminoadipic acid,C6 H11 N O4,L2,na
+FT_1.257_278.08058,NP-019509,C15 H13 N O3,L2,na
+FT_1.280_146.08119,NP-022231,C6 H13 N O4,L2,na
+FT_1.295_173.09210,Prolylglycine,C7 H12 N2 O3,L2,na
+FT_1.309_127.03898,Phloroglucinol,C6 H6 O3,L2,na
+FT_1.333_132.10188,Methylbetain,C6H13NO2,L3.3,na
+FT_1.337_527.15849,D-Raffinose,C18 H32 O16,L2,na
+FT_1.363_244.07918,DeazaUrd,C10H13NO6,L3.3,na
+FT_1.366_439.14234,Kotanin,C24H22O8,L3.3,na
+FT_1.380_176.09175,alpha-aminopimelate,C7H12NO4,L3.3,na
+FT_1.387_291.06866,no name,C7H18N2O6S2,L4.3,na
+FT_1.395_130.08623,Pipecolic acid,C6 H11 N O2,L2,na
+FT_1.395_384.15018,N-Acetyl-D-lactosamine,C14 H25 N O11,L2,na
+FT_1.401_689.21129,Maltotetraose,C24 H42 O21,L2,na
+FT_1.411_187.10776,L-Alanyl-L-proline,C8 H14 N2 O3,L2,na
+FT_1.411_527.15849,D-Raffinose,C18 H32 O16,L2,na
+FT_1.412_210.07978,no name,C7 H15 N O4 S,L4.3,na
+FT_1.418_127.03894,Pyrogallol,C6 H6 O3,L2,na
+FT_1.418_144.10191,DL-Stachydrine,C7 H13 N O2,L2,na
+FT_1.419_230.09584,L-Ergothioneine,C9 H15 N3 O2 S,L2,na
+FT_1.420_246.14481,Gln-Val,C10H19N3O4,L3.3,na
+FT_1.421_252.14412,Prosulfocarb,C14 H21 N O S,L2,na
+FT_1.422_231.09760,Pro-Asp,C9H14N2O5,L3.1,na
+FT_1.424_329.05770,no name,C9H17N2O7PS,L4.3,na
+FT_1.426_272.12588,1-[Hydroxy-(2-hydroxy-3-methoxypropoxy)phosphoryl]oxyethyl-trimethylazanium,C9H22NO6P,L3.3,na
+FT_1.428_276.15540,no name,C11H21N3O5,L4.1,na
+FT_1.432_453.12162,no name,C17H24O14,L4.3,na
+FT_1.676_349.11061,no name,C10H16N6O8,L4.3,na
+FT_1.694_347.09500,Methyl 6-O-galloyl-b-D-glucopyranoside,C14H18O10,L3.3,na
+FT_1.706_467.13727,NP-020236,C23 H24 O9,L2,na
+FT_1.722_187.10773,L-Alanyl-L-proline,C8 H14 N2 O3,L2,na
+FT_1.745_204.12300,Acetylcarnitine,C9H17NO4,L2,na
+FT_1.759_288.11903,Clavamycin E,C11H17N3O6,L3.3,na
+FT_1.774_469.09629,Neocretanin,C20H20O13,L3.3,na
+FT_1.776_453.12153,Nuezhenidic acid,C17H24O14,L3.3,na
+FT_1.822_277.10307,gamma-Glutamylglutamate,C10 H16 N2 O7,L2,na
+FT_1.975_112.05049,Cytosine,C4 H5 N3 O,L2,na
+FT_10.064_211.13043,Jasmonic acid,C12 H18 O3,L2,na
+FT_10.353_211.13040,Jasmonic acid,C12 H18 O3,L2,na
+FT_10.539_209.11480,NP-011223,C10 H18 O3,L2,na
+FT_10.540_123.11677,"1,2,3,4-Tetramethyl-1,3-cyclopentadiene",C9 H14,L2,na
+FT_10.540_169.12233,10-HDA,C10 H18 O3,L2,na
+FT_10.608_223.06001,"(3R,4S)-4,6,8-Trihydroxy-7-methoxy-3-methyl-3,4-dihydro-1H-isochromen-1-one",C11 H12 O6,L2,na
+FT_10.615_181.08602,"5,8-dihydroxy-10-methyl-5,8,9,10-tetrahydro-2H-oxecin-2-one",C10 H14 O4,L2,na
+FT_10.732_253.10690,"(6S)-6-[(1S,2R)-1,2-dihydroxypentyl]-4-methoxy-5,6-dihydro-2H-pyran-2-one",C11 H18 O5,L2,na
+FT_10.734_305.06323,"3,4',5,6,7-Pentahydroxyflavanone",C15H12O7,L3.3,na
+FT_10.758_207.09912,Senkyunolide H,C12 H16 O4,L2,na
+FT_10.766_267.08627,"(3R,4S)-6,8-Dihydroxy-3,4,5-trimethyl-1-oxo-3,4-dihydro-1H-isochromene-7-carboxylic acid",C13 H14 O6,L2,na
+FT_10.769_195.06528,NP-019445,C10 H10 O4,L2,na
+FT_10.899_139.11172,Isophorone,C9 H14 O,L2,na
+FT_10.944_159.10159,"3',4'-Dimethoxyacetophenone",C10 H12 O3,L2,na
+FT_11.008_179.06750,NP-012042,C10 H12 O4,L2,na
+FT_11.090_161.05973,4-Methoxycinnamic acid,C10 H10 O3,L2,na
+FT_11.090_179.07054,4-Methoxycinnamic acid,C10 H10 O3,L2,na
+FT_11.098_265.06833,Banksiamarin A,C13H12O6,L3.3,na
+FT_11.180_181.04704,caffeate,C9H8O4,L3.3,na
+FT_11.232_283.11759,"(3S,4S)-3,4,8-trihydroxy-6-methoxy-7-(1-methoxyethyl)-3,4-dihydro-2H-naphthalen-1-one",C14H18O6,L3.3,na
+FT_11.304_193.04955,7-hydroxy-6-methoxy-2H-chromen-2-one,C10 H8 O4,L2,na
+FT_11.314_195.06521,Ferulic acid,C10 H10 O4,L2,na
+FT_11.379_209.11474,NP-011223,C10 H18 O3,L2,na
+FT_11.454_263.08909,"3-(3,4,5-trimethoxyphenyl)propanoic acid",C12 H16 O5,L2,na
+FT_11.491_167.03390,"1,3-Benzenedicarboxaldehyde, 4,6-dihydroxy-",C8H6O4,L3.3,na
+FT_11.505_163.03899,7-Hydroxycoumarine,C9 H6 O3,L2,na
+FT_11.565_223.09649,"3-(3,4,5-trimethoxyphenyl)propanoic acid",C12 H16 O5,L2,na
+FT_11.589_193.04953,Scopoletin,C10 H8 O4,L2,na
+FT_11.694_161.05974,3-Methoxycinnamic acid,C10 H10 O3,L2,na
+FT_11.694_235.09645,6-acetyl-2-(hydroxymethyl)-2-methyl-3H-chromen-4-one,C13H14O4,L2,na
+FT_11.771_211.06008,"2-(2-acetyl-3,5-dihydroxyphenyl)acetic acid",C10 H10 O5,L2,na
+FT_11.776_223.06005,"6-Hydroxy-7,8-dimethoxycoumarin",C11H10O5,L2,na
+FT_11.834_205.10702,"Diethyl (2R,3R)-2-methyl-3-hydroxysuccinate",C9H16O5,L2,na
+FT_11.838_123.11677,"1,2,3,4-Tetramethyl-1,3-cyclopentadiene",C9 H14,L2,na
+FT_11.901_165.09108,4-Phenylbutyric acid,C10 H12 O2,L2,na
+FT_11.950_223.06004,"(3R,4S)-4,6,8-Trihydroxy-7-methoxy-3-methyl-3,4-dihydro-1H-isochromen-1-one",C11 H12 O6,L2,na
+FT_11.963_207.09907,Senkyunolide H,C12 H16 O4,L2,na
+FT_11.968_401.15712,"6-(1,3-Diphenylbut-3-en-2-yloxy)-3,4,5-trihydroxyoxane-2-carboxylic acid",C22H24O7,L2,na
+FT_12.026_251.09138,Citrinin,C13 H14 O5,L2,na
+FT_12.109_207.09909,Senkyunolide H,C12 H16 O4,L2,na
+FT_12.148_227.08895,Biotin,C10 H16 N2 O3 S,L2,na
+FT_12.160_193.04957,"7,8-Dihydroxy-4-methylcoumarin",C10 H8 O4,L2,na
+FT_12.201_165.09102,4-Phenylbutyric acid,C10 H12 O2,L2,na
+FT_12.218_179.03372,Esculetin,C9 H6 O4,L2,na
+FT_12.245_283.08124,2-{[2-(3-cyano-2-pyridinyl)hydrazino]carbonyl}benzoic acid,C14 H10 N4 O3,L2,na
+FT_12.292_267.12266,4-oxododecanedioic acid,C12 H20 O5,L2,na
+FT_12.302_297.13320,Deoxynivalenol,C15 H20 O6,L2,na
+FT_12.311_223.06010,Saccharonol B,C11H10O5,L2,na
+FT_12.329_167.07030,Apocynin,C9 H10 O3,L2,na
+FT_12.347_169.12233,10-HDA,C10 H18 O3,L2,na
+FT_12.438_267.15908,NP-018534,C15 H22 O4,L2,na
+FT_12.468_207.06517,Scoparone,C11 H10 O4,L2,na
+FT_12.488_191.07028,3-(4-Methylbenzoyl)acrylic acid,C11 H10 O3,L2,na
+FT_12.554_207.09914,Senkyunolide H,C12 H16 O4,L2,na
+FT_12.555_139.11173,Isophorone,C9 H14 O,L2,na
+FT_12.560_169.04957,methyl 4-methyl-2-oxo-2H-pyran-6-carboxylate,C8 H8 O4,L2,na
+FT_12.610_177.05462,4-Methylumbelliferone hydrate,C10 H8 O3,L2,na
+FT_12.613_267.15909,NP-018534,C15 H22 O4,L2,na
+FT_12.639_207.06519,Scoparone,C11 H10 O4,L2,na
+FT_12.670_361.16231,Triptolide,C20 H24 O6,L2,na
+FT_12.713_219.06518,NP-019992,C10 H12 O4,L2,na
+FT_12.740_281.10173,N1-(1H-indol-4-yl)cyclohexane-1-carboxamide,C15 H18 N2 O,L2,na
+FT_12.753_167.03385,Benzoquinoneacetic acid,C8H6O4,L3.3,na
+FT_12.812_251.12775,"5-[(1E)-3-hydroxy-3-methylbut-1-en-1-yl]-2-methylcyclohex-5-ene-1,2,4-triol",C12 H20 O4,L2,na
+FT_12.812_291.12045,NP-016564,C16 H20 O6,L2,na
+FT_12.818_265.10704,"3a[(2S)a2aHydroxypropyl]a6,8adimethoxya1Ha isochromena1aone",C14H16O5,L2,na
+FT_12.822_267.08631,Pestalotiopyrone H,C13H14O6,L3.3,na
+FT_12.931_209.08086,"6-Hydroxy-8-methoxy-3-methyl-3,4-dihydro-1H-isochromen-1-one",C11 H12 O4,L2,na
+FT_12.933_195.06530,NP-001130,C8 H12 O4,L2,na
+FT_12.979_321.13100,"methyl 2-(1,3,5-trihydroxy-4a-methyl-8-oxo-decahydronaphthalen-2-yl)prop-2-enoate",C15 H22 O6,L2,na
+FT_12.981_321.13098,(Z)-Mycophenolic Acid,C17H20O6,L3.3,na
+FT_13.023_189.08828,NP-013210,C12 H14 O3,L2,na
+FT_13.030_235.09647,Gtri-02,C13H14O4,L2,na
+FT_13.053_245.11716,"(3aR,4aS,5R,8S,9aR)-5-hydroxy-4a,8-dimethyl-3-methylidene-2H,3H,3aH,4H,4aH,5H,6H,8H,9H,9aH-azuleno[6,5-b]furan-2,6-dione",C15 H18 O4,L2,na
+FT_13.126_237.11210,"1-[3-Hydroxy-2-(2-hydroxy-2-propanyl)-2,3-dihydro-1-benzofuran-5-yl]ethanone",C13 H16 O4,L2,na
+FT_13.150_179.07030,NP-012042,C10 H12 O4,L2,na
+FT_13.279_195.02880,"4,6,7-Trihydroxycoumarin",C9H6O5,L3.1,na
+FT_13.285_193.04949,"6,7-Dihydroxy-4-methylcoumarin",C10 H8 O4,L2,na
+FT_13.285_211.06008,"1-(3-acetyl-2,4,6-trihydroxyphenyl)ethan-1-one",C10 H10 O5,L2,na
+FT_13.290_167.03389,5-Formylsalicylic acid,C8H6O4,L3.3,na
+FT_13.355_137.13245,Eucalyptol,C10 H18 O,L2,na
+FT_13.390_209.08082,"6-Hydroxy-8-methoxy-3-methyl-3,4-dihydro-1H-isochromen-1-one",C11 H12 O4,L2,na
+FT_13.401_219.17435,NP-004713,C15 H24 O2,L2,na
+FT_13.404_181.04954,"4-oxo-4,5,6,7-tetrahydrobenzo[b]furan-3-carboxylic acid",C9 H8 O4,L2,na
+FT_13.404_253.10703,"(2S)-7-hydroxy-8-(2-hydroxyethyl)-5-methoxy-2-methyl-2,3-dihydrochromen-4-one",C13H16O5,L2,na
+FT_13.420_237.07574,"6,7,8-trimethoxy-2H-chromen-2-one",C12 H12 O5,L2,na
+FT_13.422_211.06008,"1-(3-acetyl-2,4,6-trihydroxyphenyl)ethan-1-one",C10 H10 O5,L2,na
+FT_13.440_315.14387,"1-Allyl-3-[(2S,11aS)-5,11-dioxo-2,3,5,10,11,11a-hexahydro-1H-pyrrolo[2,1-c][1,4]benzodiazepin-2-yl]urea",C16 H18 N4 O3,L2,na
+FT_13.477_195.06519,NP-019445,C10 H10 O4,L2,na
+FT_13.521_153.12740,D-(+)-Camphor,C10 H16 O,L2,na
+FT_13.639_283.11762,NP-020363,C14 H18 O6,L2,na
+FT_13.672_237.11211,"1-[3-Hydroxy-2-(2-hydroxy-2-propanyl)-2,3-dihydro-1-benzofuran-5-yl]ethanone",C13 H16 O4,L2,na
+FT_13.693_267.15907,NP-018534,C15 H22 O4,L2,na
+FT_13.741_167.10667,6-Pentyl-2H-pyran-2-one,C10 H14 O2,L2,na
+FT_13.747_233.08082,Citrinin,C13 H14 O5,L2,na
+FT_13.762_231.13793,"7-Methyl-3-methylene-6-(3-oxobutyl)-3,3a,4,7,8,8a-hexahydro-2H-cyclohepta[b]furan-2-one",C15 H20 O3,L2,na
+FT_13.773_197.08089,Sparassol,C10H12O4,L3.3,na
+FT_13.773_223.09647,"1-(5-Acetyl-2,4-dimethoxyphenyl)ethanone",C12H14O4,L3.3,na
+FT_13.798_308.17041,"8H,16H-Dinaphtho[2,1-d:1',2'-g][1,3]dioxocine",C22H16O2,L2,na
+FT_13.808_181.04953,"4-oxo-4,5,6,7-tetrahydrobenzo[b]furan-3-carboxylic acid",C9 H8 O4,L2,na
+FT_13.813_235.09647,NP-020206,C11 H16 O4,L2,na
+FT_13.822_251.09140,Citrinin,C13 H14 O5,L2,na
+FT_13.835_253.10703,"(6S)-6-[(1S,2R)-1,2-dihydroxypentyl]-4-methoxy-5,6-dihydro-2H-pyran-2-one",C11 H18 O5,L2,na
+FT_13.958_151.07537,4'-Methoxyacetophenone,C9 H10 O2,L2,na
+FT_13.958_231.09913,Demethylsuberosin,C14H14O3,L3.3,na
+FT_13.986_251.09140,Citrinin,C13 H14 O5,L2,na
+FT_14.025_267.12269,4-oxododecanedioic acid,C12 H20 O5,L2,na
+FT_14.130_229.08603,"8,8-dimethyl-2H,8H-pyrano[3,2-g]chromen-2-one",C14 H12 O3,L2,na
+FT_14.157_253.10703,Eugenone,C13H16O5,L3.3,na
+FT_14.159_211.06009,"1-(3-acetyl-2,4,6-trihydroxyphenyl)ethan-1-one",C10 H10 O5,L2,na
+FT_14.159_235.09648,NP-020206,C11 H16 O4,L2,na
+FT_14.256_275.16186,"1,4-dihydroxy-1,4-dimethyl-7-(propan-2-ylidene)-decahydroazulen-6-one",C15 H24 O3,L2,na
+FT_14.354_195.06518,NP-019445,C10 H10 O4,L2,na
+FT_14.355_267.12270,4-oxododecanedioic acid,C12 H20 O5,L2,na
+FT_14.388_249.11214,NP-021018,C12 H18 O4,L2,na
+FT_14.473_253.10704,"2,4-Dihydroxy-6-(4-hydroxy-2-oxopentyl)-3-methylbenzaldehyde",C13H16O5,L3.3,na
+FT_14.508_237.11214,8-Ethyl-7-hydroxy-5-methoxy-2-methylchroman-4-one,C13H16O4,L3.3,na
+FT_14.508_265.10707,Peucedanol,C14H16O5,L3.3,na
+FT_14.514_233.08083,Cassiachromone,C13H12O4,L3.3,na
+FT_14.540_209.08081,"6-Hydroxy-8-methoxy-3-methyl-3,4-dihydro-1H-isochromen-1-one",C11 H12 O4,L2,na
+FT_14.540_275.08918,Phloretin,C15H14O5,L3.3,na
+FT_14.603_237.07571,"6,7,8-trimethoxy-2H-chromen-2-one",C12 H12 O5,L2,na
+FT_14.612_193.04952,"5,7-Dihydroxy-4-methylcoumarin",C10 H8 O4,L2,na
+FT_14.685_401.15946,"6-(1,3-Diphenylbut-3-en-2-yloxy)-3,4,5-trihydroxyoxane-2-carboxylic acid",C22H24O7,L3.3,na
+FT_14.703_211.06009,"1-(3-acetyl-2,4,6-trihydroxyphenyl)ethan-1-one",C10 H10 O5,L2,na
+FT_14.703_225.07574,"3,4-Dihydroxy-5-methoxy-trans-cinnamic acid methyl ester",C11H12O5,L3.3,na
+FT_14.766_167.07029,Apocynin,C9 H10 O3,L2,na
+FT_14.804_237.11212,3-Dimethylallyl-4-hydroxymandelic acid,C13H16O4,L3.3,na
+FT_14.841_401.15946,Sterenin F,C22H24O7,L3.3,na
+FT_14.852_327.03427,"5-[(4-Thiophen-2-ylpyrimidin-2-yl)sulfanylmethyl]-2,1,3-benzoxadiazole",C15 H10 N4 O S2,L2,na
+FT_14.891_263.12773,Ustusorane A,C15H18O4,L3.3,na
+FT_14.925_247.09650,"(2S)-2-(2-hydroxypropan-2-yl)-2H,3H,7H-furo[3,2-g]chromen-7-one",C14 H14 O4,L2,na
+FT_14.925_311.16420,Estriol,C18 H24 O3,L2,na
+FT_14.926_351.15669,"(2S)-5,7-dimethoxy-8-(3-methylbuta-1,3-dienyl)-2-phenyl-2,3-dihydrochromen-4-one",C22H22O4,L3.3,na
+FT_14.957_273.10978,"1,2-Bis(4-hydroxy-3-methoxyphenyl)ethylene",C16H16O4,L3.3,na
+FT_14.959_233.11720,Sorbicillin,C14 H16 O3,L2,na
+FT_14.966_331.15187,Helenalin methacrylate,C19H22O5,L3.3,na
+FT_14.973_265.10705,NP-020400,C12 H18 O5,L2,na
+FT_14.979_267.12270,Acronyculatin D,C14H18O5,L3.3,na
+FT_15.020_153.12739,alpha-Pinene oxide,C10 H16 O,L2,na
+FT_15.037_235.09648,NP-020364,C13H16O5,L2,na
+FT_15.124_265.14341,(±)-Abscisic acid,C15 H20 O4,L2,na
+FT_15.134_253.10704,Eugenone,C13H16O5,L3.3,na
+FT_15.141_195.06518,NP-019445,C10 H10 O4,L2,na
+FT_15.160_233.11721,Sorbicillin,C14 H16 O3,L2,na
+FT_15.263_251.12776,coenzyme Q1,C14H18O4,L2,na
+FT_15.269_295.11764,Tutin,C15H18O6,L3.3,na
+FT_15.285_209.07863,Methyl ferulate,C11H12O4,L3.3,na
+FT_15.290_245.11721,Peruvinine,C15H20O4,L2,na
+FT_15.295_271.15396,"2-(benzotriazol-1-yl)-N-(2,3-dihydro-1H-inden-2-yl)acetamide",C17 H16 N4 O,L2,na
+FT_15.305_311.16421,"Cembratetraene-16,2:19,6-diolide",C20H24O4,L2,na
+FT_15.346_193.04943,"5,7-Dihydroxy-4-methylcoumarin",C10 H8 O4,L2,na
+FT_15.349_249.11213,NP-021018,C12 H18 O4,L2,na
+FT_15.356_221.08084,"8-Hydroxy-6-methoxy-3,4-dimethylisochromen-1-one",C12H12O4,L3.3,na
+FT_15.371_251.12770,coenzyme Q1,C14H18O4,L2,na
+FT_15.439_267.12270,4-oxododecanedioic acid,C12 H20 O5,L2,na
+FT_15.452_179.07028,NP-012042,C10 H12 O4,L2,na
+FT_15.503_261.11213,NP-019855,C15 H18 O5,L2,na
+FT_15.510_313.17987,"6-[(2E,6E)-7-(5-hydroxy-3-methyl-2-oxocyclopent-3-en-1-yl)-6-methylhepta-2,6-dien-2-yl]-3-methyl-5,6-dihydro-2H-pyran-2-one",C20 H26 O4,L2,na
+FT_15.514_233.11721,Sorbicillin,C14 H16 O3,L2,na
+FT_15.519_331.15183,Gibberellin A88,C19H22O5,L3.1,na
+FT_15.560_251.12772,"5-[(1E)-3-hydroxy-3-methylbut-1-en-1-yl]-2-methylcyclohex-5-ene-1,2,4-triol",C12 H20 O4,L2,na
+FT_15.577_195.06518,NP-019445,C10 H10 O4,L2,na
+FT_15.580_237.07574,"(7R,8S)-7,8-Dihydroxy-3,7-dimethyl-6-oxo-7,8-dihydro-6H-isochromene-5-carbaldehyde",C12 H12 O5,L2,na
+FT_15.594_229.12236,"(3aS,5aS,9bR)-5a,9-dimethyl-3-methylidene-2H,3H,3aH,4H,5H,5aH,6H,7H,8H,9bH-naphtho[1,2-b]furan-2,5-dione",C15 H18 O3,L2,na
+FT_15.595_247.13285,"5,10,15-trimethyl-4,9,13-trioxatetracyclo[10.3.0.0Âl,âµ.0â¸,Âaâ°]pentadec-1(15)-en-14-one",C15 H20 O4,L2,na
+FT_15.645_177.05460,4-Methylumbelliferone hydrate,C10 H8 O3,L2,na
+FT_15.679_251.16414,"9-hydroxy-2,10,10-trimethyltricyclo[6.3.0.0Âa,âµ]undec-6-ene-6-carboxylic acid",C15 H22 O3,L2,na
+FT_15.767_245.11720,"(3aR,4aS,5R,8S,9aR)-5-hydroxy-4a,8-dimethyl-3-methylidene-2H,3H,3aH,4H,4aH,5H,6H,8H,9H,9aH-azuleno[6,5-b]furan-2,6-dione",C15 H18 O4,L2,na
+FT_15.767_285.10980,"4-methoxy-9-(2-methylbut-3-en-2-yl)-7H-furo[3,2-g]chromen-7-one",C17 H16 O4,L2,na
+FT_15.789_225.07575,NP-020902,C9 H14 O5,L2,na
+FT_15.824_279.12272,NP-021074,C13 H20 O5,L2,na
+FT_15.848_211.06009,"1-(3-acetyl-2,4,6-trihydroxyphenyl)ethan-1-one",C10 H10 O5,L2,na
+FT_15.937_235.16919,NP-008095,C15 H24 O3,L2,na
+FT_15.960_249.11212,NP-021018,C12 H18 O4,L2,na
+FT_15.986_235.09646,"7-Acetyl-3,6-dihydroxy-8-methyl-tetralone",C13 H14 O4,L2,na
+FT_16.007_193.08588,"4-methoxy-6-(prop-2-en-1-yl)-2H-1,3-benzodioxole",C11 H12 O3,L2,na
+FT_16.077_251.09138,6-(3-hydroxybutan-2-yl)-5-(hydroxymethyl)-4-methoxy-2H-pyran-2-one,C11 H16 O5,L2,na
+FT_16.098_179.07028,NP-012042,C10 H12 O4,L2,na
+FT_16.186_227.10660,NP-003672,C15 H14 O2,L2,na
+FT_16.335_277.14341,"(2R,5R,6R)-3-[(1E,3E)-hepta-1,3-dien-1-yl]-5,6-dihydroxy-2-(hydroxymethyl)cyclohexan-1-one",C14 H22 O4,L2,na
+FT_16.366_263.12779,NP-003117,C13 H20 O4,L2,na
+FT_16.370_243.10156,beta-Lapachone,C15 H14 O3,L2,na
+FT_16.429_289.10700,NP-005519,C14 H18 O5,L2,na
+FT_16.487_249.11212,NP-021018,C12 H18 O4,L2,na
+FT_16.498_297.18490,Eicosatetraynoic acid,C20 H24 O2,L2,na
+FT_16.499_287.20054,Eicosatetraynoic acid,C20 H24 O2,L2,na
+FT_16.500_333.20609,Prostaglandin K2,C20 H30 O5,L2,na
+FT_16.500_373.19862,Veraguensin,C22H28O5,L3.1,na
+FT_16.507_315.19550,Kahweol,C20 H26 O3,L2,na
+FT_16.546_507.19918,"2-Methoxy-N-(5-{5-[(2S)-1-(3,4,5-trimethoxybenzyl)-2-pyrrolidinyl]-1,2,4-oxadiazol-3-yl}-4-pyrimidinyl)acetamide",C23 H28 N6 O6,L2,na
+FT_16.581_233.08084,Citrinin,C13 H14 O5,L2,na
+FT_16.680_277.10707,"7-[(3,3-dimethyloxiran-2-yl)methoxy]-6-methoxy-2H-chromen-2-one",C15 H16 O5,L2,na
+FT_16.722_356.17046,"5-(4-carboxy-3-methylbutyl)-5,6,8a-trimethyl-3-oxo-3,4,4a,5,6,7,8,8a-octahydronaphthalene-1-carboxylic acid",C20 H30 O5,L3.3,na
+FT_16.726_319.22682,NP-014287,C18 H32 O3,L2,na
+FT_16.772_353.23006,"(ent-6alpha,7alpha,16alphaH)-6,7,17-Trihydroxy-19-kauranoic acid",C20H32O5,L3.3,na
+FT_16.781_259.09647,"N1,N1-dimethyl-4-[3-(methylthio)-4,5-dihydro-1H-1,2,4-triazol-5-yl]aniline",C11 H16 N4 S,L2,na
+FT_16.821_217.12229,Ochracene D,C14H16O2,L3.3,na
+FT_16.821_257.11480,3-(4-Hydroxyphenyl)-1-(4-methoxyphenyl)propan-1-one,C16H16O3,L3.3,na
+FT_16.886_295.11540,N-Glycosyl-L-asparagine,C10H18N2O8,L3.1,na
+FT_16.913_197.08089,Cantharidin,C10 H12 O4,L2,na
+FT_16.933_507.19917,Piperaduncin B,C29H30O8,L3.3,na
+FT_17.037_261.11213,"(9aR,9bS)-9a-Hydroxy-6,9-dimethyl-3-methylene-3,3a,4,5,9a,9b-hexahydroazuleno[4,5-b]furan-2,7-dione",C15 H16 O4,L2,na
+FT_17.117_249.11211,NP-021018,C12 H18 O4,L2,na
+FT_17.121_507.19931,Piperaduncin B,C29H30O8,L3.3,na
+FT_17.195_235.09648,NP-020205,C11 H16 O4,L2,na
+FT_17.196_293.13835,"N-{[(2R,4S,5R)-5-Ethyl-1-azabicyclo[2.2.2]oct-2-yl]methyl}-2-thiophenesulfonamide",C14 H22 N2 O2 S2,L2,na
+FT_17.197_297.13095,Phomopsolidone A,C15H20O6,L2,na
+FT_17.338_313.17987,"6-[(2E,6E)-7-(5-hydroxy-3-methyl-2-oxocyclopent-3-en-1-yl)-6-methylhepta-2,6-dien-2-yl]-3-methyl-5,6-dihydro-2H-pyran-2-one",C20 H26 O4,L2,na
+FT_17.354_275.12781,2-(1H-benzo[d]imidazol-2-yl)-3-(4-toluidino)acrylonitrile,C17 H14 N4,L2,na
+FT_17.410_249.14849,"(3aR,5aR,9bR)-3a-hydroxy-5a,9-dimethyl-3-methylidene-2H,3H,3aH,4H,5H,5aH,6H,7H,8H,9bH-naphtho[1,2-b]furan-2-one",C15 H20 O3,L2,na
+FT_17.442_231.13795,"7-Methyl-3-methylene-6-(3-oxobutyl)-3,3a,4,7,8,8a-hexahydro-2H-cyclohepta[b]furan-2-one",C15 H20 O3,L2,na
+FT_17.482_179.07029,NP-012042,C10 H12 O4,L2,na
+FT_17.498_237.11217,NP-000919,C11 H18 O4,L2,na
+FT_17.516_261.11216,"(3aR,4R,11aR)-4-hydroxy-10-(hydroxymethyl)-3-methylidene-2-oxo-2H,3H,3aH,4H,5H,8H,9H,11aH-cyclodeca[b]furan-6-carbaldehyde",C15 H18 O5,L2,na
+FT_17.542_507.19933,Piperaduncin B,C29H30O8,L3.1,na
+FT_17.645_233.11720,Sorbicillin,C14 H16 O3,L2,na
+FT_17.722_507.19928,Piperaduncin B,C29H30O8,L3.3,na
+FT_17.727_319.22678,NP-014287,C18 H32 O3,L2,na
+FT_17.790_217.12229,Ochracene D,C14H16O2,L3.3,na
+FT_17.837_415.21159,Bis(4-ethylbenzylidene)sorbitol,C24 H30 O6,L2,na
+FT_17.868_331.19045,NP-020713,C20 H26 O4,L2,na
+FT_17.908_367.15396,2-{2-[5-(Ethoxycarbonyl)-2-morpholinoanilino]-2-oxoethoxy}acetic acid,C17 H22 N2 O7,L2,na
+FT_17.960_483.20153,Territrem E,C27H30O8,L3.3,na
+FT_18.031_311.12773,2-(1-Benzofuran-2-yl)-1-(5-ethyl-2-hydroxy-4-methoxyphenyl)ethanone,C19H18O4,L3.3,na
+FT_18.075_333.16973,NP-019547,C17 H26 O5,L2,na
+FT_18.095_363.14407,"(2S,3R,4S,5S,6R)-2-[4-hydroxy-2-(3-methylbut-2-en-1-yl)phenoxy]-6-(hydroxymethyl)oxane-3,4,5-triol",C17 H24 O7,L2,na
+FT_18.102_347.22175,Tetrahydrocortisone,C21 H32 O5,L2,na
+FT_18.159_261.14850,NP-020535,C16 H22 O4,L2,na
+FT_18.216_259.13288,NP-020240,C14 H20 O3,L2,na
+FT_18.220_309.20407,NP-001596,C16 H30 O4,L2,na
+FT_18.226_311.21946,NP-020214,C16 H32 O4,L2,na
+FT_18.433_297.14613,2-Butyl-5-[2-(4-hydroxy-3-methoxyphenyl)ethyl]furan,C17H22O3,L3.3,na
+FT_18.435_217.12230,Ochracene D,C14H16O2,L3.3,na
+FT_18.576_433.12833,"1-Allyl-3-[(6aS,8S)-6,12-dioxo-2-(3-thienyl)-5,6,6a,7,8,9,10,12-octahydropyrido[2,1-c][1,4]benzodiazepin-8-yl]urea",C21 H22 N4 O3 S,L2,na
+FT_18.589_329.17482,Crocetin,C20H24O4,L3.1,na
+FT_18.607_277.14112,"(2R,5R,6R)-3-[(1E,3E)-hepta-1,3-dien-1-yl]-5,6-dihydroxy-2-(hydroxymethyl)cyclohexan-1-one",C14 H22 O4,L2,na
+FT_18.654_271.13050,"(3aR,5aR,9bR)-3a-hydroxy-5a,9-dimethyl-3-methylidene-2H,3H,3aH,4H,5H,5aH,6H,7H,8H,9bH-naphtho[1,2-b]furan-2-one",C15 H20 O3,L2,na
+FT_18.664_217.12230,Ochracene D,C14H16O2,L3.3,na
+FT_18.816_279.23187,Pinolenic acid,C18 H30 O2,L2,na
+FT_18.821_297.24243,NP-008993,C18 H34 O4,L2,na
+FT_18.871_285.14858,"Estrone-2,3-quinone",C18H20O3,L3.3,na
+FT_19.148_415.21162,"5-hydroxy-2,2,6,6-tetramethyl-4-{2-methyl-1-[2,4,6-trihydroxy-3-(2-methylpropanoyl)phenyl]propyl}cyclohex-4-ene-1,3-dione",C24 H32 O7,L2,na
+FT_19.226_347.22170,Corticosterone,C21 H30 O4,L2,na
+FT_19.230_235.09647,"(S)-2,3-Dihydro-6-hydroxy-5-(hydroxyacetyl)-2-isopropenylbenzofuran",C13H14O4,L3.3,na
+FT_19.290_451.21155,Prenylterphenyllin J,C27H30O6,L3.3,na
+FT_19.291_217.12230,3-(4-Hydroxy-3-(3-methyl-2-butenyl)phenyl)-2-propenal,C14H16O2,L3.3,na
+FT_19.321_427.17535,"N-({(2R,4S,5R)-5-[3-(2-Methoxyphenyl)-1-methyl-1H-pyrazol-5-yl]-1-azabicyclo[2.2.2]oct-2-yl}methyl)methanesulfonamide",C20 H28 N4 O3 S,L2,na
+FT_19.436_263.16178,NP-012972,C14 H24 O3,L2,na
+FT_19.437_137.13245,Eucalyptol,C10 H18 O,L2,na
+FT_19.470_297.18489,Eicosatetraynoic acid,C20 H24 O2,L2,na
+FT_19.567_399.25075,no name,C18 H39 O7 P,L4.3,na
+FT_19.578_295.22447,13-OxoODE,C18H30O3,L3.3,na
+FT_19.589_409.23524,NP-016839,C24 H34 O4,L2,na
+FT_19.601_255.23185,Palmitoleic acid,C16 H30 O2,L2,na
+FT_19.622_493.22225,"(2S,3R,4S,5S,6R)-2-{[(2R,3R,4S,5S,6R)-4,5-dihydroxy-2-[(3-hydroxy-6-methylheptyl)oxy]-6-(hydroxymethyl)oxan-3-yl]oxy}-6-(hydroxymethyl)oxane-3,4,5-triol",C20 H38 O12,L2,na
+FT_19.648_451.21155,Prenylterphenyllin J,C27H30O6,L3.3,na
+FT_19.657_311.16419,Estriol,C18 H24 O3,L2,na
+FT_19.660_423.14401,"5-[(1S,3aR,4S,6aR)-4-(3,4,5-trimethoxyphenyl)-hexahydrofuro[3,4-c]furan-1-yl]-2H-1,3-benzodioxole",C22 H24 O7,L2,na
+FT_19.798_451.21160,NP-020353,C21H30O5,L2,na
+FT_19.821_277.21615,Palmitoleic Acid,C16 H30 O2,L2,na
+FT_19.829_335.21962,NP-002322,C18 H32 O4,L2,na
+FT_19.830_493.22235,"(2S,3R,4S,5S,6R)-2-{[(2R,3R,4S,5S,6R)-4,5-dihydroxy-2-[(3-hydroxy-6-methylheptyl)oxy]-6-(hydroxymethyl)oxan-3-yl]oxy}-6-(hydroxymethyl)oxane-3,4,5-triol",C20 H38 O12,L2,na
+FT_2.023_144.10191,Crotonic acid betaine,C7H13NO2,L3.1,na
+FT_2.050_247.12881,Glutamylvaline,C10H18N2O5,L3.1,na
+FT_2.163_260.16048,Isoleucylglutamine,C11H21N3O4,L3.1,na
+FT_2.375_162.07610,4-Methyl-L-glutamate,C6H11NO4,L3.1,na
+FT_2.382_126.05492,5-Hydroxy-2-methoxypyridine,C6H7NO2,L3.3,na
+FT_2.389_184.05804,"7-methylpyrimido[4,5-d]pyrimidin-4-amine",C7 H7 N5,L2,na
+FT_2.484_112.05050,Cytosine,C4 H5 N3 O,L2,na
+FT_2.525_435.11107,no name,C17H22O13,L4.3,na
+FT_2.642_112.05049,Cytosine,C4 H5 N3 O,L2,na
+FT_2.753_144.10191,2-Piperidin-2-ylacetate,C7H12NO2,L3.3,na
+FT_2.880_158.15396,"2,2,6,6-Tetramethyl-4-piperidinol",C9 H19 N O,L2,na
+FT_2.882_184.05804,"7-methylpyrimido[4,5-d]pyrimidin-4-amine",C7 H7 N5,L2,na
+FT_20.077_451.21163,"(2S)-6-(Gamma,Gamma-Dimethylallyl)-5-Hydroxy-3',4'-Dimethoxy-6'',6''-Dimethylpyran(2'',3'':7,8)Flavanone",C27H30O6,L3.3,na
+FT_20.113_473.19368,5-Formimidoyltetrahydrofolic acid,C20H24N8O6,L3.3,na
+FT_20.125_207.06518,Scoparone,C11 H10 O4,L2,na
+FT_20.136_301.21621,"(2E)-5-[(8aS)-2,5,5,8a-tetramethyl-3-oxo-3,4,4a,5,6,7,8,8a-octahydronaphthalen-1-yl]-3-methylpent-2-enoic acid",C20 H30 O3,L2,na
+FT_20.300_359.21947,"17beta-Hydroxyandrost-4-ene-3,11-dione propionate",C22H30O4,L3.3,na
+FT_20.668_311.16425,Estriol,C18 H24 O3,L2,na
+FT_3.589_132.10187,Isoleucine,C6 H13 N O2,L2,na
+FT_4.181_267.05877,6-(3-hydroxybutan-2-yl)-5-(hydroxymethyl)-4-methoxy-2H-pyran-2-one,C11 H16 O5,L3.3,na
+FT_4.186_113.03450,Uracil,C4 H4 N2 O2,L2,na
+FT_5.754_113.03450,Uracil,C4 H4 N2 O2,L2,na
+FT_5.941_521.19557,Methyl N-{[(2R)-1-(methoxyacetyl)-4-(3-pyridinylcarbonyl)-2-piperazinyl]carbonyl}-O-methyl-L-tyrosinate,C25 H30 N4 O7,L3.3,na
+FT_6.231_137.04577,Hypoxanthine,C5 H4 N4 O,L2,na
+FT_6.554_152.05670,Guanine,C5 H5 N5 O,L2,na
+FT_6.596_137.04577,Hypoxanthine,C5 H4 N4 O,L2,na
+FT_6.761_200.05429,"(2S,4S)-4-amino-2-hydroxy-2-methylpentanedioic acid",C6H11NO5,L3.3,na
+FT_7.106_225.10971,NP-019374,C10 H18 O4,L3.3,na
+FT_7.161_223.09407,unknown,C8H10N6O2,L4.3,na
+FT_7.182_185.07835,5-amino-1-phenyl-1H-pyrazole-4-carbonitrile,C10 H8 N4,L2,na
+FT_7.284_283.07884,unknown,C10 H14 N6 S2,L4.3,na
+FT_7.326_171.06273,Penicillic acid,C8 H10 O4,L2,na
+FT_7.344_127.05016,Thymine,C5 H6 N2 O2,L2,na
+FT_7.344_265.07950,alpha-Lapachone,C15 H14 O3,L2,na
+FT_7.567_223.09407,3-[(2-amino-9H-purin-6-yl)amino]propanoic acid,C8H10N6O2,L3.3,na
+FT_7.691_227.12538,2-[(3S)-1-(cyclohexylmethyl)pyrrolidin-3-yl]-3H-benzimidazole-5-carbonitrile,C19H24N4,L3.3,na
+FT_7.703_266.12479,N6-Me-dA,C11 H15 N5 O3,L2,na
+FT_7.836_223.09406,N-(2-amino-9H-purin-6-yl)alanine,C8H10N6O2,L3.3,na
+FT_8.058_227.12537,"(6R)-2-amino-6-(aminomethyl)-4-oxo-1,2,3,4a,6,7-hexahydropteridine-5-carbaldehyde",C8H14N6O2,L3.3,na
+FT_8.244_181.04702,4-(Methoxycarbonyl)benzoic acid,C9H8O4,L3.3,na
+FT_8.308_223.05768,"(3R,4S)-4,6,8-Trihydroxy-7-methoxy-3-methyl-3,4-dihydro-1H-isochromen-1-one",C11 H12 O6,L3.3,na
+FT_8.313_238.14375,no name,C13 H19 N O3,L4.3,na
+FT_8.445_223.05767,Lignicol,C11H12O6,L3.3,na
+FT_8.459_225.10968,NP-019374,C10 H18 O4,L2,na
+FT_8.485_279.08397,"1,2-Diglycidyl phthalate",C14H14O6,L3.1,na
+FT_8.550_224.16450,no name,C13 H21 N O2,L4.3,na
+FT_8.743_316.17555,(5-methyl-3-isoxazolyl)[4-(5-propyl-2-pyrimidinyl)piperazino]methanone,C16 H21 N5 O2,L2,na
+FT_8.923_220.13320,no name,C13 H17 N O2,L4.3,na
+FT_9.043_195.06277,"(4R,5R)-4,5-dihydroxy-3-methoxy-5-methyl-cyclohex-2-en-1-one",C8H12O4,L3.3,na
+FT_9.352_183.10168,NP-018661,C8 H16 O3,L2,na
+FT_9.676_167.10667,6-Pentyl-2H-pyran-2-one,C10 H14 O2,L2,na
+FT_9.727_295.12883,no name,C14 H18 N2 O5,L4.3,na
+FT_9.785_279.08392,"3-(5,7-Dimethoxy-4-oxochromen-2-yl)propanoic acid",C14H14O6,L2,na
+FT_9.983_340.13913,5-Hydroxytryptophol glucuronide,C16H21NO7,L3.3,na
+FT_1.303_145.04952,Dimethyl maleate,C6H8O4,L3.3,na
+FT_1.349_505.14323,alpha-D-ManAc-(1-P-6)-alpha-D-ManAc,C16H29N2O14P,L3.3,na
+FT_1.786_448.16613,no name,C23H21N5O6,L4.3,na
+FT_10.754_121.10111,Cumene,C9H12,L3.1,na
+FT_10.898_121.10112,Cumene,C9H12,L3.1,na
+FT_10.900_107.08547,Ethylbenzene,C8H10,L3.1,na
+FT_11.593_121.10112,Cumene,C9H12,L3.1,na
+FT_12.554_121.10112,Cumene,C9H12,L3.1,na
+FT_12.555_107.08547,o-Xylene,C8H10,L3.1,na
+FT_16.355_240.19580,no name,C14 H25 N O2,L4.3,na
+FT_18.932_201.09101,1-Acetoxy-2-methylnaphthalene,C13H12O2,L3.3,na
+FT_9.676_107.08547,2-xylene,C8H10,L3.3,na
+FT_0.886_135.03210,no name,C3 H7 N2 O2 P,L4.3,yes
+FT_0.888_442.87849,no name,C6 H9 N2 O9 P3 S3,L4.3,yes
+FT_0.889_147.01385,no name,C2 H2 N4 O4,L4.3,yes
+FT_0.889_151.00876,no name,C4 H8 O2 P2,L4.3,yes
+FT_0.889_199.94041,no name,C2 H2 N O6 P S,L4.3,na
+FT_0.889_328.89801,no name,C2 H7 N2 O7 P3 S2,L4.3,yes
+FT_0.889_346.90863,no name,C3 H11 N2 O5 P S5,L4.3,yes
+FT_0.889_458.85599,no name,C5 H8 N4 O7 P2 S5,L4.3,yes
+FT_0.889_460.85312,no name,no formula,L5,na
+FT_0.889_476.86690,no name,no formula,L5,na
+FT_0.890_144.98083,no name,C H6 O4 P2,L4.3,yes
+FT_0.890_248.97677,no name,no formula,L5,na
+FT_0.890_330.89510,no name,no formula,L5,na
+FT_0.890_330.93105,no name,C3 H11 N2 O6 P S4,L4.3,yes
+FT_0.891_110.00865,no name,C H3 N O5,L4.3,na
+FT_0.891_121.01643,no name,C2 H5 N2 O2 P,L4.3,yes
+FT_0.891_132.99816,no name,C3 H5 N2 P S,L4.3,na
+FT_0.891_198.94006,no name,no formula,L5,na
+FT_0.891_200.06168,no name,C4 H14 N3 O2 P S,L4.3,na
+FT_0.891_214.98862,no name,C3 H7 N2 O5 P S,L4.3,yes
+FT_0.891_230.96632,no name,C3 H7 N2 O4 P S2,L4.3,yes
+FT_0.892_214.91758,no name,C2 H3 N2 O2 P S3,L4.3,yes
+FT_0.892_218.98361,no name,C3 H8 O7 P2,L4.3,yes
+FT_0.892_232.92815,no name,C6 H2 N O3 S3,L4.3,yes
+FT_0.892_232.99927,no name,C7H6NO6S,L4.3,yes
+FT_0.892_344.87556,no name,C6 H4 N O6 P2 S3,L4.3,yes
+FT_0.893_182.96245,no name,C2 H3 N2 O4 P S,L4.3,yes
+FT_0.895_143.99682,no name,C H5 N O5 S,L4.3,yes
+FT_0.904_189.00708,no name,C4 H4 N4 O3 S,L4.3,yes
+FT_0.969_288.92204,no name,C7 N2 O7 S2,L4.3,yes
+FT_0.976_304.89561,no name,no formula,L5,na
+FT_0.979_226.95148,no name,no formula,L5,na
+FT_0.980_362.92643,no name,no formula,L5,na
+FT_0.980_430.91383,no name,no formula,L5,na
+FT_0.980_498.90137,no name,C9 H13 N2 O10 P3 S3,L4.3,yes
+FT_0.980_90.97665,no name,C2 H3 P S,L4.3,na
+FT_0.981_242.92541,no name,C4 H2 O8 S2,L4.3,na
+FT_0.981_294.93894,no name,C8 H8 O4 P2 S2,L4.3,yes
+FT_0.981_310.91292,no name,C4 H N4 O7 P3,L4.3,yes
+FT_0.981_378.90035,no name,C6 H5 O13 P3,L4.3,yes
+FT_0.981_446.88778,no name,C5 H9 N2 O12 P3 S2,L4.3,yes
+FT_0.981_514.87531,no name,C10 H14 O10 P4 S3,L4.3,yes
+FT_0.981_530.84929,no name,no formula,L5,na
+FT_0.981_566.88882,no name,C14 H8 N4 O11 P2 S3,L4.3,yes
+FT_0.981_582.86283,no name,no formula,L5,na
+FT_0.981_598.83677,no name,no formula,L5,na
+FT_0.981_666.82426,no name,no formula,L5,na
+FT_0.981_682.79804,no name,no formula,L5,na
+FT_0.981_734.81146,no name,no formula,L5,na
+FT_0.981_750.78520,no name,no formula,L5,na
+FT_0.982_394.87427,no name,no formula,L5,na
+FT_0.982_462.86176,no name,no formula,L5,na
+FT_0.982_614.81064,no name,no formula,L5,na
+FT_0.982_650.85025,no name,C10 H13 N4 O15 P3 S4,L4.3,yes
+FT_0.982_718.83752,no name,C14 H18 N4 O10 P4 S6,L4.3,yes
+FT_0.983_326.88687,no name,no formula,L5,na
+FT_0.983_410.84824,no name,no formula,L5,na
+FT_0.983_478.83569,no name,no formula,L5,na
+FT_0.983_546.82330,no name,C7 H6 N2 O15 P4 S2,L4.3,yes
+FT_0.983_630.78465,no name,C8 H12 O15 P6 S3,L4.3,yes
+FT_0.984_342.86081,no name,no formula,L5,na
+FT_0.985_426.82215,no name,no formula,L5,na
+FT_0.986_358.83480,no name,no formula,L5,na
+FT_0.987_442.79617,no name,no formula,L5,na
+FT_1.022_122.08113,Tromethamine,C4 H11 N O3,L3.1,na
+FT_1.037_198.12377,3-(1H-imidazol-5-yl)-2-(trimethylazaniumyl)propanoate,C9 H15 N3 O2,L3.3,na
+FT_1.040_257.17208,no name,C10 H20 N6 O2,L4.1,yes
+FT_1.058_304.15048,Nicotianamine,C12 H21 N3 O6,L3.1,na
+FT_1.081_154.13391,no name,C8 H15 N3,L4.3,yes
+FT_1.091_269.97637,no name,C6 H9 N O5 P2 S,L4.3,yes
+FT_1.096_191.99907,no name,C5 H7 N O3 P2,L4.3,yes
+FT_1.098_196.95448,no name,no formula,L5,na
+FT_1.098_274.93181,no name,C5 H9 N O2 P S4,L4.3,yes
+FT_1.099_258.92490,no name,no formula,L5,na
+FT_1.100_198.09738,1-Guanidino-2-(4-imidazole)propionic acid,C7 H11 N5 O2,L3.3,na
+FT_1.103_381.07947,no name,no formula,L5,na
+FT_1.135_159.07646,4-Methylene-L-glutamine,C6 H10 N2 O3,L3.3,na
+FT_1.141_287.12717,"4-Hydroxy-3,5,4'-trimethoxystilbene",C17 H18 O4,L3.3,na
+FT_1.147_168.06892,5-Aminopentane-1-sulfonate,C5 H13 N O3 S,L3.3,na
+FT_1.147_335.13059,2-(3-Quinoxalin-2-ylphenyl)quinoxaline,C22 H14 N4,L3.3,na
+FT_1.155_335.07393,no name,C9 H19 O11 P,L4.3,yes
+FT_1.174_398.12947,alpha-D-GlcNAc-(1->4)-D-GlcA,C14 H23 N O12,L3.3,na
+FT_1.176_198.09727,no name,C6 H15 N O6,L4.1,yes
+FT_1.177_271.16864,"3-Hydroxy-estra-1,3,5(10)-trien-16-one",C18 H22 O2,L3.3,na
+FT_1.179_180.08673,D-Mannosamine,C6 H13 N O5,L3.1,na
+FT_1.180_342.13304,no name,C12 H24 N O8 P,L4.3,yes
+FT_1.182_331.11710,no name,C11 H18 N6 O4 S,L4.3,na
+FT_1.187_229.12164,4-(3-Hydroxy-3-phenylpropyl)phenol,C15 H16 O2,L3.3,na
+FT_1.188_184.06383,Choline sulfate,C5 H13 N O4 S,L3.1,na
+FT_1.188_287.16354,no name,C11 H22 N6 O S,L4.3,na
+FT_1.190_536.21888,no name,C19 H37 N O16,L4.3,yes
+FT_1.210_275.19660,(2S)-6-(ethylamino)-2-[(2-methylpropan-2-yl)oxycarbonylamino]hexanoic acid,C13 H26 N2 O4,L3.3,na
+FT_1.215_464.10688,2-acetamido-2-deoxy-3-O-(6-O-sulfonato-beta-D-glucosyl)-beta-D-galactose,C14 H25 N O14 S,L3.3,na
+FT_1.217_285.18429,"1-Methylestra-1,3,5(10),6-tetraene-3,17beta-diol",C19 H24 O2,L3.3,na
+FT_1.222_313.14287,N-(2-methoxyphenyl)-N~3~-9H-purin-6-yl-beta-alaninamide,C15 H16 N6 O2,L3.3,na
+FT_1.223_448.11210,no name,no formula,L5,na
+FT_1.224_363.16189,"2-[(5,7-dihydroxy-4,7-dimethyl-4a,5,6,7a-tetrahydro-1H-cyclopenta[c]pyran-1-yl)oxy]-6-(hydroxymethyl)tetrahydropyran-3,4,5-triol",C16 H26 O9,L3.3,na
+FT_1.243_227.14244,no name,C10 H19 N4 P,L4.3,na
+FT_1.252_198.08906,"Methyl 5-(but-3-en-1-yl)amino-1,3,4-oxadiazole-2-carboxylate",C8 H11 N3 O3,L3.3,na
+FT_1.257_324.16538,"3,8-bis(2-methoxyethyl)-1-methyl-7,8-dihydro-1H-imidazo[2,1-f]purine-2,4(3H,6H)-dione",C14 H21 N5 O4,L3.3,na
+FT_1.259_198.12371,3-(1H-imidazol-5-yl)-2-(trimethylazaniumyl)propanoate,C9 H15 N3 O2,L3.3,na
+FT_1.262_380.20290,no name,C15 H29 N3 O8,L4.3,"yes, gui"
+FT_1.264_374.12946,no name,C12 H23 N O12,L4.3,"yes, gui"
+FT_1.274_440.10703,no name,C12 H25 N O14 S,L4.1,yes
+FT_1.289_205.11826,no name,C8 H16 N2 O4,L4.1,yes
+FT_1.300_189.12341,2-[(2-Amino-3-methylbutanoyl)amino]propanoic acid,C8 H16 N2 O3,L3.3,na
+FT_1.302_189.12341,2-acetamidohex-4-enoic acid,C8 H13 N O3,L3.3,na
+FT_1.308_97.02841,"4-Cyclopentene-1,3-dione",C5 H4 O2,L3.3,na
+FT_1.309_85.02847,2(5H)-Furanone,C4 H4 O2,L3.1,na
+FT_1.310_180.08674,"(3S)-2-hydroxy-2,3-dimethylbutanedioic acid",C6 H10 O5,L3.3,na
+FT_1.310_325.11303,"3,6-Anhydro-l-lactose",C12 H20 O10,L3.3,na
+FT_1.310_702.26646,Citbismine C,C37 H36 N2 O11,L3.3,na
+FT_1.313_734.15675,no name,C29 H31 N7 O12 S2,L4.3,na
+FT_1.313_738.15172,no name,no formula,L5,na
+FT_1.314_370.08322,no name,C11 H20 N3 O7 P S,L4.3,yes
+FT_1.323_438.04617,no name,C11 H22 N O11 P3,L4.3,yes
+FT_1.325_446.04676,no name,C10 H17 N5 O11 P2,L4.3,yes
+FT_1.339_427.07594,no name,C11 H24 O13 P2,L4.3,yes
+FT_1.340_471.18238,O-(3-O-beta-D-galactosyl-N-acetyl-alpha-D-galactosaminyl)-L-serine,C17 H30 N2 O13,L3.3,na
+FT_1.350_186.07614,no name,C8 H11 N O4,L4.1,yes
+FT_1.359_198.07952,no name,C6 H15 N O4 S,L4.1,yes
+FT_1.360_350.19235,no name,C14 H27 N3 O7,L4.3,"yes, gui"
+FT_1.375_276.11905,Gln-Glu,C10 H17 N3 O6,L3.1,na
+FT_1.378_288.10135,no name,C11 H17 N3 O4 S,L4.3,yes
+FT_1.386_218.14992,(2S)-2-amino-6-[[(2S)-2-aminopropanoyl]amino]hexanoic acid,C9 H19 N3 O3,L3.3,na
+FT_1.387_353.03927,no name,C8 H18 O11 P2,L4.3,yes
+FT_1.387_364.00941,no name,no formula,L5,na
+FT_1.388_286.11329,2-O-alpha-mannosyl-D-glycerate,C9 H16 O9,L3.3,na
+FT_1.388_371.01204,"D-Glycero-D-manno-heptose 1,7-bisphosphate",C7 H16 O13 P2,L3.3,na
+FT_1.390_366.18722,2'-N-Acetylparomamine,C14 H27 N3 O8,L3.1,na
+FT_1.396_196.10019,Ethyldimethyl(3-sulfopropyl)azanium,C7 H17 N O3 S,L3.3,na
+FT_1.404_425.19671,no name,C18 H28 N6 O4 S,L4.1,yes
+FT_1.405_190.10742,N-lactoyl-Valine,C8 H15 N O4,L3.3,na
+FT_1.406_684.25587,no name,C24 H45 N O21,L4.3,yes
+FT_1.410_487.16575,no name,C18 H30 O15,L4.3,na
+FT_1.410_851.26419,no name,no formula,L5,na
+FT_1.411_846.30863,no name,C30 H55 N O26,L4.3,yes
+FT_1.414_325.11299,no name,C13 H16 N4 O6,L4.3,na
+FT_1.416_275.12378,no name,C7H14N8O4,L4.3,"yes, gui"
+FT_1.417_97.02840,Protoanemonin,C5 H4 O2,L3.1,na
+FT_1.418_74.09646,Diethamine,C4 H11 N,L3.3,na
+FT_1.419_244.11139,S-methylergothioneine,C10 H17 N3 O2 S,L3.3,na
+FT_1.421_176.10298,L-Citrulline,C6 H13 N3 O3,L3.1,na
+FT_1.421_189.12346,N6-Acetyl-L-lysine,C8 H16 N2 O3,L3.1,na
+FT_1.421_462.14561,no name,C16 H23 N5 O11,L4.3,yes
+FT_1.425_175.10771,N-acetylornithine,C7 H14 N2 O3,L3.1,na
+FT_1.425_404.17774,no name,C15 H25 N5 O8,L4.1,yes
+FT_1.428_448.16617,no name,C15 H29 N O14,L4.3,"yes, gui"
+FT_1.429_190.11850,L-Homocitrulline,C7 H15 N3 O3,L3.1,na
+FT_1.523_190.11863,L-Homocitrulline,C7 H15 N3 O3,L3.1,na
+FT_1.546_236.14923,no name,C10 H21 N O5,L4.1,yes
+FT_1.700_249.10806,Glu-Thr,C9 H16 N2 O6,L3.1,na
+FT_1.700_340.12391,no name,C13 H17 N5 O6,L4.3,na
+FT_1.720_248.16049,H-Lys-Thr-OH,C10 H21 N3 O4,L3.1,na
+FT_1.720_462.18184,3-cis-Hydroxyglipizide,C21 H27 N5 O5 S,L3.3,na
+FT_1.769_217.06825,no name,C7 H10 N3 O5,L4.3,yes
+FT_1.774_72.08080,3-Buten-1-amine,C4 H9 N,L3.1,na
+FT_1.778_548.21876,beta-D-galactosyl-(1->4)-N-acetyl-beta-D-glucosaminyl-(1->6)-D-galactitol,C20 H37 N O16,L3.3,na
+FT_1.784_174.08735,2-Oxoarginine,C6 H11 N3 O3,L3.3,na
+FT_1.790_515.09219,no name,C14 H28 O16 P2,L4.3,yes
+FT_1.809_232.12923,l-Alanyl-d-alanyl-l-alanine,C9 H17 N3 O4,L3.3,na
+FT_1.826_199.14414,(-)-Slaframine,C10 H18 N2 O2,L3.3,na
+FT_1.909_511.16356,Piperenol A triacetate,C27 H26 O10,L3.3,na
+FT_1.912_217.06825,no name,C7 H10 N3 O5,L4.3,na
+FT_1.988_684.25597,no name,C24 H45 N O21,L4.3,yes
+FT_10.186_171.10172,7-methyl-3-oxooct-6-enoic acid,C9 H14 O3,L3.3,na
+FT_10.254_310.12853,Sporovexin C,C15 H19 N O6,L3.3,na
+FT_10.540_204.15939,"(2S,8R)-2-amino-8-hydroxydecanoic acid",C10 H21 N O3,L3.3,na
+FT_10.757_149.09608,"2-Methyl-5-prop-1-en-2-ylcyclohexa-2,4-dien-1-one",C10 H12 O,L3.3,na
+FT_10.758_167.10667,Camphorquinone,C10 H14 O2,L3.3,na
+FT_10.790_239.05499,Benzoylmalic acid,C11 H10 O6,L3.1,na
+FT_10.898_149.09608,"2-Methyl-5-prop-1-en-2-ylcyclohexa-2,4-dien-1-one",C10 H12 O,L3.3,na
+FT_10.898_167.10667,Camphenal,C10 H14 O2,L3.3,na
+FT_10.898_185.11722,"(2,2,3-Trimethyl-4-oxocyclopentyl)acetic acid",C10 H16 O3,L3.3,na
+FT_10.905_199.13289,Methyl 2-butyl-3-oxocyclopentanecarboxylate,C11 H18 O3,L3.3,na
+FT_11.015_360.08063,"2-[(3,6-dimethyl-4-oxo-2-thieno[2,3-d]pyrimidinyl)thio]-N-(4-methylphenyl)acetamide",C17 H17 N3 O2 S2,L3.3,na
+FT_11.115_235.06010,"3-(2-Oxopropyl)-6,8-dihydroxyisocoumarin",C12 H10 O5,L3.1,na
+FT_11.119_275.05264,Parasperone A,C14 H10 O6,L3.3,na
+FT_11.157_241.07067,"methyl 5-hydroxy-2-methylene-3-oxo-4a,5,8,8a-tetrahydro-1,4-benzodioxine-7-carboxylate",C11 H12 O6,L3.3,na
+FT_11.197_225.07332,no name,C11 H12 O5,L4.3,na
+FT_11.217_185.11726,3-(1-Hydroxy-2-Methylbutyl)-4-Methyl-2(5H)-Furanone),C10 H16 O3,L3.3,na
+FT_11.232_326.12348,no name,C15 H19 N O7,L4.3,"yes, gui"
+FT_11.271_202.14372,L-2-amino-8-oxodecanoic acid,C10 H19 N O3,L3.3,na
+FT_11.305_384.18063,Peniprequinolone,C22 H25 N O5,L3.3,na
+FT_11.310_182.19033,Dicyclohexylamine,C12 H23 N,L3.1,na
+FT_11.332_239.09131,46-Dimethylcurvulinic acid,C12 H14 O5,L3.3,na
+FT_11.364_204.15939,no name,C10 H21 N O3,L4.1,na
+FT_11.428_153.09102,"2,6,6-Trimethyl-2-cyclohexene-1,4-dione",C9 H12 O2,L3.3,na
+FT_11.447_324.14417,4-(benzyloxy)-2-{[(tert-butoxy)carbonyl]amino}-4-oxobutanoic acid,C16 H21 N O6,L3.3,na
+FT_11.451_223.09644,"1-(5-Acetyl-2,4-dimethoxyphenyl)ethanone",C12 H14 O4,L3.3,na
+FT_11.491_185.04450,"2,3-Dihydroxy-4-methoxybenzoic acid",C8 H8 O5,L3.3,na
+FT_11.491_271.08123,D-Lombricine,C6 H15 N4 O6 P,L3.3,na
+FT_11.492_225.07575,"1-(3-Acetyl-2,4-dihydroxy-6-methoxyphenyl)ethan-1-one",C11 H12 O5,L3.3,na
+FT_11.492_253.07066,Phloroglucinol triacetate,C12 H12 O6,L3.3,na
+FT_11.524_210.11004,no name,C7 H11 N7 O,L4.1,na
+FT_11.579_197.04447,Haematommic acid,C9 H8 O5,L3.3,na
+FT_11.592_167.10668,Camphorquinone,C10 H14 O2,L3.3,na
+FT_11.593_149.09609,"2-Methyl-5-prop-1-en-2-ylcyclohexa-2,4-dien-1-one",C10 H12 O,L3.3,na
+FT_11.593_391.20921,no name,C18 H26 N6 O4,L4.3,na
+FT_11.685_208.11791,"alpha-D-Glucopyranose, 2-deoxy-2-(dimethylamino)",C8 H17 N O5,L3.3,na
+FT_11.686_163.09650,beta-Cymaropyranose,C7 H14 O4,L3.1,na
+FT_11.686_213.07332,3-Hydroxysuberic acid,C8 H14 O5,L3.3,na
+FT_11.693_171.10169,Aspinonediol,C9 H14 O3,L3.3,na
+FT_11.741_384.18062,Peniprequinolone,C22 H25 N O5,L3.3,na
+FT_11.793_209.08088,methyl (E)-3-(5-methyl-6-oxopyran-2-yl)but-2-enoate,C11 H12 O4,L3.3,na
+FT_11.794_197.08092,"Methyl 2,4-dihydroxy-3,6-dimethylbenzoate",C10 H12 O4,L3.3,na
+FT_11.834_119.07021,Methyl 3-hydroxybutyrate,C5 H10 O3,L3.3,na
+FT_11.929_277.06831,Dehydrocitreoisocoumarin,C14 H12 O6,L3.3,na
+FT_11.931_237.07573,5-acetyl-2-(acetyloxy)phenyl acetate,C12 H12 O5,L3.3,na
+FT_11.951_219.10167,Eupatoriochromene,C13 H14 O3,L3.1,na
+FT_11.963_202.14373,"Decanoic acid, 2-amino-8-oxo-, (2S)-",C10 H19 N O3,L3.3,na
+FT_11.964_265.07067,"3,3'-Methylenebis(4-hydroxy-6-methyl-2H-pyran-2-one)",C13 H12 O6,L3.3,na
+FT_11.998_324.14413,Boc-Asp(OBzl)-OH,C16 H21 N O6,L3.3,na
+FT_12.022_269.10197,"2-(3-Butanoyl-2,6-dihydroxy-4-methoxyphenyl)acetic acid",C13 H16 O6,L3.3,na
+FT_12.079_109.10113,"5-Methylhepta-1,3,6-triene",C8 H12,L3.3,na
+FT_12.079_169.12233,"2-Cyclohexen-1-one, 4-hydroxy-3-methyl-6-(1-methylethyl)-",C10 H16 O2,L3.3,na
+FT_12.081_83.04916,"cis-2,4-Pentadienal",C5 H6 O,L3.1,na
+FT_12.112_202.14371,8(S)-Amino-2(R)-methyl-7-oxononanoic acid,C10 H19 N O3,L3.3,na
+FT_12.135_171.10176,3-(2-Oxocyclohexyl)propanoic acid,C9 H14 O3,L3.3,na
+FT_12.162_209.08087,"3-(3,5-dimethoxyphenyl)prop-2-enoic acid",C11 H12 O4,L3.3,na
+FT_12.206_109.10113,"1,2-Dimethyl-1,4-cyclohexadiene",C8 H12,L3.3,na
+FT_12.206_169.12233,"2-Cyclohexen-1-one, 4-hydroxy-3-methyl-6-(1-methylethyl)-",C10 H16 O2,L3.3,na
+FT_12.219_197.11725,Trichocyalide B,C11 H16 O3,L3.3,na
+FT_12.220_269.10198,"(3S,4S)-3,4,8-trihydroxy-7-(1-hydroxyethyl)-6-methoxy-3,4-dihydro-2H-naphthalen-1-one",C13 H16 O6,L3.3,na
+FT_12.241_179.07033,4-Hydroxy-3-methoxycinnamaldehyde,C10 H10 O3,L3.3,na
+FT_12.260_235.06014,Hexaketide pyrone,C12 H10 O5,L3.3,na
+FT_12.324_183.06534,"Methyl 2,4-dihydroxy-6-methylbenzoate",C9 H10 O4,L3.3,na
+FT_12.342_223.09646,Dihydrodeoxy-8-epiaustdiol,C12 H14 O4,L3.3,na
+FT_12.343_165.05466,"3-(2,5-Dihydroxyphenyl)prop-2-enal",C9 H8 O3,L3.3,na
+FT_12.455_249.07577,(2S)-2-(4-methyl-2-oxochromen-7-yl)oxypropanoate,C13 H12 O5,L3.3,na
+FT_12.510_209.08084,"3,4-Dihydroxy cinnamic acid",C11 H12 O4,L3.3,na
+FT_12.553_239.09112,"2,3,5-Trimethoxy-6-(1-propenyl)-2,5-cyclohexadiene-1,4-dione",C12 H14 O5,L3.3,na
+FT_12.554_149.09609,"2-Methyl-5-prop-1-en-2-ylcyclohexa-2,4-dien-1-one",C10 H12 O,L3.3,na
+FT_12.554_293.08636,"6-[(E)-3-carboxy-2-methylprop-2-enoxy]-3,4,5-trihydroxyoxane-2-carboxylic acid",C11 H16 O9,L3.3,na
+FT_12.555_167.10667,"2,5-Cyclohexadien-1-one, 4-hydroxy-2,3,5,6-tetramethyl-",C10 H14 O2,L3.3,na
+FT_12.561_255.08605,"Methyl 4-acetyloxy-3,5-dimethoxybenzoate",C12 H14 O6,L3.3,na
+FT_12.591_237.11205,"1-(5-Acetyl-2,4-dihydroxyphenyl)-3-methylbutan-1-one",C13 H16 O4,L3.3,na
+FT_12.618_235.06013,Hexaketide pyrone,C12 H10 O5,L3.3,na
+FT_12.662_249.07560,2-(7-Methoxy-4-methyl-2-oxochromen-3-yl)acetate,C13 H12 O5,L3.3,na
+FT_12.690_185.04449,"2,6-Dihydroxy-4-methoxybenzoic acid",C8 H8 O5,L3.3,na
+FT_12.691_227.09140,"1-(2-Hydroxy-3,4,6-trimethoxyphenyl)ethanone",C11 H14 O5,L3.3,na
+FT_12.723_202.14371,"5-(1,2-Dihydroxypropan-2-yl)-2-methylcyclohex-2-en-1-one",C10 H16 O3,L3.3,na
+FT_12.756_239.09136,"8-Hydroxy-6,7-dimethoxy-3-methyl-3,4-dihydroisochromen-1-one",C12 H14 O5,L3.3,na
+FT_12.768_223.09653,"1,3-Diacetyl-4,6-dimethoxybenzene",C12 H14 O4,L3.3,na
+FT_12.826_249.07576,(7-Methoxy-4-methyl-2-oxo-2h-chromen-3-yl)acetic acid,C13 H12 O5,L3.3,na
+FT_12.893_191.10404,"(2S,6S)-2,6-diaminoheptanedioic acid",C7 H14 N2 O4,L3.3,na
+FT_12.894_183.13796,Tsibulin 2,C11 H18 O2,L3.1,na
+FT_12.900_283.11761,no name,C14 H18 O6,L4.1,yes
+FT_12.928_299.11251,Aspergilate D,C14 H18 O7,L3.3,na
+FT_12.929_313.12823,Nivalenol,C15 H20 O7,L3.1,na
+FT_12.932_219.10163,Asperfuran,C13 H14 O3,L3.1,na
+FT_12.939_253.10703,Eugenone,C13 H16 O5,L3.3,na
+FT_13.033_366.15475,Erucifoline N-oxide,C18 H23 N O7,L3.3,na
+FT_13.089_255.08629,no name,C12 H14 O6,L4.1,yes
+FT_13.094_295.11759,Tutin,C15 H18 O6,L3.1,na
+FT_13.197_283.11747,"(3S,4S)-3,4,8-trihydroxy-6-methoxy-7-(1-methoxyethyl)-3,4-dihydro-2H-naphthalen-1-one",C14 H18 O6,L3.3,na
+FT_13.227_237.07573,Acetic acid 2-acetoxy-5-acetyl-phenyl ester,C12 H12 O5,L3.3,na
+FT_13.230_244.22706,N-(2-Hydroxyethyl)dodecanamide,C14 H29 N O2,L3.3,na
+FT_13.250_241.10461,no name,C12 H16 O5,L3.3,yes
+FT_13.257_239.09130,46-Dimethylcurvulinic acid,C12 H14 O5,L3.3,na
+FT_13.279_253.07065,"8-Hydroxy-5,6,7-trimethoxychromen-2-one",C12 H12 O6,L3.3,na
+FT_13.284_251.12774,Preremirol,C14 H18 O4,L3.3,na
+FT_13.284_297.09689,no name,C14 H16 O7,L4.1,yes
+FT_13.285_279.08631,"2,3,5,7-Tetramethoxynaphthoquinone",C14 H14 O6,L3.3,na
+FT_13.287_225.07575,"1-(3-Acetyl-2,4-dihydroxy-6-methoxyphenyl)ethan-1-one",C11 H12 O5,L3.3,na
+FT_13.317_251.09143,"1H-2-Benzopyran-1-one, 6,7,8-trimethoxy-3-methyl-",C13 H14 O5,L3.3,na
+FT_13.330_233.08081,"Benzofuran, 2,5-diacetyl-6-methoxy-",C13 H12 O4,L3.3,na
+FT_13.333_273.07341,"5,8-dihydroxy-10-methoxy-2-methyl-4H-benzo[h]chromen-4-one",C15 H12 O5,L3.3,na
+FT_13.396_267.08631,"methyl 5,7-dimethoxy-6-methyl-1-oxo-3H-2-benzofuran-4-carboxylate",C13 H14 O6,L3.3,na
+FT_13.400_201.16375,alpha-Corocalene,C15 H20,L3.1,na
+FT_13.401_527.18906,Isophysalin G,C28 H30 O10,L3.3,na
+FT_13.406_267.12259,no name,C14 H18 O5,L3.3,na
+FT_13.482_269.10199,"2-(3-Butanoyl-2,6-dihydroxy-4-methoxyphenyl)acetic acid",C13 H16 O6,L3.3,na
+FT_13.617_197.04447,Haematommic acid,C9 H8 O5,L3.3,na
+FT_13.642_195.10159,5-[(E)-but-1-enyl]-4-methoxy-6-methylpyran-2-one,C11 H14 O3,L3.3,na
+FT_13.663_203.07093,"[1,1'-Biphenyl]-2,3',4-triol",C12 H10 O3,L3.1,na
+FT_13.704_269.17474,"3,11,12-Trihydroxy-1(10)-spirovetiven-2-one",C15 H24 O4,L3.3,na
+FT_13.705_235.06011,"6-(2,4-dihydroxy-6-methylphenyl)-4-hydroxypyran-2-one",C12 H10 O5,L3.3,na
+FT_13.705_239.09124,5-Hydroxy-7-methoxy-4-(methoxymethyl)-6-methyl-1(3H)-isobenzofuranone,C12 H14 O5,L3.3,na
+FT_13.719_329.01355,no name,C15 H9 N2 O3 P S,L4.3,na
+FT_13.772_283.11761,6-[1-Hydroxy-1-(3-methyl-5-oxooxolan-2-yl)ethyl]-4-methoxy-3-methylpyran-2-one,C14 H18 O6,L3.3,na
+FT_13.807_313.17989,Aspergiloid G,C20 H24 O3,L3.3,na
+FT_13.808_299.11020,Picein,C14 H18 O7,L3.3,na
+FT_13.809_294.15474,N-(1-Deoxy-1-fructosyl)leucine,C12 H23 N O7,L3.3,na
+FT_13.811_527.18896,Isophysalin G,C28 H30 O10,L3.3,na
+FT_13.834_205.04949,"3,7-Dihydroxy-2-naphthoic acid",C11 H8 O4,L3.3,na
+FT_13.836_197.04447,Haematommic Acid,C9 H8 O5,L3.3,na
+FT_13.836_283.08127,"Benzoic acid, 3,5-bis(acetyloxy)-4-methoxy-, methyl ester",C13 H14 O7,L3.3,na
+FT_13.841_277.10701,6-[(2S)-2-hydroperoxy-3-methylbut-3-enyl]-7-methoxychromen-2-one,C15 H16 O5,L3.3,na
+FT_13.868_253.07068,Phloroglucinol triacetate,C12 H12 O6,L3.3,na
+FT_13.869_285.09687,p-Cresol glucuronide,C13 H16 O7,L3.3,na
+FT_13.871_307.07895,Gallocatechin,C15 H14 O7,L3.3,na
+FT_13.953_281.13815,"1-(2,3,4,6-tetramethoxyphenyl)pent-2-en-1-one",C15 H20 O5,L3.3,na
+FT_13.986_227.05508,"4,5-Dimethoxyphthalic acid",C10 H10 O6,L3.3,na
+FT_14.025_555.22021,"2(3H)-Furanone, dihydro-4-((4-hydroxy-3-(2-hydroxy-2-(4-hydroxy-3-methoxyphenyl)-1-(hydroxymethyl)ethyl)-5-methoxyphenyl)methyl)-3-((4-hydroxy-3-methoxyphenyl)methyl)-, (3R,4R)-",C30 H34 O10,L3.3,na
+FT_14.026_374.08225,N-acetylmuramic acid 6-phosphate,C11 H20 N O11 P,L3.3,na
+FT_14.027_407.11767,no name,C16 H22 O12,L4.3,na
+FT_14.089_251.12776,Preremirol,C14 H18 O4,L3.3,na
+FT_14.095_291.12042,"N-succinyl-L,L-2,6-diaminopimelate",C11 H18 N2 O7,L3.3,na
+FT_14.168_341.12328,"6-(2-Benzyl-3-oxopropoxy)-3,4,5-trihydroxyoxane-2-carboxylic acid",C16 H20 O8,L3.3,na
+FT_14.255_235.16924,"2-[(2S,5S)-5-hydroxy-6-methylhept-6-en-2-yl]-5-methylphenol",C15 H22 O2,L3.3,na
+FT_14.276_311.11260,1-O-trans-Cinnamoyl-beta-D-glucopyranose,C15 H18 O7,L3.1,na
+FT_14.289_217.08594,Euparin,C13 H12 O3,L3.3,na
+FT_14.358_555.22021,"2(3H)-Furanone, dihydro-4-((4-hydroxy-3-(2-hydroxy-2-(4-hydroxy-3-methoxyphenyl)-1-(hydroxymethyl)ethyl)-5-methoxyphenyl)methyl)-3-((4-hydroxy-3-methoxyphenyl)methyl)-, (3R,4R)-",C30 H34 O10,L3.3,na
+FT_14.359_351.07529,Sulfometuron,C14 H14 N4 O5 S,L3.3,na
+FT_14.362_407.11799,no name,C16 H22 O12,L4.3,yes
+FT_14.394_281.13832,"(1beta,4alpha,5alpha,6beta,8alpha,10b)-1,10:4,5-Diepoxy-6-hydroxy-7(11)-germacren-12,8-olide",C15 H20 O5,L3.3,na
+FT_14.462_349.12818,"1-(2,4,6-Trihydroxyphenyl)-3-(3,4,5-trimethoxyphenyl)propan-1-one",C18 H20 O7,L3.1,na
+FT_14.524_257.13847,Colisiderin A,C13 H20 O5,L3.3,na
+FT_14.531_253.17983,Ethyl 2-methyl-4-oxo-6-pentylcyclohex-2-ene-1-carboxylate,C15 H24 O3,L3.3,na
+FT_14.539_225.11216,"Ethyl 6-ethyl-2,4-dihydroxy-3-methylbenzoate",C12 H16 O4,L3.3,na
+FT_14.606_265.14325,"2'-Hydroxy4',6'-dimethoxy-3'-(3-methyl-2-butenyl)acetophenone",C15 H20 O4,L3.3,na
+FT_14.624_313.12824,p-Coumaryl alcohol 4-O-glucoside,C15 H20 O7,L3.1,na
+FT_14.645_239.09135,"2'-Acetoxy-4',6'-dimethoxyacetophenone",C12 H14 O5,L3.3,na
+FT_14.657_339.14390,15-Acetyl-4-deoxynivalenol,C17 H22 O7,L3.3,na
+FT_14.703_251.09138,Azanigerone E,C13 H14 O5,L3.3,na
+FT_14.720_307.11764,7-Oxocurvularin,C16 H18 O6,L3.1,na
+FT_14.729_283.11759,no name,C14 H18 O6,L4.1,yes
+FT_14.762_328.17552,no name,C16 H25 N O6,L4.3,yes
+FT_14.823_269.13832,"6-[(E)-4,5-dihydroxy-4-methylhex-2-en-2-yl]-4-methoxy-3-methylpyran-2-one",C14 H20 O5,L3.3,na
+FT_14.851_459.10528,6-(Naphthalen-2-Yl)-9-(5-O-Phosphono-Beta-D-Ribofuranosyl)-9h-Purine,C20 H19 N4 O7 P,L3.3,na
+FT_14.862_227.09138,"Methyl 3,4,5-trimethoxybenzoate",C11 H14 O5,L3.3,na
+FT_14.869_219.10139,Toxol,C13 H14 O3,L3.1,na
+FT_14.964_291.15877,1-(o-Methoxybenzyl)-2-oxocyclohexanepropionic acid,C17 H22 O4,L3.3,na
+FT_14.968_326.19618,no name,C15 H34 O3 P S,L4.3,yes
+FT_14.985_383.13360,"3,4,5-trihydroxy-6-[(E)-5-(4-methoxyphenyl)-3-oxopent-4-enoxy]oxane-2-carboxylic acid",C18 H22 O9,L3.3,na
+FT_15.019_109.10112,"1,3,6-Octatriene",C8 H12,L3.3,na
+FT_15.020_135.11680,1-Isopropyl-4-methylenebicyclo[3.1.0]hex-2-ene,C10 H14,L3.3,na
+FT_15.020_341.26868,"(6e,8s,10e,14r)-3,7,11,15-Tetramethylhexadeca-1,6,10-triene-3,8,14,15-tetraol",C20 H36 O4,L3.3,na
+FT_15.024_219.10151,Eupatoriochromene,C13 H14 O3,L3.3,na
+FT_15.074_281.13833,"7-(1-ethoxyethyl)-4,8-dihydroxy-6-methoxy-tetralin-1-one",C15 H20 O5,L3.3,na
+FT_15.164_326.19615,no name,C17 H27 N O5,L4.1,na
+FT_15.165_291.15894,1-(o-Methoxybenzyl)-2-oxocyclohexanepropionic acid,C17 H22 O4,L3.3,na
+FT_15.178_219.17433,"5-isopropyl-3,8-dimethyl-4a,5,6,7-tetrahydro-1H-naphthalen-2-one",C15 H22 O,L3.3,na
+FT_15.224_219.10156,"1-(4-Hydroxy-2-prop-1-en-2-yl-2,3-dihydro-1-benzofuran-5-yl)ethanone",C13 H14 O3,L3.3,na
+FT_15.256_237.18487,5-Nonylresorcinol,C15 H24 O2,L3.3,na
+FT_15.284_281.13834,no name,C15 H20 O5,L4.1,yes
+FT_15.307_291.08636,"(2,6-Dihydroxy-4-methoxyphenyl)-(2,4-dihydroxy-6-methylphenyl)methanone",C15 H14 O6,L3.3,na
+FT_15.310_197.04449,"3-(2,4-Dihydroxyphenyl)-2-oxopropanoic acid",C9 H8 O5,L3.3,na
+FT_15.310_273.07568,"1,3-Dihydroxy-6-methoxy-8-methyl-9-xanthenone",C15 H12 O5,L3.3,na
+FT_15.338_383.13368,"3,4,5-trihydroxy-6-[(E)-5-(4-methoxyphenyl)-3-oxopent-4-enoxy]oxane-2-carboxylic acid",C18 H22 O9,L3.3,na
+FT_15.395_353.15960,"3-Hydroxy-1-(8-hydroxy-6-methoxy-3-methyl-1-oxo-3,4-dihydro-1H-2-benzopyran-7-yl)-3-methylbutan-2-yl acetate",C18 H24 O7,L3.1,na
+FT_15.410_309.13329,5'-Hydroxyasperentin,C16 H20 O6,L3.3,na
+FT_15.413_288.18057,no name,C14 H25 N O5,L4.1,na
+FT_15.433_275.12778,"Heteropeucenin, methyl ether",C16 H18 O4,L3.3,na
+FT_15.459_323.14898,Aculeatusquinone C,C17 H22 O6,L3.3,na
+FT_15.505_326.19621,no name,C14 H31 N O5 S,L4.3,na
+FT_15.597_211.11174,"4,4'-Dimethylbenzophenone",C15 H14 O,L3.3,na
+FT_15.647_281.10197,"1,4-Dimethyl-2,3,5-triacetoxybenzene",C14 H16 O6,L3.3,na
+FT_15.672_323.11267,"6-Hydroxy-7,8-dimethoxy-2-(2-oxopropyl)-2,3,3a,9b-tetrahydrouro[3,2-c]isochromen-5-one",C16 H18 O7,L3.3,na
+FT_15.736_211.09403,Aspinonene,C9 H16 O4,L3.3,na
+FT_15.739_211.09401,no name,C9 H12 N3 O3,L4.3,yes
+FT_15.741_251.12776,Preremirol,C14 H18 O4,L3.3,na
+FT_15.849_297.09689,"6-(4-Ethenylphenoxy)-3,4,5-trihydroxyoxane-2-carboxylic acid",C14 H16 O7,L3.1,na
+FT_15.894_251.12775,Preremirol,C14 H18 O4,L3.3,na
+FT_15.955_307.15400,"13-hydroxy-15-methoxy-3-methyl-3,4,5,6,9,10-hexahydro-1H-benzo(c)(1)oxacyclododecine-1,7(8H)-dione",C17 H22 O5,L3.3,na
+FT_15.987_217.08590,"7-hydroxy-6-methyl-1H,2H,3H,4H-cyclopenta[c]chromen-4-one",C13 H12 O3,L3.3,na
+FT_15.988_469.18571,Dukunolide D,C26 H28 O8,L3.3,na
+FT_16.076_237.11207,"Ethanone, 1-[2,4,6-trihydroxy-3-(3-methyl-2-butenyl)phenyl]-",C13 H16 O4,L3.3,na
+FT_16.080_209.08083,"2-Propenal, 3-(4-hydroxy-3,5-dimethoxyphenyl)-",C11 H12 O4,L3.3,na
+FT_16.093_203.17935,"1,4,9-Cadinatriene",C15 H22,L3.1,na
+FT_16.094_283.11761,"methyl 3,5,7-trimethoxy-6-methyl-1,3-dihydroisobenzofuran-4-carboxylate",C14 H18 O6,L3.3,na
+FT_16.095_421.20123,Gangetin,C26H28O5,L3.3,na
+FT_16.097_293.13833,Botryosphaerin F,C16 H20 O5,L3.1,na
+FT_16.135_249.14848,Aspergentisyl B,C15 H20 O3,L3.3,na
+FT_16.338_219.10158,"(2E,6E)-5-hydroxy-7-phenylhepta-2,6-dienoic acid",C13 H14 O3,L3.3,na
+FT_16.352_205.15865,"1-[(4aR)-4a,8-dimethyl-4,5,6,7-tetrahydro-3H-naphthalen-2-yl]ethanone",C14 H20 O,L3.3,na
+FT_16.353_177.16380,"Megastigma-4,6(E),8(Z)-triene",C13 H20,L3.1,na
+FT_16.354_245.15123,Isoleucyl-hydroxyproline,C11 H20 N2 O4,L3.3,na
+FT_16.372_335.14903,"methyl 10-(acetoxymethyl)-3-methylene-2-oxo-3a,4,5,8,9,11a-hexahydrocyclodeca[b]furan-6-carboxylate",C18 H22 O6,L3.3,na
+FT_16.412_283.08124,"Trimethyl 5-methoxybenzene-1,2,4-tricarboxylate",C13 H14 O7,L3.3,na
+FT_16.545_467.20649,"(7R,8R)-8-(3,4-dimethoxyphenyl)-5,7-dihydroxy-2,2-dimethyl-10-(3-methylbut-2-enyl)-7,8-dihydropyrano[3,2-g]chromen-6-one",C27 H30 O7,L3.3,na
+FT_16.567_353.15961,"3-(7-hydroxy-4-methoxycarbonyl-9-methyl-11-oxo-10-oxatricyclo[6.3.2.0^{1,7}]tridec-3-en-9-yl)propanoic acid",C18 H24 O7,L3.3,na
+FT_16.598_499.19643,Dehydroaustin,C27 H30 O9,L3.3,na
+FT_16.641_301.28498,3-(Dodecanoylamino)propyl-hydroxy-dimethylazanium,C17 H36 N2 O2,L3.3,na
+FT_16.666_291.15902,Laurenoniolide,C17 H22 O4,L3.3,na
+FT_16.668_291.12280,"2-(5-acetyl-6-methoxy-2,3-dihydrobenzofuran-2-yl)allyl acetate",C16 H18 O5,L3.3,na
+FT_16.686_287.16414,"Estradiol-3,4-quinone",C18 H22 O3,L3.3,na
+FT_16.721_209.08081,Methyl 4-hydroxy-3-methoxy-cinnamate,C11 H12 O4,L3.3,na
+FT_16.723_281.10198,"(Z)-3-[4,5-dihydroxy-2-(2-hydroxypropan-2-yl)-2,3-dihydro-1-benzofuran-7-yl]prop-2-enoic acid",C14 H16 O6,L3.3,na
+FT_16.740_201.09101,"1,4-Naphthalenedione, 2,3,6-trimethyl-",C13 H12 O2,L3.3,na
+FT_16.740_334.16488,"N-(sec-butyl)-2-(7,8-dimethoxy-4-methyl-2-oxo-2H-chromen-3-yl)acetamide",C18 H23 N O5,L3.3,na
+FT_16.740_339.12045,"(E)-1-(5,7-dihydroxy-2,2-dimethylchromen-6-yl)-3-(4-hydroxyphenyl)prop-2-en-1-one",C20H18O5,L3.3,na
+FT_16.743_279.15689,"2-(4-Hydroxy-3-methylbut-2-en-1-yl)-4-(3-methylbut-2-en-1-yl)benzene-1,3,5-triol",C16 H22 O4,L3.3,na
+FT_16.762_297.13332,Deoxynivalenol,C15 H20 O6,L3.3,na
+FT_16.767_451.17509,"4-Benzyloxy-2'-hydroxy-3',4',5',6'-tetramethoxychalcone",C26 H26 O7,L3.1,na
+FT_16.837_251.12775,Preremirol,C14 H18 O4,L3.3,na
+FT_16.867_481.14965,no name,C26 H24 O9,L4.3,yes
+FT_16.925_467.20647,"(7R,8R)-8-(3,4-dimethoxyphenyl)-5,7-dihydroxy-2,2-dimethyl-10-(3-methylbut-2-enyl)-7,8-dihydropyrano[3,2-g]chromen-6-one",C27 H30 O7,L3.3,na
+FT_17.118_483.20146,Territrem E,C27 H30 O8,L3.3,na
+FT_17.119_217.08594,Allenolic acid,C13 H12 O3,L3.3,na
+FT_17.140_467.20647,"(7R,8R)-8-(3,4-dimethoxyphenyl)-5,7-dihydroxy-2,2-dimethyl-10-(3-methylbut-2-enyl)-7,8-dihydropyrano[3,2-g]chromen-6-one",C27 H30 O7,L3.3,na
+FT_17.143_499.19649,Dehydroaustin,C27 H30 O9,L3.3,na
+FT_17.159_263.12778,Ustusorane A,C15 H18 O4,L3.3,na
+FT_17.198_257.13835,ethyl 3-(2-methoxycarbonylcyclopentyl)-3-methyl-oxirane-2-carboxylate,C13 H20 O5,L3.3,na
+FT_17.223_251.12775,Preremirol,C14 H18 O4,L3.3,na
+FT_17.267_383.13378,"3,4,5-trihydroxy-6-[(E)-5-(4-methoxyphenyl)-3-oxopent-4-enoxy]oxane-2-carboxylic acid",C18 H22 O9,L3.3,na
+FT_17.300_219.10156,4-Methoxy-3-(3-methylbut-2-enoyl)benzaldehyde,C13 H14 O3,L3.3,na
+FT_17.364_315.19562,"(4aS,10aR,11bR)-4,4,8,11b-tetramethyl-1,2,3,4a,5,7,10a,11-octahydronaphtho[2,1-f][1]benzofuran-6,9-dione",C20 H26 O3,L3.3,na
+FT_17.413_319.15405,"(3,6,9,9a-tetramethyl-2,7-dioxo-3a,4,5,9b-tetrahydro-3H-azuleno[4,5-b]furan-4-yl) acetate",C18 H22 O5,L3.3,na
+FT_17.474_413.15955,Garcimangosone C,C23 H24 O7,L3.3,na
+FT_17.486_483.20149,Territrem E,C27 H30 O8,L3.3,na
+FT_17.541_251.12777,Preremirol,C14 H18 O4,L3.3,na
+FT_17.541_467.20646,"(7R,8R)-8-(3,4-dimethoxyphenyl)-5,7-dihydroxy-2,2-dimethyl-10-(3-methylbut-2-enyl)-7,8-dihydropyrano[3,2-g]chromen-6-one",C27 H30 O7,L3.3,na
+FT_17.647_487.20941,Glucosylgalactosylhydroxylysine,C18 H34 N2 O13,L3.3,na
+FT_17.673_215.10672,"4,4'-Benzene-1,4-diylbisbut-3-en-2-one",C14 H14 O2,L3.3,na
+FT_17.694_217.08596,Methyl 3-Methoxy-2-naphthoate,C13 H12 O3,L3.3,na
+FT_17.697_321.13342,"4-acetoxy-10-methyl-3-methylene-2-oxo-3a,4,5,8,9,11a-hexahydrocyclodeca[b]furan-6-carboxylic acid",C17 H20 O6,L3.3,na
+FT_17.721_467.20646,Nimbolide,C27H30O7,L3.3,na
+FT_17.735_321.16969,Pseudoalteromone A,C18 H24 O5,L3.3,na
+FT_17.788_277.14343,"4-methyl-5-[2-(1-methylene-2-oxo-propyl)-5-oxo-hexyl]cyclopent-4-ene-1,3-dione",C16 H20 O4,L3.3,na
+FT_17.788_315.19550,"1-ethyl-4b,8,8-trimethyl-10-oxo-6,7,8a,9-tetrahydro-5H-phenanthrene-2-carboxylic acid",C20 H26 O3,L3.3,na
+FT_17.793_219.10156,6-Hydroxytremetone,C13 H14 O3,L3.3,na
+FT_17.811_369.24240,no name,C24 H32 O3,L4.3,yes
+FT_17.838_514.31653,no name,C24 H43 N5 O7,L4.3,yes
+FT_17.942_181.12232,"formyl 2Z,4E,6Z-decatrienoate",C11 H16 O2,L3.3,na
+FT_17.953_467.20645,"(7R,8R)-8-(3,4-dimethoxyphenyl)-5,7-dihydroxy-2,2-dimethyl-10-(3-methylbut-2-enyl)-7,8-dihydropyrano[3,2-g]chromen-6-one",C27H30O7,L3.3,na
+FT_17.978_277.14344,"[(E)-3-(3,4-dimethoxyphenyl)prop-2-enyl] (Z)-2-methylbut-2-enoate",C16 H20 O4,L3.3,na
+FT_18.011_235.06008,Hexaketide pyrone,C12 H10 O5,L3.3,na
+FT_18.011_481.15092,no name,C24 H32 O4 S3,L4.3,yes
+FT_18.011_481.18575,no name,C27 H28 O8,L4.3,yes
+FT_18.056_413.12325,Austocystin D,C22 H20 O8,L3.3,na
+FT_18.213_277.21623,"1,4a,7-Trimethyl-2,3,4,4b,5,6,7,9,10,10a-decahydrophenanthrene-1-carboxylic acid",C18 H28 O2,L3.3,na
+FT_18.214_285.24245,2-Methoxy-6Z-hexadecenoic acid,C17 H32 O3,L3.3,na
+FT_18.284_425.12325,"8-(7-Hydroxy-4-methoxy-5-methyl-2-oxochromen-6-yl)-4,7-dimethoxy-5-methylchromen-2-one",C23 H20 O8,L3.3,na
+FT_18.294_485.21717,"(10,15-Dihydroxy-6,14,18,18,22-pentamethyl-8,19-dioxo-7,13-dioxapentacyclo[12.8.0.03,12.04,9.017,22]docosa-3(12),4(9),10,20-tetraen-5-yl) acetate",C27 H32 O8,L3.3,na
+FT_18.358_534.30638,"1-[(1R)-1-(hydroxymethyl)-7-methoxy-9-methyl-1'-(pyridin-4-ylmethyl)-2-spiro[1,3-dihydropyrido[3,4-b]indole-4,4'-piperidine]yl]-2-(4-morpholinyl)ethanone",C30 H39 N5 O4,L3.3,na
+FT_18.475_292.19058,"Propiophenone, 2',4'-dimethoxy-3-(2-methylpiperidino)-",C17 H25 N O3,L3.3,na
+FT_18.525_369.24246,"(5R,8S,9S,10S,14R)-17-acetyl-4,4,8,10,14-pentamethyl-2,5,6,7,9,15-hexahydro-1H-cyclopenta[a]phenanthrene-3,16-dione",C24 H32 O3,L3.3,na
+FT_18.528_427.24591,no name,C24 H36 O5,L4.3,yes
+FT_18.528_427.24591,no name,C24 H36 O5,L3.3,yes
+FT_18.536_387.25304,4-O-Methylgrifolic acid,C24 H34 O4,L3.3,na
+FT_18.547_363.18019,"7-(6,7-Dihydroxy-3,7-dimethyloct-2-enyloxy)-6-methoxycoumarin",C20 H26 O6,L3.3,na
+FT_18.640_397.16466,Dimethoxycurcumin,C23 H24 O6,L3.3,na
+FT_18.660_469.18587,no name,C26 H28 O8,L4.1,yes
+FT_18.687_431.24286,"14,16,20-Trihydroxy-2,5-dimethyl-8-propan-2-yl-18,22-dioxahexacyclo[17.2.1.02,10.05,9.013,21.016,20]docosa-8,13-dien-15-one",C25 H34 O6,L3.3,na
+FT_18.690_231.10162,Euparin methyl ether,C14 H14 O3,L3.3,na
+FT_18.733_504.33264,no name,C18 H45 N7 O9,L4.3,na
+FT_18.761_499.23299,Isobisvertinol,C28H34O8,L3.1,na
+FT_18.767_281.10196,"(Z)-3-[4,5-dihydroxy-2-(2-hydroxypropan-2-yl)-2,3-dihydro-1-benzofuran-7-yl]prop-2-enoic acid",C14 H16 O6,L3.1,na
+FT_18.807_465.15455,Kioukasin A,C21H24N2O10,L3.3,na
+FT_18.812_237.07569,"4-(3,4-Dimethoxyphenyl)-4-oxocrotonic acid",C12 H12 O5,L3.3,na
+FT_18.816_397.16470,"8,8-Dimethyl-3-(2,4,5-trimethoxyphenyl)-2,3-dihydropyrano[2,3-f]chromen-4-one",C23 H24 O6,L3.3,na
+FT_18.817_261.22130,no name,C18 H28 O,L4.1,yes
+FT_18.820_395.16211,no name,C27 H22 O3,L4.3,yes
+FT_18.824_423.10759,Tetracenomycin A2,C23 H18 O8,L3.1,na
+FT_18.833_305.17470,"4-Methoxy-6-pentyl-2-prop-1-en-2-yl-2,3-dihydro-1-benzofuran-7-carboxylic acid",C18 H24 O4,L3.3,na
+FT_18.848_179.14304,(E)-4-(4-Methylcyclohex-3-en-1-yl)pent-3-en-2-one,C12 H18 O,L3.3,na
+FT_18.848_369.24245,no name,C24 H32 O3,L4.1,yes
+FT_18.868_303.15911,Enterodiol,C18 H22 O4,L3.1,na
+FT_18.869_175.07533,"3,6-Dimethylchromone",C11 H10 O2,L3.3,na
+FT_18.882_431.24292,"14,16,20-Trihydroxy-2,5-dimethyl-8-propan-2-yl-18,22-dioxahexacyclo[17.2.1.02,10.05,9.013,21.016,20]docosa-8,13-dien-15-one",C25 H34 O6,L3.3,na
+FT_18.931_301.14327,"2-[(2R)-5-acetyl-2,3-dihydro-1-benzofuran-2-yl]prop-2-enyl (Z)-2-methylbut-2-enoate",C18 H20 O4,L3.3,na
+FT_18.999_278.17503,"N-cycloheptyl-3,4-dimethoxybenzamide",C16 H23 N O3,L3.3,na
+FT_19.044_303.15911,Arnebinone,C18 H22 O4,L3.1,na
+FT_19.100_345.20596,"(E)-3-[3-[(2E)-3,7-dimethylocta-2,6-dienyl]-4,5-dimethoxyphenyl]prop-2-enoic acid",C21 H28 O4,L3.3,na
+FT_19.145_433.22208,"[(2R,2aS,7R,7aS,7bR)-2,2a,7-trihydroxy-6,6,7b-trimethyl-1,2,4a,5,7,7a-hexahydrocyclobuta[e]inden-3-yl]methyl 2-hydroxy-4-methoxy-6-methylbenzoate",C24 H32 O7,L3.3,na
+FT_19.161_485.29002,Stigmatellin Y,C29H40O6,L3.3,na
+FT_19.177_425.15962,fumicycline A,C24 H24 O7,L3.3,na
+FT_19.190_432.27456,alpha-Hydroxysalmeterol,C25 H37 N O5,L3.3,na
+FT_19.206_297.09692,"6-(4-Ethenylphenoxy)-3,4,5-trihydroxyoxane-2-carboxylic acid",C14 H16 O7,L3.3,na
+FT_19.215_565.24340,no name,C32 H36 O9,L4.1,yes
+FT_19.230_453.15471,"(16,17-Dimethoxy-12-oxo-6-prop-1-en-2-yl-2,7,20-trioxapentacyclo[11.8.0.03,11.04,8.014,19]henicosa-3,8,10,14,16,18-hexaen-10-yl) acetate",C25 H24 O8,L3.3,na
+FT_19.265_197.04448,"3-(2,4-Dihydroxyphenyl)-2-oxopropanoic acid",C9 H8 O5,L3.3,na
+FT_19.350_369.16957,"9-Hydroxy-4-(3,7-dimethyl-2,6-octadienyloxy)-psoralen",C22 H24 O5,L3.3,na
+FT_19.353_425.15962,Erythynone,C24 H24 O7,L3.3,na
+FT_19.416_534.30670,no name,no formula,L5,na
+FT_19.428_285.24243,2-Methoxy-6Z-hexadecenoic acid,C17 H32 O3,L3.1,na
+FT_19.446_315.25299,9-hydroperoxy-10E-octadecenoate,C18 H34 O4,L3.3,na
+FT_19.588_219.21072,"(1Z,5Z)-1,5,10-trimethyl-8-propan-2-ylidenecyclodeca-1,5-diene",C16 H26,L3.3,na
+FT_19.589_237.22128,Cyclohexadec-8-en-1-one,C16 H28 O,L3.3,na
+FT_19.589_273.24230,16-Hydroxyhexadecanoic acid,C16 H32 O3,L3.3,na
+FT_19.591_369.24246,no name,C24 H32 O3,L4.1,yes
+FT_19.593_351.23192,"3,5-Dihydroxy-4-geranylbibenzyl",C24H30O2,L3.3,na
+FT_19.651_499.19624,Dehydroaustin,C27 H30 O9,L3.3,na
+FT_19.717_483.20181,Aspergixanthone I,C27 H30 O8,L3.1,na
+FT_19.758_459.17808,Aspergilline B,C23 H26 N2 O8,L3.3,na
+FT_19.782_415.21164,Myrtucommulone B,C24H30O6,L3.3,na
+FT_19.790_297.09692,"6-(4-Ethenylphenoxy)-3,4,5-trihydroxyoxane-2-carboxylic acid",C14 H16 O7,L3.1,na
+FT_19.798_455.20453,Obacunone,C26 H30 O7,L3.3,na
+FT_19.816_333.20429,"7,18-Dihydroxykaurenolide",C20 H28 O4,L3.3,na
+FT_19.846_411.14400,Sumatrol,C23 H22 O7,L3.3,na
+FT_2.056_232.16554,6-Amino-2-(4-aminobutanamido)hexanoic acid,C10 H21 N3 O3,L3.1,na
+FT_2.078_174.03865,8-Hydroxyadenine,C5 H5 N5 O,L3.3,na
+FT_2.305_673.21659,no name,C26H40O20,L4.3,yes
+FT_2.484_455.18861,no name,C22 H30 O10,L4.3,yes
+FT_2.486_250.07981,2'-Deoxycytidine,C9 H13 N3 O4,L3.3,na
+FT_2.496_250.07980,no name,C6 H11 N5 O6,L4.3,yes
+FT_2.524_430.15560,O-(2-O-Mannopyranosyl-mannopyranosyl)serine,C15 H27 N O13,L3.3,na
+FT_2.670_210.06080,"(2-Amino-6-oxo-3,6-dihydro-9H-purin-9-yl)acetic acid",C7 H7 N5 O3,L3.3,na
+FT_2.671_215.01620,no name,C4 H2 N6 O5,L4.3,na
+FT_20.027_457.16261,no name,no formula,L5,na
+FT_20.040_467.20668,"(7R,8R)-8-(3,4-dimethoxyphenyl)-5,7-dihydroxy-2,2-dimethyl-10-(3-methylbut-2-enyl)-7,8-dihydropyrano[3,2-g]chromen-6-one",C27 H30 O7,L3.3,na
+FT_20.041_489.18900,Arenatin B,C29 H28 O7,L3.3,na
+FT_20.064_205.04949,8-Acetyl-7-hydroxycoumarin,C11 H8 O4,L3.3,na
+FT_20.067_237.07568,"methyl (E)-3-(7-methoxy-1,3-benzodioxol-5-yl)prop-2-enoate",C12 H12 O5,L3.3,na
+FT_20.069_223.06006,2-Succinylbenzoate,C11 H10 O5,L3.1,na
+FT_20.069_413.15960,Dalpanol,C23 H24 O7,L3.3,na
+FT_20.109_399.21669,"2-methyl-3-[(2-oxochromen-7-yl)oxymethyl]-4-(2,2,6-trimethylcyclohexyl)but-2-enoic acid",C24 H30 O5,L3.3,na
+FT_20.125_397.16479,Rotenonic acid,C23 H24 O6,L3.3,na
+FT_20.153_499.19643,"Daphnetoxin,12-hydroxy",C27H30O9,L3.3,na
+FT_20.190_381.26142,no name,C22 H36 O5,L4.1,yes
+FT_20.194_371.22174,no name,C23 H30 O4,L4.1,yes
+FT_20.230_349.19862,"3b-Hydroxy-6b-tigloyloxy-7(11)-eremophilen-12,8b-olide",C20 H28 O5,L3.3,na
+FT_20.242_467.20666,"(7R,8R)-8-(3,4-dimethoxyphenyl)-5,7-dihydroxy-2,2-dimethyl-10-(3-methylbut-2-enyl)-7,8-dihydropyrano[3,2-g]chromen-6-one",C27 H30 O7,L3.3,na
+FT_20.470_401.23233,"7-[[(6R,8aS)-1,6-dihydroxy-1,5,5,8a-tetramethyl-3,4,4a,6,7,8-hexahydro-2H-naphthalen-2-yl]methoxy]chromen-2-one",C24 H32 O5,L3.3,na
+FT_20.787_373.23740,9'-Carboxy-gamma-tocotrienol,C23 H32 O4,L3.3,na
+FT_3.022_160.13323,4-[Ethyl(dimethyl)ammonio]butanoate,C8 H17 N O2,L3.3,na
+FT_3.022_317.14564,2-[(2-Acetamido-5-amino-5-oxopentanoyl)amino]-5-amino-5-oxopentanoic acid,C12 H20 N4 O6,L3.3,na
+FT_3.279_202.17965,"1-(2-Hydroxyethyl)-2,2,6,6-tetramethyl-4-hydroxypiperidine",C11 H23 N O2,L3.3,na
+FT_4.509_218.17505,Boc-L-leucinol,C11 H23 N O3,L3.3,na
+FT_5.744_176.05536,2-Amino-3-oxohexanedioic acid,C6 H9 N O5,L3.1,na
+FT_5.752_251.06383,2-Amino-3-oxohexanedioic acid,C6 H9 N O5,L3.1,na
+FT_5.996_504.19243,beta-D-Galactopyranosyl-(1->4)-2-amino-2-deoxy-beta-D-glucopyranosyl-(1->6)-D-mannose,C18H33NO15,L3.1,na
+FT_5.996_509.14786,no name,C16 H24 N6 O13,L4.3,na
+FT_6.150_174.14886,no name,C9 H19 N O2,L4.3,na
+FT_6.232_559.15097,no name,C20 H30 O18,L4.3,na
+FT_6.234_291.06999,Allopurinol riboside,C10 H12 N4 O5,L3.3,na
+FT_6.261_246.20635,"Nonanamide, N,N-bis(2-hydroxyethyl)-",C13 H27 N O3,L3.3,na
+FT_6.495_246.20634,N-(2-hydroxyethyl)-N-[(2S)-2-hydroxypropyl]octanamide,C13 H27 N O3,L3.3,na
+FT_6.552_290.08599,Adenosine,C10 H13 N5 O4,L3.3,na
+FT_6.584_542.17214,no name,C21 H27 N5 O12,L4.1,yes
+FT_6.597_527.16114,no name,C21 H26 N4 O12,L4.3,na
+FT_6.598_275.07509,no name,no formula,L5,na
+FT_6.599_291.04904,"(3,4,5,6,7-Pentahydroxy-2-oxoheptyl) dihydrogen phosphate",C7 H15 O10 P,L3.3,na
+FT_6.781_279.10096,gamma-Glutamylmethionine,C10 H18 N2 O5 S,L3.1,na
+FT_6.817_282.08332,Guanosine dialdehyde,C10 H11 N5 O5,L3.3,na
+FT_6.857_247.12883,Glutamylvaline,C10 H18 N2 O5,L3.3,na
+FT_7.161_183.10160,"(1R,4S)-7,7-Dimethyl-2-oxobicyclo[2.2.1]heptane-1-carboxylic acid",C10 H14 O3,L3.3,na
+FT_7.372_192.10192,"Acetic acid, 2-(p-(allylamino)phenyl)-",C11 H13 N O2,L3.3,na
+FT_7.385_268.10407,5'-Deoxyguanosine,C10 H13 N5 O4,L3.3,na
+FT_7.543_311.12383,Glu-Tyr,C14 H18 N2 O6,L3.1,na
+FT_7.633_302.19623,Floridinine,C15 H27 N O5,L3.3,na
+FT_7.647_155.03152,no name,C5 H4 N3 O3,L4.3,yes
+FT_7.650_115.03892,3-Methoxy-2(5h)-furanone,C5 H6 O3,L3.3,na
+FT_7.764_485.35870,no name,C26 H48 N2 O6,L4.1,yes
+FT_7.870_218.17506,[2-(Carboxymethyl)-2-hydroxyhexyl]-trimethylazanium,C11 H23 N O3,L3.3,na
+FT_7.884_171.06268,no name,C8 H10 O4,L4.3,yes
+FT_8.029_346.22250,no name,C17 H31 N O6,L4.3,yes
+FT_8.092_258.16998,2-Hexenoylcarnitine,C13 H23 N O4,L3.1,na
+FT_8.100_384.09262,4-amino-5-[[2-[(2-amino-2-carboxy-ethyl)sulfanylmethylsulfanyl]-1-carboxy-ethyl]amino]-5-oxo-pentanoic acid,C12 H21 N3 O7 S2,L3.3,na
+FT_8.126_239.08898,"1-(2-Hydroxy-4,6-dimethoxyphenyl)-1,3-butanedione",C12 H14 O5,L3.3,na
+FT_8.170_157.04956,"5-Methyl-1,2,3,4-tetrahydroxybenzene",C7 H8 O4,L3.3,na
+FT_8.272_360.20173,no name,C17 H29 N O7,L4.3,"yes,gui"
+FT_8.300_346.22251,O-sebacoylcarnitine,C17 H31 N O6,L3.3,na
+FT_8.308_183.06527,"2,5-Dimethoxy-3-methylcyclohexa-2,5-diene-1,4-dione",C9 H10 O4,L3.3,na
+FT_8.319_208.13316,"6,7-Dimethoxy-2-methyl-1,2,3,4-tetrahydroisoquinoline",C12 H17 N O2,L3.1,na
+FT_8.402_222.14884,"Benzoic acid, 2-(diethylamino)ethyl ester",C13 H19 N O2,L3.3,na
+FT_8.445_183.06528,"2,5-Dimethoxy-3-methylcyclohexa-2,5-diene-1,4-dione",C9 H10 O4,L3.3,na
+FT_8.554_153.05213,6-Methoxysalicylaldehyde,C8 H8 O3,L3.3,na
+FT_8.704_247.14409,Hypaphorine,C14 H18 N2 O2,L3.1,na
+FT_8.881_316.21191,Butoctamide semisuccinate,C16 H29 N O5,L3.1,na
+FT_8.916_135.11680,Butylbenzene,C10 H14,L3.3,na
+FT_8.916_206.17504,"4-Amino-4-(3-hydroxypropyl)heptane-1,7-diol",C10 H23 N O3,L3.3,na
+FT_9.013_261.14449,gamma-Glu-leu,C11 H20 N2 O5,L3.1,na
+FT_9.089_340.10279,6-Hydroxy-5-methoxyindole glucuronide,C15 H17 N O8,L3.3,na
+FT_9.172_282.09721,4-Hydroxyphenylacetylglutamate,C13 H15 N O6,L3.3,na
+FT_9.307_250.14376,4'-Methoxy-3-morpholino-propiophenone,C14 H19 N O3,L3.1,na
+FT_9.313_261.14449,gamma-Glu-leu,C11 H20 N2 O5,L3.1,na
+FT_9.349_308.11291,"2-(7,8-dihydroxy-4-methyl-2-oxo-2H-chromen-3-yl)-N-[(2R)-2-hydroxypropyl]acetamide",C15 H17 N O6,L3.3,na
+FT_9.687_356.09768,no name,C15 H17 N O9,L4.3,"yes, gui"
+FT_9.710_248.22200,"2,3-Dihydroxypropyl-(2-hydroxyoctyl)-dimethylazanium",C13 H29 N O3,L3.3,na
+FT_9.801_171.10161,3-(2-Oxocyclohexyl)propanoic acid,C9 H14 O3,L3.3,na
+FT_9.811_185.08093,"Methyl 2-methyl-4,6-dioxocyclohexanecarboxylate",C9 H12 O4,L3.3,na
+FT_9.925_171.10161,3-(2-Oxocyclohexyl)propanoic acid,C9 H14 O3,L3.3,na
+FT_0.887_128.01924,no name,C H5 N O6,L3.3,yes
+FT_0.890_148.97575,no name,C2 H N2 O4 P,L3.3,yes
+FT_0.891_102.97023,no name,no formula,L5,na
+FT_0.891_105.00324,no name,no formula,L5,na
+FT_0.891_114.98758,no name,no formula,L5,na
+FT_0.891_125.98621,no name,no formula,L5,na
+FT_0.891_130.96515,no name,no formula,L5,na
+FT_0.891_216.95059,no name,no formula,L5,na
+FT_0.891_234.96119,no name,no formula,L5,na
+FT_0.891_84.95972,no name,no formula,L5,na
+FT_0.891_86.99273,no name,no formula,L5,na
+FT_0.892_119.01888,no name,no formula,L5,na
+FT_0.893_200.97310,no name,C3 H6 O6 P2,L3.3,yes
+FT_0.894_133.03457,no name,no formula,L5,na
+FT_0.981_158.96409,no name,no formula,L5,na
+FT_0.982_258.89935,no name,no formula,L5,na
+FT_0.982_260.89730,no name,no formula,L5,na
+FT_0.983_190.91197,no name,no formula,L5,na
+FT_0.984_122.92447,no name,no formula,L5,na
+FT_0.984_274.87332,no name,no formula,L5,na
+FT_0.985_206.88585,no name,no formula,L5,na
+FT_1.095_203.05263,no name,no formula,L5,na
+FT_1.647_157.01077,no name,C4 H2 N3 O4,L3.3,yes
+FT_17.038_203.10660,"1-(2,2-Dimethylchromen-6-yl)ethanone",C13 H14 O2,L3.1,na
+FT_17.647_203.07061,"3,4',5-Biphenyltriol",C12 H10 O3,L3.1,na
+FT_2.079_174.03864,no name,C6 H7 N O5,L3.3,yes
+FT_2.988_159.02775,Pentahydroxybenzene,C6 H6 O5,L3.3,na

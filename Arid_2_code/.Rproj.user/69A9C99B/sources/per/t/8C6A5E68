@@ -1,0 +1,28 @@
+{
+    "id": "8C6A5E68",
+    "path": "C:/Users/vivia/Escritorio/Arid_metaT-LCMS_2025/Arid_2_code/scripts/LC_metat_network/Fig_4.Rmd",
+    "project_path": "scripts/LC_metat_network/Fig_4.Rmd",
+    "type": "r_markdown",
+    "hash": "1221998500",
+    "contents": "",
+    "dirty": false,
+    "created": 1764974402058.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "chunk_output_type": "console",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "337,0",
+        "scrollLine": "329",
+        "working_dir": "project"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1764974764,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1764974764287,
+    "read_only": false,
+    "read_only_alternatives": []
+}

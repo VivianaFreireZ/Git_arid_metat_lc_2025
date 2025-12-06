@@ -1,0 +1,778 @@
+---
+title: "Omics integration figure"
+author: "Viviana Freire-Zapata"
+date: "10/24/2025"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: '2'
+    collapsed: false
+    highlight: tango
+    css: style.css
+editor_options: 
+  chunk_output_type: console
+---
+
+# Data Pre-processing
+
+## 1. Setup
+
+### Importing libraries
+
+```{r libraries, message=FALSE, warning=FALSE}
+
+library(matrixStats)
+library(dtwclust)
+library(ggtext)
+library(ggh4x)
+library(ggvenn)
+library(patchwork)
+library(mixOmics)
+library(tidyverse)
+
+source('scripts/LC-MS-MS/5.Metabolite_model/functions_cdis_norm_stats.R')
+
+```
+
+
+# Loading data
+
+## DIABLO results
+
+```{r}
+
+metabolites <- read_csv("output/DIABLO_metabolomics_features_11-10-2025.csv")
+
+metabolites_c1 <- metabolites %>% 
+  filter(component == 'comp1')
+
+
+microbe <- read_csv("output/DIABLO_metaG_features_11-10-2025.csv")
+
+microbe_c1 <- microbe %>% 
+  filter(component == 'comp1')
+
+
+```
+
+# LME results
+
+```{r}
+
+RP_lme <- read_csv("scripts/LC-MS-MS/5.Metabolite_model/output/RP_sig_features_model_fwd_selected_RP.csv")
+
+```
+
+# Comparing LME vs DIABLO
+
+```{r}
+
+metabo_lme <- RP_lme %>% 
+  dplyr::select(FeatureID) %>% 
+  distinct()
+
+metabo_diablo <- metabolites_c1 %>% 
+  dplyr::select(FeatureID) %>% 
+  distinct()
+
+data_list <- c(DIABLO = metabo_diablo,
+               LMEM = metabo_lme)
+
+
+```
+
+## Venn diagram
+
+```{r}
+
+venn_lme_diablo <- ggvenn(data_list,
+                          fill_color = c("#4C72B0", "#55A868"),  
+                          stroke_size = 0.6,
+                          set_name_size = 2.5,
+                          text_size = 3,
+                          show_percentage = FALSE,
+                          auto_scale = TRUE) +
+  
+  theme_void() +
+  coord_fixed(clip = 'off', ratio = 0.5) +
+  theme(
+    legend.position = "none",
+    plot.margin = margin(0, 0, 0, 0, "lines"))
+
+venn_lme_diablo
+
+
+```
+
+
+## MetaG - metaT
+
+# DIABLO loadings
+
+```{r}
+# function for repeated elements
+rep_elements <- function(type, n, ...){
+  
+  res_final <- list()
+  
+  dots <- list(...)
+  
+  for(i in 1:n){
+    
+    if(type == 'blank'){
+      res_final[[i]] <- element_blank()
+    } else if(type == 'text'){
+      res_final[[i]] <- element_text(color = dots$color,
+                                     size = dots$size,
+                                     face = dots$face,
+                                     angle = dots$angle)
+    } else if(type == 'rect'){
+      res_final[[i]] <- element_rect(fill = dots$fill,
+                                     color = dots$color)
+    }
+    
+  }
+  
+  return(res_final)
+}
+```
+
+
+```{r}
+
+## Component 1
+
+comp_1_mag <- microbe %>% 
+  filter(component == 'comp1') %>% 
+  ggplot(aes(x = importance,
+             y = fct_reorder(KO, dplyr::desc(abs(importance))),
+             fill = GroupContrib)) +
+  geom_col(color = 'black', linewidth = 0.01) +
+  facet_grid2(rows = vars(Class, MAG),
+              switch = 'y',
+              space = 'free',
+              scales = 'free',
+              strip = strip_nested(
+                text_y = c(rep_elements('text', 15, angle = 0, size = 5),
+                           rep_elements('text', 64, angle = 90, size = 0.001,
+                                        color = 'transparent')),
+                background_y = element_blank(),
+                clip = 'off',
+                size = 'variable'
+              )
+  ) +
+  scale_fill_manual(values = c("#E69F00", "#7BBBE5"))+
+  labs(x = "Loading Importance",
+       y = "MAG_KO",
+       fill = "Group Contribution") +
+  theme_void() +
+  theme(
+    axis.text.x = element_text(size = 5),
+    axis.title.x = element_text(size = 6),
+    legend.position = 'none',
+    strip.placement = 'outer',
+    legend.title = element_text(size = 6), 
+    legend.text = element_text(size = 5), 
+    legend.key.size = unit(.3, 'lines'), 
+    legend.spacing.x = unit(0.1, "cm"),
+    panel.spacing = unit(0.1, "lines"), 
+  )
+
+comp_1_mag
+```
+
+## expression 
+
+```{r}
+
+kos_diablo_1 <- microbe %>% 
+  filter(component == 'comp1') %>% 
+  dplyr::select(MAG, KO, importance)
+
+```
+
+## Metadata
+
+```{r}
+metadata <- read_csv('input/metadata_omics.csv') 
+
+metadata_ready <- metadata %>% 
+  mutate(Month = factor(month, levels = c("May", "July_1", "July_2", "July_3",
+                                          "August", "October", "May_22")))
+```
+
+## Taxonomy
+
+```{r}
+
+mag_taxonomy <- read_csv('input/mag_taxonomy_denovo.csv') %>% 
+  mutate(Class = ifelse(is.na(Class), 
+                        glue::glue('Unassigned Class \nof {Phylum}'),
+                        Class))
+
+```
+
+
+## MAGs annotations
+
+```{r}
+
+annot_cydbs <- read_csv("input/annot_with_cydbs_2.23.25.csv") %>% 
+  rename(Geneid = `...1`)
+
+```
+
+
+## geTMM
+
+```{r}
+geTMM <- read_csv("output/geTMM_normalized_matrix_2025.csv")
+
+geTMM_long <- geTMM %>% 
+  pivot_longer(!Geneid, names_to = "sampleid", values_to = "geTMM")
+
+```
+
+## Joining expression to annotations
+
+```{r}
+
+annot_vip <- geTMM_long %>% 
+  left_join(annot_cydbs, by = 'Geneid') %>%
+  group_by(sampleid, fasta, ko_id) %>%
+  filter(fasta %in% kos_diablo_1$MAG,
+         ko_id %in% kos_diablo_1$KO) %>% 
+  summarise(getmm_sum = sum(geTMM)) %>% 
+  mutate(sampleid = str_replace_all(sampleid, '-', '_')) %>% 
+  left_join(metadata_ready, by = c('sampleid' = 'treatment_code')) %>% 
+  group_by(fasta, ko_id, Month) %>% 
+  summarise(getmm_mean = mean(getmm_sum)) %>% 
+  filter(getmm_mean > 0) %>% 
+  inner_join(kos_diablo_1, by = c('fasta' = 'MAG', 'ko_id' = 'KO'))
+
+```
+
+## Heatmap KOs DIABLO
+```{r}
+
+htmp_diablo <- annot_vip %>% 
+  group_by(fasta, ko_id) %>% 
+  mutate(zscore = (getmm_mean - mean(getmm_mean))/ sd(getmm_mean)) %>% 
+  ungroup() %>% 
+  left_join(mag_taxonomy, by = c('fasta' = 'bin')) %>% 
+  ggplot() + 
+  geom_tile(aes(x = Month, 
+                y = fct_reorder(ko_id, dplyr::desc(abs(importance))), 
+                fill = zscore)) + 
+  # scale_fill_viridis_c(option = 'A', direction = -1) + 
+  scale_fill_distiller(palette = 'RdBu', direction = -1) + 
+  facet_grid2(rows = vars(Class, fasta),
+              scales = 'free', 
+              space = 'free',
+              strip = strip_nested(
+                text_y = element_blank(),
+                background_y = element_blank()
+              )) + 
+  theme(panel.grid = element_blank(), 
+        axis.title = element_blank(), # closer to panels 
+        panel.spacing = unit(0.1, "lines"), 
+        axis.text.y = element_text(size = 4), 
+        axis.text.x = element_text(size = 5, 
+                                   angle = 45, hjust = 1), 
+        legend.title = element_text(size = 6), 
+        legend.text = element_text(size = 5), 
+        legend.position = 'bottom', 
+        legend.key.size = unit(.3, 'lines'), 
+        legend.spacing.x = unit(0.1, "cm"), 
+        plot.margin = margin(0.1, 0.1, 0.1, 0.1, 'lines'))
+
+htmp_diablo
+
+htmp_loadings <- comp_1_mag + htmp_diablo + 
+  plot_layout(guides = 'collect') &
+  theme(legend.position = 'bottom')
+
+htmp_loadings
+
+```
+
+
+## DIABLO PCA
+
+```{r}
+diablo_moisture <- readRDS("output/diablo_moisture_final_11_10_25.rds")
+
+
+set.seed(123) # For reproducibility
+
+
+perf.diablo_final = perf(diablo_moisture, validation = 'Mfold',
+                         folds = 5, nrepeat = 100, dist = "mahalanobis.dist")
+
+plot(perf.diablo_final)
+
+# Performance with Majority vote
+perf.diablo_final$MajorityVote.error.rate
+
+# Performance with Weighted vote
+perf.diablo_final$WeightedVote.error.rate
+
+```
+
+
+```{r}
+plotIndiv(diablo_moisture,
+          block = 'metaT',
+          comp = c(1,2))
+
+diablo_ordi <- read_csv("output/Diablo_scores_11_10_25.csv")
+
+axis1 <- "Variate 1: metaT (69%); metaB (14%)"
+axis2 <- "Variate 2: metaT (11%); metaB (14%)"
+
+plot_ordi <- diablo_ordi %>%
+  left_join(metadata_ready, by = c("names" = "treatment_code")) %>%
+  ggplot(aes(x = x, y = y)) +
+  geom_point(aes(color = group, shape = Month), size = 2, alpha = 0.9) +
+  labs(
+    x = axis1,
+    y = axis2,
+    color = "Group",
+    shape = "Month") +
+  scale_color_manual(values = c("#E69F00", "#7BBBE5"))+
+  theme_bw() +
+  theme(
+    panel.grid.major = element_line(color = "grey85", size = 0.3),
+    panel.grid.minor = element_blank(),
+    axis.title = element_text(size = 6, face = "bold"),
+    axis.text = element_text(size = 5, color = "black"),
+    legend.position = "right",
+    legend.background = element_blank(),
+    legend.key = element_blank(),
+    legend.text = element_text(size = 5),
+    legend.title = element_text(size = 6, face = "bold"),
+    legend.key.size = unit(0.15, 'lines'),
+    legend.box = 'vertical',
+    legend.box.spacing = unit(0.1, 'lines')) +
+  scale_shape_manual(values = c(16, 17, 15, 18, 8, 3)) 
+
+plot_ordi
+
+```
+
+```{r}
+# loadings_df_comp1 <- plotLoadings(diablo_moisture, contrib = 'max', comp = 1) %>% 
+#   reduce(rbind) %>% 
+#   rownames_to_column(var = 'FeatureID') %>% 
+#   mutate(component = 'comp1') %>% 
+#   filter(!str_detect(FeatureID, 'FT'))
+```
+
+
+## Metabolomics - DTW
+
+```{r}
+
+metabolites_both <- metabolites %>% 
+  mutate(lme_diablo = if_else(FeatureID %in% RP_lme$FeatureID,
+                              'both', 'no')) %>% 
+  filter(lme_diablo == 'both') %>% 
+  dplyr::select(FeatureID) %>% 
+  distinct()
+
+
+```
+
+
+# LC-MS - RP
+
+# Loading data 
+
+```{r}
+## Raw matrix
+
+RP_df <- read_csv("scripts/LC-MS-MS/1.Pre-processing/output/RP_matrix_clean_2025.csv")
+
+
+## Loading annotation
+
+annot <- read_csv("scripts/LC-MS-MS/3.Cleanning_Annotation/output/RP_final_annotation_checked.csv")
+
+```
+
+
+## Prepare matrix
+
+```{r}
+
+rp_ready <- RP_df %>% 
+  dplyr::select(FeatureID, contains("RP")) %>% 
+  filter(FeatureID %in% annot$FeatureID) %>% 
+  column_to_rownames(var = "FeatureID")
+
+```
+
+# Feature filtering
+
+```{r}
+### Calculating IQR to keep only traits that are changing more
+## Filtering metabolites and genes that doesn't change much
+## Idea decrease the number of features to have a more balance matrices 
+
+iqr_test_matrix <- rowIQRs(as.matrix(rp_ready))
+
+iqr_res <- as.data.frame(as.matrix(iqr_test_matrix))
+
+# Filtering according to metaboAnalyts
+
+# 1) Less than 250 variables: 5% will be filtered; 
+# 2) Between 250 - 500 variables: 10% will be filtered; 
+# 3) Between 500 - 1000 variables: 25% will be filtered; and 
+# 4) Over 1000 variables: 40% will be filtered.
+
+## 10% of the features will be filtered
+
+# Sorting from largest to smallest (higher ranking = low iqr)
+rk <- rank(-iqr_test_matrix, ties.method = 'random')
+
+# Determining the number of remaining features
+remain.num <- nrow(rp_ready)*.9
+
+remain <- rk <= remain.num
+
+features_keep <- rownames(rp_ready)[remain] 
+
+## Filter matrix
+
+matrix_ft <- rp_ready[features_keep,]
+
+## Note: 919 features kept for downstream analysis
+```
+
+
+# Metabolite Normalization
+
+## Median normalization
+
+```{r}
+
+norm_matrix <- median.norm(matrix_ft, transform_data = TRUE)
+
+
+```
+
+
+## Filtering full matrix 
+
+```{r}
+
+norm_matrix_sig <- norm_matrix %>% 
+  rownames_to_column(var = 'FeatureID') %>% 
+  filter(FeatureID %in% metabolites_both$FeatureID) %>% 
+  pivot_longer(!FeatureID, names_to = 'SampleID', values_to = 'norm_int')
+
+```
+
+## Adding class info
+
+
+```{r}
+
+name_class_rp <- read_csv("scripts/LC-MS-MS/4.Get_inchis/output/RP_classyfire_from_name_ready.csv") %>% 
+  filter(FeatureID %in% norm_matrix_sig$FeatureID) %>% 
+  dplyr::select(FeatureID, Name, superclass, class, subclass, level_5 = `level 5`) %>% 
+  mutate(LC_mode = 'RP')
+
+canopus_class_rp <- read_csv("scripts/LC-MS-MS/4.Get_inchis/output/RP_classyfire_canopus_ready.csv") %>% 
+  filter(FeatureID %in% norm_matrix_sig$FeatureID) %>% 
+  dplyr::select(FeatureID, Name,
+                superclass = `ClassyFire#superclass`,
+                class = `ClassyFire#class`, 
+                subclass = `ClassyFire#subclass`, 
+                level_5 = `ClassyFire#level 5`) %>% 
+  mutate(LC_mode = 'RP')
+
+```
+
+## Combine class info in a single df
+
+```{r}
+
+class_info <- rbind(name_class_rp, canopus_class_rp)
+
+```
+
+
+# Dynamic time warping - RP MODE
+
+
+## Prepare matrix for DTW analysis 
+## metabolites in rows, Month in columns - Time in order
+
+## Working only with significant features
+
+```{r}
+
+data_dtw_RP <- norm_matrix_sig %>% 
+  left_join(metadata_ready, by = c('SampleID' = 'SampleID_RP')) %>% 
+  group_by(FeatureID, month) %>% 
+  summarise(mean_intensity = mean(norm_int)) %>% 
+  pivot_wider(names_from = month, values_from = mean_intensity) %>% 
+  column_to_rownames(var = "FeatureID")
+
+data_ready_ord_RP <- data_dtw_RP[,c('May', 'June', 'July_1',
+                                    'July_2', 'July_3', 'August', 'September',
+                                    'October')]
+
+```
+
+
+## Dynamic time warping
+
+```{r}
+
+dwt_test_RP <- tsclust(data_ready_ord_RP, 
+                       type = 'h', 
+                       k = 4,
+                       preproc = zscore,
+                       distance = 'sbd',
+                       centroid = shape_extraction,
+                       control = hierarchical_control(method = 'average'))
+
+
+dwt_test_RP@clusinfo
+
+plot(dwt_test_RP, type = 'sc')
+
+## Testing clustering
+
+cvi(dwt_test_RP, type = c("Sil", "Dunn", "DB", "CH"))
+
+
+```
+
+### Classes of metabolites from Dwt
+
+## Adding class info
+
+## Final plot 
+
+```{r}
+
+clusts_rp <- tibble(FeatureID = names(dwt_test_RP@cluster),
+                    cluster = paste0('Cluster ', dwt_test_RP@cluster))
+
+
+```
+
+## RP
+
+```{r}
+feature_dwt_clusts_rp <- as_tibble(dwt_test_RP@datalist) %>% 
+  rowid_to_column(var = 'time') %>% 
+  mutate(time = case_when(time == 1 ~ 'May',
+                          time == 2 ~ 'June',
+                          time == 3 ~ 'July_1',
+                          time == 4 ~ 'July_2',
+                          time == 5 ~ 'July_3',
+                          time == 6 ~ 'August',
+                          time == 7 ~ 'September',
+                          time == 8 ~ 'October')) %>% 
+  mutate(time = factor(time, levels = c('May', 'June', 'July_1', 'July_2', 'July_3',
+                                        'August', 'September', 'October'))) %>% 
+  pivot_longer(!time, names_to = 'FeatureID', values_to = 'value') %>% 
+  left_join(clusts_rp, by = 'FeatureID') %>% 
+  mutate(cluster = factor(cluster, levels = paste0('Cluster ', 1:4)),
+         LC_mode = 'RP')
+
+
+rename_vec <- set_names(1:length(unique(dwt_test_RP@cluster)),
+                        paste0('Cluster ', unique(dwt_test_RP@cluster)))
+
+
+```
+
+## Centroids RP
+```{r}
+dwt_centroids_RP <- as.data.frame(dwt_test_RP@centroids) %>% 
+  rename(rename_vec) %>% 
+  rowid_to_column(var = 'time') %>% 
+  pivot_longer(!time, names_to = 'cluster', values_to = 'value') %>% 
+  mutate(cluster = factor(cluster, levels = paste0('Cluster ', 1:4)),
+         LC_mode = 'RP') %>% 
+  filter(cluster != 'Cluster 4')
+
+```
+
+## RP DTW plot
+
+```{r}
+
+combined_dtw <- feature_dwt_clusts_rp %>% 
+  left_join(class_info, by = c('FeatureID', 'LC_mode')) %>% 
+  filter(!is.na(superclass),
+         cluster != 'Cluster 4')
+
+class_colors <- combined_dtw %>% 
+  dplyr::select(superclass) %>% 
+  distinct() %>% 
+  pull()
+
+my_colors_class <- c(
+  "Organoheterocyclic compounds"          = "#E69F00",  # orange
+  "Organic acids and derivatives"         = "#56B4E9",  # sky blue
+  "Organosulfur compounds"                = "#009E73",  # green
+  "Benzenoids"                            = "#F0E442",  # yellow
+  "Organic oxygen compounds"              = "#0072B2",  # dark blue
+  "Organic nitrogen compounds"            = "#D55E00",  # red-orange
+  "Phenylpropanoids and polyketides"     = "#CC79A7",  # pink/magenta
+  "Lipids and lipid-like molecules"      = "#999999",  # gray
+  "Alkaloids and derivatives"             = "#F0A3FF",  # light purple
+  "Nucleosides, nucleotides, and analogues" = "#00BFC4" # cyan
+)
+
+
+
+feature_dwt_plot <- combined_dtw %>% 
+  ggplot(aes(x = time, y = value)) +
+  geom_line(aes(group = FeatureID, color = superclass),
+            alpha = 0.4, linewidth = 0.5) +
+  geom_line(data = . %>%
+              group_by(cluster, time) %>%
+              summarise(cluster_mean = mean(value), .groups = "drop"),
+            aes(y = cluster_mean, group = cluster),
+            color = "black", linewidth = 1.2) +
+  geom_line(data = dwt_centroids_RP,
+            aes(x = time, y = value, group = 1),
+            linetype = "dashed", color = "gray25",
+            linewidth = 1, alpha = 0.8) +
+  geom_vline(xintercept = c(1.5, 5.5), linetype = "dashed", color = "gray40") +
+  facet_wrap2(~cluster,
+              scales = "free_y",
+              ncol = 1,
+              strip = strip_nested()) +
+  labs(y = "Z-score (normalized abundance)",
+       x = NULL,
+       color = "Superclass") +
+  scale_color_manual(values = my_colors_class)+
+  theme_bw(base_size = 10) +
+  theme(
+    panel.grid = element_blank(),
+    axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 6),
+    axis.text.y = element_text(size = 6),
+    axis.title.y = element_text(size = 8, face = "bold"),
+    strip.text.x = element_text(face = "bold", size = 7),
+    strip.background = element_rect(fill = "white", color = "black", linewidth = 0.3),
+    legend.position = "none",
+    legend.title = element_text(size = 8, face = "bold"),
+    legend.text = element_text(size = 7),
+    plot.title = element_text(size = 10, face = "bold", hjust = 0.5),
+    plot.margin = margin(0.3, 0.3, 0.3, 0.3, "cm")) 
+
+feature_dwt_plot
+
+```
+
+## Metabolite bubble plot
+```{r}
+
+plot_test <- combined_dtw %>% 
+  filter(superclass != "Alkaloids and derivatives") %>% 
+  dplyr::select(!c(time, value)) %>% distinct() %>% 
+  group_by(cluster, LC_mode, superclass, class, subclass) %>% 
+  dplyr::count() %>%
+  ggplot() +
+  geom_point(aes(x = factor(cluster),
+                 y = subclass,
+                 fill = superclass,
+                 size = n),
+             shape = 21, 
+             color = "gray20", 
+             alpha = 0.9) +
+  facet_grid2(
+    rows = vars(superclass),
+    cols = vars(LC_mode),
+    scales = "free",
+    space = "free")+
+  labs(y = "Subclass",
+       size = "Feature count") +
+  scale_fill_manual(values = my_colors_class) +
+  guides(fill = 'none') +
+  theme_bw() +
+  theme(
+    panel.background = element_rect(fill = "white", color = NA),
+    panel.grid.major.y = element_line(color = "gray90", size = 0.2),
+    panel.grid.minor = element_blank(),
+    axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1, size = 6),
+    axis.text.y = element_blank(),
+    axis.title.x = element_blank(),
+    axis.title.y = element_text(size = 6),
+    strip.text.x = element_text(face = "bold", size = 5),
+    strip.text.y = element_text(face = "bold", size = 5, angle = 0),
+    strip.background = element_rect(fill = "white", color = "gray80"),
+    legend.position = "bottom",
+    legend.title = element_text(size = 6),
+    legend.text = element_text(size = 5),
+    panel.spacing = unit(0.2, "lines"),
+    legend.key.size = unit(0.15, 'lines'),
+    legend.box = 'vertical')
+
+plot_test
+
+```
+
+
+## Final plot
+
+```{r}
+
+lay <- "
+AABB
+CCDE
+CCDE
+"
+
+final <- free(plot_ordi) + free(venn_lme_diablo) + htmp_loadings + 
+  feature_dwt_plot + plot_test +
+  plot_layout(design = lay, widths = c(.1, 3.5, 1.5, 1.5), heights = c(1, 2, 2) ) +
+  plot_annotation(tag_levels = list(c('A', 'B', 'C', '', 'D', 'E')))+
+  theme(plot.margin = unit(c(.1, .1, .1, .1), 'lines'))
+
+# final
+
+ggsave("output_figures/Figure_5.png", final, dpi = 300,
+       units = 'mm',
+       height = 220, 
+       width = 180)
+
+ggsave("output_figures/Figure_5.svg", final, dpi = 300,
+       units = 'mm', 
+       height = 220, 
+       width = 180)
+```
+
+
+## Pathways KOs
+
+```{r}
+
+ko_c1 <- microbe_c1 %>% 
+  separate_longer_delim(name, delim = ";")
+
+dry_path <- ko_c1 %>% 
+  filter(GroupContrib == 'dry') %>% 
+  dplyr::select(MAG, KO, pathway, Domain, Phylum, Class, Order, Family) %>% 
+  group_by(KO, pathway) %>% 
+  dplyr::count()
+
+
+wet_path <- ko_c1 %>% 
+  filter(GroupContrib == 'wet') %>% 
+  dplyr::select(MAG, KO, pathway, Domain, Phylum, Class, Order, Family) %>% 
+  group_by(KO,pathway) %>% 
+  dplyr::count()
+
+
+```
+

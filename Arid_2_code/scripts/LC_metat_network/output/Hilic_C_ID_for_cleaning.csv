@@ -1,0 +1,355 @@
+query,ko,name
+Curcumin,cpd:C10443,Curcumin; Kacha haldi
+Curcumin,cpd:C17742,Demethoxycurcumin
+Curcumin,cpd:C17743,Bisdemethoxycurcumin
+Curcumin,cpd:C17749,Curcumin monoglucoside
+Curcumin,cpd:C17750,Curcumin diglucoside
+Curcumin,cpd:C17826,Hexahydrocurcumin
+Acetovanillone,cpd:C11380,Apocynin; Acetovanillone
+Hexadecanedioic acid,cpd:C19615,Hexadecanedioate; Hexadecanedioic acid
+Umbelliferone,cpd:C03081,4-Methylumbelliferone; Hymecromone
+Umbelliferone,cpd:C09315,Umbelliferone; 7-Hydroxycoumarin
+Umbelliferone,cpd:C11584,4-Methylumbelliferone glucuronide; 4-Methylumbelliferyl glucuronide
+Umbelliferone,cpd:C11585,4-Methylumbelliferone sulfate; 4-Methylumbelliferyl sulfate
+Umbelliferone,cpd:C21495,8-Geranylumbelliferone
+Ferulic acid,cpd:C01494,Ferulate; Ferulic acid; 4-Hydroxy-3-methoxycinnamic acid; 3-Methoxy-4-hydroxy-trans-cinnamate; 4-Hydroxy-3-methoxycinnamate
+Ferulic acid,cpd:C05619,5-Hydroxyferulic acid; 5-Hydroxyferulate
+Ferulic acid,cpd:C10446,Diferulic acid
+Ferulic acid,cpd:C10470,Isoferulic acid
+Ferulic acid,cpd:C18087,2'-Hydroxyferulic acid
+Suberic acid,cpd:C08278,"Suberic acid; Cork acid; 1,8-Octanedioic acid; Octanedioic acid; 1,6-Hexanedicarboxylic acid"
+Caffeic acid,cpd:C01197,"Caffeate; Caffeic acid; 3,4-Dihydroxy-trans-cinnamate; trans-Caffeate; (2E)-3-(3,4-Dihydroxyphenyl)prop-2-enoate"
+Caffeic acid,cpd:C01481,"Caffeate; Caffeic acid; 3,4-Dihydroxycinnamic acid"
+Caffeic acid,cpd:C10431,Caffeic acid 3-glucoside
+Caffeic acid,cpd:C10447,"3,4-Dihydroxyphenylpropanoate; Dihydrocaffeic acid; 3,4-Dihydroxyphenylpropionic acid; 3-(3,4-Dihydroxyphenyl)propanoate"
+Caffeic acid,cpd:C10484,Phenethyl caffeate; Caffeic acid phenethyl ester
+Caffeic acid,cpd:C16828,Caffeoquinone; Caffeic acid quinone
+Caffeic acid,cpd:C18086,2'-Hydroxy caffeic acid
+Vanillic acid,cpd:C05582,Homovanillate; Homovanillic acid; 3-Methoxy-4-hydroxyphenylacetate
+Vanillic acid,cpd:C05616,"3-O-Methylgallate; 3-O-Methylgallic acid; 5-Hydroxyvanillic acid; 3,4-Dihydroxy-5-methoxybenzoate"
+Vanillic acid,cpd:C06672,Vanillate; Vanillic acid; 4-Hydroxy-3-methoxybenzoate; 4-Hydroxy-3-methoxybenzoic acid
+Vanillic acid,cpd:C18338,"5-Carboxyvanillic acid; 5-Carboxyvanillate; 4-Hydroxy-5-methoxy-1,3-benzenedicarboxylate; 4-Hydroxy-5-methoxyisophthalate"
+Syringic acid,cpd:C10833,"Syringic acid; Syringate; 4-Hydroxy-3,5-dimethoxybenzoate; Gallic acid 3,5-dimethyl ether"
+Maleic acid,cpd:C00922,"2,3-Dimethylmaleate; Dimethylmaleic acid"
+Maleic acid,cpd:C01384,Maleic acid; Maleate; cis-Butenedioic acid
+Maleic acid,cpd:C02226,2-Methylmaleate; Citraconate; Citraconic acid; Methylmaleic acid
+Maleic acid,cpd:C05126,"Dimethyl citraconate; Citraconic acid dimethyl ester; 2-Butenedioic acid, 2-methyl-, dimethyl ester, (Z)-; Citraconate de dimethyle; Citraconic acid, dimethyl ester; Dimethyl methylmaleate; Methylmaleic acid, dimethyl ester"
+Sucrose,cpd:C00089,Sucrose; Cane sugar; Saccharose; 1-alpha-D-Glucopyranosyl-2-beta-D-fructofuranoside
+Sucrose,cpd:C00492,Raffinose; Melitose; Melitriose; Gossypose; 6G-alpha-D-galactosylsucrose
+Sucrose,cpd:C02591,Sucrose 6'-phosphate; Sucrose 6F-phosphate
+Sucrose,cpd:C03661,1F-beta-D-Fructosylsucrose; beta-D-Fructofuranosyl-(2->1)-beta-D-fructofuranosyl alpha-D-glucopyranoside; 1-Kestose
+Sucrose,cpd:C03848,6F-alpha-D-Galactosylsucrose; Planteose
+Sucrose,cpd:C05731,3-Ketosucrose; 3'-Dehydrosucrose; 3-Dehydro-alpha-D-glucosyl-beta-D-fructofuranoside
+Sucrose,cpd:C16688,Sucrose 6-phosphate; 6-Phosphosucrose; 6-O-Phosphonosucrose; beta-D-Fructofuranosyl-6-O-phosphono-alpha-D-glucopyranoside
+Sucrose,cpd:C19519,"Saccharated iron oxide; Ferric oxide, saccharated; Iron sucrose"
+D-Glutamic acid,cpd:C00217,D-Glutamate; D-Glutamic acid; D-Glutaminic acid; D-2-Aminoglutaric acid
+D-Glutamic acid,cpd:C01682,"Nopaline; D-Nopaline; N2-(D-1,3-Dicarboxypropyl)-L-arginine; N-[(1S)-4-Carbamimidamido-1-carboxybutyl]-D-glutamic acid"
+D-Glutamic acid,cpd:C22611,N-Acetyl-D-glutamate; N-Acetyl-D-glutamic acid
+3-hydroxybutyric acid,cpd:C00188,L-Threonine; 2-Amino-3-hydroxybutyric acid
+3-hydroxybutyric acid,cpd:C00820,D-Threonine; D-2-Amino-3-hydroxybutyric acid
+3-hydroxybutyric acid,cpd:C01089,(R)-3-Hydroxybutanoate; (R)-3-Hydroxybutanoic acid; (R)-3-Hydroxybutyric acid; D-beta-Hydroxybutyric acid
+2-Methylsuccinic acid,cpd:C02614,(S)-2-Methylmalate; (S)-2-Methylmalic acid; (S)-Citramalate; (S)-Citramalic acid; (S)-alpha-Hydroxypyrotartaric acid; L-Citramalate; L-Citramalic acid; L-alpha-Hydroxypyrotartaric acid; (2S)-2-Hydroxy-2-methylbutanedioate; (S)-2-Hydroxy-2-methylsuccinic acid
+Adenine,cpd:C00003,NAD+; NAD; Nicotinamide adenine dinucleotide; DPN; Diphosphopyridine nucleotide; Nadide; beta-NAD+
+Adenine,cpd:C00004,NADH; DPNH; Reduced nicotinamide adenine dinucleotide
+Adenine,cpd:C00005,NADPH; TPNH; Reduced nicotinamide adenine dinucleotide phosphate
+Adenine,cpd:C00006,NADP+; NADP; Nicotinamide adenine dinucleotide phosphate; beta-Nicotinamide adenine dinucleotide phosphate; TPN; Triphosphopyridine nucleotide; beta-NADP+
+Adenine,cpd:C00016,FAD; Flavin adenine dinucleotide
+Adenine,cpd:C00147,Adenine; 6-Aminopurine
+Adenine,cpd:C00371,Zeatin; N6-(4-Hydroxyisopentenyl)adenine; (E)-2-Methyl-4-(1H-purin-6-ylamino)but-2-en-1-ol; trans-Zeatin
+Adenine,cpd:C00821,DNA adenine; Adenine in DNA
+Adenine,cpd:C00857,Deamino-NAD+; Deamido-NAD+; Deamido-NAD; Nicotinic acid adenine dinucleotide
+Adenine,cpd:C00913,3-Methyladenine
+Adenine,cpd:C01804,Discadenine; 3-(3-Amino-3-carboxypropyl)-N6-(Delta2-isopentenyl)-adenine
+Adenine,cpd:C02029,Dihydrozeatin; 2-Methyl-4-(1H-purin-6-ylamino)butan-1-ol; N6-(4-Hydroxyisopentanyl)adenine
+Adenine,cpd:C02216,1-Methyladenine
+Adenine,cpd:C02241,7-Methyladenine
+Adenine,cpd:C03391,DNA 6-methylaminopurine; N6-Methyladenine in DNA
+Adenine,cpd:C04083,"N6-(Delta2-Isopentenyl)-adenine; N6-(3-Methylbut-2-enyl)adenine; 6-(gamma,gamma-Dimethylallylamino)purine; N6-Dimethylallyladenine; N6-Prenyladenine"
+Adenine,cpd:C04154,rRNA containing N6-methyladenine; rRNA(N6-methyladenine); N6-Methyladenine in rRNA
+Adenine,cpd:C04156,tRNA containing N1-methyladenine
+Adenine,cpd:C04159,tRNA containing N6-methyladenine
+Adenine,cpd:C04378,7-alpha-D-Ribosyladenine 5'-phosphate
+Adenine,cpd:C04432,tRNA containing 6-isopentenyladenosine; N6-(3-Methylbut-2-en-1-yl)-adenosine in tRNA; N6-(3-Methylbut-2-en-1-yl)-adenine in tRNA; N6-Dimethylallyladenine in tRNA
+Adenine,cpd:C04856,"(6S)-6beta-Hydroxy-1,4,5,6-tetrahydronicotinamide-adenine dinucleotide; (S)-NADH-hydrate; (S)-NADHX; (6S)-6-Hydroxy-1,4,5,6-tetrahydronicotinamide-adenine dinucleotide; 6beta-Hydroxy-1,4,5,6-tetrahydronicotinamide-adenine dinucleotide"
+Adenine,cpd:C04899,"(6S)-6beta-Hydroxy-1,4,5,6-tetrahydronicotinamide-adenine dinucleotide phosphate; (S)-NADPH-hydrate; (S)-NADPHX; (6S)-6beta-Hydroxy-1,4,5,6-tetrahydronicotinamide-adenine dinucleotide 2'-phosphate"
+Adenine,cpd:C05026,N3-Metyladenine
+Adenine,cpd:C07195,Vidarabine; 9-beta-D-Arabino furanosyl adenine monohydrate
+Adenine,cpd:C08272,Kinetin; 6-Furfuryladenine
+Adenine,cpd:C08434,6-Methylaminopurine; N6-Methyladenine
+Adenine,cpd:C10831,Zygadenine
+Adenine,cpd:C11263,6-Benzylaminopurine; N-Benzyladenine; N6-Benzyladenine
+Adenine,cpd:C11277,Adefovir; PMEA; 9-(2-Phosphonylmethoxyethyl)adenine
+Adenine,cpd:C11501,9-Riburonosyladenine
+Adenine,cpd:C11691,Stemmadenine
+Adenine,cpd:C13051,Nicotinic acid adenine dinucleotide phosphate; Nicotinate-adenine dinucleotide phosphate; NAADP
+Adenine,cpd:C17324,tRNA adenine; Adenosine in tRNA
+Adenine,cpd:C20459,tRNA(Ala) adenine; Adenine in tRNA(Ala)
+Adenine,cpd:C20482,"(6R)-6beta-Hydroxy-1,4,5,6-tetrahydronicotinamide-adenine dinucleotide; (R)-NADH-hydrate; (R)-NADHX"
+Adenine,cpd:C20483,"(6R)-6beta-Hydroxy-1,4,5,6-tetrahydronicotinamide-adenine dinucleotide phosphate; (R)-NADPH-hydrate; (R)-NADPHX"
+Adenine,cpd:C20647,N1-Methyladenine in rRNA
+Adenine,cpd:C20648,Adenine in rRNA
+Adenine,cpd:C20751,N6-L-Threonylcarbamoyladenine in tRNA; t6A in tRNA
+Adenine,cpd:C20752,2-Methylthio-N6-L-threonylcarbamoyladenine in tRNA; 2-(Methylsulfanyl)-N6-L-threonylcarbamoyladenine in tRNA; ms2t6A in tRNA
+Adenine,cpd:C20753,2-Methylthio-N6-dimethylallyladenine in tRNA; 2-Methylthio-N6-isopentenyladenine in tRNA; 2-(Methylsulfanyl)-N6-dimethylallyladenine in tRNA; N6-(3-Methylbut-2-en-1-yl)-2-(methylsulfanyl)adenine in tRNA; 2-(Methylsulfanyl)-N6-prenyladenine in tRNA; ms2i6A in tRNA
+Adenine,cpd:C20754,2-Thio-N6-L-threonylcarbamoyladenine in tRNA; 2-Sulfanyl-N6-L-threonylcarbamoyladenine in tRNA
+Adenine,cpd:C20755,2-Thio-N6-dimethylallyladenine in tRNA; 2-Sulfanyl-N6-dimethylallyladenine in tRNA; N6-(3-Methylbut-2-en-1-yl)-2-thioadenine in tRNA
+Adenine,cpd:C20796,N6-Dimethyladenine in rRNA; rRNA containing N6-dimethyladenine
+Adenine,cpd:C21798,Adenine in U6 snRNA; Adenine(43) in U6 snRNA
+Adenine,cpd:C21799,N6-Methyladenine in U6 snRNA; N6-Methyladenine(43) in U6 snRNA
+Adenine,cpd:C21844,Adenine in mRNA
+Adenine,cpd:C21845,N6-Methyladenine in mRNA
+Adenine,cpd:C22324,N6-[(2E)-4-Hydroxy-3-methylbut-2-en-1-yl]-2-(methylsulfanyl)adenine in tRNA; ms2io6A in tRNA
+Adenine,cpd:C22439,"2-Aminoadenine; 2,6-Diaminopurine"
+Adenine,cpd:C22493,3'-NADP+; 3'-Nicotinamide adenine dinucleotide phosphate; Nicotinamide adenine dinucleotide 3'-phosphate
+Adenine,cpd:C22499,"8-Hydroxyadenine; 7,8-Dihydro-8-oxoadenine"
+Adenine,cpd:C22500,"2,8-Dihydroxyadenine"
+Adenine,cpd:C22573,Adenine in double-stranded RNA
+Adenine,cpd:C22933,Stemmadenine acetate
+Adenine,cpd:C22936,"3,17-Didehydrostemmadenine"
+Adenine,cpd:C22937,17-Dehydrostemmadenine
+Succinic acid,cpd:C00036,Oxaloacetate; Oxalacetic acid; Oxaloacetic acid; 2-Oxobutanedioic acid; 2-Oxosuccinic acid; keto-Oxaloacetate
+Succinic acid,cpd:C00042,Succinate; Succinic acid; Butanedionic acid; Ethylenesuccinic acid
+Succinic acid,cpd:C00049,L-Aspartate; L-Aspartic acid; 2-Aminosuccinic acid; L-Asp
+Succinic acid,cpd:C00490,Itaconate; Itaconic acid; Methylenesuccinic acid
+Succinic acid,cpd:C02504,alpha-Isopropylmalate; (2S)-2-Isopropylmalate; (2S)-2-Hydroxy-2-isopropylsuccinic acid; 2-Isopropylmalic acid; 3-Carboxy-3-hydroxy-4-methylpentanoate; 3-Carboxy-3-hydroxyisocaproate; (2S)-2-Isopropylmalic acid
+Succinic acid,cpd:C02614,(S)-2-Methylmalate; (S)-2-Methylmalic acid; (S)-Citramalate; (S)-Citramalic acid; (S)-alpha-Hydroxypyrotartaric acid; L-Citramalate; L-Citramalic acid; L-alpha-Hydroxypyrotartaric acid; (2S)-2-Hydroxy-2-methylbutanedioate; (S)-2-Hydroxy-2-methylsuccinic acid
+Succinic acid,cpd:C03139,N-Amidino-L-aspartate; N-Amidino-L-aspartic acid; Guanidinosuccinic acid
+Succinic acid,cpd:C03406,N-(L-Arginino)succinate; 2-(Nomega-L-Arginino)succinate; L-Argininosuccinate; L-Argininosuccinic acid; L-Arginosuccinic acid
+Succinic acid,cpd:C03600,Carboxymethyloxysuccinate; (Carboxymethoxy) succinic acid
+Succinic acid,cpd:C03794,"N6-(1,2-Dicarboxyethyl)-AMP; N6-(1,2-Dicarboxyethyl)AMP; Adenylosuccinate; Adenylosuccinic acid"
+Succinic acid,cpd:C05379,Oxalosuccinate; Oxalosuccinic acid
+Succinic acid,cpd:C07598,"Succimer; meso-2,3-Dimercaptosuccinic acid"
+Succinic acid,cpd:C14115,2-Naphtylmethylsuccinic acid; Naphthyl-2-methyl-succinic acid
+Succinic acid,cpd:C16657,2-Propylsuccinic acid; 2-PSA
+Succinic acid,cpd:C22494,Phenylsuccinate; Phenylsuccinic acid
+Uridine,cpd:C00015,UDP; Uridine 5'-diphosphate
+Uridine,cpd:C00029,UDP-glucose; UDPglucose; UDP-D-glucose; Uridine diphosphate glucose; UDP-alpha-D-glucose
+Uridine,cpd:C00075,UTP; Uridine 5'-triphosphate; Uridine triphosphate
+Uridine,cpd:C00105,UMP; Uridylic acid; Uridine monophosphate; Uridine 5'-monophosphate; 5'Uridylic acid; Uridylate
+Uridine,cpd:C00299,Uridine
+Uridine,cpd:C00365,dUMP; Deoxyuridylic acid; Deoxyuridine monophosphate; Deoxyuridine 5'-phosphate; 2'-Deoxyuridine 5'-phosphate
+Uridine,cpd:C00460,dUTP; 2'-Deoxyuridine 5'-triphosphate
+Uridine,cpd:C00526,Deoxyuridine; 2-Deoxyuridine; 2'-Deoxyuridine
+Uridine,cpd:C00868,tRNA uridine; Uracil in tRNA
+Uridine,cpd:C01168,Pseudouridine 5'-phosphate
+Uridine,cpd:C01346,dUDP; 2'-Deoxyuridine 5'-diphosphate
+Uridine,cpd:C01368,3'-UMP; Uridine 3'-monophosphate; Uridine 3'-phosphate
+Uridine,cpd:C01764,tRNA containing uridine at position 54; tRNA UpsiC
+Uridine,cpd:C02067,Pseudouridine
+Uridine,cpd:C02764,tRNA pseudouridine
+Uridine,cpd:C03031,Uridine 2'-phosphate
+Uridine,cpd:C03086,5'-Acylphosphouridine
+Uridine,cpd:C04242,5-Fluorodeoxyuridine monophosphate
+Uridine,cpd:C04510,3-[(3S)-3-Amino-3-carboxypropyl]-uridine in tRNA; tRNA 3-(3-amino-3-carboxypropyl)-uridine; acp3U in tRNA
+Uridine,cpd:C06436,5'-Butyrylphosphouridine
+Uridine,cpd:C11478,tRNA containing 5-(aminomethyl)-2-thiouridine; tRNA containing nm5s2U
+Uridine,cpd:C11632,Polyneuridine aldehyde
+Uridine,cpd:C11736,5-Fluorodeoxyuridine; Floxuridine
+Uridine,cpd:C12739,5'-Deoxy-5-fluorouridine; Doxifluridine
+Uridine,cpd:C16154,UDP-L-Ara4FN; Uridine 5'-diphospho-beta-(4-deoxy-4-formamido-L-arabinose); UDP-4-deoxy-4-formamido-beta-L-arabinopyranose
+Uridine,cpd:C16155,UDP-L-Ara4O; UDP-4''-ketopentose; Uridine 5'-diphospho-beta-(L-threo-pentapyranosyl-4''-ulose); UDP-beta-L-threo-pentapyranos-4-ulose; UDP-4-keto-D-xylose
+Uridine,cpd:C16633,5-Fluorouridine
+Uridine,cpd:C16634,5-Fluorouridine monophosphate
+Uridine,cpd:C16745,Spongouridine
+Uridine,cpd:C17011,Leonuridine
+Uridine,cpd:C17322,tRNA containing 2-thiouridine; tRNA containing s2U
+Uridine,cpd:C17323,tRNA containing 5-carboxymethylaminomethyl-2-thiouridine; tRNA containing cmnm5s2U
+Uridine,cpd:C21079,5'-Dehydrouridine; Uridine-5'-aldehyde
+Uridine,cpd:C21748,5-Fluorouridine diphosphate
+Uridine,cpd:C21749,5-Fluorouridine triphosphate
+Uridine,cpd:C21750,5-Fluorodeoxyuridine diphosphate
+Uridine,cpd:C21751,5-Fluorodeoxyuridine triphosphate
+Uridine,cpd:C22266,5-Methylaminomethyl-2-(S-geranyl)thiouridine in tRNA
+Uridine,cpd:C22267,5-Methylaminomethyl-2-(Se-phospho)selenouridine in tRNA
+Uridine,cpd:C22268,5-Methylaminomethyl-2-selenouridine in tRNA
+Uridine,cpd:C22509,"3',5'-Cyclic UMP; Uridine 3',5'-cyclic monophosphate; cUMP"
+2'-Deoxyinosine,cpd:C01344,dIDP; 2'-Deoxyinosine-5'-diphosphate; 2'-Deoxyinosine 5'-diphosphate
+2'-Deoxyinosine,cpd:C01345,dITP; 2'-Deoxyinosine-5'-triphosphate; 2'-Deoxyinosine 5'-triphosphate
+2'-Deoxyinosine,cpd:C05512,Deoxyinosine; 2'-Deoxyinosine
+2'-Deoxyinosine,cpd:C06196,2'-Deoxyinosine 5'-phosphate; dIMP
+Allantoin,cpd:C01551,Allantoin; 5-Ureidohydantoin; Glyoxyldiureide
+Allantoin,cpd:C02348,(R)(-)-Allantoin; (R)-Allantoin
+Allantoin,cpd:C02350,(S)-Allantoin; (S)(+)-Allantoin
+Allantoin,cpd:C16362,"3,6,8-Trimethylallantoin"
+Inosine,cpd:C00081,ITP; Inosine 5'-triphosphate; Inosine triphosphate; Inosine tripolyphosphate
+Inosine,cpd:C00104,IDP; Inosine 5'-diphosphate; Inosine diphosphate
+Inosine,cpd:C00130,IMP; Inosinic acid; Inosine monophosphate; Inosine 5'-monophosphate; Inosine 5'-phosphate; 5'-Inosinate; 5'-Inosinic acid; 5'-Inosine monophosphate; 5'-IMP
+Inosine,cpd:C00294,Inosine
+Inosine,cpd:C00943,"3',5'-Cyclic IMP; Inosine 3',5'-cyclic monophosphate"
+Inosine,cpd:C01344,dIDP; 2'-Deoxyinosine-5'-diphosphate; 2'-Deoxyinosine 5'-diphosphate
+Inosine,cpd:C01345,dITP; 2'-Deoxyinosine-5'-triphosphate; 2'-Deoxyinosine 5'-triphosphate
+Inosine,cpd:C01993,5'-Oxoinosine; 5'-Dehydroinosine
+Inosine,cpd:C03085,5'-Acylphosphoinosine
+Inosine,cpd:C03280,Inosine-5'-carboxylate
+Inosine,cpd:C03614,Inosine 5'-tetraphosphate
+Inosine,cpd:C04583,"6-Hydroxyl-1,6-dihydropurine ribonucleoside; (6R)-1,6-Dihydroinosine"
+Inosine,cpd:C04646,6-Thioinosine-5'-monophosphate; 9-(5-Phospho-1-ribofuranosyl)-6-mercaptopurine
+Inosine,cpd:C05512,Deoxyinosine; 2'-Deoxyinosine
+Inosine,cpd:C06196,2'-Deoxyinosine 5'-phosphate; dIMP
+Inosine,cpd:C06435,5'-Butyrylphosphoinosine; Inosine 5'-phosphobutyrate
+Inosine,cpd:C10155,Lentiginosine
+Inosine,cpd:C16615,6-Methylthiopurine 5'-monophosphate ribonucleotide; 6-Methylthioinosine-5'-monophosphate
+Inosine,cpd:C16616,6-Mercaptopurine ribonucleoside 5'-diphosphate; 6-Thioinosine-5'-diphosphate
+Inosine,cpd:C16617,6-Mercaptopurine ribonucleoside triphosphate; 6-Thioinosine-5'-triphosphate
+Inosine,cpd:C19787,5'-S-Methyl-5'-thioinosine; 5'-Deoxy-5'-methylthioinosine; S-Methyl-5'-thioinosine
+Inosine,cpd:C20439,NBMPR; 4-Nitrobenzylthioinosine
+Inosine,cpd:C21102,5'-Deoxyinosine
+N-Acetyl-D-mannosamine,cpd:C00645,N-Acetyl-D-mannosamine; 2-Acetamido-2-deoxy-D-mannose
+N-Acetyl-D-mannosamine,cpd:C01170,UDP-N-acetyl-D-mannosamine; UDP-N-acetyl-alpha-D-mannosamine
+N-Acetyl-D-mannosamine,cpd:C04257,N-Acetyl-D-mannosamine 6-phosphate; N-Acetylmannosamine 6-phosphate
+Mannitol,cpd:C00392,Mannitol; D-Mannitol
+Mannitol,cpd:C00644,D-Mannitol 1-phosphate
+Mannitol,cpd:C08468,Acremoauxin A; 2-(3-Indolyl)propanoylmannitol
+Mannitol,cpd:C16538,"1,5-Anhydro-D-mannitol"
+16-Hydroxyhexadecanoic acid,cpd:C18218,16-Hydroxypalmitate; 16-Hydroxypalmitic acid; 16-Hydroxyhexadecanoic acid; Juniperic acid
+melitose,cpd:C00492,Raffinose; Melitose; Melitriose; Gossypose; 6G-alpha-D-galactosylsucrose
+4-Methylumbelliferone,cpd:C03081,4-Methylumbelliferone; Hymecromone
+4-Methylumbelliferone,cpd:C11584,4-Methylumbelliferone glucuronide; 4-Methylumbelliferyl glucuronide
+4-Methylumbelliferone,cpd:C11585,4-Methylumbelliferone sulfate; 4-Methylumbelliferyl sulfate
+urocanate,cpd:C00785,Urocanate; Urocanic acid
+urocanate,cpd:C20522,Dihydrourocanate; Deaminohistidine; 3-(1H-Imidazol-4-yl)propanoate
+Azelaic acid,cpd:C08261,"Azelaic acid; Nonanedioic acid; 1,7-Heptanedicarboxylic acid"
+Azelaic acid,cpd:C12025,"2,6-Diamino-7-hydroxy-azelaic acid"
+Genipin,cpd:C09780,Genipin
+Genipin,cpd:C16965,Genipin 1-beta-gentiobioside
+Genipin,cpd:C22675,Genipinine
+Glycitein,cpd:C14536,"Glycitein; 7,4'-Dihydroxy-6-methoxyisoflavone"
+Glycitein,cpd:C16195,Glycitin; Glycitein 7-O-glucoside
+Guanosine,cpd:C00035,GDP; Guanosine 5'-diphosphate; Guanosine diphosphate
+Guanosine,cpd:C00044,GTP; Guanosine 5'-triphosphate
+Guanosine,cpd:C00144,GMP; Guanosine 5'-phosphate; Guanosine monophosphate; Guanosine 5'-monophosphate; Guanylic acid
+Guanosine,cpd:C00286,dGTP; 2'-Deoxyguanosine 5'-triphosphate; Deoxyguanosine 5'-triphosphate; Deoxyguanosine triphosphate
+Guanosine,cpd:C00330,Deoxyguanosine; 2'-Deoxyguanosine
+Guanosine,cpd:C00361,dGDP; 2'-Deoxyguanosine 5'-diphosphate
+Guanosine,cpd:C00362,dGMP; 2'-Deoxyguanosine 5'-monophosphate; 2'-Deoxyguanosine 5'-phosphate; Deoxyguanylic acid; Deoxyguanosine monophosphate
+Guanosine,cpd:C00387,Guanosine
+Guanosine,cpd:C00942,"3',5'-Cyclic GMP; Guanosine 3',5'-cyclic monophosphate; Guanosine 3',5'-cyclic phosphate; Cyclic GMP; cGMP"
+Guanosine,cpd:C01228,"Guanosine 3',5'-bis(diphosphate); Guanosine 3'-diphosphate 5'-diphosphate; Guanosine 5'-diphosphate,3'-diphosphate"
+Guanosine,cpd:C01972,m7G(5')pppAm-mRNA; mRNA containing a 2'-O-methyladenosine cap; 5-(N7-Methyl 5-triphosphoguanosine)-2'-O-methyladenosine-[mRNA]
+Guanosine,cpd:C02031,G(5')pppPur-mRNA; 5'-(5'-Triphosphoguanosine)-[mRNA]; Guanosine 5'-triphospho-mRNA
+Guanosine,cpd:C02339,m7G(5')pppR-mRNA; m7G(5')pppPur-mRNA; mRNA containing an N7-methylguanine cap; 5'-(N7-Methyl 5'-triphosphoguanosine)-[mRNA]; 5'-(N7-Methylguanosine 5'-triphospho)-[mRNA]; 5'-(N7-Methyl 5'-triphosphoguanosine)-(purine-ribonucleotide)-[mRNA]
+Guanosine,cpd:C03998,7-Methylguanosine 5'-phosphate; N7-Methyl-GMP
+Guanosine,cpd:C04494,"Guanosine 3'-diphosphate 5'-triphosphate; Guanosine 5'-triphosphate,3'-diphosphate"
+Guanosine,cpd:C04545,tRNA containing 2'-O-methylguanosine
+Guanosine,cpd:C04696,7-Methylguanosine 5'-triphospho-5'-oligonucleotide; m7GpppX
+Guanosine,cpd:C04802,m7G(5')pppRm-mRNA; 5'-(N7-Methyl 5'-triphosphoguanosine)-(2'-O-methyl-purine-ribonucleotide)-[mRNA]; 5'-(N7-Methyl 5'-triphosphoguanosine)-(2'-O-methyl-purine-ribonucleotide)-(ribonucleotide)-[mRNA]
+Guanosine,cpd:C04833,"m7G(5')pppm6Am-mRNA; mRNA containing an N6,2'-O-dimethyladenosine cap; 5-(N7-Methyl 5-triphosphoguanosine)-N6,2'-O-dimethyladenosine-[mRNA]"
+Guanosine,cpd:C05031,O6-Methyl-2'-deoxyguanosine
+Guanosine,cpd:C06193,Guanosine 3'-phosphate; 3'-GMP; 3'-Guanylic acid; Guo-3'-P; Gp
+Guanosine,cpd:C08432,Isoguanosine; Crotonoside
+Guanosine,cpd:C16619,6-Thioguanosine monophosphate
+Guanosine,cpd:C16620,6-Methylthioguanosine monophosphate
+Guanosine,cpd:C18076,5'-Phosphoguanylyl(3'->5')guanosine
+Guanosine,cpd:C19155,(2S)-Lactyl-2-diphospho-5'-guanosine
+Guanosine,cpd:C19967,"8-Oxo-dGTP; 8-Oxodeoxyguanosine triphosphate; 8-Oxo-7,8-dihydro-2'-deoxyguanosine 5'-triphosphate"
+Guanosine,cpd:C19968,"8-Oxo-dGMP; 2'-Deoxy-7,8-dihydro-8-oxo-5'-guanylate; 8-Hydroxydeoxyguanosine 5'-monophosphate"
+Guanosine,cpd:C20176,"8-Oxo-dGDP; 8-Oxo-7,8-dihydro-2'-deoxyguanosine 5'-diphosphate"
+Guanosine,cpd:C20183,N7-Methylguanosine 5'-diphosphate; N7-Methyl-GDP
+Guanosine,cpd:C20674,N7-Methylguanosine
+Guanosine,cpd:C20862,5'-(N7-Methyl 5'-triphosphoguanosine)-(2'-O-methyl-purine-ribonucleotide)-(2'-O-methyl-ribonucleotide)-[mRNA]
+Guanosine,cpd:C21310,"(8S)-3',8-Cyclo-7,8-dihydroguanosine 5'-triphosphate"
+Guanosine,cpd:C22234,8-Oxo-GTP; 8-Oxoguanosine triphosphate
+Guanosine,cpd:C22235,8-Oxo-GDP; 8-Oxoguanosine 5'-diphosphate
+Guanosine,cpd:C22274,8-Oxo-GMP; 8-Oxoguanosine 5'-phosphate
+Guanosine,cpd:C22297,Enolpyruvoyl-2-diphospho-5'-guanosine
+Guanosine,cpd:C22298,3-(D-Glyceryl)-diphospho-5'-guanosine; 3-[(R)-Glyceryl]-diphospho-5'-guanosine
+Isoferulic acid,cpd:C10470,Isoferulic acid
+Mevalonic acid,cpd:C00418,"(R)-Mevalonate; Mevalonic acid; 3,5-Dihydroxy-3-methylvaleric acid; (3R)-3,5-Dihydroxy-3-methylpentanoic acid; (R)-Mevalonic acid"
+Mevalonic acid,cpd:C01107,(R)-5-Phosphomevalonate; (R)-5-Phosphomevalonic acid; (R)-Mevalonic acid 5-phosphate
+Mevalonic acid,cpd:C01143,(R)-5-Diphosphomevalonate; (R)-5-Diphosphomevalonic acid
+Mevalonic acid,cpd:C02104,"(S)-Mevalonate; (S)-Mevalonic acid; (S)-3,5-Dihydroxy-3-methylvaleric acid"
+Propyl gallate,cpd:C11155,n-Propyl gallate; Propyl gallate
+Tetracycline,cpd:C02811,Anhydrotetracycline
+Tetracycline,cpd:C03206,"5a,11a-Dehydrotetracycline; 12-Dehydrotetracycline"
+Tetracycline,cpd:C06570,Tetracycline
+Tetracycline,cpd:C06571,Chlortetracycline; 7-Chlorotetracycline; Aureomycin
+Tetracycline,cpd:C06624,Oxytetracycline; Oxytetracycline anhydrous
+Tetracycline,cpd:C06626,4-Ketoanhydrochlortetracycline; 4-Ketoanhydro-7-chlorotetracycline; 4-Oxoanhydrochlortetracycline; 4-Dedimethylamine-4-oxo-anhydro-7-Cl-tetracycline
+Tetracycline,cpd:C06627,"4-Keto-anhydrotetracycline; 4-Ketoanhydrotetracycline; 4-Keto-ATC; 4-Dedimethylamino-4-oxo-anhydrotetracycline; 4-De(dimethylamino)-4-oxoanhydrotetracycline; (4aR,12aS)-3,10,11,12a-Tetrahydroxy-6-methyl-1,4,12-trioxo-4a,5-dihydrotetracene-2-carboxamide"
+Tetracycline,cpd:C06654,4-Amino-anhydrotetracycline; 4-Amino-ATC; 4-Dedimethyl-6-dehydro-anhydrotetracycline; 4-Amino-4-de(dimethylamino)anhydrotetracycline
+Tetracycline,cpd:C12933,Rolitetracycline nitrate
+Tetracycline,cpd:C13055,Oxytetracycline hydrochloride; OTC
+Tetracycline,cpd:C18296,"5a,11a-Dehydrooxytetracycline"
+Tetracycline,cpd:C18297,Anhydrochlortetracycline; Anhydro-7-chlorotetracycline
+Tetracycline,cpd:C18298,"5a,11a-Dehydrochlortetracycline; Dehydrochlortetracycline; 5a,11a-Dehydro-7-chlorotetracycline"
+Tetracycline,cpd:C18299,4-Aminoanhydrochlortetracycline; 4-Aminoanhydro-7-chlorotetracycline
+Tetracycline,cpd:C21391,11a-Hydroxytetracycline
+Tetracycline,cpd:C21436,4-Methylamino-4-de(dimethylamino)anhydrotetracycline
+Tetracycline,cpd:C21438,11a-Hydroxyoxytetracycline
+Tetracycline,cpd:C21439,11a-Hydroxy-7-chlortetracycline
+Trinexapac,cpd:C18541,Trinexapac-ethyl
+coniferaldehyde,cpd:C02666,Coniferyl aldehyde; Coniferaldehyde; 4-Hydroxy-3-methoxycinnamaldehyde; Ferulaldehyde
+coniferaldehyde,cpd:C12204,5-Hydroxyconiferaldehyde
+6-Prenylnaringenin,cpd:C09832,"6-Prenylnaringenin; 5,7,4'-Trihydroxy-6-prenylflavanone"
+mycophenolate,cpd:C07908,Mycophenolate mofetil; RS 61443
+mycophenolate,cpd:C20380,Mycophenolate
+dihydroconiferyl alcohol,cpd:C10448,Dihydroconiferyl alcohol; 4-Hydroxy-3-methoxy-benzenepropanol
+caffeate,cpd:C01197,"Caffeate; Caffeic acid; 3,4-Dihydroxy-trans-cinnamate; trans-Caffeate; (2E)-3-(3,4-Dihydroxyphenyl)prop-2-enoate"
+caffeate,cpd:C01481,"Caffeate; Caffeic acid; 3,4-Dihydroxycinnamic acid"
+caffeate,cpd:C10477,Methyl caffeate
+caffeate,cpd:C10484,Phenethyl caffeate; Caffeic acid phenethyl ester
+caffeate,cpd:C10487,Prenyl caffeate
+adenosine,cpd:C00002,ATP; Adenosine 5'-triphosphate
+adenosine,cpd:C00008,ADP; Adenosine 5'-diphosphate
+adenosine,cpd:C00020,AMP; Adenosine 5'-monophosphate; Adenylic acid; Adenylate; 5'-AMP; 5'-Adenylic acid; 5'-Adenosine monophosphate; Adenosine 5'-phosphate
+adenosine,cpd:C00053,3'-Phosphoadenylyl sulfate; 3'-Phosphoadenosine 5'-phosphosulfate; 3'-Phospho-5'-adenylyl sulfate; PAPS
+adenosine,cpd:C00054,"Adenosine 3',5'-bisphosphate; PAP; 3'-Phosphoadenylate; Phosphoadenosine phosphate"
+adenosine,cpd:C00131,dATP; 2'-Deoxyadenosine 5'-triphosphate; Deoxyadenosine 5'-triphosphate; Deoxyadenosine triphosphate
+adenosine,cpd:C00170,5'-Methylthioadenosine; Methylthioadenosine; S-Methyl-5'-thioadenosine; 5-Methylthioadenosine; 5'-Deoxy-5'-(methylthio)adenosine; Thiomethyladenosine; MTA; 5'-Deoxy-5'-(methylsulfanyl)adenosine
+adenosine,cpd:C00206,dADP; 2'-Deoxyadenosine 5'-diphosphate
+adenosine,cpd:C00212,Adenosine
+adenosine,cpd:C00224,Adenylyl sulfate; Adenosine 5'-phosphosulfate; APS; 5'-Adenylyl sulfate
+adenosine,cpd:C00301,ADP-ribose; ADP-D-ribose; Adenosine diphosphate ribose
+adenosine,cpd:C00360,dAMP; 2'-Deoxyadenosine 5'-phosphate; 2'-Deoxyadenosine 5'-monophosphate; Deoxyadenylic acid; Deoxyadenosine monophosphate
+adenosine,cpd:C00498,ADP-glucose; ADP-alpha-D-glucose; Adenosine diphosphoglucose
+adenosine,cpd:C00559,Deoxyadenosine; 2'-Deoxyadenosine
+adenosine,cpd:C00575,"3',5'-Cyclic AMP; Cyclic adenylic acid; Cyclic AMP; Adenosine 3',5'-phosphate; Adenosine 3',5'-cyclic phosphate; cAMP"
+adenosine,cpd:C00939,2-Aminoadenosine
+adenosine,cpd:C00946,Adenosine 2'-phosphate; 2'-Adenylic acid; Adenosine-2'-monophosphate; AMP 2'-phosphate
+adenosine,cpd:C01367,3'-AMP; 3'-Adenylic acid; 3'-Adenosine monophosphate; Adenosine-3'-monophosphate; Adenosine 3'-phosphate; AMP 3'-phosphate
+adenosine,cpd:C01972,m7G(5')pppAm-mRNA; mRNA containing a 2'-O-methyladenosine cap; 5-(N7-Methyl 5-triphosphoguanosine)-2'-O-methyladenosine-[mRNA]
+adenosine,cpd:C02494,1-Methyladenosine
+adenosine,cpd:C03218,2-Methylaminoadenosine
+adenosine,cpd:C03361,5'-Acylphosphoadenosine
+adenosine,cpd:C03416,"N6,N6-Dimethyladenosine"
+adenosine,cpd:C03483,Adenosine tetraphosphate; Adenosine 5'-tetraphosphate
+adenosine,cpd:C03795,N6-Methyl-2'-deoxyadenosine
+adenosine,cpd:C03850,"Adenosine 2',5'-bisphosphate"
+adenosine,cpd:C03851,Adenosine 5'-phosphoramidate
+adenosine,cpd:C04432,tRNA containing 6-isopentenyladenosine; N6-(3-Methylbut-2-en-1-yl)-adenosine in tRNA; N6-(3-Methylbut-2-en-1-yl)-adenine in tRNA; N6-Dimethylallyladenine in tRNA
+adenosine,cpd:C04713,N6-(delta2-Isopentenyl)-adenosine 5'-monophosphate; N6-(Dimethylallyl)adenosine 5'-phosphate; Isopentenyl-AMP; N6-Prenyladenosine 5'-phosphate
+adenosine,cpd:C04779,rRNA containing a single residue of 2'-O-methyladenosine
+adenosine,cpd:C04833,"m7G(5')pppm6Am-mRNA; mRNA containing an N6,2'-O-dimethyladenosine cap; 5-(N7-Methyl 5-triphosphoguanosine)-N6,2'-O-dimethyladenosine-[mRNA]"
+adenosine,cpd:C05198,5'-Deoxyadenosine
+adenosine,cpd:C05686,Adenylylselenate; Adenosine-5'-phosphoselenate
+adenosine,cpd:C05696,3'-Phosphoadenylylselenate; 3'-Phosphoadenosine-5'-phosphoselenate
+adenosine,cpd:C05983,Propionyladenylate; Propionyl-adenosine monophosphate
+adenosine,cpd:C05993,Acetyl adenylate; 5'-Acetylphosphoadenosine
+adenosine,cpd:C06197,"P1,P3-Bis(5'-adenosyl) triphosphate; ApppA; Adenosine 5'-triphosphate 5'-adenosine"
+adenosine,cpd:C06433,5'-Benzoylphosphoadenosine
+adenosine,cpd:C06510,Adenosine-GDP-cobinamide; Adenosylcobinamide-GDP
+adenosine,cpd:C08431,Cordycepin; 3'-Deoxyadenosine
+adenosine,cpd:C11265,8-Azaadenosine
+adenosine,cpd:C11266,8-Bromoadenosine
+adenosine,cpd:C11500,5'-Dehydroadenosine
+adenosine,cpd:C13742,Adenosine 5-O-(3-thiotriphophate); ATP-gamma-S; Adenosine 5'-(gamma-thio)triphosphate
+adenosine,cpd:C13743,Adenosine 5-O-(3-thiodiphophate); ADP-gamma-S
+adenosine,cpd:C16424,Isopentenyladenosine-5'-triphosphate; Isopentenyl-ATP; N6-(Dimethylallyl)adenosine 5'-triphosphate; N6-Prenyladenosine 5'-triphosphate
+adenosine,cpd:C16426,Isopentenyladenosine-5'-diphosphate; Isopentenyl-ADP; N6-(Dimethylallyl)adenosine 5'-diphosphate; N6-Prenyladenosine 5'-diphosphate
+adenosine,cpd:C16427,Isopentenyl adenosine
+adenosine,cpd:C16467,cis-Prenyl-tRNA; tRNA containing N6-(cis-hydroxy)isopentenyladenosine
+adenosine,cpd:C17324,tRNA adenine; Adenosine in tRNA
+adenosine,cpd:C18344,Adenosine 5'-phosphate disodium
+adenosine,cpd:C19766,5'-Deoxy-5'-fluoroadenosine
+adenosine,cpd:C19768,5-Deoxy-5-chloroadenosine
+adenosine,cpd:C19969,2-Hydroxy-dATP; 2-Hydroxy-2'-deoxyadenosine 5'-triphosphate
+adenosine,cpd:C20198,Adenosine 5'-pentaphosphate
+adenosine,cpd:C20784,ADP-5-ethyl-4-methylthiazole-2-carboxylate; Adenosine diphospho-5-beta-ethyl-4-methylthiazole-2-carboxylic acid
+adenosine,cpd:C22092,5'-O-Phosphonoadenylyl-(3'->5')-adenosine; pApA
+adenosine,cpd:C22319,1-Tuberculosinyladenosine
+adenosine,cpd:C22440,"2-Amino-2'-deoxyadenosine; 2,6-Diaminopurinedeoxyriboside"
+adenosine,cpd:C22441,dZMP; 2-Amino-2'-deoxyadenosine 5'-monophosphate
+adenosine,cpd:C22442,dZDP; 2-Amino-2'-deoxyadenosine 5'-diphosphate
+adenosine,cpd:C22443,dZTP; 2-Amino-2'-deoxyadenosine 5'-triphosphate
+2-sulfotrehalose,cpd:C20985,"2-Sulfotrehalose; 2-O-Sulfo-alpha,alpha-trehalose"
+3-O-methylgallate,cpd:C05616,"3-O-Methylgallate; 3-O-Methylgallic acid; 5-Hydroxyvanillic acid; 3,4-Dihydroxy-5-methoxybenzoate"

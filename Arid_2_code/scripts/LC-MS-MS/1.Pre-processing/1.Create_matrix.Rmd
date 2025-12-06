@@ -1,0 +1,237 @@
+---
+title: "Arid field samples - LC-MS/MS"
+author: "Viviana Freire-Zapata"
+date: "9/17/2025"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: '2'
+    collapsed: false
+    highlight: tango
+    css: style.css
+editor_options: 
+  chunk_output_type: console
+---
+
+## Libraries
+
+```{r}
+
+library(readxl)
+library(tidyverse)
+
+```
+
+
+
+# Data Pre-processing
+
+#### Uploading manually modified RP-LC-MS data
+
+```{r import_data, message=FALSE}
+# Import data tables
+
+## RP
+
+rp_results_table <- read_xlsx("1.Pre-processing/input/CD_report-modified/RP_CD_Results_VEFZ_4852531_modified.xlsx")
+
+# Import metadata
+
+rp_metadata <- read_csv("../../input/metadata_omics.csv") %>% 
+  select(!c(SampleID_metaT,SampleID_HILIC)) %>% 
+  filter(!is.na(SampleID_RP))
+
+
+## HILIC
+
+hilic_results_table <- read_xlsx("1.Pre-processing/input/CD_report-modified/HILIC_CD_Results_VEFZ_4852531_modified.xlsx")
+
+
+# Import metadata
+
+hilic_metadata <- read_csv("../../input/metadata_omics.csv") %>% 
+  select(!c(SampleID_metaT,SampleID_RP)) %>% 
+  filter(!is.na(SampleID_HILIC))
+
+
+```
+
+
+## Rearranging data
+
+## RP
+
+```{r}
+
+rp_ready <- rp_results_table %>% 
+  arrange(desc(`Calc. MW`)) %>% 
+  mutate(MW = formatC(round(`Calc. MW`, 5), digits = 5, format = 'f'),
+         RT = formatC(round(`RT [min]`, 3), digits = 3, format = 'f'),
+         m_z = formatC(round(`m/z`, 5), digits = 5, format = 'f'),
+         FeatureID = paste0('FT_', RT,'_', m_z),
+         FeatureID_mgf = paste0('MW_', MW, '@RT_', RT)) %>% 
+  dplyr::select('FeatureID','FeatureID_mgf', 'Name', 'Formula', 'Calc. MW', 'm/z', 
+                'RT [min]', "Annotation MW", "mzVault Best Match", "mzCloud Best Match", 
+                "KEGG ID", contains('Annot. Source:'), contains('Results'), 
+                contains('Area:')) %>% 
+  rename_with(function(.x){
+    y <- str_remove(.x, '.raw.*')
+    return(y)
+  })%>% 
+  rename_with(~str_remove(., 'Area: ')) %>% 
+  select(!contains("Pooled")) %>% 
+  select(!contains("Blank"))
+
+write_csv(rp_ready, "1.Pre-processing/output/RP_matrix_clean_2025.csv")
+
+
+```
+
+
+## HILIC
+
+```{r}
+
+hilic_ready <- hilic_results_table %>% 
+  arrange(desc(`Calc. MW`)) %>% 
+  mutate(MW = formatC(round(`Calc. MW`, 5), digits = 5, format = 'f'),
+         RT = formatC(round(`RT [min]`, 3), digits = 3, format = 'f'),
+         m_z = formatC(round(`m/z`, 5), digits = 5, format = 'f'),
+         FeatureID = paste0('FT_', RT,'_', m_z),
+         FeatureID_mgf = paste0('MW_', MW, '@RT_', RT)) %>% 
+  dplyr::select('FeatureID','FeatureID_mgf', 'Name', 'Formula', 'Calc. MW', 'm/z', 
+                'RT [min]', "Annotation MW", "mzVault Best Match", "mzCloud Best Match", 
+                "KEGG ID", contains('Annot. Source:'), contains('Results'), 
+                contains('Area:')) %>% 
+  rename_with(function(.x){
+    y <- str_remove(.x, '.raw.*')
+    return(y)
+  })%>% 
+  rename_with(~str_remove(., 'Area: ')) %>% 
+  select(!contains("Pooled")) %>% 
+  select(!contains("Blank"))
+
+write_csv(hilic_ready, "1.Pre-processing/output/HILIC_matrix_clean_2025.csv")
+
+
+```
+
+## Checking gap filling status - sanity check
+
+```{r}
+
+## RP
+rp_results_table <- read_xlsx("1.Pre-processing/input/RP_compounds_gap_fill_11_19_2024.xlsx")
+
+## HILIC
+
+hilic_results_table <-read_xlsx("1.Pre-processing/input/HILIC_compounds_gap_fill_12_5_2024.xlsx")
+
+```
+
+
+## Rearranging data
+
+## RP
+
+```{r}
+
+rp_gap <- rp_results_table %>% 
+  arrange(desc(`Calc. MW`)) %>% 
+  mutate(MW = formatC(round(`Calc. MW`, 5), digits = 5, format = 'f'),
+         RT = formatC(round(`RT [min]`, 3), digits = 3, format = 'f'),
+         m_z = formatC(round(`m/z`, 5), digits = 5, format = 'f'),
+         FeatureID = paste0('FT_', RT,'_', m_z),
+         FeatureID_mgf = paste0('MW_', MW, '@RT_', RT)) %>% 
+  rename_with(function(.x){
+    y <- str_remove(.x, '.raw.*')
+    return(y)
+  })%>% 
+  rename_with(~str_remove(., 'Area: ')) %>% 
+  select(!contains("Pooled")) %>% 
+  select(!contains("Blank"))
+
+## Gap status fill
+
+gap_codes <- c('32' = 'Filled by spectrum noise',
+               '128' = 'Filled by re-detected peak',
+               '0' = 'No gap to fill',
+               '16' = 'Filled by simulated peak',
+               '8' = 'Filled by trace area',
+               '64' = 'Filled by matching ion')
+
+
+gap_rp <- rp_gap %>% 
+  select(FeatureID, contains('Gap Fill Status')) %>% 
+  pivot_longer(!FeatureID, names_to = 'SampleID', values_to = 'Gap_code') %>%
+  filter(!is.na(Gap_code)) %>% 
+  group_by(SampleID, Gap_code) %>% 
+  count()
+  
+
+
+## Barplot
+
+gap_plot <- gap_rp %>% 
+  mutate(SampleID = str_remove(SampleID, 'Gap Fill Status:'),
+         Gap_code = paste0('code_', Gap_code)) %>% 
+  ggplot(aes(x = SampleID,
+             y = n,
+             fill = Gap_code))+
+  geom_col()+
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+gap_plot
+
+```
+
+
+## HILIC
+
+```{r}
+
+hilic_gap <- hilic_results_table %>% 
+  arrange(desc(`Calc. MW`)) %>% 
+  mutate(MW = formatC(round(`Calc. MW`, 5), digits = 5, format = 'f'),
+         RT = formatC(round(`RT [min]`, 3), digits = 3, format = 'f'),
+         m_z = formatC(round(`m/z`, 5), digits = 5, format = 'f'),
+         FeatureID = paste0('FT_', RT,'_', m_z),
+         FeatureID_mgf = paste0('MW_', MW, '@RT_', RT)) %>% 
+  rename_with(function(.x){
+    y <- str_remove(.x, '.raw.*')
+    return(y)
+  })%>% 
+  rename_with(~str_remove(., 'Area: ')) %>% 
+  select(!contains("Pooled")) %>% 
+  select(!contains("Blank"))
+
+
+gap_hilic <- hilic_gap %>% 
+  select(FeatureID, contains('Gap Fill Status')) %>% 
+  pivot_longer(!FeatureID, names_to = 'SampleID', values_to = 'Gap_code') %>%
+  filter(!is.na(Gap_code)) %>% 
+  group_by(SampleID, Gap_code) %>% 
+  count()
+  
+
+
+## Barplot
+
+gap_plot_hilic <- gap_hilic %>% 
+  mutate(SampleID = str_remove(SampleID, 'Gap Fill Status:'),
+         Gap_code = paste0('code_', Gap_code)) %>% 
+  ggplot(aes(x = SampleID,
+             y = n,
+             fill = Gap_code))+
+  geom_col()+
+  theme_bw()+
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+
+gap_plot_hilic
+
+```
+

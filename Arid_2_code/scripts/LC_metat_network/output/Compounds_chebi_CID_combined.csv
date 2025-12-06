@@ -1,0 +1,286 @@
+CHEBI_ID,PubChem_CID,query
+CHEBI:86612,14340,Hydroferulic acid
+CHEBI:1427,91,3-(3-Hydroxyphenyl)propionic Acid
+CHEBI:18414,6990,4-Acetylresorcinol
+CHEBI:36219,84571,alpha-D-Lactose
+CHEBI:37788,30819,O-Phospho-L-tyrosine
+CHEBI:45630,11579,Levulinic acid
+CHEBI:50129,11671,2-Methyllactic acid
+CHEBI:17172,135398592,2-Deoxyguanosine
+CHEBI:16964,78168,5-(Hydroxymethyl)uracil
+CHEBI:167719,2724453,(-)-Corey lactone
+CHEBI:139445,24066906,"(15Z)-9,12,13-Trihydroxy-15-octadecenoic acid"
+CHEBI:177850,6439847,(±)9-HpODE
+CHEBI:190537,45359610,"1-(2,4-dihydroxyphenyl)-2-(3,5-dimethoxyphenyl)propan-1-one"
+CHEBI:143735,260003,1-(Carboxymethyl)cyclohexanecarboxylic acid
+CHEBI:183359,75411985,"1,5,8-Trihydroxy-9-oxo-9H-xanthen-3-yl beta-D-glucopyranoside"
+CHEBI:165310,16061098,19(R)-Hydroxy prostaglandin A2
+CHEBI:167739,17760167,2-Hydroxy-4-(4-hydroxyphenyl)butanoic acid
+CHEBI:144161,6710680,Haematommic Acid
+CHEBI:144161,6710680,Haematommic acid
+CHEBI:139272,107802,3-Hydroxyvaleric acid
+CHEBI:89628,107802,3-Hydroxyvaleric acid
+CHEBI:190617,5715152,"4,5-diphenyl-2,3-dihydro-1H-pyrazolo[3,4-c]pyridazin-3-one"
+CHEBI:181884,23986038,"4-[2-(2,3-Dihydroxy-5,6,8a-trimethyloctahydro-2H-spiro[naphthalene-1,2'-oxiran]-5-yl)ethyl]-5-hydroxy-2(5H)-furanone"
+CHEBI:149776,8485,4-Dodecylbenzenesulfonic acid
+CHEBI:15999,979,4-Hydroxyphenylpyruvic acid
+CHEBI:176669,5354284,"5,7-Dihydroxy-4-methylcoumarin"
+CHEBI:201659,824901,Triacetylphloroglucinol
+CHEBI:68578,354316,5-Aminonicotinic acid
+CHEBI:167482,7940,Glutaric anhydride
+CHEBI:140775,7427,alpha-alpha-Trehalose
+CHEBI:16551,7427,alpha-alpha-Trehalose
+CHEBI:205239,10119161,F13459
+CHEBI:167830,5318650,Isorhapontigenin
+CHEBI:189117,101395619,methadone-d9
+CHEBI:68078,518900,Methyl 4-hydroxyphenylacetate
+CHEBI:168804,10688914,hamilcone
+CHEBI:42223,3220,"1,3,8-trihydroxy-6-methyl-anthracene-9,10-dione"
+CHEBI:172577,101995281,Coriandrone D
+CHEBI:185370,131750936,Coriandrone D
+CHEBI:185370,131750936,"3-Hydroxy-1-(8-hydroxy-6-methoxy-3-methyl-1-oxo-3,4-dihydro-1H-2-benzopyran-7-yl)-3-methylbutan-2-yl acetate"
+CHEBI:72665,10236635,12(13)-DiHOME
+CHEBI:61695,6426709,Prolylglycine
+CHEBI:165341,5283037,Prostaglandin K2
+CHEBI:69908,53387507,Ieodomycin D
+CHEBI:207686,21635171,Waraterpol
+CHEBI:174146,9920917,Dehydrochorismic acid
+CHEBI:213627,71664848,Penicimarin E
+CHEBI:86582,5354677,O-acetylferulic acid
+CHEBI:194956,80652,3-(2-Methoxyphenyl)propanoic acid
+CHEBI:68051,68184,Rotenalone
+CHEBI:144178,138756195,9'-Methylprotocetraric acid
+CHEBI:71493,25245604,(R)-rosmarinate
+CHEBI:204862,11536624,Lachnone C
+CHEBI:144224,13387679,Decarboxythamnolic acid
+CHEBI:144173,591773,Methyl Haematommate
+CHEBI:59488,45480574,Hep-Hep
+CHEBI:68433,151023,gamma-Glu-leu
+CHEBI:68846,6992567,glutamylvaline
+CHEBI:32491,5460955,solatriose
+CHEBI:17596,135398641,inosinum
+CHEBI:60114,3035534,Trehalose 2-sulfate
+CHEBI:149185,71297246,Fuc(a1-2)[Gal(a1-3)]Gal(b1-4)Glc
+CHEBI:62171,52921661,alpha-D-ManAc-(1-P-6)-alpha-D-ManAc
+CHEBI:73707,150914,gamma-Glutamylglutamine
+CHEBI:59493,45480578,beta-D-Glc-(1->4)-[L-alpha-D-Hep-(1->3)]-L-alpha-D-Hep
+CHEBI:154635,13938912,Isomaltotetraose
+CHEBI:153878,9852757,Isomaltotetraose
+CHEBI:231624,25245002,2-methyl-muconate
+CHEBI:17057,439178,D-(+)-Cellobiose
+CHEBI:23673,865,"2,6-Diaminopimelic Acid"
+CHEBI:16634,439242,D-(+)-Raffinose
+CHEBI:16634,439242,D-Raffinose
+CHEBI:47977,439213,D-(+)-Glucosamine
+CHEBI:27248,736715,trans-Urocanic Acid
+CHEBI:30817,736715,trans-Urocanic Acid
+CHEBI:49033,847,Methionine sulfoxide
+CHEBI:82546,11016,Triethylenephosphoramide
+CHEBI:35266,440349,(2S)-2-(3-carboxypropanamido)-6-oxoheptanedioic acid
+CHEBI:145235,11355498,Methylbetain
+CHEBI:64454,34059,Kotanin
+CHEBI:60152,9800166,N-Acetyl-D-lactosamine
+CHEBI:73393,83525,L-Alanyl-L-proline
+CHEBI:44115,70807,4-Morpholinepropanesulfonic acid
+CHEBI:193587,555,DL-Stachydrine
+CHEBI:4828,5351619,L-Ergothioneine
+CHEBI:82707,5351619,L-Ergothioneine
+CHEBI:141433,57262456,Gln-Val
+CHEBI:73705,92865,gamma-Glutamylglutamate
+CHEBI:78668,5312738,10-HDA
+CHEBI:189520,25774975,"(3R,4S)-4,6,8-Trihydroxy-7-methoxy-3-methyl-3,4-dihydro-1H-isochromen-1-one"
+CHEBI:189520,25774975,Lignicol
+CHEBI:190592,643697,"5,8-dihydroxy-10-methyl-5,8,9,10-tetrahydro-2H-oxecin-2-one"
+CHEBI:182009,10933277,"(6S)-6-[(1S,2R)-1,2-dihydroxypentyl]-4-methoxy-5,6-dihydro-2H-pyran-2-one"
+CHEBI:86576,14328,"3',4'-Dimethoxyacetophenone"
+CHEBI:143736,699414,4-Methoxycinnamic acid
+CHEBI:48541,699414,4-Methoxycinnamic acid
+CHEBI:209800,139590042,Banksiamarin A
+CHEBI:583580,64860,"3-(3,4,5-trimethoxyphenyl)propanoic acid"
+CHEBI:27510,5281426,7-Hydroxycoumarine
+CHEBI:183480,16196973,"2-(2-acetyl-3,5-dihydroxyphenyl)acetic acid"
+CHEBI:17132,440395,"Diethyl (2R,3R)-2-methyl-3-hydroxysuccinate"
+CHEBI:191520,131839124,"6-(1,3-Diphenylbut-3-en-2-yloxy)-3,4,5-trihydroxyoxane-2-carboxylic acid"
+CHEBI:107667,5355836,"7,8-Dihydroxy-4-methylcoumarin"
+CHEBI:228492,2812085,2-{[2-(3-cyano-2-pyridinyl)hydrazino]carbonyl}benzoic acid
+CHEBI:183468,13213508,4-oxododecanedioic acid
+CHEBI:223126,73211861,Saccharonol B
+CHEBI:167834,691106,3-(4-Methylbenzoyl)acrylic acid
+CHEBI:183333,2739565,methyl 4-methyl-2-oxo-2H-pyran-6-carboxylate
+CHEBI:181307,75528932,NP-019992
+CHEBI:194295,2817699,N1-(1H-indol-4-yl)cyclohexane-1-carboxamide
+CHEBI:137246,21252288,Benzoquinoneacetic acid
+CHEBI:182006,56773904,NP-016564
+CHEBI:203152,52920647,Pestalotiopyrone H
+CHEBI:65981,10243103,Gtri-02
+CHEBI:65981,10243103,"7-Acetyl-3,6-dihydroxy-8-methyl-tetralone"
+CHEBI:183632,86597497,"4,6,7-Trihydroxycoumarin"
+CHEBI:145256,5319502,"6,7-Dihydroxy-4-methylcoumarin"
+CHEBI:78688,16547,"1-(3-acetyl-2,4,6-trihydroxyphenyl)ethan-1-one"
+CHEBI:137371,69226,5-Formylsalicylic acid
+CHEBI:182254,11241847,NP-004713
+CHEBI:183334,713937,"4-oxo-4,5,6,7-tetrahydrobenzo[b]furan-3-carboxylic acid"
+CHEBI:93172,3083928,"6,7,8-trimethoxy-2H-chromen-2-one"
+CHEBI:36773,2537,D-(+)-Camphor
+CHEBI:66729,33960,6-Pentyl-2H-pyran-2-one
+CHEBI:92544,596344,Sparassol
+CHEBI:10073,65188,"8,8-dimethyl-2H,8H-pyrano[3,2-g]chromen-2-one"
+CHEBI:169678,5317271,Eugenone
+CHEBI:183414,14632997,"1,4-dihydroxy-1,4-dimethyl-7-(propan-2-ylidene)-decahydroazulen-6-one"
+CHEBI:133858,44715161,"2,4-Dihydroxy-6-(4-hydroxy-2-oxopentyl)-3-methylbenzaldehyde"
+CHEBI:168073,5319500,Cassiachromone
+CHEBI:227704,77461064,Sterenin F
+CHEBI:6695,334704,"(2S)-2-(2-hydroxypropan-2-yl)-2H,3H,7H-furo[3,2-g]chromen-7-one"
+CHEBI:17501,5280698,"1,2-Bis(4-hydroxy-3-methoxyphenyl)ethylene"
+CHEBI:36390,5280698,"1,2-Bis(4-hydroxy-3-methoxyphenyl)ethylene"
+CHEBI:167836,5376187,Sorbicillin
+CHEBI:67379,5357283,Methyl ferulate
+CHEBI:190557,2823508,"2-(benzotriazol-1-yl)-N-(2,3-dihydro-1H-inden-2-yl)acetamide"
+CHEBI:182330,23815258,"Cembratetraene-16,2:19,6-diolide"
+CHEBI:8306,5281570,"8-Hydroxy-6-methoxy-3,4-dimethylisochromen-1-one"
+CHEBI:174211,40604,"(7R,8S)-7,8-Dihydroxy-3,7-dimethyl-6-oxo-7,8-dihydro-6H-isochromene-5-carbaldehyde"
+CHEBI:192633,179399,"4-methoxy-9-(2-methylbut-3-en-2-yl)-7H-furo[3,2-g]chromen-7-one"
+CHEBI:182932,45359318,NP-008095
+CHEBI:68234,4276,"4-methoxy-6-(prop-2-en-1-yl)-2H-1,3-benzodioxole"
+CHEBI:182459,190904,6-(3-hydroxybutan-2-yl)-5-(hydroxymethyl)-4-methoxy-2H-pyran-2-one
+CHEBI:94483,1780,Eicosatetraynoic acid
+CHEBI:138308,114778,Kahweol
+CHEBI:181295,56776388,"5-(4-carboxy-3-methylbutyl)-5,6,8a-trimethyl-3-oxo-3,4,4a,5,6,7,8,8a-octahydronaphthalene-1-carboxylic acid"
+CHEBI:175527,131752049,"(ent-6alpha,7alpha,16alphaH)-6,7,17-Trihydroxy-19-kauranoic acid"
+CHEBI:207715,132487830,Ochracene D
+CHEBI:199563,101876422,Phomopsolidone A
+CHEBI:167734,2811005,2-{2-[5-(Ethoxycarbonyl)-2-morpholinoanilino]-2-oxoethoxy}acetic acid
+CHEBI:224177,139586543,Territrem E
+CHEBI:210585,75411942,NP-019547
+CHEBI:174626,11000257,2-Butyl-5-[2-(4-hydroxy-3-methoxyphenyl)ethyl]furan
+CHEBI:86136,5312495,Pinolenic acid
+CHEBI:181230,53851542,NP-008993
+CHEBI:168100,131751030,"(S)-2,3-Dihydro-6-hydroxy-5-(hydroxyacetyl)-2-isopropenylbenzofuran"
+CHEBI:223044,146684996,Prenylterphenyllin J
+CHEBI:172456,6443694,3-(4-Hydroxy-3-(3-methyl-2-butenyl)phenyl)-2-propenal
+CHEBI:11946,5462194,Crotonic acid betaine
+CHEBI:17237,5462194,Crotonic acid betaine
+CHEBI:183744,2740612,"7-methylpyrimido[4,5-d]pyrimidin-4-amine"
+CHEBI:65680,44559036,"(2S)-6-(Gamma,Gamma-Dimethylallyl)-5-Hydroxy-3',4'-Dimethoxy-6'',6''-Dimethylpyran(2'',3'':7,8)Flavanone"
+CHEBI:15639,135398659,5-Formimidoyltetrahydrofolic acid
+CHEBI:79532,239804,"17beta-Hydroxyandrost-4-ene-3,11-dione propionate"
+CHEBI:1848,440894,"(2S,4S)-4-amino-2-hydroxy-2-methylpentanedioic acid"
+CHEBI:20384,440894,"(2S,4S)-4-amino-2-hydroxy-2-methylpentanedioic acid"
+CHEBI:183670,79256,5-amino-1-phenyl-1H-pyrazole-4-carbonitrile
+CHEBI:94405,5666,Viloxazine
+CHEBI:134918,18047,Toliprolol
+CHEBI:190559,2812702,(5-methyl-3-isoxazolyl)[4-(5-propyl-2-pyrimidinyl)piperazino]methanone
+CHEBI:83481,86863,Ritalinic acid
+CHEBI:216123,5275344,"(4R,5R)-4,5-dihydroxy-3-methoxy-5-methyl-cyclohex-2-en-1-one"
+CHEBI:190667,38361962,"3-(5,7-Dimethoxy-4-oxochromen-2-yl)propanoic acid"
+CHEBI:166506,53481648,5-Hydroxytryptophol glucuronide
+CHEBI:28063,7237,2-xylene
+CHEBI:168124,3083620,3-(1H-imidazol-5-yl)-2-(trimethylazaniumyl)propanoate
+CHEBI:174743,44243661,"4-Hydroxy-3,5,4'-trimethoxystilbene"
+CHEBI:65141,70678711,alpha-D-GlcNAc-(1->4)-D-GlcA
+CHEBI:79727,251869,"3-Hydroxy-estra-1,3,5(10)-trien-16-one"
+CHEBI:61041,49852406,2-acetamido-2-deoxy-3-O-(6-O-sulfonato-beta-D-glucosyl)-beta-D-galactose
+CHEBI:79757,222846,"1-Methylestra-1,3,5(10),6-tetraene-3,17beta-diol"
+CHEBI:31833,443733,"Methyl 5-(but-3-en-1-yl)amino-1,3,4-oxadiazole-2-carboxylate"
+CHEBI:168674,85149847,Citbismine C
+CHEBI:62464,5288346,O-(3-O-beta-D-galactosyl-N-acetyl-alpha-D-galactosaminyl)-L-serine
+CHEBI:73847,7020029,Gln-Glu
+CHEBI:15847,5460194,2-O-alpha-mannosyl-D-glycerate
+CHEBI:4188,443223,"D-Glycero-D-manno-heptose 1,7-bisphosphate"
+CHEBI:178214,131770417,N-lactoyl-Valine
+CHEBI:85259,8021,Diethamine
+CHEBI:73510,6998031,Glu-Thr
+CHEBI:73606,7010718,H-Lys-Thr-OH
+CHEBI:189015,131769998,3-cis-Hydroxyglipizide
+CHEBI:62662,53356713,beta-D-galactosyl-(1->4)-N-acetyl-beta-D-glucosaminyl-(1->6)-D-galactitol
+CHEBI:172723,14890279,Piperenol A triacetate
+CHEBI:52046,13093115,7-methyl-3-oxooct-6-enoic acid
+CHEBI:174225,13953341,Benzoylmalic acid
+CHEBI:81698,201448,Camphenal
+CHEBI:119786,6491564,"2-[(3,6-dimethyl-4-oxo-2-thieno[2,3-d]pyrimidinyl)thio]-N-(4-methylphenyl)acetamide"
+CHEBI:155858,102304306,"3-(2-Oxopropyl)-6,8-dihydroxyisocoumarin"
+CHEBI:216278,135410277,Parasperone A
+CHEBI:223350,10081079,3-(1-Hydroxy-2-Methylbutyl)-4-Methyl-2(5H)-Furanone)
+CHEBI:181572,16681748,Peniprequinolone
+CHEBI:181005,44715172,46-Dimethylcurvulinic acid
+CHEBI:179251,62374,"2,6,6-Trimethyl-2-cyclohexene-1,4-dione"
+CHEBI:29711,443606,"alpha-D-Glucopyranose, 2-deoxy-2-(dimethylamino)"
+CHEBI:70766,22328017,3-Hydroxysuberic acid
+CHEBI:207812,24762997,Aspinonediol
+CHEBI:144127,78435,"Methyl 2,4-dihydroxy-3,6-dimethylbenzoate"
+CHEBI:173462,15146,Methyl 3-hydroxybutyrate
+CHEBI:155857,146672858,Dehydrocitreoisocoumarin
+CHEBI:198908,177363,8(S)-Amino-2(R)-methyl-7-oxononanoic acid
+CHEBI:67898,76658,"Methyl 2,4-dihydroxy-6-methylbenzoate"
+CHEBI:168623,76551322,Dihydrodeoxy-8-epiaustdiol
+CHEBI:189024,85638857,"3-(2,5-Dihydroxyphenyl)prop-2-enal"
+CHEBI:169522,131835220,"6-[(E)-3-carboxy-2-methylprop-2-enoxy]-3,4,5-trihydroxyoxane-2-carboxylic acid"
+CHEBI:16026,439283,"(2S,6S)-2,6-diaminoheptanedioic acid"
+CHEBI:195885,14391671,Tsibulin 2
+CHEBI:218282,146684431,Aspergilate D
+CHEBI:181022,11969970,Asperfuran
+CHEBI:136463,132282054,Erucifoline N-oxide
+CHEBI:85263,8899,N-(2-Hydroxyethyl)dodecanamide
+CHEBI:67490,10890323,Preremirol
+CHEBI:218357,135418331,"5,8-dihydroxy-10-methoxy-2-methyl-4H-benzo[h]chromen-4-one"
+CHEBI:168108,539964,"3,11,12-Trihydroxy-1(10)-spirovetiven-2-one"
+CHEBI:136629,131752244,N-(1-Deoxy-1-fructosyl)leucine
+CHEBI:87986,154035,p-Cresol glucuronide
+CHEBI:174164,290988,"4,5-Dimethoxyphthalic acid"
+CHEBI:81275,46173978,"2(3H)-Furanone, dihydro-4-((4-hydroxy-3-(2-hydroxy-2-(4-hydroxy-3-methoxyphenyl)-1-(hydroxymethyl)ethyl)-5-methoxyphenyl)methyl)-3-((4-hydroxy-3-methoxyphenyl)methyl)-, (3R,4R)-"
+CHEBI:165894,25202447,"N-succinyl-L,L-2,6-diaminopimelate"
+CHEBI:168716,131837489,"6-(2-Benzyl-3-oxopropoxy)-3,4,5-trihydroxyoxane-2-carboxylic acid"
+CHEBI:174671,73880643,"(1beta,4alpha,5alpha,6beta,8alpha,10b)-1,10:4,5-Diepoxy-6-hydroxy-7(11)-germacren-12,8-olide"
+CHEBI:199540,139583741,Colisiderin A
+CHEBI:169241,536551,15-Acetyl-4-deoxynivalenol
+CHEBI:133856,122198273,Azanigerone E
+CHEBI:209857,14314901,7-Oxocurvularin
+CHEBI:192678,15956,"Methyl 3,4,5-trimethoxybenzoate"
+CHEBI:190862,131836974,"3,4,5-trihydroxy-6-[(E)-5-(4-methoxyphenyl)-3-oxopent-4-enoxy]oxane-2-carboxylic acid"
+CHEBI:216494,5367382,"1,3,6-Octatriene"
+CHEBI:92577,5377914,"1,3-Dihydroxy-6-methoxy-8-methyl-9-xanthenone"
+CHEBI:68704,71768073,5'-Hydroxyasperentin
+CHEBI:198889,71606916,Aculeatusquinone C
+CHEBI:221802,71436822,"6-Hydroxy-7,8-dimethoxy-2-(2-oxopropyl)-2,3,3a,9b-tetrahydrouro[3,2-c]isochromen-5-one"
+CHEBI:168018,6426767,"6-(4-Ethenylphenoxy)-3,4,5-trihydroxyoxane-2-carboxylic acid"
+CHEBI:208705,139586947,"13-hydroxy-15-methoxy-3-methyl-3,4,5,6,9,10-hexahydro-1H-benzo(c)(1)oxacyclododecine-1,7(8H)-dione"
+CHEBI:185464,317611,Gangetin
+CHEBI:214048,139588465,Botryosphaerin F
+CHEBI:220546,139586345,Aspergentisyl B
+CHEBI:202408,91753566,"Megastigma-4,6(E),8(Z)-triene"
+CHEBI:203878,122201239,Dehydroaustin
+CHEBI:192119,131837021,"2-(4-Hydroxy-3-methylbut-2-en-1-yl)-4-(3-methylbut-2-en-1-yl)benzene-1,3,5-triol"
+CHEBI:79599,5838784,"4-Benzyloxy-2'-hydroxy-3',4',5',6'-tetramethoxychalcone"
+CHEBI:169234,10916629,Garcimangosone C
+CHEBI:219928,76450517,Pseudoalteromone A
+CHEBI:195870,12180841,"formyl 2Z,4E,6Z-decatrienoate"
+CHEBI:67827,5470400,Austocystin D
+CHEBI:127438,60189832,"1-[(1R)-1-(hydroxymethyl)-7-methoxy-9-methyl-1'-(pyridin-4-ylmethyl)-2-spiro[1,3-dihydropyrido[3,4-b]indole-4,4'-piperidine]yl]-2-(4-morpholinyl)ethanone"
+CHEBI:2222,182181,Euparin methyl ether
+CHEBI:214999,16105144,Isobisvertinol
+CHEBI:202267,23624765,Kioukasin A
+CHEBI:74219,71581117,fumicycline A
+CHEBI:168920,197627,alpha-Hydroxysalmeterol
+CHEBI:174907,6440422,"9-Hydroxy-4-(3,7-dimethyl-2,6-octadienyloxy)-psoralen"
+CHEBI:77754,86583341,9-hydroperoxy-10E-octadecenoate
+CHEBI:214088,139590714,Aspergixanthone I
+CHEBI:198969,102341761,Aspergilline B
+CHEBI:190318,628758,"7,18-Dihydroxykaurenolide"
+CHEBI:89308,23208897,6-Amino-2-(4-aminobutanamido)hexanoic acid
+CHEBI:92599,6708539,Rotenonic acid
+CHEBI:175448,131753003,"3b-Hydroxy-6b-tigloyloxy-7(11)-eremophilen-12,8b-olide"
+CHEBI:174955,53481537,9'-Carboxy-gamma-tocotrienol
+CHEBI:182655,104301,"1-(2-Hydroxyethyl)-2,2,6,6-tetramethyl-4-hydroxypiperidine"
+CHEBI:188134,131753074,beta-D-Galactopyranosyl-(1->4)-2-amino-2-deoxy-beta-D-glucopyranosyl-(1->6)-D-mannose
+CHEBI:74074,135407110,Allopurinol riboside
+CHEBI:82965,7009567,gamma-Glutamylmethionine
+CHEBI:224540,135509123,5'-Deoxyguanosine
+CHEBI:73513,515717,Glu-Tyr
+CHEBI:229118,5317361,Floridinine
+CHEBI:88762,53481638,2-Hexenoylcarnitine
+CHEBI:73057,71464537,O-sebacoylcarnitine
+CHEBI:192040,27694,"6,7-Dimethoxy-2-methyl-1,2,3,4-tetrahydroisoquinoline"
+CHEBI:169226,196513,6-Hydroxy-5-methoxyindole glucuronide
+CHEBI:172443,177040,"1-(2,2-Dimethylchromen-6-yl)ethanone"
+CHEBI:173555,21909602,"3,4',5-Biphenyltriol"
+CHEBI:193968,316180,Pentahydroxybenzene

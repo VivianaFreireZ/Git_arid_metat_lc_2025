@@ -1,0 +1,4 @@
+"0","HILIC_df <- read_csv(""scripts/LC-MS-MS/1.Pre-processing/output/HILIC_matrix_clean_2025.csv"")
+"
+"2","Error: 'scripts/LC-MS-MS/1.Pre-processing/output/HILIC_matrix_clean_2025.csv' does not exist in current working directory ('C:/Users/vivia/Escritorio/Arid_metaT-LCMS_2025/Arid_2_code/scripts/LC-MS-MS/5.Metabolite_model').
+"

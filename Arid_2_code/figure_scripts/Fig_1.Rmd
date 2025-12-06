@@ -1,0 +1,1148 @@
+---
+title: "Figure 1"
+author: "Viviana Freire Zapata"
+date: "9/30/2025"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: '2'
+    collapsed: false
+    highlight: tango
+    css: style.css
+editor_options: 
+  chunk_output_type: console
+---
+
+# Data Pre-processing
+
+## 1. Setup
+
+### Importing libraries
+
+```{r libraries, message=FALSE, warning=FALSE}
+
+library(easystats)
+library(vegan)
+library(GGally)
+library(ggpubr)
+library(glmnet)
+library(ggbeeswarm)
+library(lme4)
+library(lmerTest)
+library(readxl)
+library(ggforce)
+library(ggtext)
+library(patchwork)
+library(matrixStats)
+library(tidyverse)
+source('figure_scripts/functions_cdis_exploration.R')
+source('figure_scripts/functions_cdis_norm_stats.R')
+source('figure_scripts/functions_extra.R')
+```
+
+### Loading data 
+
+```{r}
+## Raw matrix
+
+metaG <- read_tsv("input/coverage_coverm_aln.tsv")
+
+metaT <- read_csv("output/geTMM_normalized_matrix_2025.csv")
+
+
+```
+
+## Loading metadata
+
+```{r}
+
+## Metadata
+
+metadata <- read_csv("input/metadata_omics.csv")
+
+metadata_T <- read_csv("input/metadata_omics.csv") %>% 
+  filter(!is.na(SampleID_metaT)) %>% 
+  mutate(treatment_code = str_replace_all(treatment_code, '_', '-') )
+
+```
+
+## Creating colors 
+
+```{r}
+
+month_list <- metadata %>% 
+  mutate(month = factor(month, levels = c('May', 'June', 'July_1', 'July_2',
+                                          'July_3', 'August', 'September', 
+                                          'October', 'May_22'))) %>% 
+  select(month) %>% 
+  distinct() %>% 
+  pull()
+
+my_colors <- set_names(get_palette('Spectral', 12)[c(1:2, 9:12, 4, 5, 3)],
+                          nm = levels(month_list))
+
+stage_list <- metadata %>% 
+  mutate(stage = factor(stage, levels = c('Pre_monsoon', 'During_monsoon', 
+                                          'Post_monsoon'))) %>%
+  select(stage) %>% 
+  distinct() %>% 
+  pull()
+
+stage_colors <- set_names(c('#FEDD7F', '#9bc1bc', '#ed6a5a'),
+                          nm = levels(stage_list))
+
+
+```
+
+
+### NMDS - TRANSCRIPTS
+
+## Note: genes/metabolites as columns and samples as rows ##
+
+Calculating distance matrix
+
+```{r}
+metaT <- metaT %>% 
+  column_to_rownames(var = "Geneid")
+
+## Filtering 
+
+## Removing genes with zero counts 
+
+metaT_ft <- metaT[rowSums(metaT >= 5) >= 3,]
+
+```
+
+
+```{r}
+t_norm_matrix <- t(metaT_ft)
+
+# distance matrix by Bray because relative abundance mode was selected
+dm <- vegdist(t_norm_matrix[metadata_T$treatment_code,], method = 'bray')
+
+```
+
+
+Performing NMDS analysis
+
+#NMDS stress
+# > 0.2 is deemed suspect
+# approaching 0.3 is arbitrary
+# = < 0.1 fair
+# = < 0.5 good
+
+
+```{r}
+set.seed(123)
+nmds <- metaMDS(dm,
+                k = 2,
+                maxit = 999,
+                trymax = 500,
+                wascores = TRUE)
+stressplot(nmds)
+
+```
+
+
+Extracting NMDS scores and plotting
+
+```{r}
+
+nmds_scores <- as.data.frame(scores(nmds, display = 'sites')) %>%
+  rownames_to_column(var = 'SampleID') %>% 
+  left_join(metadata_T, by = c('SampleID' = 'treatment_code'))
+
+nmds_scores$month <- factor(nmds_scores$month, levels = c("May", "July_1", "July_2", "July_3", "August", "October", "May_22"))
+
+nmds_scores$stage <- factor(nmds_scores$stage, levels = c("Pre_monsoon", "During_monsoon", "Post_monsoon"))
+
+```
+
+
+```{r}
+## Testing PERMANOVA
+
+# distance matrix by Bray because relative abundance mode was selected
+
+dm_all <- vegdist(t_norm_matrix[metadata_T$treatment_code,], method = "bray")
+
+set.seed(456)
+
+permanova <- adonis2(dm_all ~ month,
+                     data=metadata_T, 
+                     permutations=999,
+                     method="bray",
+                     by = 'terms')
+
+permanova
+
+```
+
+## get Centroid
+
+```{r}
+
+centroid <- nmds_scores %>% 
+  group_by(stage) %>% 
+  summarise(axis1 = mean(NMDS1),
+            axis2 = mean(NMDS2)) %>% 
+  ungroup()
+
+```
+
+## extract convex hull
+
+```{r}
+
+stage.hull <- nmds_scores %>% 
+  group_by(stage) %>%
+  slice(chull(NMDS1, NMDS2))
+
+```
+
+```{r}
+
+nmds_plot_metaT <- nmds_scores %>% 
+  ggplot(aes(x = NMDS1,
+             y = NMDS2))+
+  geom_point(aes(color = month),
+             size = 2) +
+  geom_point(data = centroid, 
+             aes(x = axis1, y = axis2, 
+                 color = stage), 
+             size = 3, shape = 17)+
+  geom_polygon(data = stage.hull, 
+               aes(x = NMDS1, y = NMDS2, 
+                   fill = stage, 
+                   group = stage), 
+               alpha = 0.30) +
+  scale_color_manual(values = my_colors)+
+  scale_fill_manual(values = stage_colors)+
+  annotate("text", x = 0.55, y = -0.3,
+           label = paste(c('Stress: ', round(nmds$stress, 4), "\n",
+                           'Month pvalue: ', 
+                           round(permanova$`Pr(>F)`[1], 4),"\n",
+                           'Month R²: ', round(permanova$R2[1], 2)),
+                         collapse = ''),
+           size = 2.5)+
+  labs(fill = "Monsoon stage", shape = "Monsoon stage",
+       title = "Metatranscriptome")+
+  theme_bw() +
+  theme(plot.title = element_text(face = 'bold', hjust = 0.5),
+        plot.subtitle = element_markdown(),
+        legend.position = 'none',
+        legend.box = 'vertical',
+        legend.text = element_markdown(),
+        panel.grid = element_blank()) 
+
+nmds_plot_metaT
+
+
+```
+
+
+### NMDS - metaG
+
+## Note: genes/metabolites as columns and samples as rows ##
+
+Calculating distance matrix
+
+```{r}
+metaG <- metaG %>% 
+  column_to_rownames(var = "Genome") 
+
+metaG_ready <- metaG %>% 
+  rename_with(.fn = function(x) str_remove(x, '_L000_R1_001.anqdpht.fastq.gz Trimmed Mean')) %>% 
+  rownames_to_column(var = "Genome") %>% 
+  pivot_longer(!Genome, names_to = "SampleID", values_to = "abundance") %>% 
+  mutate(SampleID = str_remove(SampleID, "_S.*")) %>% 
+  group_by(Genome, SampleID) %>% 
+  summarise(abundance_mean = mean(abundance)) %>% 
+  ungroup() %>% 
+  pivot_wider(names_from = SampleID, values_from = abundance_mean) %>% 
+  column_to_rownames(var = "Genome")
+
+
+metadata_metaG <- metadata %>% 
+  mutate(SampleID_g = str_replace_all(SampleID_metaT, "RNA", "DNA")) %>% 
+  filter(!is.na(SampleID_metaT)) %>% 
+  rename(SampleID = SampleID_g)
+
+```
+
+
+```{r}
+t_norm_matrix <- t(metaG_ready)
+
+# distance matrix by Bray because relative abundance mode was selected
+
+dm <- vegdist(t_norm_matrix[metadata_metaG$SampleID,], method = 'bray')
+
+```
+
+
+Performing NMDS analysis
+
+#NMDS stress
+# > 0.2 is deemed suspect
+# approaching 0.3 is arbitrary
+# = < 0.1 fair
+# = < 0.5 good
+
+
+```{r}
+set.seed(123)
+nmds <- metaMDS(dm,
+                k = 2,
+                maxit = 999,
+                trymax = 500,
+                wascores = TRUE)
+stressplot(nmds)
+```
+
+
+Extracting NMDS scores and plotting
+
+```{r}
+
+nmds_scores <- as.data.frame(scores(nmds, display = 'sites')) %>%
+  rownames_to_column(var = 'SampleID') %>% 
+  left_join(metadata_metaG, by = 'SampleID')
+
+nmds_scores$month <- factor(nmds_scores$month, levels = c("May", "July_1", "July_2", "July_3", "August", "October", "May_22"))
+
+nmds_scores$stage <- factor(nmds_scores$stage, levels = c("Pre_monsoon", "During_monsoon", "Post_monsoon"))
+
+```
+
+
+```{r}
+## Testing PERMANOVA
+
+# distance matrix by Bray because relative abundance mode was selected
+
+dm_all <- vegdist(t_norm_matrix[metadata_metaG$SampleID,], method = "bray")
+
+set.seed(456)
+
+permanova <- adonis2(dm_all ~ month,
+                     data=metadata_metaG, 
+                     permutations=999,
+                     method="bray",
+                     by = 'terms')
+
+permanova
+
+```
+
+
+## get Centroid
+
+```{r}
+
+centroid <- nmds_scores %>% 
+  group_by(stage) %>% 
+  summarise(axis1 = mean(NMDS1),
+            axis2 = mean(NMDS2)) %>% 
+  ungroup()
+
+```
+
+## extract convex hull
+
+```{r}
+
+stage.hull <- nmds_scores %>% 
+  group_by(stage) %>%
+  slice(chull(NMDS1, NMDS2))
+
+```
+
+```{r}
+
+nmds_plot_metaG <- nmds_scores %>% 
+  ggplot(aes(x = NMDS1,
+             y = NMDS2))+
+  geom_point(aes(color = month),
+             size = 2) +
+  geom_point(data = centroid, 
+             aes(x = axis1, y = axis2, 
+                 color = stage), 
+             size = 3, shape = 17)+
+  geom_polygon(data = stage.hull, 
+               aes(x = NMDS1, y = NMDS2, 
+                   fill = stage, 
+                   group = stage), 
+               alpha = 0.30) +
+  scale_color_manual(values = my_colors)+
+  scale_fill_manual(values = stage_colors)+
+  annotate("text", x = -1, y = -0.46,
+           label = paste(c('Stress: ', round(nmds$stress, 4), "\n",
+                           'Month pvalue: ', 
+                           round(permanova$`Pr(>F)`[1], 4),"\n",
+                           'Month R²: ', round(permanova$R2[1], 2)),
+                         collapse = ''),
+           size = 2.5)+
+  labs(fill = "Monsoon stage", shape = "Monsoon stage",
+       title = "Metagenome")+
+  theme_bw() +
+  theme(plot.title = element_text(face = 'bold', hjust = 0.5),
+        plot.subtitle = element_markdown(),
+        legend.position = 'none',
+        legend.box = 'vertical',
+        legend.text = element_markdown(),
+        panel.grid = element_blank()) 
+
+nmds_plot_metaG
+
+
+```
+
+
+# LC-MS - RP
+
+# Loading data 
+
+```{r}
+## Raw matrix
+
+RP_df <- read_csv("scripts/LC-MS-MS/1.Pre-processing/output/RP_matrix_clean_2025.csv")
+
+
+## Loading annotation
+
+annot <- read_csv("scripts/LC-MS-MS/3.Cleanning_Annotation/output/RP_final_annotation_11_20_25.csv")
+
+```
+
+
+## Prepare matrix
+
+```{r}
+
+rp_ready <- RP_df %>% 
+  select(FeatureID, contains("RP")) %>% 
+  filter(FeatureID %in% annot$FeatureID) %>% 
+  column_to_rownames(var = "FeatureID") 
+
+```
+
+
+# Feature filtering
+
+```{r}
+### Calculating IQR to keep only traits that are changing more
+## Filtering metabolites and genes that doesn't change much
+## Idea decrease the number of features to have a more balance matrices 
+
+iqr_test_matrix <- rowIQRs(as.matrix(rp_ready))
+
+iqr_res <- as.data.frame(as.matrix(iqr_test_matrix))
+
+# Filtering according to metaboAnalyts
+
+# 1) Less than 250 variables: 5% will be filtered; 
+# 2) Between 250 - 500 variables: 10% will be filtered; 
+# 3) Between 500 - 1000 variables: 25% will be filtered; and 
+# 4) Over 1000 variables: 40% will be filtered.
+
+## 10% of the features will be filtered
+
+# Sorting from largest to smallest (higher ranking = low iqr)
+rk <- rank(-iqr_test_matrix, ties.method = 'random')
+
+# Determining the number of remaining features
+remain.num <- nrow(rp_ready)*.9
+
+remain <- rk <= remain.num
+
+features_keep <- rownames(rp_ready)[remain] 
+
+## Filter matrix
+
+matrix_ft <- rp_ready[features_keep,]
+
+## Note: 919 features kept for downstream analysis
+```
+
+
+# Metabolite Normalization
+
+## Median normalization
+
+```{r}
+
+norm_matrix <- median.norm(matrix_ft, transform_data = TRUE)
+
+
+```
+
+
+### NMDS - LC-MS
+
+Calculating distance matrix
+
+```{r}
+t_norm_matrix <- t(norm_matrix)
+
+metadata_rp <- metadata %>% 
+  filter(!is.na(SampleID_RP))
+
+
+dm <- vegdist(t_norm_matrix[metadata_rp$SampleID_RP,], method = 'bray')
+
+```
+
+
+Performing NMDS analysis
+
+#NMDS stress
+# > 0.2 is deemed suspect
+# approaching 0.3 is arbitrary
+# = < 0.1 fair
+# = < 0.5 good
+
+
+```{r}
+set.seed(123)
+nmds <- metaMDS(dm,
+                k = 2,
+                maxit = 999,
+                trymax = 500,
+                wascores = TRUE)
+stressplot(nmds)
+```
+
+
+Extracting NMDS scores and plotting
+
+```{r}
+
+nmds_scores <- as.data.frame(scores(nmds, display = 'sites')) %>%
+  rownames_to_column(var = 'SampleID') %>% 
+  left_join(metadata_rp, by = c('SampleID' = 'SampleID_RP'))
+
+nmds_scores$month <- factor(nmds_scores$month, levels = c("May", "June", "July_1", "July_2", "July_3", "August", "September", "October"))
+
+nmds_scores$stage <- factor(nmds_scores$stage, levels = c("Pre_monsoon", "During_monsoon", "Post_monsoon"))
+
+
+```
+
+
+```{r}
+## Testing PERMANOVA
+
+# distance matrix by Bray because relative abundance mode was selected
+
+dm_all <- vegdist(t_norm_matrix[metadata_rp$SampleID_RP,], method = "bray")
+
+set.seed(456)
+
+permanova <- adonis2(dm_all ~ month,
+                     data=metadata_rp, 
+                     permutations=999,
+                     strata = metadata_rp$site,
+                     method="bray",
+                     by = 'terms')
+
+permanova
+
+```
+
+## get Centroid
+
+```{r}
+
+centroid <- nmds_scores %>% 
+  group_by(stage) %>% 
+  summarise(axis1 = mean(NMDS1),
+            axis2 = mean(NMDS2)) %>% 
+  ungroup()
+
+```
+
+## extract convex hull
+
+```{r}
+
+stage.hull <- nmds_scores %>% 
+  group_by(stage) %>%
+  slice(chull(NMDS1, NMDS2))
+
+```
+
+```{r}
+
+nmds_plot_rp <- nmds_scores %>% 
+  ggplot(aes(x = NMDS1,
+             y = NMDS2))+
+  # geom_mark_ellipse(aes(fill = stage),
+  #                   alpha = 0.05,
+  #                   show.legend = FALSE) +
+  #scale_fill_manual(values = c('firebrick4', 'steelblue', 'orange')) +
+  geom_point(aes(color = month),
+             size = 2) +
+  geom_point(data = centroid, 
+             aes(x = axis1, y = axis2, 
+                 color = stage), 
+             size = 3, shape = 17)+
+  geom_polygon(data = stage.hull, 
+               aes(x = NMDS1, y = NMDS2, 
+                   fill = stage, 
+                   group = stage), 
+               alpha = 0.30) +
+  scale_color_manual(values = my_colors)+
+  scale_fill_manual(values = stage_colors)+
+  annotate("text", x = -0.01, y = -0.01,
+           label = paste(c('Stress: ', round(nmds$stress, 4), "\n",
+                           'Month pvalue: ', 
+                           round(permanova$`Pr(>F)`[1], 4),"\n",
+                           'Month R²: ', round(permanova$R2[1], 2)),
+                         collapse = ''),
+           size = 2.5)+
+  labs(fill = "Monsoon stage", shape = "Monsoon stage",
+       title = "Metabolomics - RP mode")+
+  theme_bw() +
+  theme(plot.title = element_text(face = 'bold', hjust = 0.5),
+        plot.subtitle = element_markdown(),
+        panel.grid = element_blank(),
+        legend.position = 'none',
+        legend.box = 'vertical',
+        legend.text = element_markdown()) 
+
+nmds_plot_rp
+
+
+```
+
+
+# Creating metadata for plot
+
+```{r}
+
+### Creating Month lengend
+
+metadata_plot <- tibble(Month = c('May', 'June', 'July_1', 'July_2',
+                                  'July_3', 'August', 'September', 
+                                  'October', 'May_22'),
+                        Stage = c('Pre monsoon', 'Pre monsoon', 'During monsoon', 
+                                  'During monsoon', 'During monsoon', 'During monsoon',
+                                  'Post monsoon','Post monsoon', 'Pre monsoon'))
+
+
+plot_label <- metadata_plot %>% 
+  mutate(Month = factor(Month, levels = c('May', 'June', 'July_1', 'July_2',
+                                          'July_3', 'August', 'September', 
+                                          'October', 'May_22'))) %>% 
+  ggplot()+
+  geom_point(aes(x = Month,
+                 y = 1,
+                 color = Month))+
+  scale_color_manual(values = my_colors)+
+  theme_bw()+
+  theme(legend.position = 'bottom')
+
+plot_label
+
+leg_month <- get_legend(plot_label)
+
+
+### Creating monsoon stage
+
+stage_list <- metadata_plot %>% 
+  dplyr::select(Stage) %>% 
+  distinct() %>% 
+  mutate(Stage = factor(Stage, levels = c('Pre monsoon', 'During monsoon',
+                                          'Post monsoon')))
+
+
+stage_colors2 <- set_names(c('#FEDD7F', '#9bc1bc', '#ed6a5a'),
+                           nm = levels(stage_list))
+
+plot_stage <- metadata_plot %>% 
+  mutate(Stage = factor(Stage, levels = c('Pre monsoon', 'During monsoon',
+                                          'Post monsoon'))) %>% 
+  mutate(Month = factor(Month, levels = c('May', 'June', 'July_1', 'July_2',
+                                          'July_3', 'August', 'September', 
+                                          'October', 'May_22'))) %>% 
+  ggplot()+
+  geom_point(aes(x = Stage,
+                 y = 1,
+                 color = Stage),
+             shape = 15)+
+  scale_color_manual(values = stage_colors2) +
+  ggnewscale::new_scale_color() +
+  geom_point(aes(x = Month,
+                 y = 1,
+                 color = Month),
+             shape = 16) +
+  scale_color_manual(values = my_colors) +
+  guides(color = guide_legend(nrow = 2)) +
+  theme_bw()+
+  theme(legend.position = 'bottom',
+        legend.box = 'vertical',
+        legend.title = element_text(size = 7),
+        legend.text = element_text(size = 6),
+        legend.key.size = unit(.1, 'lines'),
+        legend.key.spacing = unit(0.3, 'lines'),
+        legend.spacing.y = unit(-0.1, 'lines'))
+
+plot_stage
+
+leg_stage <- get_legend(plot_stage)
+leg_stage
+
+```
+
+
+## Expression clusters
+
+
+## Loading HCLUST results
+
+```{r}
+
+hclust <- read_csv('output/Hclust_MAG_expression_2025.csv')
+
+```
+
+
+```{r}
+
+plot_groups <- hclust %>% 
+  rename(cluster = order) %>% 
+  mutate(month = factor(month, levels = c('May', 'July_1', 'July_2', 'July_3', 'August',
+                                          'October','May_22')),
+         cluster = paste0('Cluster ', cluster),
+         response_type = case_when(str_detect(cluster, 'Cluster 1') ~ 'Dry',
+                                   str_detect(cluster, 'Cluster 2') ~ 'Wet',
+                                   .default = 'Pulse'))
+
+cluster_colors <- c('Dry' = '#F28482', 
+                    'Wet' = '#608CD8',
+                    'Pulse' = '#84A59D')
+
+
+dry_mags <- plot_groups %>% 
+  filter(response_type == 'Dry') %>% 
+  select(genome) %>% 
+  distinct()
+
+wet_mags <- plot_groups %>% 
+  filter(response_type == 'Wet') %>% 
+  select(genome) %>% 
+  distinct()
+
+pulse_mags <- plot_groups %>% 
+  filter(response_type == 'Pulse') %>% 
+  select(genome) %>% 
+  distinct()
+
+
+dat_text <- data.frame(
+  label = c("65 MAGs", "182 MAGs", "32 MAGs"),
+  cluster   = c('Cluster 1', 'Cluster 2', 'Cluster 3'))
+
+
+cluster_plot <- plot_groups %>% 
+  ggplot(aes(x = month,
+             y = mean_zs))+
+  geom_line(aes(group = genome,
+                color = response_type),
+            alpha = 0.5)+
+  geom_line(data = . %>% 
+              group_by(cluster, month) %>% summarise(cluster_mean = mean(mean_zs)), 
+            aes(y = cluster_mean, 
+                group = cluster), 
+            color = "gray15", size = 1) +
+  geom_vline(xintercept = c(1.5, 5.5), linetype = 'dashed')+
+  geom_text(data = dat_text,
+            mapping = aes(x = -Inf, y = -Inf, label = label),
+            hjust   = -0.1,
+            vjust   = -1) + 
+  scale_color_manual(values = cluster_colors)+
+  facet_grid(. ~ cluster, 
+             scales = "free")+
+  labs(y = 'geTMM mean per month\n per MAG (zscore)',
+       color = 'Preference')+
+  theme_bw()+
+  theme(legend.position = 'bottom',
+        strip.background.x = element_blank(),
+        panel.grid = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text.x = element_text(angle = 90),
+        legend.text = element_text(size = 6),
+        legend.key.size = unit(.5, 'lines'),
+        legend.box.spacing = unit(.01, 'lines'),
+        legend.title.position = 'top',
+        legend.title = element_text(size = 7))
+
+cluster_plot
+
+
+
+```
+
+
+## Taxonomy of clusters
+
+```{r}
+
+taxonomy_clusters <- plot_groups %>% 
+  select(!c(month, geTMM_month, mean_zs)) %>%
+  distinct() %>% 
+  mutate(Class = ifelse(is.na(Class), 
+                        glue::glue('Unassigned Class of {Phylum}'), 
+                        Class)) %>% 
+  group_by(cluster, Phylum, Class, response_type) %>% 
+  count() %>% 
+  ungroup() %>%
+  mutate(Class_lump = fct_lump_n(Class, w = n, n = 15)) %>%
+  group_by(cluster, Class_lump) %>%
+  summarise(n = sum(n)) %>%
+  group_by(cluster) %>%
+  mutate(perc = n / sum(n) *100)
+
+
+
+tax_plot <- taxonomy_clusters %>% 
+  group_by(Class_lump) %>%
+  ggplot(aes(x = cluster,
+             y = n,
+             fill = Class_lump))+
+  geom_col(position = 'stack',
+           #color = 'black',
+           alpha = 0.8,
+           width = 0.5)+
+  labs(y = 'Number of MAGs',
+       fill = 'Class')+
+  scale_fill_manual(values = ggpubr::get_palette(palette = 'Paired', 19)) +
+  theme_bw() +
+  theme(axis.text.y = element_text(size = 7),
+        axis.text.x = element_text(size = 7),
+        axis.title.x = element_blank(),
+        legend.position = 'none',
+        panel.grid = element_blank(),
+        legend.text = element_text(size = 6),
+        legend.key.size = unit(.5, 'lines'),
+        legend.box.spacing = unit(.01, 'lines'),
+        legend.title.position = 'top',
+        legend.title = element_text(size = 7))
+
+tax_plot
+
+
+
+## Extracting legend
+
+
+leg_clus <- taxonomy_clusters %>% 
+  group_by(Class_lump) %>%
+  ggplot(aes(x = cluster,
+             y = n,
+             fill = Class_lump))+
+  geom_col(position = 'stack',
+           #color = 'black',
+           alpha = 0.8)+
+  scale_fill_manual(values = ggpubr::get_palette(palette = 'Paired', 19)) +
+  labs(fill = 'Class')+
+  theme_bw() +
+  theme(axis.text.y = element_text(size = 7),
+        axis.text.x = element_text(size = 7),
+        axis.title.x = element_blank(),
+        legend.position = 'right',
+        panel.grid = element_blank(),
+        legend.text = element_text(size = 6),
+        legend.key.size = unit(.5, 'lines'),
+        legend.box.spacing = unit(.01, 'lines'),
+        legend.title.position = 'top',
+        legend.title = element_text(size = 7))
+
+
+tax_legend <- get_legend(leg_clus)
+
+tax_legend
+
+```
+
+### Saving supplementary table 1
+
+```{r}
+
+tax_temp <- plot_groups %>% 
+  select(!c(month, geTMM_month, mean_zs)) %>%
+  distinct() %>% 
+  mutate(Class = ifelse(is.na(Class), 
+                        glue::glue('Unassigned Class of {Phylum}'), 
+                        Class))
+
+write_csv(tax_temp, "output_tables/Supplementary_table_1.csv")
+
+
+```
+
+
+## RDA - LC-MS RP
+
+# ENVS 
+
+```{r}
+
+evs <- read_csv("input/env_data_ready_2025.csv") %>% 
+  filter(!sample == c('SAMP1-S1-22', 'SAMP1-S2-22', 'SAMP1-S3-22', 'SAMP1-S4-22'))%>% 
+  mutate(sample = str_replace_all(sample, "-", "_")) %>% 
+  rename(SampleID = sample)
+
+```
+
+# Microbial diversity
+
+```{r}
+
+avs_shannon <- read_csv("input/ASV_shannon.csv") %>% 
+  mutate(sample = str_replace_all(sample, "-", "_")) %>% 
+  rename(SampleID = sample) %>% 
+  select(!dataset)
+
+```
+
+
+# Preprare matrix - envs and microbial diversity
+
+```{r}
+
+envs_microbe <- evs %>% 
+  mutate(C_N = total_C/total_N) %>% 
+  left_join(avs_shannon, by = 'SampleID') %>% 
+  left_join(metadata, by = c('SampleID' = 'treatment_code')) %>% 
+  dplyr::select(!c(SampleID, sampling, stage, month, site)) %>%
+  rename(SampleID = SampleID_RP) %>% 
+  column_to_rownames(var = 'SampleID') %>% 
+  select(total_N, ph_mean, moisture, C_N, `NO3-N (ppm)`, `NH4-N (ppm)`, Shannon)
+
+```
+
+
+## Standarization of envs matrix
+
+```{r}
+
+env_std <- decostand(envs_microbe, method = 'standardize')
+
+```
+
+## Checking for collinearity 
+
+```{r}
+ggpairs(env_std)
+
+```
+
+
+## Running RDA
+
+```{r}
+
+## Transpose normalized matrix
+
+rp_df2 <- as.data.frame(t(norm_matrix))
+
+# Building model with all variables
+
+rda_model <- rda(rp_df2 ~ ., data = env_std)
+
+plot(performance::check_collinearity(rda_model))
+
+# Quick plot to see how it is working
+
+ordiplot(rda_model, scaling = 1, choices = c(1,2))
+
+```
+
+
+```{r}
+
+summary(rda_model)
+
+anova.cca(rda_model, step = 1000)
+
+anova.cca(rda_model, step = 1000, by = "term")
+
+```
+
+
+
+```{r}
+
+# Selecting variables ----
+
+fwd.sel <- ordiR2step(rda(rp_df2 ~ 1, data = env_std), # simple model,
+                      scope = rda_model, # full model
+                      direction = 'forward',
+                      R2scope = TRUE,
+                      pstep = 1000,
+                      trace = TRUE,
+                      na.action = na.exclude) 
+
+fwd.sel$call
+
+```
+
+
+## Model based on foward selection
+
+```{r}
+
+envs_fwd_sel <- envs_microbe %>% 
+  select(moisture, ph_mean, C_N)
+
+env_std3 <- decostand(envs_fwd_sel, method = 'standardize')
+
+
+# Building model with all variables
+
+rda_model_fwd <- rda(rp_df2 ~ ., data = env_std3)
+
+
+```
+
+## Check R2 of the new model
+```{r}
+
+
+RsquareAdj(rda_model_fwd)
+## 0.2411
+
+```
+
+
+## Testing the singnificace of the model
+
+
+```{r}
+
+anova.cca(rda_model_fwd, step = 1000)
+
+anova.cca(rda_model_fwd, step = 1000, by = 'term')
+
+
+total_variance <- sum(rda_model_fwd$CCA$eig)/(sum(rda_model_fwd$CCA$eig)+ sum(rda_model_fwd$CA$eig)) *100
+
+```
+
+
+## RDA plot 
+
+```{r}
+
+#### Scaling 2
+
+# Custom triplot code!
+
+## extract % explained by the first 2 axes
+perc <- round(100*(summary(rda_model_fwd)$cont$importance[2, 1:2]), 2)
+
+## extract scores - these are coordinates in the RDA space
+sc_sites <- as.data.frame(scores(rda_model_fwd, display="sites", choices=c(1,2), 
+                                 scaling=2)) %>%
+  rownames_to_column(var = 'SampleID') %>% 
+  left_join(metadata_rp, by = c('SampleID' = 'SampleID_RP')) %>% 
+  mutate(color = my_colors[month]) 
+
+
+sc_species <- as.data.frame(scores(rda_model_fwd, display="species", choices=c(1,2), scaling=2))
+
+sc_bp <- as.data.frame(scores(rda_model_fwd, display="bp", choices=c(1, 2), scaling=2)) %>% 
+  rownames_to_column(var = 'envs')
+
+
+
+RDA_plot_rp <- sc_sites %>% 
+  ggplot()+
+  geom_point(aes(x = RDA1,
+                 y = RDA2,
+                 color = month),
+             size = 2) +
+  scale_color_manual(values = my_colors)+
+  geom_point(data = sc_species,
+             aes(x = RDA1,
+                 y = RDA2),
+             fill = 'gray80',
+             size = 1,
+             shape = 22) +
+  geom_segment(data = sc_bp, 
+               aes(x = 0, y = 0, 
+                   xend = 3*RDA1, yend = 3*RDA2), 
+               color = "black", 
+               linewidth = 0.5,
+               arrow = arrow(length = unit(.5, 'lines'))) +
+  geom_text(data = sc_bp,
+            aes(x = 3*RDA1+.3, y = 3*RDA2 +.3,
+                label = envs),
+            color = "black",
+            fontface = "bold",
+            size = 2) +
+  labs(title = "Metabolomics - RDA - Scaling 2",
+       x = paste0("RDA1 (", perc[1], "%)" ) ,
+       y = paste0("RDA2 (", perc[2], "%)"))+
+  theme_bw() +
+  theme(plot.title = element_text(face = 'bold', hjust = 0.5),
+        plot.subtitle = element_markdown(),
+        panel.grid = element_blank(),
+        legend.position = 'none',
+        legend.box = 'vertical',
+        legend.text = element_markdown()) 
+
+RDA_plot_rp
+
+```
+
+
+
+## Saving plot
+
+```{r}
+
+## Final figure
+des <- "
+ABB
+CDE
+FGG
+HHH
+"
+
+
+final_fig <- nmds_plot_metaG + nmds_plot_metaT + free(cluster_plot) +
+  tax_plot + tax_legend + nmds_plot_rp + RDA_plot_rp + leg_stage +
+  plot_layout(heights = c(1, 1, 1, .1),
+              widths = c(2, 1, 1),
+              design = des) +
+  plot_annotation(tag_levels = list(c('A', 'B', 'C', 'D', '', 'E', 'F'))) &
+  theme(text = element_text(size = 7))
+
+final_fig
+
+```
+
+
+
+## Save final plot
+
+
+```{r}
+
+ggsave("output_figures/Figure_1.svg", final_fig, dpi = 300,
+       units = 'mm', 
+       height = 220, 
+       width = 180)
+
+ggsave("output_figures//Figure_1.png", final_fig, dpi = 300,
+       units = 'mm', 
+       height = 220, 
+       width = 180)
+
+
+```
+

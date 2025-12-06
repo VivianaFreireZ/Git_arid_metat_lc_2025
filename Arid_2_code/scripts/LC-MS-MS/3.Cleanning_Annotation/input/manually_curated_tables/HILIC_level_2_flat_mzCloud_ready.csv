@@ -1,0 +1,117 @@
+FeatureID,Name,Formula,Notes,Action_decision,Other_mzcloud_match,Sirus_notes,Sirius_formula,Correlation_duplicated annotations,Final_decision
+FT_1.671_197.08239,(-)-Camphanic acid,C10 H14 O4,low quality peak,,,,,,delete
+FT_1.543_171.06627,(-)-Corey lactone,C8 H12 O4,good,,,,,,L2
+FT_1.371_329.23370,"(15Z)-9,12,13-Trihydroxy-15-octadecenoic acid",C18 H34 O5,good,,,,,,L2
+FT_1.579_427.13995,"(2-{(1R,9S)-3-[4-(Methylsulfanyl)phenyl]-6-oxo-7,11-diazatricyclo[7.3.1.02,7]trideca-2,4-dien-11-yl}-2-oxoethoxy)acetic acid",C22 H24 N2 O5 S,good,,,,,,L2
+FT_1.359_315.16031,"(2'R,3R,4'R,4a'R,5S,8a'S)-5-(3-Furyl)-4'-hydroxy-4a',5'-bis(hydroxymethyl)-2'-methyl-3',4,4',4a',5,7',8',8a'-octahydro-2'H-spiro[furan-3,1'-naphthalen]-2-one",C20 H26 O6,low quality peak,delete,,,,,delete
+FT_1.454_361.16595,"(2'R,3R,4'R,4a'R,5S,8a'S)-5-(3-Furyl)-4'-hydroxy-4a',5'-bis(hydroxymethyl)-2'-methyl-3',4,4',4a',5,7',8',8a'-octahydro-2'H-spiro[furan-3,1'-naphthalen]-2-one",C20 H26 O6,low quality peak,delete,,,,,delete
+FT_1.645_361.16592,"(2'R,3R,4'R,4a'R,5S,8a'S)-5-(3-Furyl)-4'-hydroxy-4a',5'-bis(hydroxymethyl)-2'-methyl-3',4,4',4a',5,7',8',8a'-octahydro-2'H-spiro[furan-3,1'-naphthalen]-2-one",C20 H26 O6,low quality peak,delete,,,,,delete
+FT_1.378_387.21788,"2,4-dihydroxy-3-[(E)-4-hydroxy-3-methyl-5-(1,2,6-trimethyl-3-oxocyclohexyl)pent-2-enyl]-6-methylbenzaldehyde",C23H3O5,halogenated,keep sirius,,"2,4-dihydroxy-3-[(E)-4-hydroxy-3-methyl-5-(1,2,6-trimethyl-3-oxocyclohexyl)pent-2-enyl]-6-methylbenzaldehyde",C23H3O5,,L3.3
+FT_1.190_311.22297,(±)9-HpODE,C18 H32 O4,good,isomer,,,,,L2
+FT_1.287_311.22294,(±)9-HpODE,C18 H32 O4,good,isomer,,,,,L2
+FT_1.436_301.10824,"1-(2,4-dihydroxyphenyl)-2-(3,5-dimethoxyphenyl)propan-1-one",C17 H18 O5,good,isomer,,,,isomer,L2
+FT_1.604_301.10818,"1-(2,4-dihydroxyphenyl)-2-(3,5-dimethoxyphenyl)propan-1-one",C17 H18 O5,good,isomer,,,,isomer,L2
+FT_1.096_411.14524,dalpanol,C23H24O7,"halogenated, isomer",keep sirius,,dalpanol,C23H24O7,0,L3.3
+FT_1.208_411.14507,dalpanol,C23H24O7,"halogenated, isomer",keep sirius,,dalpanol,C23H24O7,0,L3.3
+FT_3.599_359.13489,"1-(beta-D-Glucopyranosyloxy)-7-methyl-1,4a,5,6,7,7a-hexahydrocyclopenta[c]pyran-4-carboxylic acid",C16 H24 O9,"fill spectral noise, low quality",,,,,0,delete
+FT_1.380_185.08194,1-(Carboxymethyl)cyclohexanecarboxylic acid,C9 H14 O4,isomer,,,,,isomer,L2
+FT_1.572_185.08197,1-(Carboxymethyl)cyclohexanecarboxylic acid,C9 H14 O4,isomer,,,,,isomer,L2
+FT_1.827_185.08198,1-(Carboxymethyl)cyclohexanecarboxylic acid,C9 H14 O4,isomer,,,,,isomer,L2
+FT_17.118_421.07555,"1,5,8-Trihydroxy-9-oxo-9H-xanthen-3-yl beta-D-glucopyranoside",C19 H18 O11,low quality,,,,,0,L2
+FT_1.347_327.12404,10-(4-Sulfophenyl) decanoic acid,C16 H24 O5 S,"isomer, -9 ppm adduct",,,,,"isomer, -9 ppm adduct",L2
+FT_1.448_327.12395,10-(4-Sulfophenyl) decanoic acid,C16 H24 O5 S,"isomer, -9 ppm adduct",,,,,"isomer, -9 ppm adduct",L2
+FT_1.224_347.18649,11-keto Testosterone (CRM),C19 H26 O3,,high correlation,,,,0,DELETE
+FT_1.309_301.18105,11-keto Testosterone (CRM),C19 H26 O3,"isomer, low quality",,,,,isomer,DELETE
+FT_1.358_347.18661,11-keto Testosterone (CRM),C19 H26 O3,"isomer, low quality",,,,,isomer,DELETE
+FT_1.615_347.18650,11-keto Testosterone (CRM),C19 H26 O3,"isomer, low quality",high correlation,,,,0,DELETE
+FT_1.156_271.22795,16-Hydroxyhexadecanoic acid,C16 H32 O3,good,,,,,0,L2
+FT_1.171_331.19173,19(R)-Hydroxy prostaglandin A2,C20 H30 O5,adduct -18DA,"low confidence, keep CD",,,,0,L2
+FT_1.477_179.07139,2'-Hydroxy-4'-methoxypropiophenone,C10H12O3,adduct -18DA,keep sirius,,2'-Hydroxy-4'-methoxypropiophenone,,0,L3.3
+FT_1.127_463.14008,"2-(1-naphthylmethylidene)-1,2,3,4-tetrahydronaphthalen-1-one 1-(2,4-dinitrophenyl)hydrazone",C27 H20 N4 O4,,"low confidence, keep CD",,,,0,L2
+FT_1.602_353.06673,6-acetoxy-7-acetyl-1-hydroxy-3-methoxyanthraquinone,C19H14O7,"adduct 9.07 ppm, not good match",keep sirius,,6-acetoxy-7-acetyl-1-hydroxy-3-methoxyanthraquinone,,0,L3.3
+FT_1.672_381.19226,"2-[(2S,3R,4S,5R)-3,4-Dihydroxy-5-{[(isopropylcarbamoyl)amino]methyl}tetrahydro-2-furanyl]-N-[2-(dimethylamino)ethyl]acetamide",C15 H30 N4 O5,adduct 36 DA,"low confidence, keep CD",,,,0,L2
+FT_2.353_195.06628,2-Hydroxy-4-(4-hydroxyphenyl)butanoic acid,C10 H12 O4,middle quality peak,"low confidence, keep CD",,,,0,L2
+FT_1.512_195.03001,Haematommic Acid,C9H8O5,halogenated,keep sirius,,Haematommic Acid,C9H8O5,0,L3.3
+FT_1.206_329.17611,"3,3'-Diisopropyl-6,6'-dimethyl-2,2',5,5'-biphenyltetrol",C20 H26 O4,,"low confidence, keep CD",,,,0,L2
+FT_1.306_329.17608,"3,3'-Diisopropyl-6,6'-dimethyl-2,2',5,5'-biphenyltetrol",C20 H26 O4,,"low confidence, keep CD",,,,0,L2
+FT_14.029_549.16735,melitose,C18H32O16,isomer,keep sirius,,melitose,C18H32O16,isomer,L3.3
+FT_14.225_549.16739,"3-[2-(1,3-Benzodioxol-5-yl)-7-methoxy-1-benzofuran-5-yl]-3-hydroxypropyl hexopyranoside",C25 H28 O11,DELETE,,,,,DELETE,DELETE
+FT_14.255_549.16737,melitose,C18H32O16,isomer,keep sirius,,melitose,C18H32O16,isomer,L3.3
+FT_1.273_283.06127,3-{[2-(3-Cyano-2-pyridinyl)hydrazino]carbonyl}-2-pyrazinecarboxylic acid,C12 H8 N6 O3,,"low confidence, keep CD",,,,0,L2
+FT_1.844_117.05577,3-Hydroxyvaleric acid,C5 H10 O3,,,,,,0,L2
+FT_1.940_117.05577,3-Hydroxyvaleric acid,C5 H10 O3,,,,,,0,L2
+FT_3.380_215.09252,"3-methyl-4-[2-(2-methylphenyl)hydrazono]-4,5-dihydro-1H-pyrazol-5-one",C11 H12 N4 O,adduct -6.08 DA,"low confidence, keep CD",,,,0,L2
+FT_1.160_287.09263,"4,5-diphenyl-2,3-dihydro-1H-pyrazolo[3,4-c]pyridazin-3-one",C17 H12 N4 O,adduct -46DA,,,,,adduct -46DA,L2
+FT_1.160_287.09267,"4,5-diphenyl-2,3-dihydro-1H-pyrazolo[3,4-c]pyridazin-3-one",C17 H12 N4 O,high correlation duplicated feature,,,,,high correlation duplicated feature,DELETE
+FT_1.223_365.19704,"4-[2-(2,3-Dihydroxy-5,6,8a-trimethyloctahydro-2H-spiro[naphthalene-1,2'-oxiran]-5-yl)ethyl]-5-hydroxy-2(5H)-furanone",C20 H30 O6,,"low confidence, keep CD",,,,0,L2
+FT_1.268_325.18447,4-Dodecylbenzenesulfonic acid,C18 H30 O3 S,,,,,,0,L2
+FT_1.142_179.03495,4-Hydroxyphenylpyruvic acid,C9 H8 O4,,,,,,0,L2
+FT_1.266_175.03993,4-Methylumbelliferone,C10 H8 O3,isomer,,,,,isomer,L2
+FT_1.687_175.03995,4-Methylumbelliferone,C10 H8 O3,isomer,check sirius,,,,isomer,L2
+FT_2.545_175.04000,4-Methylumbelliferone,C10 H8 O3,isomer,,,,,isomer,L2
+FT_2.712_175.04000,4-Methylumbelliferone,C10 H8 O3,DELETE,,,,,isomer,DELETE
+FT_2.892_182.04925,4-Pyridoxic acid,C8 H9 N O4,,,,,,0,DELETE
+FT_1.167_347.11376,"4,4(5')-dihydroxydibenzo-15-crown-5",C18 H20 O7,keep lower CD match,keep lower CD match,"4,4(5')-dihydroxydibenzo-15-crown-5",,,0,L2
+FT_1.236_191.03498,"5,7-Dihydroxy-4-methylcoumarin",C10 H8 O4,,,,,,0,L2
+FT_1.321_191.03501,"5,7-Dihydroxy-4-methylcoumarin",C10 H8 O4,,,,,,0,L2
+FT_1.468_251.05608,Triacetylphloroglucinol,C12H12O6,adduct 1DA,"keep sirius, low confidence",,Triacetylphloroglucinol,C12H12O6,0,L3.3
+FT_2.041_137.03571,5-Aminonicotinic acid,C6 H6 N2 O2,,"low confidence, keep CD",,,,0,L2
+FT_3.216_137.03571,urocanate,C6 H6 N2 O2,,KEEP CD,,urocanate,C6H6N2O2,0,L2
+FT_1.365_251.09250,"6-Amino-3-methyl-4-phenyl-1,4-dihydropyrano[2,3-c]pyrazole-5-carbonitrile",C14 H12 N4 O,,"low confidence, keep CD",,,,0,L2
+FT_1.525_251.09253,"6-Amino-3-methyl-4-phenyl-1,4-dihydropyrano[2,3-c]pyrazole-5-carbonitrile",C14 H12 N4 O,,"low confidence, keep CD",,,,0,L2
+FT_1.628_251.09246,NP-001608,C13H16O5,,keep lower CD match,NP-001608,,,0,L2
+FT_1.143_397.12968,pongachalcone II,C21H20O5,halogenated,keep sirius,,pongachalcone II,C21H20O5,0,L3.3
+FT_1.223_397.12956,"(2E)-7-methyl-6-(2-oxopropoxy)-2-[(3,4,5-trimethoxyphenyl)methylidene]-1-benzofuran-3-one",C22H22O7,halogenated,keep sirius,,"(2E)-7-methyl-6-(2-oxopropoxy)-2-[(3,4,5-trimethoxyphenyl)methylidene]-1-benzofuran-3-one",C22H22O7,0,L3.3
+FT_1.207_313.18107,Aldosterone,C21 H28 O5,low quality,,,,,0,DELETE
+FT_2.030_187.09752,Azelaic acid,C9 H16 O4,,isomer,,,,0,L2
+FT_2.136_187.09750,Azelaic acid,C9 H16 O4,,isomer,,,,0,L2
+FT_11.355_259.01294,d-Galactopyranose-2-sulfate,C6H12O9S,halogenated,keep sirius,,d-Galactopyranose-2-sulfate,C6H12O9S,0,L3.3
+FT_12.284_259.01291,d-Galactopyranose-2-sulfate,C6H12O9S,halogenated,keep sirius,,d-Galactopyranose-2-sulfate,C6H12O9S,0,L3.3
+FT_1.037_437.08811,4-hydroxytetracenomycin A2,C23H18O9,halogenated,keep sirius,,4-hydroxytetracenomycin A2,C23H18O9,0,L3.3
+FT_1.183_207.06610,Genipin,C11 H14 O5,adduct -18DA,,,,,0,L2
+FT_1.237_207.06609,Genipin,C11 H14 O5,adduct -18DA,,,,,0,L2
+FT_2.740_113.02448,Glutaric anhydride,C5 H6 O3,,"sirius no result, keep CD",,,,0,L2
+FT_1.162_283.06126,Glycitein,C16 H12 O5,,,,,,0,L2
+FT_8.083_282.08449,Guanosine,C10 H13 N5 O5,,,,,,0,L2
+FT_13.751_341.10903,alpha-alpha-Trehalose,C12 H22 O11,,,,,,0,L2
+FT_1.168_527.15599,F13459,C27H28O11,,keep sirius,,F13459,C27H28O11,0,L3.3
+FT_1.148_193.05068,Isoferulic acid,C10 H10 O4,"good, isomer ",,,,,"good, isomer ",L2
+FT_1.815_193.05064,Isoferulic acid,C10 H10 O4,"low quality peak, high correction with FT_2.065_193.05",,,,,"low quality peak, high correction with FT_2.065_193.05",delete
+FT_2.065_193.05064,Isoferulic acid,C10 H10 O4,"good, isomer ",,,,,"good, isomer ",L2
+FT_1.223_257.08202,Isorhapontigenin,C15 H14 O4,,,,,,0,L2
+FT_8.843_316.94801,no name,no formula,"synthetic drug, no name accepeted, no good formula predicted",no sirius results,NA,,,0,L5
+FT_1.601_165.05563,Methyl 4-hydroxyphenylacetate,C9 H10 O3,,,,,,0,L2
+FT_3.025_147.06635,Mevalonic acid,C6 H12 O4,,,,,,0,L2
+FT_1.139_405.09830,"2-(1,3-dimethyl-2,6-dioxopurin-7-yl)-N-[(4-sulfamoylphenyl)methyl]acetamide",C16H18N6O5S,halogenated,use sirius,,"2-(1,3-dimethyl-2,6-dioxopurin-7-yl)-N-[(4-sulfamoylphenyl)methyl]acetamide",C16H18N6O5S,0,L3.3
+FT_1.434_345.09809,hamilcone,C18H18O7,,use sirius,,hamilcone,C18H18O7,0,L3.3
+FT_1.208_469.18705,NP-005088,C26H32O9,,keep CD lower match,NP-005088,,,0,L2
+FT_14.571_333.05952,poly(galactosylglycerol phosphate),C9H19O11P,,keep sirius,,poly(galactosylglycerol phosphate),C9H19O11P,0,L3.3
+FT_1.609_445.15069,"3-(Acetyloxy)-2-(3,4-dimethoxyphenyl)-7,8-dimethoxy-3,4-dihydro-2H-chromen-4-yl acetate",C23H26O9,halogenated,keep sirius,,"3-(Acetyloxy)-2-(3,4-dimethoxyphenyl)-7,8-dimethoxy-3,4-dihydro-2H-chromen-4-yl acetate",C23H26O9,0,L3.3
+FT_1.046_465.15560,"N-{[(2R,3S,4R,5S)-3,4-Dihydroxy-5-{2-oxo-2-[4-(2-pyridinyl)-1-piperazinyl]ethyl}tetrahydro-2-furanyl]methyl}-2-furamide",C21 H26 N4 O6,adduct 36 DA,,,,,0,L2
+FT_1.390_277.07177,[2-[3-(2-Acetyloxyacetyl)phenyl]-2-oxoethyl] acetate,C14H14O6,"halogenated, low match","sirius low confidence, keep sirius",,[2-[3-(2-Acetyloxyacetyl)phenyl]-2-oxoethyl] acetate,C14H14O6,0,L3.3
+FT_1.188_269.04556,"1,3,8-trihydroxy-6-methyl-anthracene-9,10-dione",C15H10O5,halogenated,keep sirius,,"1,3,8-trihydroxy-6-methyl-anthracene-9,10-dione",C15H10O5,0,L3.3
+FT_1.535_351.14519,Coriandrone D,C18H24O7,halogenated,keep sirius,,Coriandrone D,C18H24O7,0,L3.3
+FT_1.670_281.10327,Gonioheptolide A,C14H18O6,halogenated,"sirius low confidence, keep sirius",,Gonioheptolide A,C14H18O6,0,L3.3
+FT_1.387_357.13457,NP-003433,C20 H22 O6,,,,,,0,DELETE
+FT_1.387_357.13459,NP-003433,C20 H22 O6,,,,,,0,L2
+FT_1.285_313.23864,12(13)-DiHOME,C18 H34 O4,,keep lower match CD,12(13)-DiHOME,,,0,L2
+FT_1.455_413.12538,NP-010746,C22 H22 O8,low quality peak,,,,,0,DELETE
+FT_1.463_459.12991,embigenin,C23H24O10,,keep sirius,,embigenin,C23H24O10,0,L3.3
+FT_1.669_387.18144,NP-018946,C21 H26 O4,adduct 46Da,,,,,0,L2
+FT_1.176_443.13501,NP-020236,C23 H24 O9,isomer,,,,,0,L2
+FT_1.348_443.13495,NP-020236,C23 H24 O9,isomer,,,,,0,L2
+FT_13.222_411.11466,"(2R,3R,4R,5R)-5-[[(2S,3R,4R,5R)-3,4-dihydroxy-5-[[(2S,3R,4R,5R)-3,4,5-trihydroxyoxolan-2-yl]methoxy]oxolan-2-yl]methoxy]-3,4-dihydroxyoxolane-2-carbaldehyde",C15H24O13,,keep sirius,,"(2R,3R,4R,5R)-5-[[(2S,3R,4R,5R)-3,4-dihydroxy-5-[[(2S,3R,4R,5R)-3,4,5-trihydroxyoxolan-2-yl]methoxy]oxolan-2-yl]methoxy]-3,4-dihydroxyoxolane-2-carbaldehyde",C15H24O13,0,L3.3
+FT_2.097_187.06118,NP-022068,C8 H12 O5,,isomer,,,,0,L2
+FT_2.326_187.06115,NP-022068,C8 H12 O5,,isomer,,,,0,L2
+FT_2.430_187.06117,NP-022068,C8 H12 O5,,isomer,,,,0,L2
+FT_3.011_187.06117,NP-022068,C8 H12 O5,,DELETE,,,,0,DELETE
+FT_1.317_297.15305,2-Decylbenzenesulfonate,C16H25O3S-,,keep sirius,,2-Decylbenzenesulfonate,C16H25O3S-,0,L2
+FT_10.119_171.07747,Prolylglycine,C7 H12 N2 O3,,,,,,0,L2
+FT_2.111_211.06111,Propyl gallate,C10 H12 O5,,isomer,,,,0,L2
+FT_2.459_211.06108,Propyl gallate,C10 H12 O5,,isomer,,,,0,L2
+FT_2.486_211.06105,Propyl gallate,C10 H12 O5,,DELETE,,,,0,DELETE
+FT_1.543_349.20212,Prostaglandin K2,C20 H30 O5,,isomer,,,,0,L2
+FT_1.663_349.20223,Prostaglandin K2,C20 H30 O5,,low quality,,,,0,DELETE
+FT_12.842_443.14080,Tetracycline,C22 H24 N2 O8,adduct -11.67 ppm,,,,,0,L2
+FT_1.467_223.06110,Trinexapac,C11 H12 O5,,,,,,0,L2
+FT_2.417_167.03494,Vanillic acid,C8 H8 O4,,,,,,0,L2
