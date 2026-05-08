@@ -1,0 +1,525 @@
+---
+title: "Figure 3"
+output: html_notebook
+editor_options: 
+  chunk_output_type: console
+---
+
+
+```{r}
+library(patchwork)
+library(ggh4x)
+library(ggpubr)
+library(ggtext)
+library(ggforce)
+library(ggrepel)
+library(taxonomizr)
+library(tidyverse)
+
+```
+
+# Loading data
+
+## Metadata
+
+```{r}
+metadata <- read_csv('input/metadata_omics.csv') 
+
+metadata_ready <- metadata %>% 
+  mutate(Month = factor(month, levels = c("May", "July_1", "July_2", "July_3",
+                                          "August", "October", "May_22")))
+```
+
+## Taxonomy
+
+```{r}
+
+mag_taxonomy <- read_csv('input/mag_taxonomy_denovo.csv') %>% 
+  mutate(Class = ifelse(is.na(Class), 
+                        glue::glue('Unassigned Class \nof {Phylum}'),
+                        Class))
+
+```
+
+
+## MAGs annotations
+
+```{r}
+
+annot_cydbs <- read_csv("input/annot_with_cydbs_2.23.25.csv") %>% 
+  rename(Geneid = `...1`)
+
+```
+
+
+## geTMM
+
+```{r}
+geTMM <- read_csv("output/geTMM_normalized_matrix_2025.csv")
+
+geTMM_long <- geTMM %>% 
+  pivot_longer(!Geneid, names_to = "sampleid", values_to = "geTMM")
+
+```
+
+## Loading HCLUST results
+
+```{r}
+
+hclust <- read_csv('output/Hclust_MAG_expression_2025.csv')
+
+
+plot_groups <- hclust %>% 
+  rename(cluster = order) %>% 
+  mutate(cluster = paste0('Cluster ', cluster),
+         response_type = case_when(str_detect(cluster, 'Cluster 1') ~ 'Dry',
+                                   str_detect(cluster, 'Cluster 2') ~ 'Wet',
+                                   .default = 'Pulse')) %>% 
+  select(genome, cluster, response_type) %>% 
+  distinct()
+
+```
+
+
+## Joining expression to annotations
+
+```{r}
+
+annot_vip <- geTMM_long %>% 
+  left_join(annot_cydbs, by = 'Geneid') %>%
+  group_by(sampleid, fasta, ko_id) %>% 
+  summarise(getmm_sum = sum(geTMM)) %>% 
+  mutate(sampleid = str_replace_all(sampleid, '-', '_')) %>% 
+  left_join(metadata_ready, by = c('sampleid' = 'treatment_code')) %>% 
+  group_by(fasta, ko_id, Month) %>% 
+  summarise(getmm_mean = mean(getmm_sum)) %>% 
+  filter(getmm_mean > 0) %>% 
+  left_join(mag_taxonomy, by = c('fasta' = 'bin')) %>% 
+  left_join(plot_groups, by = c('fasta' = 'genome'))
+
+```
+
+
+## Expression calculated reaction level
+
+```{r}
+
+rx_xprss <- read.csv("input/Definitions_2025/output/Reaction_expression_0.5_per_sample_final.csv") %>% 
+  rename('ID' = 'module_id')
+
+def <- read_csv("input/Definitions_2025/reaction_level_definitions_may_2025.csv")
+
+
+```
+
+
+## Joining expression with annotation of modules
+
+```{r}
+
+delete <- c('Anammox', 'Commamox')
+
+kegg_ready <- rx_xprss %>% 
+  left_join(def, by = 'ID') %>% 
+  filter(!Category_1 %in% delete)
+
+
+## Step 1 = filter those modules with expression zero in all samples
+
+rx_ft_kegg <- kegg_ready %>% 
+  left_join(metadata_ready, by = c('SampleID' = 'SampleID_metaT')) %>% 
+  group_by(ID, bin, Month) %>% 
+  summarise(expression = mean(expression)) %>%
+  left_join(def, by = 'ID') %>%
+  filter(expression > 0) %>% 
+  left_join(mag_taxonomy, by = 'bin') %>% 
+  left_join(plot_groups, by = c('bin' = 'genome')) %>% 
+  ungroup()
+
+```
+
+### Checking expressed pathway completeness - 
+
+```{r}
+
+percent_rx_ft_kegg <- kegg_ready %>%
+  left_join(metadata_ready, by = c('SampleID' = 'SampleID_metaT')) %>%
+  group_by(ID, bin, Month) %>%
+  summarise(expression = mean(expression)) %>%
+  left_join(def, by = 'ID') %>%
+  group_by(Category_2, Category_1, bin, Month) %>%
+  mutate(n_steps = n()) %>%
+  filter(expression > 0) %>%
+  mutate(steps_present = n(),
+         percent_steps_expressed = steps_present / n_steps) %>%
+  select(ID, bin, Month, Category_1, Category_2, percent_steps_expressed) %>%
+  left_join(mag_taxonomy, by = 'bin')
+
+```
+
+
+```{r}
+
+number_mags_exp <- percent_rx_ft_kegg %>%
+  ungroup() %>%
+  filter(percent_steps_expressed >= 0.5) %>%
+  dplyr::select(Category_1, bin) %>%
+  distinct() %>%
+  group_by(Category_1) %>%
+  dplyr::count()
+
+
+```
+
+
+## Keeping only MAGs that have at least 50% of the pathway steps
+
+```{r}
+
+mags_ft <- percent_rx_ft_kegg %>%
+  ungroup() %>%
+  filter(percent_steps_expressed >= 0.5) %>%
+  select(ID, bin) %>%
+  distinct()
+
+```
+
+
+## MetaCyc
+
+## List of only Prokariote paths
+
+```{r}
+
+pathway_metacyc <- read_tsv("input/MetaCyc_db_2026/All-pathways-of-MetaCyc_path_name.txt") %>% 
+  select(Pathways, `Common-Name`, `Engineered?`, Species) %>% 
+  filter(is.na(`Engineered?`)) %>% 
+  separate_rows(Species, sep = " // ") %>% 
+  filter(str_detect(Species, 'TAX')) %>% 
+  mutate(Species = str_remove_all(Species, 'TAX-'))
+
+
+## ADD taxa
+
+taxids <- unique(pathway_metacyc$Species)
+
+lineage_dia <- getTaxonomy(
+  taxids,
+  sqlFile = "C:/Users/vivia/Escritorio/Arid_metaT-LCMS_2025/Arid_2_code/ncbi_taxonomy.sqlite")
+
+lineage_df <- as.data.frame(lineage_dia) %>%
+  tibble::rownames_to_column("staxids") %>% 
+  mutate(staxids = as.character(staxids)) %>% 
+  mutate(staxids = str_trim(staxids))
+
+## Final table
+
+
+final_path_proka <- pathway_metacyc  %>% 
+  left_join(lineage_df, by = c('Species' = 'staxids')) %>% 
+  filter(domain != 'Eukaryota') %>% 
+  select(Pathways) %>% 
+  distinct() %>% 
+  pull()
+
+```
+
+
+```{r}
+
+## Loading MetaCyc pathways with at least >50% expression
+
+arid_path_meta <- read_csv("scripts/LC_metat_network/output/MetaCyc_arid_pathway.csv") %>% 
+  filter(is.na(`Engineered?`)) %>% 
+  filter(Pathways %in% final_path_proka)
+
+
+number_mags_exp_metacy <- arid_path_meta %>% 
+  ungroup() %>%
+  select(Pathways, bin) %>%
+  distinct() %>%
+  group_by(Pathways) %>%
+  dplyr::count() %>% 
+  left_join(pathway_metacyc, by = 'Pathways') %>% 
+  select(Pathways, n, `Common-Name`) %>% 
+  distinct()
+
+
+
+```
+
+## Pathway count per MAG
+
+```{r}
+
+category_1_keep <- c('Glycolysis (Embden-Meyerhof pathway)', 
+                     'Glycolysis, core module involving three-carbon compounds',
+                     'Pentose P pathway, oxidative phase',
+                     'Pentose P pathway, non-oxidative phase',
+                     'TCA',
+                     'Pyruvate oxidation',
+                     'PRPP biosynthesis',
+                     'Nitrification',
+                     'Denitrification',
+                     'Dissimilatory nitrate reduction',
+                     'Assimilatory nitrate reduction',
+                     'Assimilatory sulfate reduction',
+                     'Dissimilatory sulfate reduction',
+                     'Glyoxylate cycle',
+                     'Ethylmalonyl pathway',
+                     'Reductive glycine pathway',
+                     'Calvin cycle',
+                     'Reductive citrate cycle',
+                     "Glycine cleavage system")
+
+metacyc_keep <- c('PWY-5484', 'ANAGLYCOLYSIS-PWY', 'GLYCOLYSIS',
+                  'PWY-8178', 'NONOXIPENT-PWY', 'OXIDATIVEPENT-PWY',
+                  'TCA', 'PYRUVDEHYD-PWY', 'PWY0-662', 'AMMOXID-PWY',
+                  'PWY490-3', 'PWY0-1581', 'SO4ASSIM-PWY', 'PWY1ZNC-1',
+                  'GLYOXDEG-PWY', 'GLYOXYLATE-BYPASS', 'PWY-5741', 'PWY-8303',
+                  'CALVIN-PWY', 'P42-PWY', 'P23-PWY', 'PWY-8303', 'GLYCLEAV-PWY',
+                  'PWY-6964',
+                  'PWY-1881',
+                  'PWY-7750',
+                  'PWY-2301')
+
+
+
+kegg_count_vip <- number_mags_exp %>% 
+  filter(Category_1 %in% category_1_keep) %>% 
+   mutate(pathway_category = case_when(
+    
+    Category_1 %in% c(
+      "Glycolysis (Embden-Meyerhof pathway)",
+      "Glycolysis, core module involving three-carbon compounds",
+      "Pentose P pathway, oxidative phase",
+      "Pentose P pathway, non-oxidative phase",
+      "TCA",
+      "Pyruvate oxidation",
+      "Glyoxylate cycle",
+      "Ethylmalonyl pathway"
+    ) ~ "C metabolism",
+    
+    Category_1 %in% c(
+      "Calvin cycle",
+      "Reductive citrate cycle",
+      "Reductive glycine pathway"
+    ) ~ "C fixation",
+    
+    Category_1 %in% c(
+      "Nitrification",
+      "Denitrification",
+      "Dissimilatory nitrate reduction",
+      "Assimilatory nitrate reduction"
+    ) ~ "N metabolism",
+    
+    Category_1 %in% c(
+      "Assimilatory sulfate reduction",
+      "Dissimilatory sulfate reduction"
+    ) ~ "S metabolism",
+    
+    Category_1 == "PRPP biosynthesis" ~ "Biosynthesis",
+    
+    Category_1 == "Glycine cleavage system" ~ "C1 metabolism",
+    
+    TRUE ~ "Other"))
+
+metacyc_count_vip <- number_mags_exp_metacy %>% 
+  filter(Pathways %in% metacyc_keep) %>% 
+  mutate(name_fix = str_remove_all(`Common-Name`, "\\<sub\\>"),
+         name_fix = str_remove_all(name_fix, "\\<\\/sub\\>"),
+         name_fix = str_remove_all(name_fix, "\\<\\i\\>"),
+         name_fix = str_remove_all(name_fix, "\\<\\/i\\>")) %>% 
+   mutate(pathway_category = case_when(
+
+    str_detect(name_fix,
+               "glycolysis|pentose phosphate|glyoxylate|glycolate|ethylmalonyl|TCA cycle|pyruvate") ~ 
+      "C metabolism",
+
+    str_detect(name_fix,
+               "Calvin|reductive TCA|reductive glycine") ~ 
+      "C fixation",
+
+    str_detect(name_fix,
+               "ammonia oxidation|nitrate reduction|ammonia assimilation") ~ 
+      "N metabolism",
+
+    str_detect(name_fix,
+               "sulfate reduction") ~ 
+      "S metabolism",
+
+    str_detect(name_fix,
+               "formate oxidation|carbon monoxide oxidation|glycine cleavage") ~ 
+      "C1 metabolism",
+
+    str_detect(name_fix,
+               "PRPP biosynthesis|inositol biosynthesis") ~ 
+      "Biosynthesis",
+
+    TRUE ~ "Other"
+  ))
+
+## KEGG
+
+plot_count <- kegg_count_vip %>% 
+  ggplot(aes(x = n,
+             y = fct_reorder(Category_1, n)))+
+  labs(y = 'KEGG Module',
+       x = 'Expressed MAGs')+
+  facet_grid2(rows = vars(pathway_category),
+              space = 'free',
+              scales = 'free')+
+  geom_col(fill = '#264653')+
+  theme_classic()+
+  theme(
+        strip.background = element_blank(),
+        strip.text.y = element_text(angle = 0, face = "bold", size = 6),
+        axis.text.y = element_text(size = 5),
+        axis.text.x = element_text(size = 5),
+        axis.title.x = element_text(size = 6),
+        axis.ticks.y = element_blank(),
+        plot.margin = margin(2, 2, 2, 2))
+
+plot_count
+
+## MetaCyc
+
+plot_count_2 <- metacyc_count_vip %>% 
+  ggplot(aes(x = n,
+             y = fct_reorder(name_fix, n))) +
+  geom_col(fill = "#2a9d8f", width = 0.7) +
+  facet_grid2(
+    rows = vars(pathway_category),
+    space = "free",
+    scales = "free"
+  ) +
+  labs(
+    x = "Expressed MAGs",
+    y = 'MetaCyc Pathway'
+  ) +
+  theme_classic(base_size = 8) +
+  theme(
+    strip.background = element_blank(),
+    strip.text.y = element_text(angle = 0, face = "bold", size = 6),
+    axis.text.y = element_text(size = 5),
+    axis.text.x = element_text(size = 5),
+    axis.title.x = element_text(size = 6),
+    axis.ticks.y = element_blank(),
+    plot.margin = margin(2, 2, 2, 2))
+
+plot_count_2
+
+
+
+```
+
+## MetaCyc pathways expression -- Supplementary
+
+```{r}
+
+metacyc_class <- read_csv("scripts/LC_metat_network/output/MetaCyc_arid_pathway_CLASS.csv")
+
+meta_class_ft <- metacyc_class %>% 
+  filter(Pathways %in% metacyc_keep) %>% 
+  group_by(Pathways, `Common-Name`, Class) %>%
+  mutate(zscore = (path_expr_month - mean(path_expr_month)) / sd(path_expr_month)) %>% 
+  mutate(name_fix = str_remove_all(`Common-Name`, "\\<sub\\>"),
+         name_fix = str_remove_all(name_fix, "\\<\\/sub\\>"),
+         name_fix = str_remove_all(name_fix, "\\<\\i\\>"),
+         name_fix = str_remove_all(name_fix, "\\<\\/i\\>")) %>% 
+   mutate(pathway_category = case_when(
+
+    str_detect(name_fix,
+               "glycolysis|pentose phosphate|glyoxylate|glycolate|ethylmalonyl|TCA cycle|pyruvate") ~ 
+      "Carbon metabolism",
+
+    str_detect(name_fix,
+               "Calvin|reductive TCA|reductive glycine") ~ 
+      "Carbon fixation",
+
+    str_detect(name_fix,
+               "ammonia oxidation|nitrate reduction|ammonia assimilation") ~ 
+      "Nitrogen metabolism",
+
+    str_detect(name_fix,
+               "sulfate reduction") ~ 
+      "Sulfur metabolism",
+
+    str_detect(name_fix,
+               "formate oxidation|carbon monoxide oxidation|glycine cleavage") ~ 
+      "C1 metabolism",
+
+    str_detect(name_fix,
+               "PRPP biosynthesis|inositol biosynthesis") ~ 
+      "Biosynthesis",
+
+    TRUE ~ "Other"
+  ))
+
+
+## Filter top 20% CLASS
+
+top_expressed_class <- meta_class_ft %>%
+  ungroup() %>% 
+  group_by(name_fix, Class) %>%
+  summarise(mean_exp = mean(path_expr_month),
+            total_exp = sum(path_expr_month)) %>% 
+  group_by(name_fix) %>% 
+  slice_max(order_by = mean_exp, prop = 0.2) %>% 
+  pull(Class) %>% 
+  unique()
+
+metacyc_heat <- meta_class_ft %>% 
+  filter(Class %in% top_expressed_class) %>% 
+  mutate(month = factor(month, levels = c("May", "July_1", "July_2", "July_3",
+                                          "August", "October", "May_22"))) %>% 
+  ggplot() +
+  geom_tile(aes(x = month,
+                y = name_fix,
+                fill = zscore)) + 
+  # scale_fill_viridis_c(option = 'A', direction = -1) +
+  scale_fill_distiller(palette = 'RdBu', direction = -1) +
+  facet_grid2(cols = vars(Class),
+              rows = vars(pathway_category),
+              switch = 'y',
+              scales = 'free',
+              space = 'free',
+              strip = strip_nested(
+                text_x = elem_list_text(angle = c(0, 0, rep(0, 100))),
+                text_y = elem_list_text(angle = c(rep(90, 8), rep(0, 100)),
+                                        face = c(rep('bold', 8), 
+                                                 rep('plain', 100))),
+                size = 'variable',
+                clip = 'off'
+              )) +
+  labs(title = 'Metatranscriptomics - MetaCyc')+
+  theme_bw() +
+  theme(panel.grid = element_blank(),
+        plot.title = element_text(face = 'bold', hjust = 0.5),
+        axis.title = element_blank(),
+        strip.background = element_blank(),
+        strip.text = element_text(size = 4, margin = margin(b = 0, t = 0)),
+        strip.text.y.left = element_text(angle = 0, margin = margin(r = 0, l = 0)),
+        strip.placement = "outside",      # closer to panels
+        panel.spacing = unit(0.1, "lines"),
+        axis.text.y = element_text(size = 5),
+        axis.text.x = element_text(size = 5, angle = 45, hjust = 1),
+        legend.title = element_text(size = 7),
+        legend.text = element_text(size = 5),
+        legend.position = 'bottom',
+        legend.key.size = unit(.5, 'lines'),
+        legend.spacing.x = unit(0.1, "cm"),
+        plot.margin = margin(0.1, 0.1, 0.1, 0.1, 'lines'))
+
+metacyc_heat
+
+
+ggsave("output_figures/Supp_Figure_7.png", metacyc_heat, dpi = 300,
+       units = 'mm', 
+       height = 160, 
+       width = 180)
+
+
+```
+
+

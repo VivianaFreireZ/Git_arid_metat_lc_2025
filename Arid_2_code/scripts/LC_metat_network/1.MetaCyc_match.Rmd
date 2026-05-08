@@ -1,0 +1,329 @@
+---
+title: "MetaCyc"
+author: "Viviana Freire Zapata"
+date: "2026"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: '2'
+    collapsed: false
+    highlight: tango
+    css: style.css
+editor_options: 
+  chunk_output_type: console
+---
+
+# Data Pre-processing
+
+
+
+# Importing libraries
+
+```{r libraries, message=FALSE, warning=FALSE}
+library(KEGGREST)
+library(ggkegg)
+library(igraph)
+library(ggnetwork)
+library(furrr)
+library(ggh4x)
+library(patchwork)
+library(readxl)
+library(rstatix)
+library(tidyverse)
+```
+
+
+## Load MetaCyc databases
+
+
+```{r}
+
+genes <- read_tsv("input/MetaCyc_db_2026/All-genes-of-MetaCyc.txt")
+
+compounds <- read_tsv("input/MetaCyc_db_2026/All-compounds-of-MetaCyc_extra.txt")
+
+reaction <- read_tsv("input/MetaCyc_db_2026/All-reactions-of-MetaCyc.txt")
+
+pathway <- read_tsv("input/MetaCyc_db_2026/All-pathways-of-MetaCyc.txt") %>% 
+  mutate(`KEGG pathway` = str_extract_all(`KEGG pathway`, "(?i)(map|ko|rn)\\d{5}(?=[^0-9]*$)"))
+
+pathway_name <- read_tsv("input/MetaCyc_db_2026/All-pathways-of-MetaCyc_path_name.txt") %>% 
+  select(Pathways, `Common-Name`, `Engineered?`)
+
+```
+
+
+```{r}
+
+## DRAM
+
+arid_dram <- read_tsv("input/annotations_merged.tsv")
+
+arid_dram_ft <- arid_dram %>% 
+  rename(gene_id = `...1`) %>% 
+  select(gene_id, fasta, ko_id, uniref_id)
+
+## EGG NOG
+
+egg <- read_tsv("input/eggnog/eggnog.emapper.annotations", skip = 4)
+
+egg_ft <- egg %>% 
+  rename(geneid = `#query`) %>% 
+  select(geneid, EC, KEGG_ko, KEGG_Pathway, KEGG_Module, KEGG_Reaction) %>% 
+  filter(EC != "-") %>% 
+  separate_rows(EC, sep = ",")
+
+
+```
+
+## Preparing EC reactions from MetaCyc
+
+```{r}
+
+reaction_ready <- reaction %>% 
+  mutate(EC_match = str_remove_all(`EC-Number`, "EC-"),
+         EC_match = str_replace_all(EC_match, " // ", ","),
+         KEGG_reaction_match = str_extract(`KEGG reaction`, "R\\d+")) %>% 
+  select(-`KEGG reaction`) %>% 
+  filter(!is.na(EC_match)) %>% 
+  separate_rows(EC_match, sep = ",")
+
+```
+
+
+## Matching to my annotations
+
+
+```{r}
+
+## Keep this as original with all data
+
+egg_metacyc_rx <- egg_ft %>% 
+  left_join(reaction_ready, by = c('EC' = 'EC_match'))
+
+## Separate into small tables
+
+## 1. EC number - Reaction
+
+arid_ec_match <- egg_metacyc_rx %>% 
+  select(geneid, EC, Reaction) %>% 
+  distinct()
+
+## Create pathway - reaction table
+
+path_to_reaction <- pathway %>% 
+  select(Pathways, `Reactions of pathway`, `KEGG pathway`) %>% 
+  separate_rows(`Reactions of pathway`, sep = " // ")
+
+path_rx_count <- path_to_reaction %>% 
+  select(!`KEGG pathway`) %>% 
+  group_by(Pathways) %>% 
+  mutate(number_reactions = n())
+
+
+```
+
+### MY DATA
+
+## Loading CID table - ready
+
+```{r}
+
+CID_table <- read_csv("scripts/LC_metat_network/input/CID_combined_table.csv")
+
+```
+
+
+## Metadata
+
+```{r}
+metadata <- read_csv('input/metadata_omics.csv') 
+
+metadata_ready <- metadata %>% 
+  filter(!is.na(SampleID_metaT)) %>% 
+  mutate(treatment_code = str_replace_all(treatment_code, '_', '-')) %>% 
+  select(treatment_code, month)
+  
+```
+
+
+## Taxonomy
+
+```{r}
+mag_taxonomy <- read_csv('input/mag_taxonomy_denovo.csv') %>% 
+    mutate(Class = ifelse(is.na(Class), 
+                        glue::glue('Unassigned Class \nof {Phylum}'),
+                        Class))
+
+```
+
+
+## MAGs annotations
+
+```{r}
+
+annotations <- read_csv("input/annot_with_cydbs_2.23.25.csv")
+
+```
+
+## geTMM
+
+```{r}
+geTMM <- read_csv("output/geTMM_normalized_matrix_2025.csv")
+
+geTMM_long <- geTMM %>% 
+  pivot_longer(!Geneid, names_to = "sampleid", values_to = "geTMM")
+
+```
+
+
+## Calculate expression 
+
+## Presence vs absence gene
+
+```{r}
+
+
+## Reaction level expression
+
+arid_path_metaG <- arid_ec_match %>% 
+  select(!c(geneid)) %>% 
+  distinct() %>% 
+  left_join(path_to_reaction, by = c('Reaction' = 'Reactions of pathway')) %>% 
+  filter(!is.na(Pathways)) %>% 
+  select(-EC) %>% 
+  distinct() %>% 
+  group_by(Pathways) %>% 
+  mutate(n_reaction = n()) %>% 
+  select(-`KEGG pathway`) %>% 
+  distinct()
+
+
+
+```
+
+
+## Checking ARID metaCyc pathways
+
+```{r}
+
+## Reaction level expression
+
+arid_ec_metaT <- arid_ec_match %>% 
+  left_join(geTMM_long, by = c("geneid" = "Geneid")) %>% 
+  filter(!is.na(sampleid)) %>% 
+  mutate(bin = str_remove(geneid, '_k.*')) %>% 
+  group_by(bin, sampleid, Reaction) %>% 
+  summarise(reaction_expression = sum(geTMM)) %>% 
+  left_join(metadata_ready, by = c('sampleid' = 'treatment_code'))
+
+
+## Pathway level expression
+
+## Note keep only pathways with at least 50% reactions expressed
+
+path_expressed <- path_rx_count %>% 
+  left_join(arid_ec_metaT, by = c('Reactions of pathway' = 'Reaction')) %>% 
+  drop_na(bin) %>% 
+  filter(reaction_expression > 0) %>% 
+  group_by(Pathways, bin, month, sampleid) %>% 
+  mutate(n_expressed = n()) %>% 
+  filter(n_expressed >= number_reactions * .5) %>% 
+  summarise(path_expression = sum(reaction_expression)) %>% 
+  group_by(Pathways, bin, month) %>% 
+  summarise(path_expr_month = mean(path_expression)) %>% 
+  left_join(pathway_name, by = 'Pathways') %>% 
+  filter(is.na(`Engineered?`))
+
+## Per Class
+
+path_expressed_CLASS <- path_rx_count %>% 
+  left_join(arid_ec_metaT, by = c('Reactions of pathway' = 'Reaction')) %>% 
+  drop_na(bin) %>% 
+  filter(reaction_expression > 0) %>% 
+  group_by(Pathways, bin, month, sampleid) %>% 
+  mutate(n_expressed = n()) %>% 
+  filter(n_expressed >= number_reactions * .5) %>% 
+  left_join(mag_taxonomy, by = 'bin') %>% 
+  group_by(Pathways, Class, month, sampleid) %>% 
+  summarise(path_expression = sum(reaction_expression)) %>% 
+  group_by(Pathways, Class, month) %>% 
+  summarise(path_expr_month = mean(path_expression)) %>% 
+  left_join(pathway_name, by = 'Pathways') %>% 
+  filter(is.na(`Engineered?`))
+
+write_csv(path_expressed_CLASS,"scripts/LC_metat_network/output/MetaCyc_arid_pathway_CLASS.csv")
+
+## Per Community
+
+path_expressed_Community <- path_rx_count %>% 
+  left_join(arid_ec_metaT, by = c('Reactions of pathway' = 'Reaction')) %>% 
+  drop_na(bin) %>% 
+  filter(reaction_expression > 0) %>% 
+  group_by(Pathways, bin, month, sampleid) %>% 
+  mutate(n_expressed = n()) %>% 
+  filter(n_expressed >= number_reactions * .5) %>% 
+  left_join(mag_taxonomy, by = 'bin') %>% 
+  group_by(Pathways, month, sampleid) %>% 
+  summarise(path_expression = sum(reaction_expression)) %>% 
+  group_by(Pathways, month) %>% 
+  summarise(path_expr_month = mean(path_expression)) %>% 
+  left_join(pathway_name, by = 'Pathways') %>% 
+  filter(is.na(`Engineered?`))
+
+write_csv(path_expressed_Community,"scripts/LC_metat_network/output/MetaCyc_arid_pathway_COMMUNITY.csv")
+
+
+```
+
+
+## Compounds
+
+```{r}
+
+compounds_match <- compounds %>% 
+  select(Compound, Kegg, `Pathways of compound`, `InChI-Key`) %>% 
+  mutate(Kegg = as.character(str_extract_all(Kegg, "(?i)(C|D|G)\\d{5}(?=[^0-9]*$)"))) %>% 
+  filter(!is.na(Kegg)) %>% 
+  distinct()
+  
+
+
+## Joining to arid metabolites by CID
+
+compounds_arid <- compounds_match %>% 
+  left_join(CID_table, by = c('Kegg' = 'kegg_cid'), keep = TRUE) %>% 
+  filter(!is.na(kegg_cid))
+
+## Count pathways number were compounds are products/reactants or intermediates
+
+
+compounds_arid_pathway <- compounds_arid %>% 
+  separate_rows(`Pathways of compound` , sep = " // ") %>% 
+  filter(!is.na(`Pathways of compound`)) %>% 
+  left_join(pathway_name, by = c('Pathways of compound' = 'Pathways')) %>% 
+  filter(is.na(`Engineered?`))
+
+```
+
+
+## Saving tables
+
+
+```{r}
+
+write_csv(arid_ec_metaT, "scripts/LC_metat_network/output/MetaCyc_arid_reaction.csv")
+
+
+write_csv(path_expressed, "scripts/LC_metat_network/output/MetaCyc_arid_pathway.csv")
+
+
+write_csv(compounds_arid_pathway, "scripts/LC_metat_network/output/MetaCyc_arid_compounds.csv")
+
+
+write_csv(arid_path_metaG, "scripts/LC_metat_network/output/MetaCyc_arid_pathway_counts.csv")
+
+```
+
+

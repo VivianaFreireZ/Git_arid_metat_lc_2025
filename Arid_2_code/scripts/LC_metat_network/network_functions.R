@@ -253,9 +253,9 @@ create_kegg_network <- function(compound_list,
   net_igraph <- graph_from_data_frame(edge_table, directed = FALSE, 
                                       vertices = node_table)
   
-  lay <- graphlayouts::layout_with_sparse_stress(net_igraph, pivots = 100)
+  #lay <- graphlayouts::layout_with_sparse_stress(net_igraph, pivots = 100)
   
-  net_df <- ggnetwork(net_igraph, layout = lay)
+  net_df <- ggnetwork(net_igraph)
   
   suppressMessages({
     compound_names <- read_csv('scripts/LC_metat_network/input/KEGG_compound_db.csv') %>% 
@@ -295,7 +295,7 @@ create_kegg_network <- function(compound_list,
     
   } else {
     
-    net_plots <- map(column_names, function(id){
+    net_plots <- purrr::map(column_names, function(id){
       
       id <- rlang::as_string(rlang::ensym(id))
       
@@ -341,9 +341,9 @@ create_kegg_network <- function(compound_list,
                        size = abun_node),
                    fill = 'white',
                    show.legend = FALSE) +
-        # geom_nodetext(data = . %>% filter(node_type == 'Undetected metabolite'),
-        #               aes(label = KEGG_name),
-        #               size = 1.5) +
+        geom_nodetext(data = . %>% filter(node_type == 'Undetected metabolite'),
+                      aes(label = KEGG_name),
+                      size = 1.5) +
         geom_nodetext_repel(data = . %>% filter(node_type == 'Detected metabolite'),
                             aes(label = KEGG_name),
                             fontface = 'bold',

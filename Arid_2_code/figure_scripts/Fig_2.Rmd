@@ -11,7 +11,6 @@ editor_options:
 library(patchwork)
 library(ggh4x)
 library(readxl)
-library(treedataverse)
 library(ggpubr)
 library(vegan)
 library(ggtext)
@@ -49,7 +48,6 @@ mag_taxonomy <- read_csv('input/mag_taxonomy_denovo.csv') %>%
 ## CAZyme results - updated dbcan v3
 
 ```{r}
-## Summarizes CAZyme predictions across tools, including SignalP results.
 
 dbcan_sub <- read_tsv("input/CAZyme_dbcan3/dbcan_output/dbcan-sub.hmm.out") %>% 
   select(Geneid = `Gene ID`, dbcan_sub = `dbCAN subfam`, 
@@ -118,7 +116,7 @@ ex_sub_family <- expressed_cazy %>%
   select(Geneid, cazy_fam, cazy_sub) %>% 
   distinct() %>% 
   group_by(cazy_fam, cazy_sub) %>% 
-  count(name = 'num_subfamilies')
+  dplyr::count(name = 'num_subfamilies')
 
 
 ex_family <- expressed_cazy %>% 
@@ -126,7 +124,7 @@ ex_family <- expressed_cazy %>%
   select(Geneid, cazy_fam) %>% 
   distinct() %>% 
   group_by(cazy_fam) %>% 
-  count(name = 'num_subfamilies')
+  dplyr::count(name = 'num_subfamilies')
 
 ```
 
@@ -141,28 +139,7 @@ de_cazy_genes <- de_res %>%
   select(!c(sampleid, geTMM)) %>% 
   distinct()
 
-write_csv(de_cazy_genes, "output_tables/Supplementary_table_5.csv")
-
-
-```
-
-## Joining genes to annotations -- Finding novelty
-
-```{r}
-
-annotations <- read_csv("input/annot_with_cydbs_2.23.25.csv") %>% 
-  rename(Geneid = `...1`)
-
-ko_pathway <- read_csv("input/ko_pathways_UPDATE_10_23_24.csv")
-
-vip_cazy <- expressed_cazy %>% 
-  filter(str_detect(dbcan_sub, 'GT4_') | str_detect(dbcan_sub, 'GT2$')) %>%
-  left_join(annotations, by = 'Geneid') %>% 
-  filter(geTMM > 0) %>% 
-  filter(!is.na(ko_id)) %>% 
-  left_join(ko_pathway, by = 'ko_id')
-
-write_csv(vip_cazy, "output_tables/Supplementary_table_6.csv")
+write_csv(de_cazy_genes, "output_tables/Supplementary_data_2.csv")
 
 
 ```
@@ -181,10 +158,10 @@ cazy_per_sub <- expressed_cazy %>%
   separate_longer_delim(Substrate, delim = ', ') %>% 
   distinct() %>% 
   group_by(Substrate, cazy_fam) %>% 
-  count()
+  dplyr::count()
 
 cazy_per_sub_plot <- cazy_per_sub %>% 
-  filter(n >= 25) %>% 
+  filter(n >= 30) %>% 
   group_by(Substrate) %>% 
   mutate(total = sum(n)) %>% 
   ggplot(aes(x = n,
@@ -193,20 +170,24 @@ cazy_per_sub_plot <- cazy_per_sub %>%
   geom_col(color = 'black')+
   labs(x = 'Number of genes expressed',
        y = 'Substrate',
-       fill = 'CAZy family')+
+       fill = 'CAZy family',
+       title = 'Metatranscriptomics')+
   guides(fill = guide_legend(ncol = 1))+
   scale_fill_brewer(palette = 'Set2') +
   theme_bw()+
   theme(panel.grid = element_blank(),
-        legend.position = c(0.7, 0.25),
+        legend.position = c(0.7, 0.5),
         legend.text = element_text(size = 5),
         legend.title = element_text(size = 6),
         legend.box.spacing = unit(.05, 'lines'),
         legend.key.size = unit(.5, 'lines'),
+        legend.background = element_blank(),
         legend.title.position = 'top',
         axis.title.x = element_text(size = 7),
         axis.title.y = element_text(size = 7),
-        axis.text.y = element_text(size = 6))
+        axis.text.y = element_text(size = 6),
+        plot.title = element_text(face = 'bold', hjust = 0.5, size = 8),
+        plot.margin = margin(0, 0, 0, 0))
 
 cazy_per_sub_plot
 
@@ -218,7 +199,7 @@ cazy_per_sub_plot
 ```{r}
 cazy_per_class <- expressed_cazy %>% 
   filter(Geneid %in% de_res$FeatureID) %>% 
-  filter(geTMM > 0) %>% 
+  filter(geTMM > 1) %>% 
   select(Geneid, Substrate) %>% 
   distinct() %>%
   mutate(bin = str_remove(Geneid, '_k.*')) %>% 
@@ -227,14 +208,15 @@ cazy_per_class <- expressed_cazy %>%
   separate_longer_delim(Substrate, delim = ', ') %>% 
   distinct() %>% 
   group_by(Substrate, Class, Phylum) %>% 
-  count()
+  dplyr::count()
 
 cazy_class_bubble <- cazy_per_class %>%
   filter(Substrate != 'No substrate') %>% 
   rename('DE CAZyme' = 'n') %>% 
+  filter(`DE CAZyme` > 1) %>% 
   ggplot() +
-  geom_point(aes(x = Class,
-                 y = Substrate,
+  geom_point(aes(x = Substrate,
+                 y = Class,
                  size = `DE CAZyme`,
                  fill = Phylum),
              shape = 21,
@@ -243,21 +225,28 @@ cazy_class_bubble <- cazy_per_class %>%
   # facet_grid(cols = vars(Phylum),
   #            scales = 'free',
   #            space = 'free') +
-  guides(fill = guide_legend(ncol =1),
-         size = guide_legend(ncol = 1))+
+  guides(fill = guide_legend(ncol = 1),
+         size = guide_legend(ncol = 2))+
+  #labs(title = 'Metatranscriptomics')+
   theme_bw() +
   theme(axis.text.x = element_text(angle = 45, size = 6, hjust = 1),
         axis.text.y.left = element_text(size = 6),
         axis.title.y = element_text(size = 6),
+        axis.title.x = element_blank(),
         panel.grid = element_blank(),
         strip.background = element_rect(fill = 'white'),
-        strip.text.x.top = element_text(size = 7, , angle = 90),
+        strip.text.x.top = element_text(size = 7, angle = 90),
         legend.position = 'right',
         legend.text = element_text(size = 5),
         legend.title = element_text(size = 6),
         legend.box.spacing = unit(.05, 'lines'),
         legend.key.size = unit(.5, 'lines'),
-        legend.title.position = 'top')
+        legend.box = "vertical",
+        legend.spacing.y = unit(0.05, "lines"),
+        legend.margin = margin(t = 0, b = 0),
+        legend.title.position = 'top',
+        plot.title = element_text(face = 'bold', hjust = 0.5, size = 8),
+        plot.margin = margin(0, 0, 0, 0))
 
 cazy_class_bubble
 
@@ -341,12 +330,10 @@ cazy_heat <- metaT_cazy_heat %>%
 
 cazy_heat
 
-ggsave("output_figures/Sup_figure_2.png", cazy_heat, dpi = 300,
+ggsave("output_figures/Sup_figure_4.png", cazy_heat, dpi = 300,
        units = 'mm', 
        height = 225, 
        width = 180)
-
-
 
 ```
 
@@ -498,19 +485,21 @@ sankey_plot <- df_long %>%
   #                  position = position_nudge(x = .1),
   #                  hjust = 0) +
   geom_sankey_label(size = 1.8, color = 1, fill = "white") +
+  labs(title = 'Carbohydrate-active enzymes - Metatranscriptomics')+
   facet_grid(cols = vars(Month),
              rows = vars(response_type),
              switch = 'y',
-             space = 'free_y',
+             space = 'fixed',
              scales = 'free_y') +
-  theme_sankey(base_size = 10) +
+  theme_sankey() +
   theme(axis.title = element_blank(),
-        plot.title = element_text(face = 'bold', hjust = 0.5),
+        plot.title = element_text(face = 'bold', hjust = 0.5, size = 8),
         plot.subtitle = element_text(hjust = 0.5),
         strip.placement = 'outer',
-        strip.text = element_text(angle = 0, size = 6),
-        strip.text.y.left = element_text(angle = 0, size = 6),
-        panel.spacing.y = unit(0, 'lines')) +
+        strip.text = element_text(angle = 0, size = 6, face = 'bold'),
+        strip.text.y.left = element_text(angle = 90, size = 6, face = 'bold'),
+        panel.spacing.y = unit(0, 'lines'),
+        plot.margin = margin(0, 0, 0, 0)) +
   coord_cartesian(clip = 'off') +
   scale_fill_manual(values = ggpubr::get_palette('Paired', 27))
 
@@ -531,12 +520,17 @@ CC
 "
 
 
-final_fig <- free(cazy_per_sub_plot) + free(cazy_class_bubble) + sankey_plot +
-  plot_layout(heights = c(1, 2),
+final_fig <- free(plot_count) + free(plot_count_2)+ free(sankey_plot) +
+  plot_layout(heights = c(2, 4),
               design = des) +
   plot_annotation(tag_levels = list(c('A', 'B', 'C'))) &
-  theme(axis.title.y = element_blank(),
-        legend.key.spacing = unit(.2, 'lines'))
+  theme(legend.key.spacing = unit(.1, 'lines'))
+
+final_fig
+
+final_fig <- final_fig +
+  plot_annotation(title = "Metatranscriptomics")&
+  theme(plot.title = element_text(face = 'bold', hjust = 0.5))
 
 final_fig
 
@@ -549,16 +543,32 @@ final_fig
 
 ```{r}
 
-ggsave("output_figures/Figure_2.svg", final_fig, dpi = 300,
-       units = 'mm', 
-       height = 220, 
-       width = 180)
 
 ggsave("output_figures/Figure_2.png", final_fig, dpi = 300,
        units = 'mm', 
        height = 220, 
        width = 180)
 
+
+```
+
+
+## Supplementary
+
+```{r}
+
+sup_fig <- free(cazy_per_sub_plot)+ free(cazy_class_bubble) +
+  plot_annotation(tag_levels = list(c('A', 'B'))) &
+  theme(axis.title.y = element_blank(),
+        legend.key.spacing = unit(.1, 'lines'))
+
+sup_fig
+
+
+
+ggsave("output_figures/Supp_Fig_3.png", sup_fig, dpi = 300,
+       units = 'mm', 
+       width = 180)
 
 ```
 

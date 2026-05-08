@@ -359,11 +359,8 @@ plot_filt
 
 ```{r}
 
-ggsave("output_figures/Supp_Figure_6.svg", plot_filt, dpi = 300,
-       units = 'mm',
-       width = 300)
 
-ggsave("output_figures/Supp_Figure_6.png", plot_filt, dpi = 300,
+ggsave("output_figures/Supp_Figure_9.png", plot_filt, dpi = 300,
        units = 'mm',
        width = 300)
 
@@ -1136,10 +1133,6 @@ final_fig
 
 ```{r}
 
-ggsave("output_figures/Sup_figure_1.svg", final_fig, dpi = 300,
-       units = 'mm', 
-       height = 310, 
-       width = 300)
 
 ggsave("output_figures/Sup_figure_1.png", final_fig, dpi = 300,
        units = 'mm', 

@@ -10,7 +10,6 @@ editor_options:
 library(patchwork)
 library(ggh4x)
 library(readxl)
-library(treedataverse)
 library(ggpubr)
 library(vegan)
 library(ggtext)
@@ -50,11 +49,6 @@ mag_taxonomy <- read_csv('input/mag_taxonomy_denovo.csv') %>%
 ## MAGs annotations
 
 ```{r}
-
-# mag_completeness <- read_tsv("../../../input/annotations_merged.tsv") %>%
-#   rename(Geneid = `...1`) %>% 
-#   select(fasta, contains('bin')) %>% 
-#   distinct()
 
 annot_cydbs <- read_csv("input/annot_with_cydbs_2.23.25.csv") %>% 
   rename(Geneid = `...1`)
@@ -213,7 +207,10 @@ category_1_keep <- c('Glycolysis (Embden-Meyerhof pathway)',
                      'Assimilatory sulfate reduction',
                      'Dissimilatory sulfate reduction',
                      'Glyoxylate cycle',
-                     'Ethylmalonyl pathway')
+                     'Ethylmalonyl pathway',
+                     'Reductive glycine pathway',
+                     'Calvin cycle',
+                     'Reductive citrate cycle')
 
 ```
 
@@ -239,6 +236,64 @@ rx_line <- kegg_ready %>%
                              'Pentose P, non-oxidative phase', Category_1)) %>% 
   filter(expression > 0) %>%
   split(.$Category_2)
+
+```
+
+
+## Loading MetaCyc
+
+```{r}
+
+meta_comm <- read_csv("scripts/LC_metat_network/output/MetaCyc_arid_pathway_COMMUNITY.csv")
+
+
+metacyc_keep <- c('PWY-5484', 'ANAGLYCOLYSIS-PWY', 'GLYCOLYSIS',
+                  'PWY-8178', 'NONOXIPENT-PWY', 'OXIDATIVEPENT-PWY',
+                  'TCA', 'PYRUVDEHYD-PWY', 'PWY0-662', 'AMMOXID-PWY',
+                  'PWY490-3', 'PWY0-1581', 'SO4ASSIM-PWY', 'PWY1ZNC-1',
+                  'GLYOXDEG-PWY', 'GLYOXYLATE-BYPASS', 'PWY-5741', 'PWY-8303',
+                  'CALVIN-PWY', 'P42-PWY', 'P23-PWY', 'PWY-8303', 'GLYCLEAV-PWY',
+                  'PWY-6964',
+                  'PWY-1881',
+                  'PWY-7750',
+                  'PWY-2301')
+
+## Filter 
+
+meta_comm_ft <- meta_comm %>% 
+  filter(Pathways %in% metacyc_keep) %>% 
+  mutate(name_fix = str_remove_all(`Common-Name`, "\\<sub\\>"),
+         name_fix = str_remove_all(name_fix, "\\<\\/sub\\>"),
+         name_fix = str_remove_all(name_fix, "\\<\\i\\>"),
+         name_fix = str_remove_all(name_fix, "\\<\\/i\\>")) %>% 
+   mutate(pathway_category = case_when(
+
+    str_detect(name_fix,
+               "glycolysis|pentose phosphate|glyoxylate|glycolate|ethylmalonyl|TCA cycle|pyruvate") ~ 
+      "Carbon metabolism",
+
+    str_detect(name_fix,
+               "Calvin|reductive TCA|reductive glycine") ~ 
+      "Carbon fixation",
+
+    str_detect(name_fix,
+               "ammonia oxidation|nitrate reduction|ammonia assimilation") ~ 
+      "Nitrogen metabolism",
+
+    str_detect(name_fix,
+               "sulfate reduction") ~ 
+      "Sulfur metabolism",
+
+    str_detect(name_fix,
+               "formate oxidation|carbon monoxide oxidation|glycine cleavage") ~ 
+      "C1 metabolism",
+
+    str_detect(name_fix,
+               "PRPP biosynthesis|inositol biosynthesis") ~ 
+      "Biosynthesis",
+
+    TRUE ~ "Other"
+  ))
 
 ```
 
@@ -278,13 +333,53 @@ rx_line_C <- kegg_ready %>%
                              'PPP_non-ox', Category_1)) %>% 
   filter(expression > 0) %>%
   filter(Category_2 == 'Central carbon metabolism',
-         Category_1 != 'Glycolysis 3 C')
+         Category_1 != 'Glycolysis 3 C') %>% 
+  mutate(db = 'KEGG')
+
+
+## METACYC
+
+meta_C <- meta_comm_ft %>% 
+  filter(pathway_category == 'Carbon metabolism') %>% 
+  filter(!name_fix %in% c('glyoxylate cycle', 'glycolate and glyoxylate degradation II',
+                         'ethylmalonyl-CoA pathway', 'incomplete reductive TCA cycle',
+                         'reductive TCA cycle I')) %>% 
+  mutate(name_fix = ifelse(name_fix == 'TCA cycle I (prokaryotic)',
+                             'TCA', name_fix),
+         name_fix = ifelse(name_fix == 'pyruvate decarboxylation to acetyl CoA I', 'Pyruvate oxidation', name_fix),
+                  name_fix = ifelse(name_fix == 'pentose phosphate pathway (non-oxidative branch) I',
+                             'PPP_non-oxI', name_fix),
+         name_fix = ifelse(name_fix == 'pentose phosphate pathway (non-oxidative branch) II',
+                             'PPP_non-oxII', name_fix),
+         name_fix = ifelse(name_fix == 'pentose phosphate pathway (oxidative branch) I',
+                             'PPP_ox', name_fix)) %>%
+  mutate(db = 'MetaCyc') %>% 
+  select(pathway_category, name_fix, month, path_expr_month, db) %>% 
+  rename(Category_2 = pathway_category,
+         Category_1 = name_fix,
+         Month = month,
+         expression = path_expr_month) %>% 
+  filter(Category_1 %in% c('glycolysis III (from glucose)',
+                           'PPP_ox',
+                           'PPP_non-oxI',
+                           'Pyruvate oxidation',
+                           'TCA')) %>% 
+  mutate(Category_1 = case_when(Category_1 == 'glycolysis III (from glucose)' ~ 'Glycolysis',
+                                Category_1 == 'PPP_non-oxI' ~ 'PPP_non-ox',
+                                TRUE ~ Category_1))
+
+
+## Joining both
+
+join_C <- rbind(rx_line_C, meta_C) %>%
+  group_by(db, Category_1) %>%
+  mutate(zscore = (expression - mean(expression))/sd(expression))
+
 
 ## Set colors
 
 modules_colors_C <- c(
   'Glycolysis' = "#E64B35",               
-  #'Glycolysis 3 C' = "#D08770",      
   'PPP_non-ox' = "#6A3D9A",  
   'PPP_ox' = "#00A087",     
   'Pyruvate oxidation' = "#3C5488",       
@@ -296,7 +391,9 @@ modules_colors_C <- c(
 
 ## Plot
 
-line_c_plot <- rx_line_C %>%
+line_c_plot <- join_C %>%
+  mutate(Month = factor(Month, levels = c("May", "July_1", "July_2", "July_3",
+                                          "August", "October", "May_22")))  %>% 
   ggplot() +
   geom_rect(data = stages,
             aes(xmin = start,
@@ -306,21 +403,22 @@ line_c_plot <- rx_line_C %>%
                 fill = stage),
             alpha = .15,
             show.legend = FALSE) +
-  geom_line(aes(x = Month, y = expression,
+  geom_line(aes(x = Month, y = log10(expression),
                 color = Category_1,
-                group = Category_1),
-            linewidth = 0.5) +
-  geom_point(aes(x = Month, y = expression,
+                group = interaction(Category_1, db),
+                linetype = db)) +
+  geom_point(aes(x = Month, y = log10(expression),
                  color = Category_1,
                  group = Category_1),
              size = 1.5) +
   geom_label_repel(aes(x = Month, 
-                       y = expression,
+                       y = log10(expression),
                        label = Category_1,
                        color = Category_1),
-                   data = rx_line_C %>% filter(Month == 'May_22'),
+                   data = join_C %>% filter(Month == 'May_22',
+                                            db == 'KEGG'),
                    nudge_x = 1, 
-                   nudge_y = 10,
+                   nudge_y = .1,
                    size = 2,
                    show.legend = FALSE,
                    segment.color = "grey60",
@@ -329,11 +427,13 @@ line_c_plot <- rx_line_C %>%
                                'During monsoon' = '#7BBBE5', 
                                'Post monsoon' = '#E8F0FA')) +
   scale_color_manual(values = modules_colors_C)+
-  scale_y_continuous(limits = c(0, NA)) +
+  scale_y_continuous(limits = c(NA, NA)) +
   labs(title = 'Carbon metabolism',
-       y = 'geTMM')+
+       y = 'log10(geTMM)')+
   guides(color = guide_legend(ncol =2)) +
   theme_bw(base_size = 9, base_family = "sans") +
+  # facet_wrap(~db,
+  #            scales = 'free_y') +
   theme(
     panel.grid = element_blank(),
     panel.border = element_rect(color = "black", linewidth = 0.4),
@@ -370,8 +470,31 @@ rx_line_N <- kegg_ready %>%
          Category_1 = ifelse(Category_1 == 'Dissimilatory nitrate reduction', 
                              'DNR', Category_1)) %>% 
   filter(expression > 0) %>%
-  filter(Category_2 == 'Nitrogen metabolism')
+  filter(Category_2 == 'Nitrogen metabolism') %>% 
+  mutate(db = "KEGG")
 
+## Metacyc
+
+
+meta_N <- meta_comm_ft %>% 
+  filter(pathway_category == 'Nitrogen metabolism',
+         name_fix != "ammonia assimilation cycle II") %>%
+  mutate(name_fix = ifelse(name_fix == 'ammonia oxidation I (nitrification)',
+                             'Nitrification', name_fix),
+         name_fix = ifelse(name_fix == 'nitrate reduction IX (dissimilatory)', 'DNR', name_fix),
+                  name_fix = ifelse(name_fix == 'nitrate reduction VI (assimilatory)',
+                             'ANR', name_fix)) %>%
+  mutate(db = 'MetaCyc') %>% 
+  select(pathway_category, name_fix, month, path_expr_month, db) %>% 
+  rename(Category_2 = pathway_category,
+         Category_1 = name_fix,
+         Month = month,
+         expression = path_expr_month)
+
+
+join_N <- rbind(rx_line_N, meta_N) %>%
+  group_by(db, Category_1) %>%
+  mutate(zscore = (expression - mean(expression))/sd(expression))
 
 ### Plot Nitrogen
 
@@ -383,7 +506,9 @@ modules_colors_N <- c('ANR' = 'darkblue',
 
 ## Plot
 
-line_N_plot <- rx_line_N %>%
+line_N_plot <- join_N %>%
+  mutate(Month = factor(Month, levels = c("May", "July_1", "July_2", "July_3",
+                                          "August", "October", "May_22")))  %>% 
   ggplot() +
   geom_rect(data = stages,
             aes(xmin = start,
@@ -393,21 +518,22 @@ line_N_plot <- rx_line_N %>%
                 fill = stage),
             alpha = .15,
             show.legend = FALSE) +
-  geom_line(aes(x = Month, y = expression,
+  geom_line(aes(x = Month, y = log10(expression),
                 color = Category_1,
-                group = Category_1),
-            linewidth = 0.5) +
-  geom_point(aes(x = Month, y = expression,
-                 color = Category_1,
-                 group = Category_1),
-             size = 1.5) +
+                group = interaction(Category_1, db),
+                linetype = db)) +
+  geom_point(aes(x = Month, y = log10(expression),
+               color = Category_1,
+               group = Category_1),
+           size = 1.5) +
   geom_label_repel(aes(x = Month, 
-                       y = expression,
+                       y = log10(expression),
                        label = Category_1,
                        color = Category_1),
-                   data = rx_line_N %>% filter(Month == 'May_22'),
+                   data = join_N %>% filter(Month == 'May_22',
+                                            db == 'KEGG'),
                    nudge_x = 1, 
-                   nudge_y = 10,
+                   nudge_y = .1,
                    size = 2,
                    show.legend = FALSE,
                    segment.color = "grey60",
@@ -416,9 +542,9 @@ line_N_plot <- rx_line_N %>%
                                'During monsoon' = '#7BBBE5', 
                                'Post monsoon' = '#E8F0FA')) +
   scale_color_manual(values = modules_colors_N)+
-  scale_y_continuous(limits = c(0, NA)) +
+  scale_y_continuous(limits = c(NA, NA)) +
   labs(title = 'Nitrogen metabolism',
-       y = 'geTMM')+
+       y = 'log10(geTMM)')+
   guides(color = guide_legend(ncol =2)) +
   theme_bw(base_size = 9, base_family = "sans") +
   theme(
@@ -456,18 +582,43 @@ rx_line_S <- kegg_ready %>%
          Category_1 = ifelse(Category_1 == 'Dissimilatory sulfate reduction', 
                              'DSR', Category_1)) %>% 
   filter(expression > 0) %>%
-  filter(Category_2 == 'Sulfur metabolism')
+  filter(Category_2 == 'Sulfur metabolism') %>% 
+  mutate(db = 'KEGG')
+
+## MetaCyc
+
+
+meta_S <- meta_comm_ft %>% 
+  filter(pathway_category == 'Sulfur metabolism') %>% 
+  mutate(db = 'MetaCyc') %>% 
+  select(pathway_category, name_fix, month, path_expr_month, db) %>% 
+  rename(Category_2 = pathway_category,
+         Category_1 = name_fix,
+         Month = month,
+         expression = path_expr_month) %>% 
+  mutate(Category_1 = case_when(Category_1 == 'assimilatory sulfate reduction IV' ~ 'ASR IV',
+                                Category_1 == 'assimilatory sulfate reduction I' ~ 'ASR I',
+                                TRUE ~ Category_1))
+
+
+join_S <- rbind(rx_line_S, meta_S) %>%
+  group_by(db, Category_1) %>%
+  mutate(zscore = (expression - mean(expression))/sd(expression))
 
 
 ### Plot Sulfur
 
 
-modules_colors_S <- c('ASR' = 'brown',
-                      'DSR' = 'purple4')
+modules_colors_S <- c('DSR' = '#219ebc',
+                      'ASR' = '#023047',
+                      'ASR IV' = '#ffb703',
+                      'ASR I' = '#fb8500')
 
 ## Plot
 
-line_S_plot <- rx_line_S %>% 
+line_S_plot <- join_S %>%
+    mutate(Month = factor(Month, levels = c("May", "July_1", "July_2", "July_3",
+                                          "August", "October", "May_22")))  %>% 
   ggplot() +
   geom_rect(data = stages,
             aes(xmin = start,
@@ -477,21 +628,21 @@ line_S_plot <- rx_line_S %>%
                 fill = stage),
             alpha = .15,
             show.legend = FALSE) +
-  geom_line(aes(x = Month, y = expression,
+  geom_line(aes(x = Month, y = log10(expression),
                 color = Category_1,
-                group = Category_1),
-            linewidth = 0.5) +
-  geom_point(aes(x = Month, y = expression,
-                 color = Category_1,
-                 group = Category_1),
-             size = 1.5) +
+                group = interaction(Category_1, db),
+                linetype = db)) +
+  geom_point(aes(x = Month, y = log10(expression),
+               color = Category_1,
+               group = Category_1),
+           size = 1.5) +
   geom_label_repel(aes(x = Month, 
-                       y = expression,
+                       y = log10(expression),
                        label = Category_1,
                        color = Category_1),
-                   data = rx_line_S %>% filter(Month == 'May_22'),
+                   data = join_S %>% filter(Month == 'May_22'),
                    nudge_x = 1, 
-                   nudge_y = 10,
+                   nudge_y = .1,
                    size = 2,
                    show.legend = FALSE,
                    segment.color = "grey60",
@@ -500,9 +651,9 @@ line_S_plot <- rx_line_S %>%
                                'During monsoon' = '#7BBBE5', 
                                'Post monsoon' = '#E8F0FA')) +
   scale_color_manual(values = modules_colors_S)+
-  scale_y_continuous(limits = c(0, NA)) +
+  scale_y_continuous(limits = c(NA, NA)) +
   labs(title = 'Sulfur metabolism',
-       y = 'geTMM')+
+       y = 'log10(geTMM)')+
   guides(color = guide_legend(ncol =2)) +
   theme_bw(base_size = 9, base_family = "sans") +
   theme(
@@ -681,7 +832,9 @@ legend <- ggpubr::get_legend(for_legend)
 
 ```{r}
 
-keep_plot <- c(6, 7, 8, 11, 10, 9, 1, 3, 4, 2)
+keep_plot <- c(7, 8, 9, 11, 12, 10, 1, 4, 5, 2)
+
+
 
 line_map_filtered <- line_map_class[keep_plot]
 
@@ -697,8 +850,12 @@ plot_filt <- reduce(line_map_filtered, `+`) +
               heights = c(1, 1, .1)) &
   theme(legend.position = 'none')
 
+plot_filt <- plot_filt +
+  plot_annotation(title = "Metatranscriptomics")&
+  theme(plot.title = element_text(face = 'bold', hjust = 0.5))
 
 plot_filt
+
 ```
 
 
@@ -707,12 +864,13 @@ plot_filt
 
 ```{r}
 
-ggsave("output_figures/Supp_Figure_3.svg", plot_filt, dpi = 300,
-       units = 'mm', 
-       height = 160, 
-       width = 180)
 
-ggsave("output_figures/Supp_Figure_3.png", plot_filt, dpi = 300,
+# ggsave("output_figures/Supp_Figure_5.svg", plot_filt, dpi = 300,
+#        units = 'mm', 
+#        height = 160, 
+#        width = 180)
+
+ggsave("output_figures/Supp_Figure_5.png", plot_filt, dpi = 300,
        units = 'mm', 
        height = 160, 
        width = 180)
@@ -726,7 +884,7 @@ ggsave("output_figures/Supp_Figure_3.png", plot_filt, dpi = 300,
 
 ```{r}
 
-keep_plot_2 <- c(12, 13)
+keep_plot_2 <- c(13, 16)
 
 line_map_filtered <- line_map_class[keep_plot_2]
 
@@ -743,18 +901,24 @@ plot_filt <- reduce(line_map_filtered, `+`) + legend +
 
 plot_filt
 
+plot_filt <- plot_filt +
+  plot_annotation(title = "Metatranscriptomics")&
+  theme(plot.title = element_text(face = 'bold', hjust = 0.5))
+
+plot_filt
+
 ```
 
 
 
 ```{r}
 
-ggsave("output_figures/Supp_Figure_4.svg", plot_filt, dpi = 300,
-       units = 'mm', 
-       height = 100, 
-       width = 180)
+# ggsave("output_figures/Supp_Figure_6.svg", plot_filt, dpi = 300,
+#        units = 'mm', 
+#        height = 100, 
+#        width = 180)
 
-ggsave("output_figures/Supp_Figure_4.png", plot_filt, dpi = 300,
+ggsave("output_figures/Supp_Figure_6.png", plot_filt, dpi = 300,
        units = 'mm', 
        height = 100, 
        width = 180)
@@ -900,15 +1064,65 @@ htmp_plot
 ## Stitching figure
 
 ```{r}
+
+legend_df <- data.frame(
+  x = c(1,1),
+  xend = c(2,2),
+  y = c(1,2),
+  database = c("KEGG","MetaCyc")
+)
+
+
+df_long <- ggplot(legend_df) +
+  geom_segment(aes(x = x, xend = xend, y = y, yend = y, linetype = database),
+               linewidth = 1.2) +
+  scale_linetype_manual(
+    name = "Database",
+    values = c("KEGG" = "solid",
+               "MetaCyc" = "dashed")
+  ) +
+  theme_classic()+
+  theme(legend.position = 'bottom',
+        panel.background = element_blank(),
+        panel.grid = element_blank(),
+        panel.border = element_blank(),
+        axis.line = element_line(linewidth = 0.3, colour = "black"),
+        
+        axis.title = element_text(size = 8),
+        axis.text = element_text(size = 7),
+        
+        legend.title = element_text(size = 7),
+        legend.text = element_text(size = 7),
+        
+        legend.key = element_blank(),
+        legend.key.width = unit(1.2, "cm"),  # keep line visible but compact
+        legend.spacing.x = unit(0.2, "cm"),
+        
+        plot.margin = margin(2,2,2,2))
+
+df_long
+
+leg_long <- get_legend(df_long)
+
+## Joining
+
 layout <- "
 ABC
 DDD
+EEE
 "
 
-final_fig <- line_c_plot + line_N_plot + line_S_plot + free(htmp_plot) +
-  plot_layout(design = layout, heights = c(1, 4)) +
-  plot_annotation(tag_levels = 'A')
+final_fig <- line_c_plot + line_N_plot + line_S_plot + leg_long + free(htmp_plot) +
+  plot_layout(design = layout, heights = c(1, 0.1, 4)) +
+  plot_annotation(tag_levels = list(c('A', 'B', 'C', '', 'D')))
 
+
+final_fig
+
+
+final_fig <- final_fig +
+  plot_annotation(title = "Metatranscriptomics")&
+  theme(plot.title = element_text(face = 'bold', hjust = 0.5))
 
 final_fig
 
@@ -917,11 +1131,11 @@ ggsave('output_figures/Figure_3.png',
        units = 'mm', 
        height = 200, 
        width = 180)
-ggsave('output_figures/Figure_3.svg', 
-       dpi = 300,
-       units = 'mm', 
-       height = 200, 
-       width = 180)
+# ggsave('output_figures/Figure_3.svg', 
+#        dpi = 300,
+#        units = 'mm', 
+#        height = 200, 
+#        width = 180)
 ```
 
 ## Other pathways - Supplementary heatmap
@@ -994,13 +1208,14 @@ supp_htmp_plot <-  class_vip_ko_vip %>%
 
 supp_htmp_plot
 
+supp_htmp_plot <- supp_htmp_plot +
+  plot_annotation(title = "Metatranscriptomics")&
+  theme(plot.title = element_text(face = 'bold', hjust = 0.5))
 
-ggsave('output_figures/Supp_Figure_5.png', 
-       dpi = 300,
-       units = 'mm', 
-       height = 200, 
-       width = 180)
-ggsave('output_figures/Supp_Figure_5.svg', 
+supp_htmp_plot
+
+
+ggsave('output_figures/Supp_Figure_8.png', 
        dpi = 300,
        units = 'mm', 
        height = 200, 
@@ -1038,7 +1253,7 @@ annot_MAG_ko <- geTMM_long %>%
 annot_MAG_vip <- annot_MAG_ko %>% 
   inner_join(key_genes, by = 'ko_id')
 
-write_csv(annot_MAG_vip, 'output_tables/Supplementary_table_7.csv')
+write_csv(annot_MAG_vip, 'output_tables/Supplementary_data_3.csv')
 
 ## Plot only top expressed
 
@@ -1080,48 +1295,4 @@ mag_vip_ko <- ko_vip_heatmap %>%
 
 ```
 
-## Heatmap key genes
-
-```{r}
-
-mag_heatmap <- map(mag_vip_ko, function(cat2, name){
-  
-  htmp_plot <-  cat2 %>% 
-    filter(Month %in% c('May', 'July_1', 'October')) %>% 
-    ggplot() +
-    geom_tile(aes(x = Month,
-                  y = fasta,
-                  fill = zscore)) + 
-    # scale_fill_viridis_c(option = 'A', direction = -1) +
-    scale_fill_distiller(palette = 'RdBu', direction = -1) +
-    facet_grid2(cols = vars(gene_abb),
-                rows = vars(Class, Order),
-                switch = 'y',
-                scales = 'free',
-                space = 'free') +
-    theme_bw() +
-    theme(panel.grid = element_blank(),
-          axis.title = element_blank(),
-          strip.background = element_blank(),
-          strip.text = element_text(size = 5, margin = margin(b = 0, t = 0)),
-          strip.text.y.left = element_text(angle = 0, margin = margin(r = 0, l = 0)),
-          strip.placement = "outside",      
-          panel.spacing = unit(0.1, "lines"),
-          axis.text.y = element_blank(),
-          axis.text.x = element_text(size = 5, angle = 45, hjust = 1),
-          legend.title = element_text(size = 7),
-          legend.text = element_text(size = 5),
-          legend.position = 'bottom',
-          legend.key.size = unit(.5, 'lines'),
-          legend.spacing.x = unit(0.1, "cm"),
-          plot.margin = margin(0.1, 0.1, 0.1, 0.1, 'lines'))
-  
-  return(htmp_plot)
-  
-})
-
-mag_heatmap$`Piruvate
-oxidation`
-
-```
 

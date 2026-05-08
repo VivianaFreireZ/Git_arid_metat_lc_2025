@@ -1,0 +1,587 @@
+---
+title: "Pathway analysis"
+author: "Viviana Freire Zapata"
+date: "2026"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    toc_depth: '2'
+    collapsed: false
+    highlight: tango
+    css: style.css
+editor_options: 
+  chunk_output_type: console
+---
+
+# Data Pre-processing
+
+
+
+# Importing libraries
+
+```{r libraries, message=FALSE, warning=FALSE}
+
+library(ggh4x)
+library(patchwork)
+library(taxonomizr)
+library(KEGGREST)
+library(tidyverse)
+
+```
+
+
+## Loading CID table - ready
+
+```{r}
+
+CID_table <- read_csv("scripts/LC_metat_network/input/CID_combined_table.csv") %>% 
+  filter(!kegg_cid %in% c('D00098', 'D04334', 'D08673', 'D10610'))
+
+```
+
+
+## ko_pathways from metaG
+
+```{r}
+
+ko_pathways_universe <- read_csv("scripts/LC_metat_network/input/ko_pathways_UPDATE_10_23_24.csv")
+
+
+```
+
+## Metadata
+
+```{r}
+metadata <- read_csv('input/metadata_omics.csv') 
+
+metadata_ready <- metadata %>% 
+  mutate(month = factor(month, levels = c("May", "July_1", "July_2", "July_3",
+                                          "August", "October", "May_22")))
+```
+
+
+## Taxonomy
+
+```{r}
+mag_taxonomy <- read_csv('input/mag_taxonomy_denovo.csv')
+
+```
+
+
+## MAGs annotations
+
+```{r}
+
+annotations <- read_csv("input/annot_with_cydbs_2.23.25.csv") %>% 
+  mutate(ko_id = str_replace(ko_id, 'K109441', 'K10944'),
+         ko_id = str_replace(ko_id, 'K109442', 'K10944'),
+         ko_id = str_replace(ko_id, 'K109451', 'K10945'),
+         ko_id = str_replace(ko_id, 'K109452', 'K10945'),
+         ko_id = str_replace(ko_id, 'K109461', 'K10946'))
+
+```
+
+## geTMM
+
+```{r}
+geTMM <- read_csv("output/geTMM_normalized_matrix_2025.csv")
+
+geTMM_long <- geTMM %>% 
+  pivot_longer(!Geneid, names_to = "sampleid", values_to = "geTMM")
+
+```
+
+
+## Calculate expression per Month, ALL KOs ALL MAGs
+
+```{r}
+
+annot_ready <- annotations %>% 
+  rename(Gene_id = `...1`) %>% 
+  select(Gene_id, fasta, ko_id) %>% 
+  left_join(geTMM_long, by = c('Gene_id' = 'Geneid')) %>% 
+  filter(!is.na(sampleid),
+         !is.na(ko_id)) %>% 
+  mutate(sampleid = str_replace_all(sampleid, '-', '_')) %>% 
+  inner_join(metadata_ready, by = c('sampleid' = 'treatment_code')) %>% 
+  group_by(ko_id, sampleid, month) %>% 
+  summarise(geTMM_sum = sum(geTMM)) %>%
+  group_by(ko_id, month) %>% 
+  summarise(getmm = mean(geTMM_sum)) 
+
+```
+
+## Loading KEGG tables
+
+```{r}
+
+
+## Module -- KO
+
+module_ko <- keggLink('module', 'ko')
+
+## Creating table with KO, RX, Compound
+
+table_module <- tibble(module_id = module_ko,
+                       ko_id = names(module_ko)) %>% 
+  mutate(module_id = str_remove(module_id, 'md:'),
+         ko_id = str_remove(ko_id, 'ko:'))
+
+
+## Module -- Compound
+
+
+module_compound <- keggLink('module', 'compound')
+
+## Creating table with KO, RX, Compound
+
+table_module_compound <- tibble(module_id = module_compound,
+                                C_id = names(module_compound)) %>% 
+  mutate(module_id = str_remove(module_id, 'md:'),
+         C_id = str_remove(C_id, 'cpd:'))
+
+```
+
+
+## Joining my annotations
+
+# Retrieving names from modules
+
+
+```{r}
+
+
+module_list <- keggList('module')
+
+module_names <- data.frame(module_names = module_list,
+                           module_id = names(module_list))
+
+```
+
+
+```{r}
+
+mag_ko_unique <- annotations %>% 
+  select(ko_id) %>% 
+  distinct()
+
+module_count_tb <- table_module %>% 
+  group_by(module_id) %>% 
+  mutate(kegg_count = n()) %>% 
+  right_join(mag_ko_unique, by = 'ko_id') %>% 
+  group_by(module_id, kegg_count) %>% 
+  summarise(mag_ko_count = n()) %>% 
+  inner_join(module_names, by = 'module_id')
+
+## Compound
+
+module_count_tb_compound <- table_module_compound %>% 
+  group_by(module_id) %>% 
+  mutate(kegg_count_cid = n()) %>% 
+  right_join(CID_table, by = c('C_id' = 'kegg_cid')) %>% 
+  group_by(module_id, kegg_count_cid) %>% 
+  summarise(arid_cid_count = n()) %>% 
+  inner_join(module_names, by = 'module_id')
+
+## Final metaG based only
+
+final_module_metaG <- full_join(module_count_tb, module_count_tb_compound,
+                                by = c('module_id', 'module_names')) %>% 
+  mutate(ko_pct = mag_ko_count / kegg_count * 100,
+         cpd_pct = arid_cid_count / kegg_count_cid * 100) %>% 
+  mutate(across(c(ko_pct, cpd_pct, mag_ko_count, arid_cid_count),
+                ~ ifelse(is.na(.x), 0, .x))) %>% 
+  select(module_id, module_names, kegg_count, mag_ko_count, ko_pct,
+         kegg_count_cid, arid_cid_count, cpd_pct)
+
+```
+
+## Adding metaT
+
+```{r}
+
+## By month
+
+metat_ex_ready <- annot_ready %>% 
+  filter(!is.na(ko_id)) %>% 
+  filter(getmm > 0) %>% 
+  select(ko_id, month) %>% 
+  distinct()
+
+module_count_tb_metat <- table_module %>% 
+  group_by(module_id) %>% 
+  mutate(kegg_count = n()) %>% 
+  right_join(metat_ex_ready, by = 'ko_id') %>% 
+  group_by(module_id, kegg_count, month) %>% 
+  summarise(ko_expression = n()) %>% 
+  inner_join(module_names, by = 'module_id')
+
+## Final table
+
+final_table_omic <- final_module_metaG %>% 
+  full_join(module_count_tb_metat) %>% 
+  mutate(metat_pct = ko_expression / kegg_count * 100) %>% 
+  mutate(across(c(metat_pct, ko_expression),
+                ~ ifelse(is.na(.x), 0, .x)))
+
+  
+```
+
+## Module classification
+
+```{r}
+
+
+ko_median <- median(final_module_metaG$ko_pct[final_module_metaG$ko_pct > 0], 
+                    na.rm = TRUE)
+
+cpd_median <- median(final_module_metaG$cpd_pct[final_module_metaG$cpd_pct > 0], 
+                    na.rm = TRUE)
+
+module_classified <- final_module_metaG %>%
+  ungroup() %>% 
+  
+  # Remove rows with missing coverage
+  filter(!is.na(ko_pct), !is.na(cpd_pct)) %>%
+  
+  # Classify modules
+  mutate(
+    gene_class = ifelse(ko_pct >= ko_median, "High_gene", "Low_gene"),
+    met_class  = ifelse(cpd_pct >= cpd_median, "High_met", "Low_met"),
+    concordance = case_when(
+      gene_class == "High_gene" & met_class == "High_met" ~ "High-High (Concordant)",
+      gene_class == "High_gene" & met_class == "Low_met"  ~ "HighGene-LowMet",
+      gene_class == "Low_gene"  & met_class == "High_met" ~ "LowGene-HighMet",
+      TRUE ~ "Low-Low"
+    )
+  )
+
+
+```
+
+
+## plot
+
+```{r}
+
+vip_list <- c('M00009', 'M00020', 'M00844', 'M00009', 
+              'M00004', 'M00555', 'M00176', 'M00529', 'M00565', 'M00528')
+
+scatter_modules <- module_classified %>%
+  mutate(
+    module_names = case_when(
+      str_detect(module_names, "Citrate cycle") ~ "TCA",
+      str_detect(module_names, "Nitrification, ammonia") ~ "Nitrification",
+      str_detect(module_names, "Denitrification, nitrate") ~ "Denitrification",
+      str_detect(module_names, "Pentose phosphate pathway") ~ "Pentose phosphate pathway",
+      str_detect(module_names, "Assimilatory sulfate reduction") ~ "Assimilatory sulfate reduction",
+      str_detect(module_names, "Trehalose biosynthesis") ~ "Trehalose biosynthesis",
+      str_detect(module_names, "Serine biosynthesis") ~ "Serine biosynthesis",
+      TRUE ~ module_names
+    )
+  ) %>% 
+  select(module_id, module_names, ko_pct, cpd_pct, concordance) %>%
+  distinct() %>%
+  mutate(vip = ifelse(module_id %in% vip_list, module_names, NA)) %>%
+  
+  ggplot(aes(x = ko_pct,
+             y = cpd_pct,
+             color = concordance)) +
+  geom_point(size = 2, alpha = 0.8) +
+  ggrepel::geom_label_repel(
+    aes(label = vip),
+    size = 2,
+    show.legend = FALSE,
+    max.overlaps = Inf,
+    nudge_x = 1,
+    nudge_y = 10,
+    segment.color = "grey50",
+    segment.size = 0.3
+  ) +
+  scale_color_manual(values = ggpubr::get_palette(palette = 'Set2', 4))+
+  labs(
+    title = "KEGG Module vs Compound Coverage",
+    x = "KO Percentage (%)",
+    y = "Compound Percentage (%)"
+  ) +
+  theme_bw() +
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0.5, size = 8),
+    axis.title = element_text(face = "bold", size = 6),
+    legend.position = "none",
+    axis.text.x = element_text(size = 6),
+    axis.text.y = element_text(size = 6),
+    axis.title.y = element_text(size = 7),
+    panel.grid = element_blank(),
+    plot.margin = margin(0, 0, 0, 0)
+  )
+
+scatter_modules
+
+
+```
+
+## MetaCyc
+
+```{r}
+
+arid_rx_meta <- read_csv("scripts/LC_metat_network/output/MetaCyc_arid_reaction.csv")
+
+
+arid_path_meta <- read_csv("scripts/LC_metat_network/output/MetaCyc_arid_pathway.csv")
+
+arid_path_metaG <- read_csv("scripts/LC_metat_network/output/MetaCyc_arid_pathway_counts.csv")
+
+arid_comp_meta <- read_csv("scripts/LC_metat_network/output/MetaCyc_arid_compounds.csv")
+
+```
+
+## Calculate pathway vs compound coverage
+
+```{r}
+
+pathway <- read_tsv("input/MetaCyc_db_2026/All-pathways-of-MetaCyc.txt") %>% 
+  mutate(`KEGG pathway` = str_extract_all(`KEGG pathway`, "(?i)(map|ko|rn)\\d{5}(?=[^0-9]*$)"))
+
+pathway_name <- read_tsv("input/MetaCyc_db_2026/All-pathways-of-MetaCyc_path_name.txt") %>% 
+  select(Pathways, `Common-Name`, `Engineered?`, Species)
+
+reaction <- read_tsv("input/MetaCyc_db_2026/All-reactions-of-MetaCyc.txt")
+
+compounds <- read_tsv("input/MetaCyc_db_2026/All-compounds-of-MetaCyc_extra.txt")
+
+```
+
+## Counts MetaCyc
+
+```{r}
+
+## Create pathway - reaction table
+
+path_to_reaction <- pathway %>% 
+  select(Pathways, `Reactions of pathway`, `KEGG pathway`) %>% 
+  separate_rows(`Reactions of pathway`, sep = " // ") %>% 
+  distinct()
+
+path_rx_count <- path_to_reaction %>% 
+  select(!`KEGG pathway`) %>% 
+  group_by(Pathways) %>% 
+  mutate(number_reactions = n()) %>% 
+  distinct()
+
+## Compounds per pathway
+
+compound_path <- compounds %>% 
+  filter(!is.na(`Pathways of compound`)) %>% 
+  select(Compound, `Pathways of compound`) %>% 
+  separate_rows(`Pathways of compound`, sep = " // ") %>%
+  distinct() %>% 
+  group_by(`Pathways of compound`) %>% 
+  mutate(number_compounds = n())
+
+```
+
+
+## Matching arid
+
+```{r}
+
+## Compound
+
+arid_compound_cov <- arid_comp_meta %>% 
+  select(Compound, `Pathways of compound`, kegg_cid) %>% 
+  distinct() %>% 
+  group_by(`Pathways of compound`) %>% 
+  mutate(number_compounds_arid = n())
+
+
+## Ready 
+
+compound_coverage <- compound_path %>% 
+  inner_join(arid_compound_cov, by = c('Compound', 'Pathways of compound')) %>% 
+  mutate(cpd_pct = number_compounds_arid / number_compounds * 100)
+
+## Pathway
+
+arid_path_metaG_ft <- arid_path_metaG %>% 
+  rename(number_reactions_arid = n_reaction) %>% 
+  distinct()
+
+
+path_coverage <- path_rx_count %>% 
+  inner_join(arid_path_metaG_ft, by = c('Pathways', 'Reactions of pathway' = 'Reaction')) %>%
+  select(!`Reactions of pathway`) %>% 
+  distinct() %>% 
+  mutate(pathway_pct = number_reactions_arid / number_reactions * 100) %>% 
+  left_join(pathway_name, by = 'Pathways') %>% 
+  filter(is.na(`Engineered?`))
+
+```
+
+
+## Joining tables
+
+```{r}
+
+path_ready <- path_coverage %>% 
+  select(Pathways, pathway_pct, `Common-Name`, Species)
+
+compound_ready <- compound_coverage %>% 
+  select(Compound, `Pathways of compound`, cpd_pct) %>% 
+  distinct()
+
+metacyc_final <- path_ready %>% 
+  full_join(compound_ready, by = c('Pathways' = 'Pathways of compound')) %>% 
+  mutate(across(c(pathway_pct, cpd_pct),
+                ~ ifelse(is.na(.x), 0, .x))) 
+
+path_tax_ft <- metacyc_final %>% 
+  separate_rows(Species, sep = " // ") %>% 
+  filter(str_detect(Species, 'TAX')) %>% 
+  mutate(Species = str_remove_all(Species, 'TAX-'))
+
+```
+
+## Keeping only bacteria and archaea paths
+
+```{r}
+
+
+# Run only first time
+# prepareDatabase(
+#   sqlFile = "ncbi_taxonomy.sqlite",
+#   getAccessions = FALSE
+# )
+
+taxids <- unique(path_tax_ft$Species)
+
+lineage_dia <- getTaxonomy(
+  taxids,
+  sqlFile = "C:/Users/vivia/Escritorio/Arid_metaT-LCMS_2025/Arid_2_code/ncbi_taxonomy.sqlite")
+
+lineage_df <- as.data.frame(lineage_dia) %>%
+  tibble::rownames_to_column("staxids") %>% 
+  mutate(staxids = as.character(staxids)) %>% 
+  mutate(staxids = str_trim(staxids))
+
+## Final table
+
+
+final_path <- path_tax_ft %>% 
+  left_join(lineage_df, by = c('Species' = 'staxids')) %>% 
+  filter(domain != 'Eukaryota')
+
+
+```
+
+
+
+## Module classification
+
+```{r}
+
+
+path_median <- median(final_path$pathway_pct[final_path$pathway_pct > 0], 
+                    na.rm = TRUE)
+
+cpd_median <- median(final_path$cpd_pct[final_path$cpd_pct > 0], 
+                    na.rm = TRUE)
+
+path_classified <- final_path %>%
+  ungroup() %>% 
+  
+  # Remove rows with missing coverage
+  filter(!is.na(pathway_pct), !is.na(cpd_pct)) %>%
+  
+  # Classify modules
+  mutate(
+    path_class = ifelse(pathway_pct >= path_median, "High_gene", "Low_gene"),
+    met_class  = ifelse(cpd_pct >= cpd_median, "High_met", "Low_met"),
+    concordance = case_when(
+      path_class == "High_gene" & met_class == "High_met" ~ "High-High (Concordant)",
+      path_class == "High_gene" & met_class == "Low_met"  ~ "HighGene-LowMet",
+      path_class == "Low_gene"  & met_class == "High_met" ~ "LowGene-HighMet",
+      TRUE ~ "Low-Low"
+    )
+  )
+
+
+```
+
+
+## plot
+
+```{r}
+
+vip_list2 <- c('SERSYN-PWY', 'TRESYN-PWY', 'SO4ASSIM-PWY', 'PENTOSE-P-PWY', 
+              'AMMOXID-PWY', 'TCA', 'DENITRIFICATION-PWY', 'BETSYN-PWY', 
+              'PWY-3722', 'ARGSYN-PWY')
+
+scatter_meta <- path_classified %>%
+  select(Pathways, `Common-Name`, pathway_pct, cpd_pct, concordance) %>%
+  distinct() %>%
+  mutate(vip = ifelse(Pathways %in% vip_list2, `Common-Name`, NA)) %>%
+  ggplot(aes(x = pathway_pct,
+             y = cpd_pct,
+             color = concordance)) +
+  geom_point(size = 2, alpha = 0.8) +
+  ggrepel::geom_label_repel(
+    aes(label = vip),
+    size = 2,
+    show.legend = FALSE,
+    max.overlaps = Inf,
+    nudge_x = 1,
+    nudge_y = 10,
+    segment.color = "grey50",
+    segment.size = 0.3
+  ) +
+  scale_color_manual(values = ggpubr::get_palette(palette = 'Set2', 4))+
+  labs(
+    title = "MetaCyc pathway vs Compound Coverage",
+    x = "Pathway Percentage (%)",
+    y = "Compound Percentage (%)"
+  ) +
+  theme_bw() +
+  theme(
+    plot.title = element_text(face = "bold", hjust = 0.5, size = 8),
+    axis.title = element_text(face = "bold", size = 6),
+    legend.position = "bottom",
+    axis.text.x = element_text(size = 6),
+    axis.text.y = element_text(size = 6),
+    axis.title.y = element_text(size = 7),
+    panel.grid = element_blank(),
+    legend.text = element_text(size = 5),
+    legend.title = element_text(size = 6),
+    legend.box.spacing = unit(.05, 'lines'),
+    legend.key.size = unit(.5, 'lines'),
+    plot.margin = margin(0, 0, 0, 0)
+  )
+
+scatter_meta
+
+
+```
+
+
+
+##Save
+
+```{r}
+
+joined_plots <- scatter_modules + scatter_meta +
+  plot_layout(nrow = 2) &
+  plot_annotation(title = "Metatranscriptomics - Metabolomics")&
+  theme(plot.title = element_text(face = 'bold', hjust = 0.5, size = 8))
+
+joined_plots
+
+ggsave("output_figures/Supp_Figure_2.png", joined_plots, dpi = 300,
+       units = 'mm', 
+       height = 180, 
+       width = 250)
+
+
+
+```
+

@@ -181,7 +181,7 @@ universe_ready <- rbind(ko_pathways_universe, extra_universe)
 network_month <- create_kegg_network(compound_list = CID_table$kegg_cid,
                                      ko_list = universe_ready$ko_id,
                                      ko_abundances = getmm_month_table,
-                                     pathways = c('map00910'),
+                                     pathways = c('map00920'),
                                      prevalence_per_reaction = 0.5,
                                      expand_search = 1,
                                      generate_plot = TRUE)
@@ -209,7 +209,7 @@ getmm_vals <- new_graph_df %>%
 min_getmm <- min(getmm_vals, na.rm = TRUE)
 max_getmm <- max(getmm_vals, na.rm = TRUE)
 
-net_plots <- map(column_names, function(id){
+net_plots <- purrr::map(column_names, function(id){
   temp <- new_graph_df %>% 
     # Removing nodes that are not needed
     filter(!(name %in% c('R07316', 'R03546', 'R10092',
@@ -314,11 +314,14 @@ names(net_plots) <- column_names
 
 joined_plots <- net_plots$May + net_plots$July_1 + net_plots$October +
   plot_layout(guides = 'collect', nrow = 1) &
-  theme(legend.position = 'bottom')
+  plot_annotation(title = "Metatranscriptomics - Metabolomics")&
+  theme(legend.position = 'bottom',
+        plot.title = element_text(face = 'bold', hjust = 0.5, size = 8))
 
 net_legend <- ggpubr::get_legend(net_plots$May)
 
 joined_plots
+
 
 ```
 
@@ -431,6 +434,7 @@ in_plot <- soil_n_ready %>%
     sec.axis = sec_axis(~ . * (max(soil_n_ready$`NH4-N (ppm)`, na.rm = TRUE) / 
                                  max(soil_n_ready$`NO3-N (ppm)`, na.rm = TRUE)),
                         name = "NH₄⁺–N (ppm)")) +
+  labs(title = 'Inorganic nitrogen')+
   theme_classic(base_size = 6) +
   theme(
     axis.title.y.left = element_text(color = "#1f77b4", face = 'bold', size = 6),
@@ -441,7 +445,8 @@ in_plot <- soil_n_ready %>%
     axis.title.x = element_blank(),
     axis.line.y.right = element_line(color = "#ff7f0e"),
     axis.line.y.left = element_line(color = "#1f77b4"),
-    panel.spacing = unit(0.2, 'lines') 
+    panel.spacing = unit(0.2, 'lines'),
+    plot.title = element_text(face = 'bold', hjust = 0.5, size = 8)
   )
 
 
@@ -703,7 +708,11 @@ heat_vip_take2 <- combined_sig_split %>%
   mutate(zscore = (month_int - mean(month_int))/ sd(month_int)) %>% 
   ungroup() %>% 
   mutate(month = factor(month, levels = c('May', 'June', 'July_1', 'July_2',
-                                          'July_3', 'August', 'September', 'October'))) %>% 
+                                          'July_3', 'August', 'September', 'October')),
+         subclass = if_else(
+           subclass == 'Amino acids, peptides, and analogues',
+           'Amino acids, peptides\nand analogues',
+           subclass)) %>% 
   ggplot(aes(x = month,
              y = Name,
              fill = zscore)) +
@@ -721,9 +730,10 @@ heat_vip_take2 <- combined_sig_split %>%
                nest_line = element_line(),
                solo_line = TRUE)+
   scale_fill_distiller(palette = 'RdBu', limits = c(-2.5, 2.5))+
-  labs(x = 'Month')+
+  labs(x = 'Month',
+       title = 'Metabolomics')+
   theme_bw() +
-  theme(  plot.title = element_text(face = 'bold', hjust = 0.5, size = 6),
+  theme(
           axis.text.x = element_text(angle = 45, hjust = 1, size = 5),
           axis.text.y = element_text(size = 5.5),
           axis.title.x = element_blank(),
@@ -744,7 +754,8 @@ heat_vip_take2 <- combined_sig_split %>%
           legend.key.size = unit(0.4, 'lines'),     # smaller keys
           legend.spacing.x = unit(0.2, 'lines'),    # horizontal spacing between items
           legend.spacing.y = unit(0.1, 'lines'),    # vertical spacing between items
-          legend.box.spacing = unit(0.1, 'lines')
+          legend.box.spacing = unit(0.1, 'lines'),
+          plot.title = element_text(face = 'bold', hjust = 0.5, size = 8)
   )
 
 
@@ -773,8 +784,10 @@ final_plot <- net_plots$May + theme(legend.position = 'none') +
   net_plots$October + theme(legend.position = 'none') + 
   in_plot + patchwork::free(heat_vip_take2) + net_legend +
   plot_layout(design = des, heights = c(2, .1, 1))+
-  plot_annotation(tag_levels = list(c('A', '', '', 'B', 'C'))) &
-  theme(plot.tag = element_text(size = 14))
+  plot_annotation(tag_levels = list(c('A', '', '', 'B', 'C')),
+                  title = "Metatranscriptomics - Metabolomics") &
+  theme(plot.tag = element_text(size = 14),
+        plot.title = element_text(face = 'bold', hjust = 0.5, size = 8))
 
 final_plot
 
@@ -805,28 +818,31 @@ graph_df_aa <- create_kegg_network(compound_list = CID_table$kegg_cid,
                                    expand_search = 0,
                                    generate_plot = TRUE)
 
-# graph_df_aa$May
 
 
 ## Selecting networks of interest to merge
 
 joined_plots <- graph_df_aa$May + graph_df_aa$July_1 + graph_df_aa$October +
   plot_layout(guides = 'collect', nrow = 1) &
+  plot_annotation(title = "Metatranscriptomics - Metabolomics")&
   theme(legend.position = 'bottom',
         legend.key.size = unit(0.4, "cm"),   # smaller boxes
         legend.text = element_text(size = 6), # smaller text
-        legend.title = element_text(size = 6))
+        legend.title = element_text(size = 6),
+        plot.title = element_text(face = 'bold', hjust = 0.5, size = 8))
 
 
 joined_plots
 
 
-ggsave("output_figures/Supp_Figure_7.png", joined_plots, dpi = 300,
+
+
+ggsave("output_figures/Supp_Figure_10.png", joined_plots, dpi = 300,
        units = 'mm', 
        height = 180, 
        width = 250)
 
-ggsave("output_figures/Supp_Figure_7.svg", joined_plots, dpi = 300,
+ggsave("output_figures/Supp_Figure_10.svg", joined_plots, dpi = 300,
        units = 'mm', 
        height = 180, 
        width = 250)

@@ -1,7 +1,7 @@
 ---
 title: "Omics integration figure"
 author: "Viviana Freire-Zapata"
-date: "10/24/2025"
+date: ""
 output: 
   html_document:
     toc: true
@@ -48,7 +48,7 @@ metabolites_c1 <- metabolites %>%
   filter(component == 'comp1')
 
 
-microbe <- read_csv("output/DIABLO_metaG_features_11-10-2025.csv")
+microbe <- read_csv("output/DIABLO_metaT_features_11-10-2025.csv")
 
 microbe_c1 <- microbe %>% 
   filter(component == 'comp1')
@@ -96,9 +96,11 @@ venn_lme_diablo <- ggvenn(data_list,
   
   theme_void() +
   coord_fixed(clip = 'off', ratio = 0.5) +
+  labs(title = 'Metabolomics')+
   theme(
     legend.position = "none",
-    plot.margin = margin(0, 0, 0, 0, "lines"))
+    plot.margin = margin(0, 0, 0, 0, "lines"),
+    plot.title = element_text(face = 'bold', hjust = 0.5, size = 8))
 
 venn_lme_diablo
 
@@ -180,6 +182,7 @@ comp_1_mag <- microbe %>%
   )
 
 comp_1_mag
+
 ```
 
 ## expression 
@@ -295,36 +298,20 @@ htmp_loadings <- comp_1_mag + htmp_diablo +
 
 htmp_loadings
 
+
+
+htmp_loadings <- htmp_loadings +
+  plot_annotation(title = "Metatranscriptomics")&
+  theme(plot.title = element_text(face = 'bold', hjust = 0.5), size =8)
+
+htmp_loadings
+
 ```
 
 
 ## DIABLO PCA
 
 ```{r}
-diablo_moisture <- readRDS("output/diablo_moisture_final_11_10_25.rds")
-
-
-set.seed(123) # For reproducibility
-
-
-perf.diablo_final = perf(diablo_moisture, validation = 'Mfold',
-                         folds = 5, nrepeat = 100, dist = "mahalanobis.dist")
-
-plot(perf.diablo_final)
-
-# Performance with Majority vote
-perf.diablo_final$MajorityVote.error.rate
-
-# Performance with Weighted vote
-perf.diablo_final$WeightedVote.error.rate
-
-```
-
-
-```{r}
-plotIndiv(diablo_moisture,
-          block = 'metaT',
-          comp = c(1,2))
 
 diablo_ordi <- read_csv("output/Diablo_scores_11_10_25.csv")
 
@@ -341,8 +328,10 @@ plot_ordi <- diablo_ordi %>%
     color = "Group",
     shape = "Month") +
   scale_color_manual(values = c("#E69F00", "#7BBBE5"))+
+  labs(title = 'Metatranscriptomics- Metabolomics')+
   theme_bw() +
   theme(
+    plot.title = element_text(face = 'bold', hjust = 0.5, size = 8),
     panel.grid.major = element_line(color = "grey85", size = 0.3),
     panel.grid.minor = element_blank(),
     axis.title = element_text(size = 6, face = "bold"),
@@ -359,14 +348,6 @@ plot_ordi <- diablo_ordi %>%
 
 plot_ordi
 
-```
-
-```{r}
-# loadings_df_comp1 <- plotLoadings(diablo_moisture, contrib = 'max', comp = 1) %>% 
-#   reduce(rbind) %>% 
-#   rownames_to_column(var = 'FeatureID') %>% 
-#   mutate(component = 'comp1') %>% 
-#   filter(!str_detect(FeatureID, 'FT'))
 ```
 
 
@@ -397,7 +378,7 @@ RP_df <- read_csv("scripts/LC-MS-MS/1.Pre-processing/output/RP_matrix_clean_2025
 
 ## Loading annotation
 
-annot <- read_csv("scripts/LC-MS-MS/3.Cleanning_Annotation/output/RP_final_annotation_checked.csv")
+annot <- read_csv("scripts/LC-MS-MS/3.Cleanning_Annotation/output/RP_final_annotation_11_20_25.csv")
 
 ```
 
@@ -601,7 +582,11 @@ dwt_centroids_RP <- as.data.frame(dwt_test_RP@centroids) %>%
   pivot_longer(!time, names_to = 'cluster', values_to = 'value') %>% 
   mutate(cluster = factor(cluster, levels = paste0('Cluster ', 1:4)),
          LC_mode = 'RP') %>% 
-  filter(cluster != 'Cluster 4')
+  filter(cluster != 'Cluster 4') %>% 
+  mutate(cluster = case_when(
+  cluster == "Cluster 2" ~ "Cluster 3",
+  cluster == "Cluster 3" ~ "Cluster 2",
+  TRUE ~ cluster))
 
 ```
 
@@ -612,7 +597,11 @@ dwt_centroids_RP <- as.data.frame(dwt_test_RP@centroids) %>%
 combined_dtw <- feature_dwt_clusts_rp %>% 
   left_join(class_info, by = c('FeatureID', 'LC_mode')) %>% 
   filter(!is.na(superclass),
-         cluster != 'Cluster 4')
+         cluster != 'Cluster 4') %>% 
+  mutate(cluster = case_when(
+  cluster == "Cluster 2" ~ "Cluster 3",
+  cluster == "Cluster 3" ~ "Cluster 2",
+  TRUE ~ cluster))
 
 class_colors <- combined_dtw %>% 
   dplyr::select(superclass) %>% 
@@ -667,7 +656,6 @@ feature_dwt_plot <- combined_dtw %>%
     legend.position = "none",
     legend.title = element_text(size = 8, face = "bold"),
     legend.text = element_text(size = 7),
-    plot.title = element_text(size = 10, face = "bold", hjust = 0.5),
     plot.margin = margin(0.3, 0.3, 0.3, 0.3, "cm")) 
 
 feature_dwt_plot
@@ -710,15 +698,32 @@ plot_test <- combined_dtw %>%
     axis.title.y = element_text(size = 6),
     strip.text.x = element_text(face = "bold", size = 5),
     strip.text.y = element_text(face = "bold", size = 5, angle = 0),
-    strip.background = element_rect(fill = "white", color = "gray80"),
+    strip.background = element_blank(),
     legend.position = "bottom",
     legend.title = element_text(size = 6),
     legend.text = element_text(size = 5),
     panel.spacing = unit(0.2, "lines"),
     legend.key.size = unit(0.15, 'lines'),
-    legend.box = 'vertical')
+    legend.box = 'vertical',
+    axis.ticks.y = element_blank())
 
 plot_test
+
+
+## Joining
+
+metab_plot <- feature_dwt_plot + plot_test+
+  plot_annotation(tag_levels = list(c('D', 'E')))
+
+metab_plot
+
+
+
+metab_plot <- metab_plot +
+  plot_annotation(title = "Metabolomics")&
+  theme(plot.title = element_text(face = 'bold', hjust = 0.5, size = 8))
+
+metab_plot
 
 ```
 
@@ -729,17 +734,17 @@ plot_test
 
 lay <- "
 AABB
-CCDE
-CCDE
+CCDD
+CCDD
 "
 
 final <- free(plot_ordi) + free(venn_lme_diablo) + htmp_loadings + 
-  feature_dwt_plot + plot_test +
-  plot_layout(design = lay, widths = c(.1, 3.5, 1.5, 1.5), heights = c(1, 2, 2) ) +
+  metab_plot +
+  plot_layout(design = lay, widths = c(.1, 2), heights = c(1, 2) ) +
   plot_annotation(tag_levels = list(c('A', 'B', 'C', '', 'D', 'E')))+
-  theme(plot.margin = unit(c(.1, .1, .1, .1), 'lines'))
+  theme(plot.title = element_text(size = 8))
 
-# final
+final
 
 ggsave("output_figures/Figure_5.png", final, dpi = 300,
        units = 'mm',
@@ -753,26 +758,4 @@ ggsave("output_figures/Figure_5.svg", final, dpi = 300,
 ```
 
 
-## Pathways KOs
-
-```{r}
-
-ko_c1 <- microbe_c1 %>% 
-  separate_longer_delim(name, delim = ";")
-
-dry_path <- ko_c1 %>% 
-  filter(GroupContrib == 'dry') %>% 
-  dplyr::select(MAG, KO, pathway, Domain, Phylum, Class, Order, Family) %>% 
-  group_by(KO, pathway) %>% 
-  dplyr::count()
-
-
-wet_path <- ko_c1 %>% 
-  filter(GroupContrib == 'wet') %>% 
-  dplyr::select(MAG, KO, pathway, Domain, Phylum, Class, Order, Family) %>% 
-  group_by(KO,pathway) %>% 
-  dplyr::count()
-
-
-```
 
